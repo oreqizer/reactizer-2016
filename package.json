@@ -1,0 +1,27 @@
+{
+  "name": "react-redux-isomorphic",
+  "version": "1.0.0",
+  "description": "react redux isomorphic boilerplate",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "start": "echo todo"
+  },
+  "author": "oreqizer",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.3.0",
+    "redux": "^3.5.1",
+    "webpack": "^1.12.14"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-plugin-react": "^4.2.3",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
