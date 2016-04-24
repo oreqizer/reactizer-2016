@@ -1,8 +1,7 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { RouterContext, match } from 'react-router';
-import { createLocation } from 'history';
+import { createMemoryHistory, RouterContext, match } from 'react-router';
 
 import routes from '../shared/routes';
 import logger from './../utils/logger';
@@ -10,10 +9,12 @@ import logger from './../utils/logger';
 const app = express();
 
 app.use((req, res) => {
-    logger.info(`Request URL: ${req.url}`);
-    const location = createLocation(req.url);
+    // TODO add Redux
+    const history = createMemoryHistory(req.url);
 
-    match({ routes, location }, (err, redirectLocation, renderProps) => {
+    logger.info(`Request URL: ${req.url}`);
+
+    match({ history, routes, location: req.url }, (err, redirectLocation, renderProps) => {
         if (err) {
             logger.error(err);
             res.status(500).end('Internal server error');
