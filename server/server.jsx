@@ -14,7 +14,7 @@ app.use((req, res) => {
 
     logger.info(`Request URL: ${req.url}`);
 
-    match({ history, routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    match({ history, routes, location: req.url }, (err, redirect, renderProps) => {
         if (err) {
             logger.error(err);
             res.status(500).end('Internal server error');
