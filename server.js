@@ -1,5 +1,6 @@
 import logger from './utils/logger';
+import server from './server/server';
+import env from './config/env';
 
-logger.info('test', { top: 'kek' });
-logger.warn('test', { top: 'kek' });
-logger.error('test', { top: 'kek' });
+server.listen(env.PORT, () =>
+    logger.info(`Express listening at port: ${env.PORT}`));

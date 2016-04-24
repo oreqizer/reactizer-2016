@@ -1,6 +1,7 @@
 import util from 'util';
 
 import chalk from 'chalk';
+// TODO consider winston in a real app
 
 function info(...messages) {
     messages.forEach(msg => {

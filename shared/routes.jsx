@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import Index from './paths/Index';
+import Index from './routes/Index';
 
 export default (
     <Route name="app" component={Index} path="/" />

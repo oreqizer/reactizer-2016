@@ -4,13 +4,12 @@ import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 
 import common from './webpack.common';
-
-const OUTPUT = '../../dist';
+import env from '../../config/env';
 
 export default {
     ...common,
     output: {
-        path: path.join(__dirname, OUTPUT),
+        path: path.join(__dirname, `../../${env.DIST}`),
         filename: 'bundle.js'
     },
     plugins: [
