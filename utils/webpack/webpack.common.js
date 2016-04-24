@@ -3,12 +3,12 @@ export default {
         './client/app.js'
     ],
     resolve: {
-        modulesDirectories: ['node_modules', 'shared'],
         extensions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel'] }
+            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
+            { test: /\.json/, exclude: /node_modules/, loader: 'json' }
         ]
     }
 };

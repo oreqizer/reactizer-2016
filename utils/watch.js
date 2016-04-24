@@ -1,7 +1,8 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-import config, { PORT } from './utils/webpack/webpack.dev.js';
+import logger from './logger';
+import config, { PORT } from './webpack/webpack.dev.js';
 
 const PORT_NODE = 3000;
 
@@ -14,4 +15,4 @@ const server = new WebpackDevServer(compiler, {
     host: '127.0.0.1'
 });
 
-server.listen(PORT);
+server.listen(PORT, () => logger.info(`WebpackDevServer running at port: ${PORT}`));

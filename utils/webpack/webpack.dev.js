@@ -6,7 +6,7 @@ import common from './webpack.common';
 
 export const PORT = 8080;
 
-const OUTPUT = '.tmp';
+const OUTPUT = '../../.tmp';
 
 export default {
     ...common,

@@ -5,7 +5,7 @@ import Visualizer from 'webpack-visualizer-plugin';
 
 import common from './webpack.common';
 
-const OUTPUT = 'dist';
+const OUTPUT = '../../dist';
 
 export default {
     ...common,
