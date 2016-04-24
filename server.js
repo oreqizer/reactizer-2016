@@ -1,4 +1,4 @@
-import logger from './utils/logger';
+import logger from './utils/logger/logger';
 import server from './server/server';
 import env from './config/env';
 

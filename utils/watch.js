@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-import logger from './logger';
+import logger from './logger/logger';
 import config from './webpack/webpack.dev.js';
 import env from '../config/env';
 

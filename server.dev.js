@@ -1,4 +1,4 @@
-import logger from './utils/logger';
+import logger from './utils/logger/logger';
 
 logger.info('test', { top: 'kek' });
 logger.warn('test', { top: 'kek' });
