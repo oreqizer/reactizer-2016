@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server';
 import { createMemoryHistory, RouterContext, match } from 'react-router';
 
 import routes from '../shared/routes';
-import logger from './../utils/logger/logger';
+import logger from '../etc/tools/logger';
 
 const app = express();
 

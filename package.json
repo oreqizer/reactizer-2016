@@ -1,17 +1,16 @@
 {
-  "name": "react-redux-isomorphic",
+  "name": "react-starter",
   "version": "0.0.7-alpha2",
-  "description": "react redux isomorphic boilerplate",
+  "description": "react redux router isomorphic boilerplate",
   "repository": {
     "type": "git",
     "url": "https://github.com/oreqizer/react-starter.git"
   },
   "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
-    "start": "babel-node server.js"
+    "start": "babel-node server.js",
+    "build": "babel-node ./utils/.js",
+    "build:beta": "babel-node server.js"
   },
   "author": "oreqizer",
   "license": "MIT",

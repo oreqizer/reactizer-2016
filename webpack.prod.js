@@ -3,8 +3,8 @@ import path from 'path';
 import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 
-import common from './webpack.common';
-import env from '../../config/env';
+import common from './webpack.base.js';
+import env from './etc/config/env';
 
 export default {
     ...common,

@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 
-import config from './webpack/webpack.prod';
-import logger from './logger/logger';
+import config from './../../webpack.prod.js';
+import logger from './../tools/logger';
 
 // TODO stylus
 
