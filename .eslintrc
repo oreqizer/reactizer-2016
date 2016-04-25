@@ -5,11 +5,6 @@
         "node": true
     },
     "rules": {
-        "comma-dangle": ["error", "never"],
-        "indent": ["error", 4],
-
-        // React
-        // ---
-        "react/jsx-indent": ["error", 4]
+        "comma-dangle": ["error", "never"]
     }
 }

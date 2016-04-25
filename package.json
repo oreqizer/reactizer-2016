@@ -1,6 +1,6 @@
 {
   "name": "react-starter",
-  "version": "0.0.7-alpha2",
+  "version": "0.0.8-alpha3",
   "description": "react redux router isomorphic boilerplate",
   "repository": {
     "type": "git",
@@ -9,13 +9,13 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node server.js",
-    "build": "babel-node ./utils/.js",
-    "build:beta": "babel-node server.js"
+    "build": "babel-node ./etc/tasks/build.js"
   },
   "author": "oreqizer",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
+    "core-decorators": "^0.12.2",
     "express": "^4.13.4",
     "immutable": "^3.8.1",
     "react": "^15.0.1",
@@ -23,7 +23,9 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.2",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-saga": "^0.10.0",
+    "reselect": "^2.5.1"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",

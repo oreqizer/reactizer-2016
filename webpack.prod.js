@@ -1,5 +1,4 @@
 import path from 'path';
-
 import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 
@@ -7,16 +6,19 @@ import common from './webpack.base.js';
 import env from './etc/config/env';
 
 export default {
-    ...common,
-    output: {
-        path: path.join(__dirname, `../../${env.DIST}`),
-        filename: 'bundle.js'
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new Visualizer()
-    ],
-    devtool: 'source-map'
+  ...common,
+  output: {
+    path: path.join(__dirname, env.DIST),
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new Visualizer(),
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': 'production' // TODO to env, make it work
+    // })
+  ],
+  devtool: 'source-map'
 };
 
