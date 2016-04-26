@@ -1,5 +1,3 @@
-import path from 'path';
-import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory, RouterContext, match } from 'react-router';
@@ -10,46 +8,43 @@ import * as reducers from './../shared/redux/reducers';
 
 import routes from '../shared/routes';
 import logger from '../etc/tools/logger';
-import env from '../etc/config/env';
 
-const app = express();
+export default function (app) {
+  app.use((req, res) => {
+    // TODO add react-router-redux + async data fetching
 
-app.use(express.static(path.join(__dirname, '../' + env.DIST)));
+    const history = createMemoryHistory(req.url);
+    const reducer = combineReducers(reducers);
+    const store = createStore(reducer);
 
-app.use((req, res) => {
-  // TODO add Redux
-  const history = createMemoryHistory(req.url);
-  const reducer = combineReducers(reducers);
-  const store = createStore(reducer);
+    logger.info(`Request URL: ${req.url}`);
 
-  logger.info(`Request URL: ${req.url}`);
+    match({ history, routes, location: req.url }, (err, redirect, renderProps) => {
+      if (err) {
+        logger.error(err);
+        res.status(500).end('Internal server error');
+        return;
+      }
 
-  match({ history, routes, location: req.url }, (err, redirect, renderProps) => {
-    if (err) {
-      logger.error(err);
-      res.status(500).end('Internal server error');
-      return;
-    }
+      if (!renderProps) {
+        logger.warn('No matching route.');
+        res.status(404).end('Not found.');
+        return;
+      }
 
-    if (!renderProps) {
-      logger.warn('No matching route.');
-      res.status(404).end('Not found.');
-      return;
-    }
+      logger.info('Route matched.');
+      const InitialComponent = (
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+      );
 
-    logger.info('Route matched.');
-    const InitialComponent = (
-      <Provider store={store}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    );
+      const initialState = store.getState();
 
-    const initialState = store.getState();
+      const componentHTML = renderToString(InitialComponent);
 
-    const componentHTML = renderToString(InitialComponent);
-
-    // TODO dynamic template in real app
-    const HTML = `
+      // TODO dynamic template in real app
+      const HTML = `
       <!DOCTYPE html>
       <html>
           <head>
@@ -57,7 +52,7 @@ app.use((req, res) => {
               <title>Isomorphic Redux Demo</title>
     
               <script type="application/javascript">
-                window.INITIAL_STATE = ${JSON.stringify(initialState)};
+                window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
               </script>
           </head>
           <body>
@@ -66,8 +61,10 @@ app.use((req, res) => {
           </body>
       </html>`;
 
-    res.end(HTML);
+      res.end(HTML);
+    });
   });
-});
 
-export default app;
+  return app;
+}
+

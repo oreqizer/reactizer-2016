@@ -4,7 +4,7 @@ const CREATE = 'todo/CREATE';
 const EDIT = 'todo/EDIT';
 const DELETE = 'todo/DELETE';
 
-const todoState = List();
+const todoState = new List();
 
 export default function todoReducer(state = todoState, action) {
   switch (action.type) {

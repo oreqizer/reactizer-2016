@@ -3,13 +3,14 @@ import WebpackDevServer from 'webpack-dev-server';
 
 import logger from './../tools/logger';
 import config from './../../webpack.dev.js';
-import env from '../config/env';
+import env from './../config/env';
 
 const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, {
   hot: true,
+  inline: true,
   proxy: {
-    '*': `http://127.0.0.1: ${env.PORT}`
+    '*': `http://127.0.0.1:${env.PORT}`
   },
   host: '127.0.0.1'
 });

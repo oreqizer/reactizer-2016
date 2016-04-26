@@ -1,15 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
 
-import common from './webpack.base.js';
+import base from './webpack.base.js';
 import env from './etc/config/env';
 
 export default {
-  ...common,
+  ...base,
   entry: [
     `webpack-dev-server/client?http://127.0.0.1:${env.PORT_DEV}/`,
     'webpack/hot/only-dev-server',
-    ...common.entry
+    ...base.entry
   ],
   output: {
     path: path.join(__dirname, env.TMP),

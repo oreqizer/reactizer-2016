@@ -1,6 +1,19 @@
+import path from 'path';
+import express from 'express';
+
+import startReact from './server/server';
 import logger from './etc/tools/logger';
-import server from './server/server';
 import env from './etc/config/env';
+
+const app = express();
+
+if (process.env.NODE_ENV === env.BETA) {
+  // served by Nginx in production
+  app.use(express.static(path.join(__dirname, env.DIST)));
+  logger.info(`Static files served from directory: ${env.DIST}`);
+}
+
+const server = startReact(app);
 
 server.listen(env.PORT, () =>
     logger.info(`Express listening at port: ${env.PORT}`));

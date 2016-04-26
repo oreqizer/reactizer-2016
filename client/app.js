@@ -10,7 +10,9 @@ import routes from './../shared/routes';
 import hydrateStore from './tools/hydrateStore';
 
 const reducer = combineReducers(reducers);
-const store = createStore(reducer, hydrateStore(window.INITIAL_STATE));
+const hydrated = hydrateStore(window.__INITIAL_STATE__); // eslint-disable-line no-underscore-dangle
+
+const store = createStore(reducer, hydrated);
 
 render(
   <Provider store={store}>
