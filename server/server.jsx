@@ -45,21 +45,21 @@ export default function (app) {
 
       // TODO dynamic template in real app
       const HTML = `
-      <!DOCTYPE html>
-      <html>
-          <head>
-              <meta charset="utf-8">
-              <title>Isomorphic Redux Demo</title>
-    
-              <script type="application/javascript">
-                window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-              </script>
-          </head>
-          <body>
-              <div id="react-view">${componentHTML}</div>
-              <script type="application/javascript" src="/bundle.js"></script>
-          </body>
-      </html>`;
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <title>Isomorphic Redux Demo</title>
+      
+                <script type="application/javascript">
+                  window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+                </script>
+            </head>
+            <body>
+                <div id="react-view">${componentHTML}</div>
+                <script type="application/javascript" src="/bundle.js"></script>
+            </body>
+        </html>`;
 
       res.end(HTML);
     });
