@@ -3,7 +3,8 @@ import { autobind } from 'core-decorators';
 
 export default class TodosForm extends Component {
   static propTypes = {
-    createTodo: PropTypes.func
+    createTodo: PropTypes.func,
+    fetchTodos: PropTypes.func
   };
 
   @autobind
@@ -16,10 +17,17 @@ export default class TodosForm extends Component {
   }
 
   render() {
+    const { fetchTodos } = this.props;
+
     return (
-      <div id="todo-form">
-        <input type="text" placeholder="type todo" ref="todo-input" />
-        <input type="submit" value="OK!" onClick={this.handleSubmit} />
+      <div className="todo-wrap">
+        <div className="todo-fetch">
+          <input type="submit" value="Fetch!" onClick={fetchTodos} />
+        </div>
+        <div id="todo-form">
+          <input type="text" placeholder="type todo" ref="todo-input" />
+          <input type="submit" value="OK!" onClick={this.handleSubmit} />
+        </div>
       </div>
     );
   }

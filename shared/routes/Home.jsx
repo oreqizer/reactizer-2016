@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as todoActions from './../../shared/redux/ducks/todo';
+import * as todoActions from './../redux/ducks/todoDuck';
 import TodosView from './../modules/Todo/TodosView';
 import TodosForm from './../modules/Todo/TodosForm';
 
@@ -14,6 +14,10 @@ export default class Home extends Component { // eslint-disable-line react/prefe
     todos: PropTypes.object,
     dispatch: PropTypes.func
   };
+
+  static needs = [
+    todoActions.fetchTodos
+  ];
 
   render() {
     const { todos, dispatch } = this.props;

@@ -1,1 +1,1 @@
-export * as todo from './sagas/todo';
+export * as todoSagas from './sagas/todoSagas';

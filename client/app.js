@@ -8,14 +8,14 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { values } from 'lodash';
 
+import hydrateStore from './tools/hydrateStore';
+import runSagas from './tools/runSagas';
+
 import * as middleware from './../shared/redux/middleware';
 import * as reducers from './../shared/redux/reducers';
 import * as sagas from './../shared/redux/sagas';
 
 import routes from './../shared/routes';
-
-import hydrateStore from './tools/hydrateStore';
-import runSagas from './tools/runSagas';
 
 const reducer = combineReducers(reducers);
 const sagaMiddleware = createSagaMiddleware();

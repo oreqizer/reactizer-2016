@@ -1,1 +1,1 @@
-export { default as todos } from './ducks/todo';
+export { default as todos } from './ducks/todoDuck';

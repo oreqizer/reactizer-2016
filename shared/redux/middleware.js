@@ -1,1 +1,1 @@
-export debug from './middleware/debug';
+export debug from './middleware/debugMiddleware';
