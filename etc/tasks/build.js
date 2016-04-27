@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 
-import config from './../../webpack.prod.js';
+import config from './../../webpack.production.js';
 import logger from './../tools/logger';
 
 // TODO stylus

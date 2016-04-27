@@ -9,7 +9,7 @@ const todoState = new List();
 export default function todoReducer(state = todoState, action) {
   switch (action.type) {
     case CREATE:
-      return state.concat(action.text);
+      return state.push(action.text);
 
     case EDIT:
       return state.set(action.id, action.text);
