@@ -20,10 +20,12 @@
   "author": "oreqizer",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.11.0",
     "chalk": "^1.1.3",
     "core-decorators": "^0.12.2",
     "express": "^4.13.4",
     "immutable": "^3.8.1",
+    "lodash": "^4.11.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",

@@ -1,13 +1,17 @@
 import { List } from 'immutable';
 
-const CREATE = 'todo/CREATE';
-const EDIT = 'todo/EDIT';
-const DELETE = 'todo/DELETE';
+export const FETCH = 'todo/FETCH';
+export const CREATE = 'todo/CREATE';
+export const EDIT = 'todo/EDIT';
+export const DELETE = 'todo/DELETE';
 
 const todoState = new List();
 
 export default function todoReducer(state = todoState, action) {
   switch (action.type) {
+    case FETCH:
+      return state.push(action.todos);
+
     case CREATE:
       return state.push(action.text);
 
