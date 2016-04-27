@@ -1,3 +1,1 @@
-import debug from './middleware/debug';
-
-export default [debug];
+export debug from './middleware/debug';

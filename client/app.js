@@ -4,8 +4,9 @@ import { Router, browserHistory } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import { values } from 'lodash';
 
-import middlewares from './../shared/redux/middleware';
+import * as middleware from './../shared/redux/middleware';
 import * as reducers from './../shared/redux/reducers';
 import * as sagas from './../shared/redux/sagas';
 
@@ -20,7 +21,7 @@ const hydrated = hydrateStore(window.__INITIAL_STATE__); // eslint-disable-line 
 
 const store = createStore(
     reducer,
-    applyMiddleware(...middlewares, sagaMiddleware),
+    applyMiddleware(...values(middleware), sagaMiddleware),
     hydrated
 );
 
