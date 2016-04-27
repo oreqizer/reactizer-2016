@@ -7,6 +7,7 @@ import { FETCH, FETCH_REQUEST, CREATE, CREATE_REQUEST } from './../ducks/todoDuc
 const BACKEND_URL = 'https://webtask.it.auth0.com/api/run/wt-milomord-gmail_com-0/redux-tutorial-backend?webtask_no_cache=1';
 
 function* fetchTodos() {
+  console.log('fetching')
   try {
     const res = yield call(request.get, BACKEND_URL);
     yield put({ type: FETCH, todos: res.data });
@@ -25,6 +26,7 @@ function* createTodo({ text }) {
 }
 
 export function* fetchTodosSaga() {
+  console.log('APPLIED')
   yield* takeEvery(FETCH_REQUEST, fetchTodos);
 }
 

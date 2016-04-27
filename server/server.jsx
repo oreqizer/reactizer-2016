@@ -30,7 +30,7 @@ export default function (app) {
 
     logger.info('Running Redux Sagas...');
     runSagas(sagas, sagaMiddleware);
-
+    
     logger.info(`Request URL: ${req.url}`);
 
     match({ history, routes, location: req.url }, (err, redirect, renderProps) => {
@@ -80,8 +80,7 @@ export default function (app) {
         return HTML;
       }
 
-      fetchData(store.dispatch, renderProps.components, renderProps)
-          .then(logger.info)
+      fetchData(store, renderProps.components, sagaMiddleware, renderProps)
           .then(renderView)
           .then(html => res.end(html))
           .catch(err2 => res.status(500).end(err2.message));
