@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+// ready
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
@@ -21,8 +23,8 @@ const hydrated = hydrateStore(window.__INITIAL_STATE__); // eslint-disable-line 
 
 const store = createStore(
     reducer,
+    hydrated,
     applyMiddleware(...values(middleware), sagaMiddleware),
-    hydrated
 );
 
 runSagas(sagas, sagaMiddleware);
