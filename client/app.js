@@ -9,11 +9,10 @@ import createSagaMiddleware from 'redux-saga';
 import { values } from 'lodash';
 
 import hydrateStore from './tools/hydrateStore';
-import runSagas from './tools/runSagas';
 
 import * as middleware from './../shared/redux/middleware';
 import * as reducers from './../shared/redux/reducers';
-import * as sagas from './../shared/redux/sagas';
+import * as watchers from './../shared/redux/sagaWatchers';
 
 import routes from './../shared/routes';
 
@@ -27,7 +26,7 @@ const store = createStore(
     applyMiddleware(...values(middleware), sagaMiddleware),
 );
 
-runSagas(sagas, sagaMiddleware);
+values(watchers).forEach(sagaMiddleware.run);
 
 render(
   <Provider store={store}>

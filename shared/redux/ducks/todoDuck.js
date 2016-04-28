@@ -5,10 +5,10 @@ import { List } from 'immutable';
 // no state checking like loading, etc...
 
 export const FETCH = 'todo/FETCH';
-export const FETCH_REQUEST = 'todo/FETCH_REQUEST';
+export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
 
 export const CREATE = 'todo/CREATE';
-export const CREATE_REQUEST = 'todo/CREATE_REQUEST';
+export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
 
 export const EDIT = 'todo/EDIT';
 export const DELETE = 'todo/DELETE';
@@ -17,10 +17,10 @@ const todoState = new List();
 
 export default function todoReducer(state = todoState, action) {
   switch (action.type) {
-    case FETCH:
+    case FETCH_SUCCESS:
       return new List(action.todos);
 
-    case CREATE:
+    case CREATE_SUCCESS:
       return state.push(action.text);
 
     case EDIT:
@@ -36,13 +36,13 @@ export default function todoReducer(state = todoState, action) {
 
 export function fetchTodos() {
   return {
-    type: FETCH_REQUEST
+    type: FETCH
   };
 }
 
 export function createTodo(text) {
   return {
-    type: CREATE_REQUEST,
+    type: CREATE,
     text
   };
 }

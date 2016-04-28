@@ -4,12 +4,12 @@ import { createMemoryHistory, RouterContext, match } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import { values } from 'lodash';
 
 import fetchData from './tools/fetchData';
-import runSagas from '../client/tools/runSagas';
 
 import * as reducers from './../shared/redux/reducers';
-import * as sagas from '../shared/redux/sagas';
+import * as watchers from '../shared/redux/sagaWatchers';
 
 import routes from '../shared/routes';
 import logger from '../etc/tools/logger';
@@ -29,8 +29,8 @@ export default function (app) {
     );
 
     logger.info('Running Redux Sagas...');
-    runSagas(sagas, sagaMiddleware);
-    
+    values(watchers).forEach(sagaMiddleware.run);
+
     logger.info(`Request URL: ${req.url}`);
 
     match({ history, routes, location: req.url }, (err, redirect, renderProps) => {
@@ -80,7 +80,7 @@ export default function (app) {
         return HTML;
       }
 
-      fetchData(store, renderProps.components, sagaMiddleware, renderProps)
+      fetchData(store, sagaMiddleware, renderProps.components, renderProps)
           .then(renderView)
           .then(html => res.end(html))
           .catch(err2 => res.status(500).end(err2.message));
