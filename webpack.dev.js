@@ -10,16 +10,6 @@ export default {
     'webpack-hot-middleware/client',
     ...base.entry
   ],
-  loaders: [{
-    test: /\.jsx?$/,
-    loader: 'babel',
-    exclude: /node_modules/,
-    query: {
-      babelrc: false,
-      presets: ['react', 'es2015-webpack', 'stage-1'],
-      plugins: ['add-module-exports', 'transform-decorators-legacy'],
-    },
-  }],
   output: {
     path: path.join(__dirname, env.TMP),
     filename: 'bundle.js',

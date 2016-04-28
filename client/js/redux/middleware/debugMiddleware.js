@@ -1,8 +1,14 @@
 export default () => next => action => {
-  const color = '#FFF';
+  let color = '#FFF';
   const bg = '#222';
 
-  // TODO more clever
+  if (action.type.includes('_SUCCESS')) {
+    color = '#7EDE8B';
+  }
+
+  if (action.type.includes('_ERROR')) {
+    color = '#E88054';
+  }
 
   console.log(`%c ${action.type} `, `background: ${bg}; color: ${color}`); // eslint-disable-line
 
