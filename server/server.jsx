@@ -12,7 +12,7 @@ import * as reducers from './../shared/redux/reducers';
 import * as watchers from '../shared/redux/sagaWatchers';
 import * as serverMiddleware from './redux/middleware';
 
-import routes from '../shared/routes';
+import routes from '../shared/router';
 import logger from '../etc/tools/logger';
 
 export default function (app) {

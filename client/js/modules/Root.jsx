@@ -1,7 +1,4 @@
-import 'babel-polyfill';
-// ready
 import React from 'react';
-import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -9,13 +6,13 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import createSagaMiddleware from 'redux-saga';
 import { values } from 'lodash';
 
-import hydrateStore from './tools/hydrateStore';
+import hydrateStore from './../tools/hydrateStore';
 
-import * as reducers from './../shared/redux/reducers';
-import * as watchers from './../shared/redux/sagaWatchers';
-import * as clentMiddleware from './redux/middleware';
+import * as reducers from './../../../shared/redux/reducers';
+import * as watchers from './../../../shared/redux/sagaWatchers';
+import * as clientMiddleware from './../redux/middleware';
 
-import routes from './../shared/routes';
+import routes from './../../../shared/router';
 
 const historyMiddleware = routerMiddleware(browserHistory);
 const sagaMiddleware = createSagaMiddleware();
@@ -27,7 +24,7 @@ const reducer = combineReducers({
 });
 
 const middleware = applyMiddleware(
-    ...values(clentMiddleware),
+    ...values(clientMiddleware),
     historyMiddleware,
     sagaMiddleware
 );
@@ -38,23 +35,9 @@ values(watchers).forEach(sagaMiddleware.run);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-render(
+const Root = () =>
   <Provider store={store}>
     <Router children={routes} history={history} />
-  </Provider>,
-  document.getElementById('react-view')
-);
+  </Provider>;
 
-// TODO: accept hot > https://github.com/gaearon/react-hot-boilerplate/pull/61/files
-
-/* eslint-disable */
-if (module.hot) {
-  module.hot.accept('./../shared/routes', () => {
-    render(
-      <Provider store={store}>
-        <Router children={routes} history={history} />
-      </Provider>,
-      document.getElementById('react-view')
-    );
-  })
-}
+export default Root;
