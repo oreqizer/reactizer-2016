@@ -1,6 +1,6 @@
 import { List } from 'immutable';
 
-// README:
+// TODO:
 // a very simplified example. no failure actions
 // no state checking like loading, etc...
 

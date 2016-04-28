@@ -1,6 +1,6 @@
 {
   "name": "react-starter",
-  "version": "0.0.8-alpha3",
+  "version": "0.1.0-beta1",
   "description": "react redux router isomorphic boilerplate",
   "repository": {
     "type": "git",

@@ -11,11 +11,11 @@ function info(...messages) {
   });
 }
 
-function error(...messages) {
+function success(...messages) {
   messages.forEach(msg => {
-    process.stderr.write(`${chalk.red('[ERROR]')}: `);
-    process.stderr.write(util.format(msg));
-    process.stderr.write('\n');
+    process.stdout.write(`${chalk.green('[SUCCESS]')}: `);
+    process.stdout.write(util.format(msg));
+    process.stdout.write('\n');
   });
 }
 
@@ -27,8 +27,17 @@ function warn(...messages) {
   });
 }
 
+function error(...messages) {
+  messages.forEach(msg => {
+    process.stderr.write(`${chalk.red('[ERROR]')}: `);
+    process.stderr.write(util.format(msg));
+    process.stderr.write('\n');
+  });
+}
+
 export default {
   info,
+  success,
   warn,
   error
 };

@@ -10,23 +10,24 @@ import fetchData from './tools/fetchData';
 
 import * as reducers from './../shared/redux/reducers';
 import * as watchers from '../shared/redux/sagaWatchers';
+import * as serverMiddleware from './redux/middleware';
 
 import routes from '../shared/routes';
 import logger from '../etc/tools/logger';
 
 export default function (app) {
   app.use((req, res) => {
-    // TODO add react-router-redux + async data fetching
-
     const sagaMiddleware = createSagaMiddleware();
 
     const history = createMemoryHistory(req.url);
     const reducer = combineReducers(reducers);
-    const store = createStore(
-        reducer,
-        reducers,
-        applyMiddleware(sagaMiddleware)
+
+    const middleware = applyMiddleware(
+        ...values(serverMiddleware),
+        sagaMiddleware
     );
+
+    const store = createStore(reducer, undefined, middleware);
 
     logger.info('Running Redux Sagas...');
     values(watchers).forEach(sagaMiddleware.run);
@@ -76,6 +77,8 @@ export default function (app) {
                   <script type="application/javascript" src="/bundle.js"></script>
               </body>
           </html>`;
+
+        logger.info('Returning HTML...');
 
         return HTML;
       }
