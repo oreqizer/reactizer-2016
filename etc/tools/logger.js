@@ -39,5 +39,5 @@ export default {
   info,
   success,
   warn,
-  error
+  error,
 };

@@ -36,14 +36,14 @@ export default function todoReducer(state = todoState, action) {
 
 export function fetchTodos() {
   return {
-    type: FETCH
+    type: FETCH,
   };
 }
 
 export function createTodo(text) {
   return {
     type: CREATE,
-    text
+    text,
   };
 }
 
@@ -51,13 +51,13 @@ export function editTodo(id, text) {
   return {
     type: EDIT,
     id,
-    text
+    text,
   };
 }
 
 export function deleteTodo(id) {
   return {
     type: DELETE,
-    id
+    id,
   };
 }

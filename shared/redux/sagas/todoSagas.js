@@ -35,5 +35,5 @@ export function* createTodoWatcher() {
 
 export default {
   fetchTodos,
-  createTodo
+  createTodo,
 };

@@ -5,5 +5,5 @@ export default {
   DIST: 'dist',
   PRODUCTION: 'production',
   BETA: 'beta',
-  DEV: 'dev'
+  DEV: 'dev',
 };
