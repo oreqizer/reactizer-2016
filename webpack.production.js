@@ -12,9 +12,9 @@ export default {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new Visualizer(),
+    // new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    // new Visualizer(),
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': 'production' // TODO to env, make it work
     // })
