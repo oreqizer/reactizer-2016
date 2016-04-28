@@ -1,14 +1,26 @@
 import { List } from 'immutable';
 
-const CREATE = 'todo/CREATE';
-const EDIT = 'todo/EDIT';
-const DELETE = 'todo/DELETE';
+// TODO:
+// a very simplified example. no failure actions
+// no state checking like loading, etc...
+
+export const FETCH = 'todo/FETCH';
+export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
+
+export const CREATE = 'todo/CREATE';
+export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
+
+export const EDIT = 'todo/EDIT';
+export const DELETE = 'todo/DELETE';
 
 const todoState = new List();
 
 export default function todoReducer(state = todoState, action) {
   switch (action.type) {
-    case CREATE:
+    case FETCH_SUCCESS:
+      return new List(action.todos);
+
+    case CREATE_SUCCESS:
       return state.push(action.text);
 
     case EDIT:
@@ -20,6 +32,12 @@ export default function todoReducer(state = todoState, action) {
     default:
       return state;
   }
+}
+
+export function fetchTodos() {
+  return {
+    type: FETCH
+  };
 }
 
 export function createTodo(text) {
