@@ -8,6 +8,7 @@ A React starter boilerplate I created as a base for my React apps.
 * Redux with React router, selectors and Sagas
 * Server-side rendering (Universal Javascript)
 * Complete ES6 with some ES7 goodies
+* Hot-reloadint *(not working yet)*
 
 Mind that this starter is quite opinionated - I primarily created it for myself, however, any suggestions and pull requests ale wholeheartly welcome.
 
