@@ -23,7 +23,7 @@ export default {
   }],
   output: {
     path: path.join(__dirname, env.TMP),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
