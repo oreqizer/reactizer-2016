@@ -7,15 +7,31 @@ import env from './etc/config/env';
 export default {
   ...base,
   entry: [
-    `webpack-dev-server/client?http://127.0.0.1:${env.PORT_DEV}/`,
-    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
     ...base.entry
   ],
+  loaders: [{
+    test: /\.jsx?$/,
+    loaders: [
+      'react-hot',
+      {
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {
+          babelrc: false,
+          presets: ['react', 'es2015-webpack', 'stage-1'],
+          plugins: ['add-module-exports', 'transform-decorators-legacy'],
+        },
+      },
+    ],
+  }],
   output: {
     path: path.join(__dirname, env.TMP),
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // new webpack.DefinePlugin({

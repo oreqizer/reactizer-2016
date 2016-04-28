@@ -44,3 +44,5 @@ render(
   </Provider>,
   document.getElementById('react-view')
 );
+
+// TODO: accept hot > https://github.com/gaearon/react-hot-boilerplate/pull/61/files
