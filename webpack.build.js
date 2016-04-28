@@ -2,14 +2,18 @@ import path from 'path';
 import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
-import autoprefixer from 'autoprefixer';
 
 import base from './webpack.base.js';
 import env from './etc/config/env';
 
 const styleLoader = {
   test: /\.styl$/,
-  loader: ExtractText.extract(['css', 'stylus', 'postcss']),
+  loader: ExtractText.extract(['css', 'postcss', 'stylus']),
+};
+
+const styleLoader2 = {
+  test: /\.styl$/,
+  loader: 'css!postcss!stylus',
 };
 
 export default {
@@ -19,7 +23,7 @@ export default {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [...base.module.loaders, styleLoader],
+    loaders: [...base.module.loaders, styleLoader2],
   },
   plugins: [
     new ExtractText('styles.css'),
@@ -34,7 +38,6 @@ export default {
       },
     }),
   ],
-  postcss: () => [autoprefixer],
   devtool: 'source-map',
 };
 

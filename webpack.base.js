@@ -1,3 +1,5 @@
+import autoprefixer from 'autoprefixer';
+
 const jsLoader = {
   test: /\.jsx?$/,
   exclude: /node_modules/,
@@ -13,9 +15,10 @@ export default {
   context: __dirname,
   entry: ['./client/index.js'],
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.styl'],
   },
   module: {
     loaders: [jsLoader],
   },
+  postcss: () => [autoprefixer],
 };

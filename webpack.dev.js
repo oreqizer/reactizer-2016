@@ -4,12 +4,20 @@ import webpack from 'webpack';
 import base from './webpack.base.js';
 import env from './etc/config/env';
 
+const styleLoader = {
+  test: /\.styl$/,
+  loader: 'css!postcss!stylus',
+};
+
 export default {
   ...base,
   entry: [
     'webpack-hot-middleware/client',
     ...base.entry,
   ],
+  module: {
+    loaders: [...base.module.loaders, styleLoader],
+  },
   output: {
     path: path.join(__dirname, env.TMP),
     filename: 'bundle.js',
