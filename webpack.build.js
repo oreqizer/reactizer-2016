@@ -11,11 +11,6 @@ const styleLoader = {
   loader: ExtractText.extract(['css', 'postcss', 'stylus']),
 };
 
-const styleLoader2 = {
-  test: /\.styl$/,
-  loader: 'css!postcss!stylus',
-};
-
 export default {
   ...base,
   output: {
@@ -23,7 +18,7 @@ export default {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [...base.module.loaders, styleLoader2],
+    loaders: [...base.module.loaders, styleLoader],
   },
   plugins: [
     new ExtractText('styles.css'),
