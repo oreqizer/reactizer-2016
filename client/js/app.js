@@ -5,9 +5,11 @@ import { render } from 'react-dom';
 
 import Root from './modules/Root.jsx';
 
+const view = document.getElementById('react-view');
+
 render(
   <Root />,
-  document.getElementById('react-view')
+  view
 );
 
 // -------------
@@ -19,7 +21,7 @@ if (module.hot) {
   module.hot.accept('./modules/Root.jsx', () => {
     render(
       <Root />,
-      document.getElementById('react-view')
+      view
     );
   })
 }
