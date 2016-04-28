@@ -8,7 +8,7 @@ export default {
   ...base,
   entry: [
     'webpack-hot-middleware/client',
-    ...base.entry
+    ...base.entry,
   ],
   output: {
     path: path.join(__dirname, env.TMP),
@@ -18,9 +18,11 @@ export default {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    // new webpack.DefinePlugin({
-    //   'process.env.NODE_ENV': 'dev' // TODO to env, make it work
-    // })
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: 'dev',
+      },
+    }),
   ],
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
 };

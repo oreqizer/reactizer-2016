@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-// ready
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -12,9 +10,9 @@ render(
   view
 );
 
-// -------------
-// Hot-reloading
-// -------------
+// -------------------
+// Hot-reloading React
+// -------------------
 
 /* eslint-disable */
 if (module.hot) {

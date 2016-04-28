@@ -22,8 +22,8 @@ app.use(webpackHot(compiler, {
   noInfo: true,
 }));
 
-app.use(express.static(path.join(__dirname, env.TMP)));
-logger.info(`Static files served from directory: ${env.TMP}`);
+// app.use(express.static(path.join(__dirname, env.TMP)));
+// logger.info(`Static files served from directory: ${env.TMP}`);
 
 const server = startReact(app);
 
