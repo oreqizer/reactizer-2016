@@ -7,7 +7,6 @@ import env from './etc/config/env';
 export default {
   ...base,
   entry: [
-    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     ...base.entry
   ],
@@ -18,7 +17,7 @@ export default {
     query: {
       babelrc: false,
       presets: ['react', 'es2015-webpack', 'stage-1'],
-      plugins: ['react-hot-loader/babel', 'add-module-exports', 'transform-decorators-legacy'],
+      plugins: ['add-module-exports', 'transform-decorators-legacy'],
     },
   }],
   output: {
