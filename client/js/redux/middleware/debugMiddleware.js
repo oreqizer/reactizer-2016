@@ -10,6 +10,10 @@ export default () => next => action => {
     color = '#E88054';
   }
 
+  if (action.type.includes('@@')) {
+    color = '#CF97E6';
+  }
+
   console.log(`%c ${action.type} `, `background: ${bg}; color: ${color}`); // eslint-disable-line
 
   return next(action);
