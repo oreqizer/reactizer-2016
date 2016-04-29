@@ -12,6 +12,23 @@ A React starter boilerplate I created as a base for my React apps.
 
 Mind that this starter is quite opinionated - I primarily created it for myself, however, any suggestions and pull requests ale wholeheartly welcome.
 
+### TODO:
+
+* Tests
+* I18n
+
+### Making it run
+
+Simply `npm i`. Then you have these following tasks available:
+
+* `npm start` - run when you want to develop
+* `npm run build` - builds assets for production
+* `npm run build:beta` - builds assets for beta
+* `npm run server` - runs the server for production (note: no static asset serving)
+* `npm run server:beta` - runs the server for beta
+* `npm run lint` - runs eslint
+* `npm run lint:fix` - runs eslint and fixes problems, if it can
+
 ### Philosophy
 
 Compilation is done by **Webpack**, however I tried to keep it as barebones as possible - no special Webpack stuff scattered in the source files. Thus I omitted any importing of any other files other than `.js` and `.jsx` to the main bundle or anything that would make me having to stick to Webpack forever and ever.
