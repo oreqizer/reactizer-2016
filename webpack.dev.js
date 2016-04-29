@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 import base from './webpack.base.js';
-import env from './etc/config/env';
+import { TMP, DEV } from './etc/config/env';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -19,16 +19,17 @@ export default {
     loaders: [...base.module.loaders, styleLoader],
   },
   output: {
-    path: path.join(__dirname, env.TMP),
-    filename: 'bundle.js',
+    path: path.join(__dirname, TMP),
+    filename: 'bundle.[hash].js',
   },
   plugins: [
+    ...base.plugins,
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('dev'),
+        NODE_ENV: JSON.stringify(DEV),
       },
     }),
   ],

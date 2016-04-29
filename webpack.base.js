@@ -1,3 +1,5 @@
+import path from 'path';
+import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 const jsLoader = {
@@ -20,5 +22,8 @@ export default {
   module: {
     loaders: [jsLoader],
   },
+  plugins: [
+    new Assets({ path: path.join(__dirname, 'data') }),
+  ],
   postcss: () => [autoprefixer],
 };

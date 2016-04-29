@@ -26,6 +26,7 @@
     "express": "^4.13.4",
     "immutable": "^3.8.1",
     "lodash": "^4.11.1",
+    "pug": "^2.0.0-alpha6",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
@@ -36,6 +37,7 @@
     "reselect": "^2.5.1"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.3.6",
     "babel-cli": "^6.7.7",
     "babel-core": "^6.7.7",

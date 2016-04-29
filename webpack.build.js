@@ -4,7 +4,7 @@ import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base.js';
-import env from './etc/config/env';
+import { DIST, PRODUCTION } from './etc/config/env';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -14,14 +14,15 @@ const styleLoader = {
 export default {
   ...base,
   output: {
-    path: path.join(__dirname, env.DIST),
-    filename: 'bundle.js',
+    path: path.join(__dirname, DIST),
+    filename: 'bundle.[hash].js',
   },
   module: {
     loaders: [...base.module.loaders, styleLoader],
   },
   plugins: [
-    new ExtractText('styles.css'),
+    ...base.plugins,
+    new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
       screw_ie8: true,
     }),
@@ -29,7 +30,7 @@ export default {
     new Visualizer(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || PRODUCTION),
       },
     }),
   ],

@@ -1,15 +1,12 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { createMemoryHistory, RouterContext, match } from 'react-router';
+import { createMemoryHistory, match } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { values } from 'lodash';
 
 import fetchData from './tools/fetchData';
+import renderView from './tools/renderView';
 
 import * as reducers from './../shared/redux/reducers';
-import * as watchers from '../shared/redux/sagaWatchers';
 import * as serverMiddleware from './redux/middleware';
 
 import routes from '../shared/router';
@@ -27,10 +24,7 @@ export default function (app) {
         sagaMiddleware
     );
 
-    const store = createStore(reducer, undefined, middleware);
-
-    logger.info('Running Redux Sagas...');
-    values(watchers).forEach(sagaMiddleware.run);
+    const store = createStore(reducer, {}, middleware);
 
     logger.info(`Request URL: ${req.url}`);
 
@@ -49,42 +43,8 @@ export default function (app) {
 
       logger.info('Route matched, fetching data...');
 
-      function renderView() {
-        const InitialComponent = (
-          <Provider store={store}>
-            <RouterContext {...renderProps} />
-          </Provider>
-        );
-
-        const initialState = store.getState();
-
-        const componentHTML = renderToString(InitialComponent);
-
-        // TODO dynamic template in real app
-        const HTML = `
-          <!DOCTYPE html>
-          <html>
-              <head>
-                  <meta charset="utf-8">
-                  <title>Isomorphic Redux Demo</title>
-        
-                  <script type="application/javascript">
-                    window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-                  </script>
-              </head>
-              <body>
-                  <div id="react-view">${componentHTML}</div>
-                  <script type="application/javascript" src="/bundle.js"></script>
-              </body>
-          </html>`;
-
-        logger.info('Returning HTML...');
-
-        return HTML;
-      }
-
-      fetchData(store, sagaMiddleware, renderProps.components, renderProps)
-          .then(renderView)
+      fetchData(store, sagaMiddleware, renderProps.components, renderProps) // TODO async function
+          .then(() => renderView(store, renderProps))
           .then(html => res.end(html))
           .catch(err2 => res.status(500).end(err2.message));
     });
