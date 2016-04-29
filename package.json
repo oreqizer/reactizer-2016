@@ -8,8 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "babel-node server.dev.js",
-    "watch": "babel-node ./etc/tasks/watch.js",
+    "start": "nodemon --exec babel-node server.dev.js",
     "server": "babel-node server.js",
     "server:beta": "NODE_ENV=beta babel-node server.js",
     "build": "babel-node ./etc/tasks/build.js",
@@ -59,6 +58,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "immutable-devtools": "0.0.7",
     "json-loader": "^0.5.4",
+    "nodemon": "^1.9.1",
     "postcss-loader": "^0.8.2",
     "shelljs": "^0.7.0",
     "style-loader": "^0.13.1",

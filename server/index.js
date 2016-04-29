@@ -46,9 +46,10 @@ export default function (app) {
         await fetchData(store, sagaMiddleware, renderProps.components, renderProps);
 
         logger.info('Rendering HTML...');
-        const html = renderView(store, renderProps);
+        const html = renderView(store, renderProps, req.url);
 
         res.end(html);
+        logger.success('Response ended successfully.'); // TODO track, not log
       } catch (err2) {
         logger.error(err2);
         res.status(500).end('Internal server error.');

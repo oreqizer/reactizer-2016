@@ -1,9 +1,9 @@
 head
     title=title
-    description=description
 
-    script.
-        window.__REDUX_STATE__ = "#{state}"
+    meta(name='description' content=description)
+
+    script window.__REDUX_STATE__ = "#{state}"
 
     if (css)
         link(rel='stylesheet' type='text/css' href=css)

@@ -1,0 +1,5 @@
+{
+  "verbose": false,
+  "watch": ["server/*", "universal/*"],
+  "ignore": ["*.spec.js", "*.mock.js"]
+}
