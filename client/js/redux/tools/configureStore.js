@@ -7,7 +7,7 @@ import { values } from 'lodash';
 import hydrateStore from './hydrateStore';
 
 import reducer from './../reducer';
-import * as clientMiddleware from './../middleware';
+import * as clientMiddleware from './../clientMiddleware';
 
 import * as watchers from './../../../../shared/redux/sagaWatchers';
 
@@ -24,6 +24,10 @@ const middleware = applyMiddleware(
 
 const store = createStore(reducer, hydrated, middleware);
 
+values(watchers).forEach(sagaMiddleware.run);
+
+export default store;
+
 // -------------------
 // Hot-reloading Redux
 // -------------------
@@ -34,8 +38,3 @@ if (module.hot) {
     store.replaceReducer(reducer);
   });
 }
-/* eslint-enable */
-
-values(watchers).forEach(sagaMiddleware.run);
-
-export default store;

@@ -4,12 +4,14 @@ import { fromJS } from 'immutable';
 // dat dere dot syntax too good to pass
 
 export default function (initialState) {
+  const decodedState = JSON.parse(decodeURI(initialState));
+
   const state = {};
 
   Object
-      .keys(initialState)
+      .keys(decodedState)
       .forEach(key => {
-        state[key] = fromJS(initialState[key]);
+        state[key] = fromJS(decodedState[key]);
       });
 
   return state;
