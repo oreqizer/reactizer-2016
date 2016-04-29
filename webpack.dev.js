@@ -6,7 +6,7 @@ import env from './etc/config/env';
 
 const styleLoader = {
   test: /\.styl$/,
-  loader: 'css!postcss!stylus',
+  loader: 'style!css!postcss!stylus',
 };
 
 export default {
@@ -28,7 +28,7 @@ export default {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: 'dev',
+        NODE_ENV: JSON.stringify('dev'),
       },
     }),
   ],

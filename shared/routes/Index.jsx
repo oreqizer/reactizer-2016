@@ -8,7 +8,7 @@ const Index = props =>
   </div>;
 
 Index.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Index;

@@ -1,4 +1,3 @@
-// import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
@@ -21,9 +20,6 @@ app.use(webpackDev(compiler, {
 app.use(webpackHot(compiler, {
   noInfo: true,
 }));
-
-// app.use(express.static(path.join(__dirname, env.TMP)));
-// logger.info(`Static files served from directory: ${env.TMP}`);
 
 const server = startReact(app);
 
