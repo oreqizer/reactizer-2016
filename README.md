@@ -16,14 +16,16 @@ Mind that this starter is quite opinionated - I primarily created it for myself,
 
 * Tests
 * I18n
+* favicon
+* image loaders
 
-### Making it run
+### Tasks
 
 Simply `npm i`. Then you have these following tasks available:
 
 * `npm start` - run when you want to develop
 * `npm run build` - builds assets for production
-* `npm run build:beta` - builds assets for beta
+* `npm run build:beta` - bu ilds assets for beta
 * `npm run server` - runs the server for production (note: no static asset serving)
 * `npm run server:beta` - runs the server for beta
 * `npm run lint` - runs eslint
