@@ -6,10 +6,10 @@ import { values } from 'lodash';
 import fetchData from './tools/fetchData';
 import renderView from './tools/renderView';
 
-import * as reducers from './../shared/redux/reducers';
+import * as reducers from '../universal/redux/reducers';
 import * as serverMiddleware from './redux/serverMiddleware';
 
-import routes from '../shared/router';
+import routes from '../universal/router';
 import logger from '../etc/tools/logger';
 
 export default function (app) {
@@ -20,8 +20,8 @@ export default function (app) {
     const reducer = combineReducers(reducers);
 
     const middleware = applyMiddleware(
-        ...values(serverMiddleware),
-        sagaMiddleware
+      ...values(serverMiddleware),
+      sagaMiddleware
     );
 
     const store = createStore(reducer, {}, middleware);

@@ -1,11 +1,9 @@
-//
-    TODO:
-    into variables: 'title'
-
 head
-    title='React starter'
+    title=title
+    description=description
+
     script.
-        window.__INITIAL_STATE__ = "#{state}"
+        window.__REDUX_STATE__ = "#{state}"
 
     if (css)
-        style(src=css)
+        link(rel='stylesheet' type='text/css' href=css)

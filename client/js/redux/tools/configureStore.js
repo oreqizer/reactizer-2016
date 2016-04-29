@@ -9,17 +9,17 @@ import hydrateStore from './hydrateStore';
 import reducer from './../reducer';
 import * as clientMiddleware from './../clientMiddleware';
 
-import * as watchers from './../../../../shared/redux/sagaWatchers';
+import * as watchers from '../../../../universal/redux/sagaWatchers';
 
 const historyMiddleware = routerMiddleware(browserHistory);
 const sagaMiddleware = createSagaMiddleware();
 
-const hydrated = hydrateStore(window.__INITIAL_STATE__); // eslint-disable-line no-underscore-dangle
+const hydrated = hydrateStore(window.__REDUX_STATE__); // eslint-disable-line no-underscore-dangle
 
 const middleware = applyMiddleware(
-    ...values(clientMiddleware),
-    historyMiddleware,
-    sagaMiddleware
+  ...values(clientMiddleware),
+  historyMiddleware,
+  sagaMiddleware
 );
 
 const store = createStore(reducer, hydrated, middleware);

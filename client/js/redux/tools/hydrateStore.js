@@ -9,10 +9,10 @@ export default function (initialState) {
   const state = {};
 
   Object
-      .keys(decodedState)
-      .forEach(key => {
-        state[key] = fromJS(decodedState[key]);
-      });
+    .keys(decodedState)
+    .forEach(key => {
+      state[key] = fromJS(decodedState[key]);
+    });
 
   return state;
 }

@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { DATA } from '../../etc/config/env';
 
 export default function () {
   const assets = JSON.parse(fs

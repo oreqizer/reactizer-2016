@@ -7,8 +7,9 @@ import pug from 'pug';
 
 import { PRODUCTION } from '../../etc/config/env';
 import fetchAssetInfo from './fetchAssetInfo';
+import fetchMetadata from './fetchMetadata';
 
-export default function (store, renderProps) {
+export default function (store, renderProps, route) {
   const InitialComponent = (
     <Provider store={store}>
       <RouterContext {...renderProps} />
@@ -19,6 +20,7 @@ export default function (store, renderProps) {
   const assets = fetchAssetInfo();
 
   const data = {
+    ...fetchMetadata(route),
     react: renderToString(InitialComponent),
     state: initialState,
     js: assets.main.js,

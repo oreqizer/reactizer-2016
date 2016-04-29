@@ -6,7 +6,7 @@ export default class TodosView extends Component {
   static propTypes = {
     todos: PropTypes.object,
     deleteTodo: PropTypes.func,
-    editTodo: PropTypes.func
+    editTodo: PropTypes.func,
   };
 
   handleDelete(e) {
@@ -21,7 +21,6 @@ export default class TodosView extends Component {
     const val = this.props.todos.get(id).text;
 
     // For cutting edge UX
-    // TODO mind: this ain't client
     const newVal = window.prompt('', val); // eslint-disable-line
     this.props.editTodo(id, newVal);
   }

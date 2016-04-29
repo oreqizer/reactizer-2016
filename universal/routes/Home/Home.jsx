@@ -9,16 +9,16 @@ import TodosView from './../../modules/Todo/TodosView';
 import TodosForm from './../../modules/Todo/TodosForm';
 
 @connect(state => ({
-  todos: state.todos
+  todos: state.todos,
 }))
 export default class Home extends Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
     todos: PropTypes.object,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
   };
 
   static needs = [
-    todoSagas.fetchTodos
+    todoSagas.fetchTodos,
   ];
 
   render() {

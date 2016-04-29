@@ -5,7 +5,7 @@ import webpackHot from 'webpack-hot-middleware';
 
 import config from './webpack.dev';
 
-import startReact from './server/server';
+import startReact from './server/index';
 import logger from './etc/tools/logger';
 import { PORT_DEV } from './etc/config/env';
 
