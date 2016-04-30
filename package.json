@@ -14,7 +14,8 @@
     "build": "babel-node ./etc/tasks/build.js",
     "build:beta": "NODE_ENV=beta babel-node ./etc/tasks/build.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "sprites": "spritesmith"
   },
   "author": "oreqizer",
   "license": "MIT",
@@ -65,7 +66,7 @@
     "nodemon": "^1.9.1",
     "postcss-loader": "^0.9.1",
     "shelljs": "^0.7.0",
-    "spritesmith": "^3.1.0",
+    "spritesmith-cli": "^1.1.2",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.0.0",

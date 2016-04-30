@@ -1,14 +1,12 @@
 import path from 'path';
 
 import logger from '../tools/logger';
-import sprites from './subtasks/sprites';
 import copy from './subtasks/copy';
 
 export default async function (dest) {
   const promises = [];
 
-  promises.push(sprites(dest));
-  promises.push(copy(dest));
+  promises.push(copy(dest)); // TODO copy specific stuff
 
   try {
     await Promise.all(promises);
