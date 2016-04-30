@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
@@ -5,13 +6,19 @@ import webpackHot from 'webpack-hot-middleware';
 
 import config from './webpack.dev';
 
-import startReact from './server/index';
 import logger from './etc/tools/logger';
-import { PORT_DEV } from './etc/config/env';
+import processAssets from './etc/tasks/assets';
+import startReact from './server/index';
+import { TMP, PORT_DEV } from './etc/config/env';
+
+processAssets(TMP);
 
 const app = express();
 
 const compiler = webpack(config);
+
+// Serve assets not processed by Webpack
+app.use(express.static(path.join(__dirname, TMP)));
 
 // Enables recompilation
 app.use(webpackDev(compiler, {

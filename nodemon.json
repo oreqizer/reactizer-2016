@@ -1,5 +1,5 @@
 {
   "verbose": false,
-  "watch": ["server/*", "universal/redux/*"],
-  "ignore": ["*.spec.js", "*.mock.js"]
+  "watch": ["server/*", "universal/*"],
+  "ignore": ["universal/modules/*", "*.spec.js", "*.mock.js"]
 }

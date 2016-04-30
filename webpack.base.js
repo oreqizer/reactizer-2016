@@ -13,6 +13,14 @@ const jsLoader = {
   },
 };
 
+const imgLoader = {
+  test: /\.(jpe?g|png|gif|svg)$/i,
+  loaders: [
+    'url?limit=10000&name=[name].[hash].[ext]',
+    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+  ],
+};
+
 export default {
   context: __dirname,
   entry: ['./client/index.js'],
@@ -20,7 +28,7 @@ export default {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
   module: {
-    loaders: [jsLoader],
+    loaders: [jsLoader, imgLoader],
   },
   plugins: [
     new Assets({ path: path.join(__dirname, 'data') }),
