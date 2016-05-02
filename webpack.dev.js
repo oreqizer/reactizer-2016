@@ -1,4 +1,4 @@
-import path from 'path';
+import { join } from 'path';
 import webpack from 'webpack';
 
 import base from './webpack.base.js';
@@ -19,7 +19,7 @@ export default {
     loaders: [...base.module.loaders, styleLoader],
   },
   output: {
-    path: path.join(__dirname, TMP),
+    path: join(__dirname, TMP),
     filename: 'bundle.[hash].js',
   },
   plugins: [

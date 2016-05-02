@@ -1,4 +1,4 @@
-import path from 'path';
+import { join } from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
@@ -18,7 +18,7 @@ const app = express();
 const compiler = webpack(config);
 
 // Serve assets not processed by Webpack
-app.use(express.static(path.join(__dirname, TMP)));
+app.use(express.static(join(__dirname, TMP)));
 
 // Enables recompilation
 app.use(webpackDev(compiler, {

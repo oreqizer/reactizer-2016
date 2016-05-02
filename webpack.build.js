@@ -1,4 +1,4 @@
-import path from 'path';
+import { join } from 'path';
 import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
@@ -14,7 +14,7 @@ const styleLoader = {
 export default {
   ...base,
   output: {
-    path: path.join(__dirname, DIST),
+    path: join(__dirname, DIST),
     filename: 'bundle.[hash].js',
   },
   module: {

@@ -1,15 +1,14 @@
-import path from 'path';
+import { join } from 'path';
+import { copySync, emptyDir } from 'fs-extra';
 
-import logger from '../tools/logger';
-import copy from './subtasks/copy';
+import logger from './../tools/logger';
 
-export default async function (dest) {
-  const promises = [];
-
-  promises.push(copy(dest)); // TODO copy specific stuff
+export default function (dest) {
+  const home = join(__dirname, '/../../');
 
   try {
-    await Promise.all(promises);
+    emptyDir(join(home, dest));
+    copySync(join(home, 'client/assets/images'), join(home, dest, 'images'));
 
     logger.info('Copied and processed all assets');
   } catch (err) {

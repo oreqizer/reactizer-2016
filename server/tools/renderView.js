@@ -1,4 +1,4 @@
-import path from 'path';
+import { join } from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext } from 'react-router';
@@ -27,7 +27,7 @@ export default function (store, renderProps, route) {
     css: assets.main.css,
   };
 
-  const renderFn = pug.compileFile(path.join(__dirname, './../pug/index.pug'), {
+  const renderFn = pug.compileFile(join(__dirname, './../pug/index.pug'), {
     pretty: process.env.NODE_ENV !== PRODUCTION,
   });
 

@@ -1,4 +1,4 @@
-import path from 'path';
+import { join } from 'path';
 import express from 'express';
 
 import startReact from './server/index';
@@ -9,7 +9,7 @@ const app = express();
 
 if (process.env.NODE_ENV === env.BETA) {
   // served by Nginx in production
-  app.use(express.static(path.join(__dirname, env.DIST)));
+  app.use(express.static(join(__dirname, env.DIST)));
   logger.info(`Static files served from directory: ${env.DIST}`);
 }
 
