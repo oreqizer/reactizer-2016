@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import { values } from 'lodash';
 
 import fetchData from './tools/fetchData';
-import renderView from './tools/renderView';
+import render from 'markup/index';
 
 import * as reducers from '../universal/redux/reducers';
 import * as serverMiddleware from './redux/serverMiddleware';
@@ -46,7 +46,7 @@ export default function (app) {
         await fetchData(store, sagaMiddleware, renderProps.components, renderProps);
 
         logger.info('Rendering HTML...');
-        const html = renderView(store, renderProps, req.url);
+        const html = render(store, renderProps, req.url);
 
         res.end(html);
         logger.success('Response ended successfully.'); // TODO track, not log
