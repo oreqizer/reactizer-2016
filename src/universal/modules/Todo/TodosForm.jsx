@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
 export default class TodosForm extends Component {
@@ -21,6 +22,9 @@ export default class TodosForm extends Component {
 
     return (
       <div className="todo-wrap">
+        <Helmet
+          title="Home"
+        />
         <div className="todo-fetch">
           <input type="submit" value="Fetch!" onClick={fetchTodos} />
         </div>
