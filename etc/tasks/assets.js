@@ -8,7 +8,7 @@ export default function (dest) {
 
   try {
     emptyDir(join(home, dest));
-    copySync(join(home, 'client/assets/images'), join(home, dest, 'images'));
+    copySync(join(home, 'src/client/assets/images'), join(home, dest, 'images'));
 
     logger.info('Copied and processed all assets');
   } catch (err) {

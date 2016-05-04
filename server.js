@@ -1,7 +1,7 @@
 import { join } from 'path';
 import express from 'express';
 
-import startReact from 'src/server/index';
+import startReact from './src/server/index';
 import logger from './etc/tools/logger';
 import env from './etc/config/env';
 
