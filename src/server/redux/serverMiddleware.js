@@ -1,4 +1,4 @@
-import logger from './../../etc/tools/logger';
+import logger from './../../../etc/tools/logger';
 
 export default () => next => action => {
   let writer = logger.info;

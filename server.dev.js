@@ -8,7 +8,7 @@ import config from './webpack.dev';
 
 import logger from './etc/tools/logger';
 import processAssets from './etc/tasks/assets';
-import startReact from './server/index';
+import startReact from 'src/server/index';
 import { TMP, PORT_DEV } from './etc/config/env';
 
 processAssets(TMP);
