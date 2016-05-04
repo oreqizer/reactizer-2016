@@ -19,8 +19,8 @@ const Html = props =>
 Html.propTypes = {
   head: PropTypes.object.isRequired,
   assets: PropTypes.object.isRequired,
-  state: PropTypes.object.isRequired,
-  children: PropTypes.array.isRequired,
+  state: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default Html;

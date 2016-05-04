@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -20,7 +20,7 @@ export default function (store, renderProps, route) {
   const app = renderApp(store, renderProps);
   const head = Helmet.rewind();
 
-  const html = renderToString(
+  const html = renderToStaticMarkup(
     <Html
       head={head}
       assets={assets}

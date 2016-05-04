@@ -5,7 +5,9 @@ import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 
 const historyMiddleware = routerMiddleware(browserHistory);
-const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger({
+  collapsed: true,
+});
 
 export const sagaMiddleware = createSagaMiddleware();
 
