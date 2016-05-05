@@ -1,8 +1,8 @@
 import { join } from 'path';
 import webpack from 'webpack';
 
-import base from './webpack.base.js';
-import { TMP, DEV } from './etc/config/env';
+import base from './webpack.base';
+import { TMP } from './../config/env';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -19,7 +19,7 @@ export default {
     loaders: [...base.module.loaders, styleLoader],
   },
   output: {
-    path: join(__dirname, TMP),
+    path: join(__dirname, '../../', TMP),
     filename: 'bundle.[hash].js',
   },
   plugins: [
@@ -27,11 +27,6 @@ export default {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(DEV),
-      },
-    }),
   ],
   devtool: 'inline-source-map',
 };

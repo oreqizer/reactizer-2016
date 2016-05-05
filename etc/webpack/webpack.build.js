@@ -3,8 +3,8 @@ import webpack from 'webpack';
 import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
-import base from './webpack.base.js';
-import { DIST, PRODUCTION } from './etc/config/env';
+import base from './webpack.base';
+import { DIST } from './../config/env';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -14,7 +14,7 @@ const styleLoader = {
 export default {
   ...base,
   output: {
-    path: join(__dirname, DIST),
+    path: join(__dirname, '../../', DIST),
     filename: 'bundle.[hash].js',
   },
   module: {
@@ -24,15 +24,15 @@ export default {
     ...base.plugins,
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
-      screw_ie8: true,
+      mangle: {
+        screw_ie8: true,
+      },
+      compress: {
+        warnings: false,
+      },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new Visualizer(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || PRODUCTION),
-      },
-    }),
   ],
   devtool: 'source-map',
 };

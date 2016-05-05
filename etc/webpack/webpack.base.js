@@ -1,4 +1,5 @@
 import { join } from 'path';
+import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
@@ -23,7 +24,7 @@ const imgLoader = {
 
 export default {
   context: __dirname,
-  entry: ['./src/client/index.js'],
+  entry: ['./../../src/client/index.js'],
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
@@ -31,7 +32,12 @@ export default {
     loaders: [jsLoader, imgLoader],
   },
   plugins: [
-    new Assets({ path: join(__dirname, 'data') }),
+    new Assets({ path: join(__dirname, '../../data') }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
   ],
   postcss: () => [autoprefixer],
 };

@@ -2,14 +2,14 @@ import { createMemoryHistory, match } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import serverMiddleware from './redux/serverMiddleware';
-import fetchData from './tools/fetchData';
-import render from './markup';
+import serverMiddleware from './../redux/serverMiddleware';
+import fetchData from './../tools/fetchData';
+import render from './../markup';
 
-import * as reducers from '../universal/redux/reducers';
+import * as reducers from '../../universal/redux/reducers';
 
-import routes from './../universal/router';
-import logger from './../../etc/tools/logger';
+import routes from './../../universal/router';
+import logger from './../../../etc/tools/logger';
 
 export default function (app) {
   app.use((req, res) => {
