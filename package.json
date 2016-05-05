@@ -14,7 +14,8 @@
     "build": "babel-node ./etc/tasks/build.js",
     "build:beta": "NODE_ENV=beta babel-node ./etc/tasks/build.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "native": "node node_modules/react-native/local-cli/cli.js start"
   },
   "author": "oreqizer",
   "license": "MIT",
@@ -50,6 +51,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-helmet": "^3.1.0",
+    "react-native": "^0.25.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.2",
