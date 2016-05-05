@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 const Index = props =>
   <div id="app-view">
     <Helmet
-      title="reactizer"
+      title="Index"
       titleTemplate="%s | reactizer"
       meta={[
           { name: 'description', content: 'Teh best boilerplate' },
