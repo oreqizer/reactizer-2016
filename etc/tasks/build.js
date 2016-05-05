@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 
-import config from './../../webpack.build.js';
+import config from './../webpack/webpack.build.js';
 import processAssets from './assets';
 import logger from './../tools/logger';
 import { DIST } from './../config/env';
