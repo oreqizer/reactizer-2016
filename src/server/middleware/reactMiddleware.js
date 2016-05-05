@@ -10,8 +10,9 @@ import routes from './../../universal/router';
 import logger from './../../../etc/tools/logger';
 
 export default function (app) {
-  app.use((req, res) => {
-    const history = createMemoryHistory(req.url);
+  /* eslint-disable no-param-reassign */
+  app.use(async (ctx, next) => {
+    const history = createMemoryHistory(ctx.url);
 
     const sagaMiddleware = createSagaMiddleware();
     const ownMiddleware = [
@@ -21,19 +22,21 @@ export default function (app) {
 
     const store = configureStore({ ownMiddleware });
 
-    logger.info(`Request URL: ${req.url}`);
+    logger.info(`Request URL: ${ctx.url}`);
 
-    match({ history, routes, location: req.url }, async (err, redirect, renderProps) => {
+    match({ history, routes, location: ctx.url }, async (err, redirect, renderProps) => {
       try {
         if (err) {
           logger.error(err);
-          res.status(500).end('Error while handling request.');
+          ctx.status = 500;
+          ctx.message = 'Error while handling request.';
           return;
         }
 
         if (!renderProps) {
           logger.warn('No matching route.');
-          res.status(404).end('Not found.');
+          ctx.status = 404;
+          ctx.message = 'Not found.';
           return;
         }
 
@@ -41,13 +44,16 @@ export default function (app) {
         await fetchData(store, sagaMiddleware, renderProps.components, renderProps);
 
         logger.info('Rendering HTML...');
-        const html = render(store, renderProps, req.url);
+        const html = render(store, renderProps, ctx.url);
 
-        res.end(html);
+        ctx.body = html;
         logger.success('Response ended successfully.');
       } catch (err2) {
         logger.error(err2);
-        res.status(500).end('Internal server error.');
+        ctx.status = 500;
+        ctx.message = 'Internal server error.';
+      } finally {
+        await next();
       }
     });
   });

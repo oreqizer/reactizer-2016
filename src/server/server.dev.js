@@ -1,5 +1,6 @@
 import { join } from 'path';
-import express from 'express';
+import Koa from 'koa';
+import serve from 'koa-static';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
@@ -13,22 +14,24 @@ import { TMP, PORT_DEV } from './../../etc/config/env';
 
 processAssets(TMP);
 
-const app = express();
+const app = new Koa();
 
 const compiler = webpack(config);
 
 // Serve assets not processed by Webpack
-app.use(express.static(join(__dirname, '../../', TMP)));
+app.use(serve(join(__dirname, '../../', TMP)));
 
 // Enables recompilation
-app.use(webpackDev(compiler, {
-  noInfo: true,
-}));
+app.use(async (ctx, next) => {
+  await webpackDev(compiler, { noInfo: true }).bind(null, ctx.req, ctx.res);
+  await next();
+});
 
 // Enables hot-reloading
-app.use(webpackHot(compiler, {
-  noInfo: true,
-}));
+app.use(async (ctx, next) => {
+  await webpackHot(compiler, { noInfo: true }).bind(null, ctx.req, ctx.res);
+  await next();
+});
 
 const server = startReact(app);
 
