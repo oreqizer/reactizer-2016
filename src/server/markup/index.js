@@ -13,7 +13,7 @@ const renderApp = (store, props) =>
     <RouterContext {...props} />
   </Provider>;
 
-export default function (store, renderProps, route) {
+export default function (store, renderProps) {
   const assets = fetchAssetInfo();
 
   const reduxState = JSON.stringify(store.getState());

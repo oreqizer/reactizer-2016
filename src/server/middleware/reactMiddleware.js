@@ -1,29 +1,25 @@
 import { createMemoryHistory, match } from 'react-router';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import configureStore from './../../universal/redux/configureStore';
 import serverMiddleware from './../redux/serverMiddleware';
 import fetchData from './../tools/fetchData';
 import render from './../markup';
-
-import * as reducers from '../../universal/redux/reducers';
 
 import routes from './../../universal/router';
 import logger from './../../../etc/tools/logger';
 
 export default function (app) {
   app.use((req, res) => {
-    const sagaMiddleware = createSagaMiddleware();
-
     const history = createMemoryHistory(req.url);
-    const reducer = combineReducers(reducers);
 
-    const middleware = applyMiddleware(
+    const sagaMiddleware = createSagaMiddleware();
+    const ownMiddleware = [
       serverMiddleware,
-      sagaMiddleware
-    );
+      sagaMiddleware,
+    ];
 
-    const store = createStore(reducer, {}, middleware);
+    const store = configureStore({ ownMiddleware });
 
     logger.info(`Request URL: ${req.url}`);
 
@@ -48,7 +44,7 @@ export default function (app) {
         const html = render(store, renderProps, req.url);
 
         res.end(html);
-        logger.success('Response ended successfully.'); // TODO track, not log
+        logger.success('Response ended successfully.');
       } catch (err2) {
         logger.error(err2);
         res.status(500).end('Internal server error.');
