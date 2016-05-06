@@ -29,7 +29,10 @@ Simply `npm i`. Then you have these following tasks available:
 * `npm run server:beta` - runs the server for beta
 * `npm run lint` - runs eslint
 * `npm run lint:fix` - runs eslint and fixes problems, if it can
-* `npm run native` - runs react native
+* `npm run ios` - runs react native ios
+* `npm run android` - runs react native android
+* `npm run native` - runs react native server
+* `npm run native:clean` - runs react native server and clears the cache
 
 ### Philosophy
 
