@@ -1,3 +1,3 @@
-import index from './src/native/index';
+import index from './src/native';
 
 index();
