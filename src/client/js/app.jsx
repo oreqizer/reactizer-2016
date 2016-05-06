@@ -20,12 +20,12 @@ render(
 // Hot-reloading React
 // -------------------
 
-/* eslint-disable */
+/* eslint-disable no-undef */
 if (module.hot) {
   module.hot.accept('./modules/Root.jsx', () => {
     render(
       <Root />,
       view
     );
-  })
+  });
 }

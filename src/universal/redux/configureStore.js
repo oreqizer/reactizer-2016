@@ -9,7 +9,13 @@ import * as reducers from './reducers';
  * @prop ownMiddleware {Array}
  * @prop enhancers {Array}
  */
-export default function ({ hydratedState = {}, ownMiddleware = [], enhancers = [] }) {
+export default function (options = {}) {
+  const {
+    hydratedState = {},
+    ownMiddleware = [],
+    enhancers = [],
+  } = options;
+
   const combinedReducers = combineReducers(reducers);
 
   const appliedMiddleware = applyMiddleware(
@@ -30,13 +36,13 @@ export default function ({ hydratedState = {}, ownMiddleware = [], enhancers = [
   // Hot-reloading Redux
   // -------------------
 
-  /* eslint-disable */
+  /* eslint-disable no-undef */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(reducer);
+      store.replaceReducer(reducers);
     });
   }
-  /* eslint-enable */
+  /* eslint-enable no-undef */
 
   return store;
 }

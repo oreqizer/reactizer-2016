@@ -4,7 +4,7 @@ import { copySync, emptyDirSync } from 'fs-extra';
 import logger from './../tools/logger';
 
 export default function (dest) {
-  const home = join(__dirname, '/../../');
+  const home = join(__dirname, '../../');
 
   try {
     emptyDirSync(join(home, dest));

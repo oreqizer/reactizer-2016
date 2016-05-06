@@ -1,4 +1,5 @@
-import index from './src/native';
+import { AppRegistry } from 'react-native';
 
-index();
+import Index from './src/native';
 
+AppRegistry.registerComponent('reactizer', () => Index);

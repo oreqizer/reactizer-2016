@@ -1,52 +1,23 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
-import React from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import App from './app/App';
 
-export default function () {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
-  });
+import configureStore from '../universal/redux/configureStore';
 
-  const Reactizer = () =>
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Welcome to Reactizer's React Native!
-      </Text>
-      <Text style={styles.instructions}>
-        To get started, edit index.ios.js
-      </Text>
-      <Text style={styles.instructions}>
-        Press Cmd+R to reload,{'\n'}
-        Cmd+D or shake for dev menu
-      </Text>
-    </View>;
+const store = configureStore();
 
-  // TODO: add HMR
+// -----------------------------------------
+// Index needs to be a class for HMR to work
+// -----------------------------------------
 
-  AppRegistry.registerComponent('reactizer', () => Reactizer);
+/* eslint-disable react/prefer-stateless-function */
+export default class Index extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  }
 }
