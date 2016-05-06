@@ -7,17 +7,22 @@ import configureStore from '../universal/redux/configureStore';
 
 const store = configureStore();
 
-// -----------------------------------------
-// Index needs to be a class for HMR to work
-// -----------------------------------------
+// Provider needs to be wrapped in a Root component
+// otherwise, this happens: https://github.com/oreqizer/reactizer/issues/5
+const Root = () =>
+  <Provider store={store}>
+    <App />
+  </Provider>;
+
+// ----------------------------------------
+// Hot-reloading: Index needs to be a class
+// ----------------------------------------
 
 /* eslint-disable react/prefer-stateless-function */
 export default class Index extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <Root />
     );
   }
 }
