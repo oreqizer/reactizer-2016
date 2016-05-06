@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import * as todoActions from './../redux/ducks/todoDuck';
-import todoSagas from './../redux/sagas/todoSagas';
+import * as todoActions from './../../../universal/redux/ducks/todoDuck';
+import todoSagas from './../../../universal/redux/sagas/todoSagas';
 
 import TodosView from './../modules/Todo/TodosView';
 import TodosForm from './../modules/Todo/TodosForm';

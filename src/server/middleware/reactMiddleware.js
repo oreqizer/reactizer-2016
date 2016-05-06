@@ -6,7 +6,7 @@ import serverMiddleware from './../redux/serverMiddleware';
 import fetchData from './../tools/fetchData';
 import render from './../markup';
 
-import routes from './../../universal/router';
+import routes from './../../browser/js/router';
 import logger from './../../../etc/tools/logger';
 
 export default function (app) {

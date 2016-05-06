@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import store from '../redux/clientStore';
-import routes from './../../../universal/router';
+import routes from './../router';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
