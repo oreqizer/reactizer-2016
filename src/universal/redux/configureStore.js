@@ -39,7 +39,7 @@ export default function (options = {}) {
   /* eslint-disable no-undef */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(reducers);
+      store.replaceReducer(combinedReducers(reducers));
     });
   }
   /* eslint-enable no-undef */

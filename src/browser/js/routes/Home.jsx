@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { Link } from 'react-router';
 
 import * as todoActions from './../../../universal/redux/ducks/todoDuck';
 import todoSagas from './../../../universal/redux/sagas/todoSagas';
@@ -27,7 +27,7 @@ export default class Home extends Component { // eslint-disable-line react/prefe
 
     return (
       <div id="todo-list">
-        <a onClick={() => dispatch(push('/about'))}>About</a>
+        <Link to="/about">About</Link>
         <TodosView
           todos={todos}
           {...bindActionCreators(todoActions, dispatch)}
