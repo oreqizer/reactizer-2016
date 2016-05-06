@@ -31,6 +31,11 @@ export default function (app) {
           return;
         }
 
+        if (redirect) {
+          res.redirect(301, redirect.pathname + redirect.search);
+          return;
+        }
+
         if (!renderProps) {
           logger.warn('No matching route.');
           res.status(404).end('Not found.');
