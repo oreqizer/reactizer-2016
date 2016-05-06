@@ -2,6 +2,10 @@
 
 A React boilerplate that's always ahead!
 
+## WORK IN PROGRESS
+
+I change stuff. A lot. I move folders, files, change dependencies etc. Please keep that in mind. This is a very fresh project and frequent changes are inevitable. Keep calm - this is all temporary.
+
 **Features:**
 
 * React and React Native
