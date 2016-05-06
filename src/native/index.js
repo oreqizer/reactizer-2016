@@ -32,10 +32,10 @@ export default function () {
     },
   });
 
-  const reactizer = () =>
+  const Reactizer = () =>
     <View style={styles.container}>
       <Text style={styles.welcome}>
-        Welcome to React Native!
+        Welcome to Reactizer's React Native!
       </Text>
       <Text style={styles.instructions}>
         To get started, edit index.ios.js
@@ -46,6 +46,7 @@ export default function () {
       </Text>
     </View>;
 
-  AppRegistry.registerComponent('reactizer', () => reactizer);
-}
+  // TODO: add HMR
 
+  AppRegistry.registerComponent('reactizer', () => Reactizer);
+}
