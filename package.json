@@ -15,6 +15,8 @@
     "build:beta": "NODE_ENV=beta babel-node ./etc/tasks/build.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "native": "node node_modules/react-native/local-cli/cli.js start"
   },
   "author": "oreqizer",
