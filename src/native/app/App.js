@@ -30,7 +30,7 @@ const App = () =>
       Welcome to Reactizer's React Native!
     </Text>
     <Text style={styles.instructions}>
-      To get started, edit index.ios.js
+      To get started, edit ./src/native/index.js
     </Text>
     <Text style={styles.instructions}>
       Press Cmd+R to reload,{'\n'}
