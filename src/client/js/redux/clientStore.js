@@ -2,7 +2,7 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
-import { values } from 'lodash';
+import { values } from 'ramda';
 
 import hydrateStore from './hydrateStore';
 import configureStore from './../../../universal/redux/configureStore';

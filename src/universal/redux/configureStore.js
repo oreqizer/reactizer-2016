@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-// import { values } from 'lodash';
+// import { values } from 'ramda';
 
 import * as reducers from './reducers';
 // import * as middleware from './middleware';

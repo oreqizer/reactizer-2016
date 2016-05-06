@@ -1,6 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import immutable from 'immutable';
+import immutableDevtools from 'immutable-devtools';
+
+// nice console logs
+immutableDevtools(immutable);
+
 import Root from './modules/Root.jsx';
 
 const view = document.getElementById('react-view');
