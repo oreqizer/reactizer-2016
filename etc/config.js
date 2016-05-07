@@ -2,14 +2,10 @@ import { join } from 'path';
 import { readJsonSync } from 'fs-extra';
 import nconf from 'nconf';
 
-import logger from './tools/logger';
-
 const dev = process.env.NODE_ENV === 'dev';
 const production = process.env.NODE_ENV === 'production';
 
-const appName = readJsonSync(join(__dirname, '../../package.json')).name;
-
-console.log(appName);
+const appName = readJsonSync(join(__dirname, '../package.json')).name;
 
 // constant values
 nconf.overrides({
@@ -37,7 +33,5 @@ nconf.defaults({
   port: 3000,
   port_dev: 8080,
 });
-
-logger.info('Config:', nconf.get());
 
 export default nconf.get();
