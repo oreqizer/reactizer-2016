@@ -5,13 +5,13 @@ import reducers from './reducers';
 // import * as middleware from './middleware';
 
 /**
- * @prop hydratedState {Object}
+ * @prop initialState {Object}
  * @prop ownMiddleware {Array}
  * @prop enhancers {Array}
  */
 export default function (options = {}) {
   const {
-    hydratedState = {},
+    initialState = {},
     ownMiddleware = [],
     enhancers = [],
   } = options;
@@ -23,7 +23,7 @@ export default function (options = {}) {
 
   const store = createStore(
     reducers,
-    hydratedState,
+    initialState,
     compose(
       appliedMiddleware,
       ...enhancers

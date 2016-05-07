@@ -3,15 +3,27 @@ import createSagaMiddleware from 'redux-saga';
 
 import configureStore from './../../universal/redux/configureStore';
 import logMiddleware from './../redux/logMiddleware';
+import fetchMessages from './../tools/fetchMessages';
 import fetchData from './../tools/fetchData';
 import render from './../markup';
 
 import routes from './../../browser/js/router';
 import logger from './../../../etc/tools/logger';
+import { locales, defaultLocale } from './../../../etc/config';
 
-const initialState = req => ({
-  
-})
+function getInitialState(req) {
+  const locale = req.acceptsLanguages(locales) || defaultLocale;
+
+  return {
+    intl: {
+      defaultLocale,
+      locale,
+      locales,
+      initialNow: Date.now(),
+      messages: fetchMessages(locale),
+    },
+  };
+}
 
 export default function (req, res, next) {
   const history = createMemoryHistory(req.url);
@@ -22,7 +34,12 @@ export default function (req, res, next) {
     sagaMiddleware,
   ];
 
-  const store = configureStore({ ownMiddleware });
+  const initialState = getInitialState(req);
+
+  const store = configureStore({
+    initialState,
+    ownMiddleware,
+  });
 
   logger.info(`Request URL: ${req.url}`);
 
