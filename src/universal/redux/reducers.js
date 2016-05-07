@@ -1,3 +1,9 @@
-export { routerReducer as routing } from 'react-router-redux';
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
-export todos from './ducks/todoDuck';
+import todos from './ducks/todoDuck';
+
+export default combineReducers({
+  todos,
+  routing: routerReducer,
+});

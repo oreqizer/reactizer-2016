@@ -1,7 +1,7 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 // import { values } from 'ramda';
 
-import * as reducers from './reducers';
+import reducers from './reducers';
 // import * as middleware from './middleware';
 
 /**
@@ -16,15 +16,13 @@ export default function (options = {}) {
     enhancers = [],
   } = options;
 
-  const combinedReducers = combineReducers(reducers);
-
   const appliedMiddleware = applyMiddleware(
     // ...values(middleware),
     ...ownMiddleware,
   );
 
   const store = createStore(
-    combinedReducers,
+    reducers,
     hydratedState,
     compose(
       appliedMiddleware,
@@ -39,7 +37,7 @@ export default function (options = {}) {
   /* eslint-disable no-undef */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(combinedReducers(reducers));
+      store.replaceReducer(reducers);
     });
   }
   /* eslint-enable no-undef */

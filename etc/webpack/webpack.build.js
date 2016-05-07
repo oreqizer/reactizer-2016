@@ -4,7 +4,7 @@ import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
-import { DIST } from './../config/env';
+import { DIST } from './../config';
 
 const styleLoader = {
   test: /\.styl$/,

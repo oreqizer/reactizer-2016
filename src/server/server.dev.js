@@ -5,11 +5,11 @@ import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 
 import config from './../../etc/webpack/webpack.dev';
-
 import logger from './../../etc/tools/logger';
 import processAssets from './../../etc/tasks/assets';
-import startReact from './middleware/reactMiddleware';
-import { TMP, PORT_DEV } from './../../etc/config/env';
+import { TMP, PORT_DEV } from './../../etc/config';
+
+import reactMiddleware from './middleware/reactMiddleware';
 
 processAssets(TMP);
 
@@ -30,7 +30,7 @@ app.use(webpackHot(compiler, {
   noInfo: true,
 }));
 
-const server = startReact(app);
+app.use(reactMiddleware);
 
-server.listen(PORT_DEV, () =>
+app.listen(PORT_DEV, () =>
     logger.info(`Express listening at port: ${PORT_DEV}`));

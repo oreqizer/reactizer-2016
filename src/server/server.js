@@ -1,9 +1,10 @@
 import { join } from 'path';
 import express from 'express';
 
-import startReact from './middleware/reactMiddleware';
 import logger from './../../etc/tools/logger';
-import env from './../../etc/config/env';
+import env from './../../etc/config';
+
+import reactMiddleware from './middleware/reactMiddleware';
 
 const app = express();
 
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === env.BETA) {
   logger.info(`Static files served from directory: ${env.DIST}`);
 }
 
-const server = startReact(app);
+app.use(reactMiddleware);
 
-server.listen(env.PORT, () =>
+app.listen(env.PORT, () =>
     logger.info(`Express listening at port: ${env.PORT}`));
