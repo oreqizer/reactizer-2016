@@ -3,6 +3,10 @@ import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
+const reactIntl = ['react-intl', {
+  messagesDir: './../../data/locales',
+}];
+
 const jsLoader = {
   test: /\.jsx?$/,
   exclude: /node_modules/,
@@ -10,7 +14,7 @@ const jsLoader = {
   query: {
     babelrc: false,
     presets: ['react', 'es2015-native-modules', 'stage-1'],
-    plugins: ['react-intl', 'transform-decorators-legacy'],
+    plugins: [reactIntl, 'transform-decorators-legacy'],
   },
 };
 
