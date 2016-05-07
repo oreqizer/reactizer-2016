@@ -1,9 +1,15 @@
+import { join } from 'path';
+import { readJsonSync } from 'fs-extra';
 import nconf from 'nconf';
 
 import logger from './tools/logger';
 
 const dev = process.env.NODE_ENV === 'dev';
 const production = process.env.NODE_ENV === 'production';
+
+const appName = readJsonSync(join(__dirname, '../../package.json')).name;
+
+console.log(appName);
 
 // constant values
 nconf.overrides({
@@ -24,6 +30,7 @@ nconf.argv();
 nconf.defaults({
   dev,
   production,
+  appName,
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
   locales: ['cs', 'de', 'es', 'en', 'fr', 'no', 'pt', 'ro'],

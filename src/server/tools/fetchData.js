@@ -1,5 +1,5 @@
-export default function (store, sagaMiddleware, components, params) {
-  const sagas = components
+export default function (store, sagaMiddleware, params) {
+  const sagas = params.components
     .filter(component => component.needs)
     .reduce((list, component) => list.concat(component.needs), []);
 

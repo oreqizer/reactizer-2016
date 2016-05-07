@@ -10,7 +10,7 @@ const jsLoader = {
   query: {
     babelrc: false,
     presets: ['react', 'es2015-native-modules', 'stage-1'],
-    plugins: ['transform-decorators-legacy'],
+    plugins: ['react-intl', 'transform-decorators-legacy'],
   },
 };
 

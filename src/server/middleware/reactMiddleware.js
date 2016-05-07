@@ -63,7 +63,7 @@ export default function (req, res, next) {
       }
 
       logger.info('Route matched, fetching data...');
-      await fetchData(store, sagaMiddleware, renderProps.components, renderProps);
+      await fetchData(store, sagaMiddleware, renderProps);
 
       logger.info('Rendering HTML...');
       const html = render(store, renderProps, req.url);
