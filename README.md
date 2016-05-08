@@ -37,6 +37,8 @@ Simply `npm i`. Then you have these following tasks available:
 * `npm run native` - runs react native server
 * `npm run native:clean` - runs react native server and clears the cache
 
+I'm slowly moving tasks to **Gulp**. I'll update this once I'm done.
+
 ### Philosophy
 
 Testing out newest trends that I find interesting. I try to keep the project lightweight and safe, though. I will not include packages that are unnecessary or unmaintained.
