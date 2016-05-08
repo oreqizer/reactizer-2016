@@ -7,11 +7,13 @@ const production = process.env.NODE_ENV === 'production';
 
 const appName = readJsonSync(join(__dirname, '../package.json')).name;
 
-// constant values
-nconf.overrides({
+const OUTPUT = {
   TMP: '.tmp',
   DIST: 'dist',
-});
+};
+
+// constant values
+nconf.overrides(OUTPUT);
 
 // "foo__bar=lol <command>" becomes "{foo: {bar: 'lol'}}" here
 nconf.env('__');
@@ -30,6 +32,7 @@ nconf.defaults({
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
   locales: ['cs', 'de', 'es', 'en', 'fr', 'no', 'pt', 'ro'],
+  output: OUTPUT.TMP,
   port: 3000,
   port_dev: 8080,
 });
