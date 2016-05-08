@@ -4,9 +4,7 @@ import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
-import { output, production } from './../config';
-
-const dev = !production;
+import { output } from './../config';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -26,11 +24,11 @@ export default {
     ...base.plugins,
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: dev ? false : {
+      mangle: {
         screw_ie8: true,
       },
-      compress: dev ? false : {
-        warnings: dev,
+      compress: {
+        warnings: false,
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
