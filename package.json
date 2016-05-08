@@ -15,7 +15,8 @@
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "native": "node node_modules/react-native/local-cli/cli.js start",
-    "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache"
+    "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "babel": "babel ./src/browser/js/app.jsx"
   },
   "author": "oreqizer",
   "license": "MIT",
@@ -59,6 +60,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.0.0",
+    "through2": "^2.0.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.6",
     "webpack-visualizer-plugin": "^0.1.5"

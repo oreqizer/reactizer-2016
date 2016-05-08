@@ -5,10 +5,6 @@ import autoprefixer from 'autoprefixer';
 
 import { production } from './../config';
 
-const reactIntl = ['react-intl', {
-  messagesDir: join(__dirname, '../../data/locales'),
-}];
-
 const jsLoader = {
   test: /\.jsx?$/,
   exclude: /node_modules/,
@@ -16,7 +12,7 @@ const jsLoader = {
   query: {
     babelrc: false,
     presets: ['react', 'es2015-native-modules', 'stage-1'],
-    plugins: [reactIntl, 'transform-decorators-legacy'],
+    plugins: ['transform-decorators-legacy'],
   },
 };
 
