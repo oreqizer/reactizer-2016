@@ -74,12 +74,8 @@ gulp.task('clean', () =>
   gulp.src([`${config.output}/*`])
     .pipe(clean()));
 
-gulp.task('clean:all', ['clean:data'], () =>
+gulp.task('clean:all', () =>
   gulp.src([`${config.TMP}/*`, `${config.DIST}/*`])
-    .pipe(clean()));
-
-gulp.task('clean:data', () =>
-  gulp.src(['data/*'])
     .pipe(clean()));
 
 gulp.task('default', ['start']);
