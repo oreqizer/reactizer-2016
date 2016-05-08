@@ -8,7 +8,7 @@ export default function (locale) {
     return readJsonSync(join(__dirname, '../../../data/locales', `${locale}.json`))
       .reduce((acc, { defaultMessage, id }) => ({
         ...acc, [id]: defaultMessage,
-      }));
+      }), {});
   } catch (err) {
     logger.error('Loading locale failed', err);
     return null;

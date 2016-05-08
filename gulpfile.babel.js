@@ -36,7 +36,6 @@ gulp.task('start', ['assets'], cb => {
   const child = shell
     .exec(`${NODEMON} --exec ${BABEL} ./src/server/server.dev.js --color`, {
       async: true,
-      stdio: 'inherit',
     });
 
   child.on('close', cb);
