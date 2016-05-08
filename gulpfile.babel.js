@@ -89,7 +89,7 @@ gulp.task('sprites', () => {
     .pipe(gulp.dest('./src/browser/assets/images'));
 
   const cssStream = spriteData.css
-    .pipe(gulp.dest('./src/browser/css'));
+    .pipe(gulp.dest('./src/browser/core/css'));
 
   return mergestream(imgStream, cssStream);
 });
