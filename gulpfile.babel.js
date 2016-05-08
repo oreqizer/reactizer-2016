@@ -2,10 +2,12 @@ import { outputJsonSync } from 'fs-extra';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import clean from 'gulp-clean';
+import spritesmith from 'gulp.spritesmith';
 import webpack from 'webpack';
 import shell from 'shelljs';
 import * as babel from 'babel-core';
 import through from 'through2';
+import mergestream from 'merge-stream';
 
 import buildConfig from './etc/webpack/webpack.build';
 import config from './etc/config';
@@ -58,6 +60,22 @@ gulp.task('messages', ['clean:data'], () => {
       messages.sort((a, b) => a.id.localeCompare(b.id));
       outputJsonSync('./data/locales/_default.json', messages, { spaces: 2 });
     });
+});
+
+gulp.task('sprites', () => {
+  const spriteData = gulp.src('./src/browser/assets/sprites/*')
+    .pipe(spritesmith({
+      imgName: 'sprite.png',
+      cssName: 'sprite.styl',
+    }));
+
+  const imgStream = spriteData.img
+    .pipe(gulp.dest('./src/browser/assets/images'));
+
+  const cssStream = spriteData.css
+    .pipe(gulp.dest('./src/browser/css'));
+
+  return mergestream(imgStream, cssStream);
 });
 
 const ASSETS = [
