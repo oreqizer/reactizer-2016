@@ -19,7 +19,6 @@ If you find anything outdated, feel free to submit a pull request with an update
 ### TODO:
 
 * Tests
-* I18n
 * Koa2
 
 ### Tasks
