@@ -3,6 +3,8 @@ import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
+import { production } from './../config';
+
 const reactIntl = ['react-intl', {
   messagesDir: join(__dirname, '../../data/locales'),
 }];
@@ -39,7 +41,7 @@ export default {
     new Assets({ path: join(__dirname, '../../data') }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        NODE_ENV: JSON.stringify(production ? 'production' : 'dev'),
       },
     }),
   ],

@@ -4,7 +4,9 @@ import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
-import { DIST } from './../config';
+import { output, production } from './../config';
+
+const dev = !production;
 
 const styleLoader = {
   test: /\.styl$/,
@@ -14,7 +16,7 @@ const styleLoader = {
 export default {
   ...base,
   output: {
-    path: join(__dirname, '../../', DIST),
+    path: join(__dirname, '../../', output),
     filename: 'bundle.[hash].js',
   },
   module: {
@@ -24,11 +26,11 @@ export default {
     ...base.plugins,
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: {
+      mangle: dev ? false : {
         screw_ie8: true,
       },
-      compress: {
-        warnings: false,
+      compress: dev ? false : {
+        warnings: dev,
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
