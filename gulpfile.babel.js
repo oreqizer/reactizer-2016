@@ -15,6 +15,8 @@ import config from './etc/config';
 const BABEL = './node_modules/.bin/babel-node';
 const NODEMON = './node_modules/.bin/nodemon';
 
+gulp.task('default', ['start']);
+
 gulp.task('start', ['assets'], cb => {
   const child = shell
     .exec(`${NODEMON} --exec ${BABEL} ./src/server/server.dev.js --color`, {
@@ -99,5 +101,3 @@ gulp.task('clean', () =>
 gulp.task('clean:all', () =>
   gulp.src([`${config.TMP}/*`, `${config.DIST}/*`])
     .pipe(clean()));
-
-gulp.task('default', ['start']);
