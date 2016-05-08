@@ -1,4 +1,4 @@
-import { Record, List } from 'immutable';
+import { Record, List, fromJS } from 'immutable';
 
 import { SUCCESS, LOADING } from '../../consts/asyncConsts';
 
@@ -20,7 +20,7 @@ const InitialState = new Record({
 });
 
 export default function todoReducer(state = new InitialState(), action) {
-  if (!(state instanceof InitialState)) return new InitialState(state);
+  if (!(state instanceof InitialState)) return new InitialState(fromJS(state));
 
   switch (action.type) {
     case FETCH:
@@ -35,7 +35,7 @@ export default function todoReducer(state = new InitialState(), action) {
 
     case CREATE_SUCCESS:
       return state
-        .mergeIn(['list'], action.text)
+        .updateIn(['list'], list => list.push(action.text))
         .setIn(['state'], SUCCESS);
 
     case EDIT:
