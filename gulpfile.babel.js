@@ -15,6 +15,15 @@ import config from './etc/config';
 const BABEL = './node_modules/.bin/babel-node';
 const NODEMON = './node_modules/.bin/nodemon';
 
+gulp.task('start', ['assets'], cb => {
+  const child = shell
+    .exec(`${NODEMON} --exec ${BABEL} ./src/server/server.dev.js --color`, {
+      async: true,
+    });
+
+  child.on('close', cb);
+});
+
 gulp.task('build', ['assets'], cb =>
   webpack(buildConfig, (err, stats) => {
     if (err) {
@@ -33,15 +42,6 @@ gulp.task('build', ['assets'], cb =>
     cb();
   })
 );
-
-gulp.task('start', ['assets'], cb => {
-  const child = shell
-    .exec(`${NODEMON} --exec ${BABEL} ./src/server/server.dev.js --color`, {
-      async: true,
-    });
-
-  child.on('close', cb);
-});
 
 gulp.task('messages', ['clean:data'], () => {
   let messages = [];
@@ -62,6 +62,20 @@ gulp.task('messages', ['clean:data'], () => {
     });
 });
 
+const ASSETS = [
+  './src/browser/assets/**/*',
+  '!./src/browser/assets/sprites',
+  '!./src/browser/assets/sprites/*',
+];
+
+gulp.task('assets', ['clean', 'sprites'], () =>
+  gulp.src(ASSETS, { base: './src/browser/assets' })
+    .pipe(gulp.dest(config.output)));
+
+// --------
+// subtasks
+// --------
+
 gulp.task('sprites', () => {
   const spriteData = gulp.src('./src/browser/assets/sprites/*')
     .pipe(spritesmith({
@@ -77,16 +91,6 @@ gulp.task('sprites', () => {
 
   return mergestream(imgStream, cssStream);
 });
-
-const ASSETS = [
-  './src/browser/assets/**/*',
-  '!./src/browser/assets/sprites',
-  '!./src/browser/assets/sprites/*',
-];
-
-gulp.task('assets', ['clean'], () =>
-  gulp.src(ASSETS, { base: './src/browser/assets' })
-    .pipe(gulp.dest(config.output)));
 
 gulp.task('clean', () =>
   gulp.src([`${config.output}/*`])
