@@ -4,7 +4,6 @@ import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import { values } from 'ramda';
 
-import hydrateStore from './hydrateStore';
 import configureStore from './../../../universal/redux/configureStore';
 
 import * as watchers from './../../../universal/redux/sagaWatchers';
@@ -15,7 +14,7 @@ const loggerMiddleware = createLogger({
   collapsed: true,
 });
 
-const hydratedState = hydrateStore(document.body.getAttribute('data-redux-state'));
+const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 
 const ownMiddleware = [
   sagaMiddleware,
@@ -29,7 +28,7 @@ const enhancers = [
 ];
 
 const store = configureStore({
-  hydratedState,
+  initialState,
   ownMiddleware,
   enhancers,
 });

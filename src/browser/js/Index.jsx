@@ -1,23 +1,53 @@
 import React, { PropTypes } from 'react';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+
+import start from '../../universal/decorators/startDecorator';
+
+const messages = defineMessages({
+  title: {
+    id: 'seo.title',
+    defaultMessage: 'Index',
+  },
+  description: {
+    id: 'seo.description',
+    description: 'In EN, the "Teh" is intentional',
+    defaultMessage: 'Teh best boilerplate',
+  },
+  todos: {
+    id: 'index.todos',
+    defaultMessage: 'Todos',
+  },
+});
 
 const Index = props =>
   <div id="app-view">
     <Helmet
-      title="Index"
-      titleTemplate="%s | reactizer"
+      title={props.intl.formatMessage(messages.title)}
+      titleTemplate={`%s | ${props.appName}`}
       meta={[
-          { name: 'description', content: 'Teh best boilerplate' },
+          { name: 'description', content: props.intl.formatMessage(messages.description) },
           { property: 'og:type', content: 'boilerplate' },
       ]}
     />
-    <h1>Todos</h1>
+    <h1>
+      <FormattedMessage {...messages.todos} />
+    </h1>
     <hr />
     {props.children}
   </div>;
 
 Index.propTypes = {
   children: PropTypes.node,
+  appName: PropTypes.string,
+  intl: PropTypes.object,
 };
 
-export default Index;
+const connected = connect(state => ({
+  appName: state.config.appName,
+}))(Index);
+
+const intled = injectIntl(connected);
+
+export default start(intled);

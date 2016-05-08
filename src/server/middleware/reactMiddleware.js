@@ -9,7 +9,7 @@ import render from './../markup';
 
 import routes from './../../browser/js/router';
 import logger from './../../../etc/tools/logger';
-import { locales, defaultLocale } from './../../../etc/config';
+import { locales, defaultLocale, appName } from './../../../etc/config';
 
 function getInitialState(req) {
   const locale = req.acceptsLanguages(locales) || defaultLocale;
@@ -21,6 +21,9 @@ function getInitialState(req) {
       locales,
       initialNow: Date.now(),
       messages: fetchMessages(locale),
+    },
+    config: {
+      appName,
     },
   };
 }

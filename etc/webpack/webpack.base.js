@@ -4,7 +4,7 @@ import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 const reactIntl = ['react-intl', {
-  messagesDir: './../../data/locales',
+  messagesDir: join(__dirname, '../../data/locales'),
 }];
 
 const jsLoader = {

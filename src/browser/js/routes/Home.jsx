@@ -29,7 +29,7 @@ export default class Home extends Component { // eslint-disable-line react/prefe
       <div id="todo-list">
         <Link to="/about">About</Link>
         <TodosView
-          todos={todos}
+          todos={todos.list}
           {...bindActionCreators(todoActions, dispatch)}
         />
         <TodosForm

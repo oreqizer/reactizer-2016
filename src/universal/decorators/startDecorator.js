@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
 export default function (Wrapped) {

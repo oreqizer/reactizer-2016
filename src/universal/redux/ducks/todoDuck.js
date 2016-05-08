@@ -1,8 +1,9 @@
-import { List } from 'immutable';
+import { Record, List } from 'immutable';
+
+import { SUCCESS, LOADING } from '../../consts/asyncConsts';
 
 // TODO:
-// a very simplified example. no failure actions
-// no state checking like loading, etc...
+// a very simplified example. no error actions
 
 export const FETCH = 'todo/FETCH';
 export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
@@ -13,21 +14,37 @@ export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
 export const EDIT = 'todo/EDIT';
 export const DELETE = 'todo/DELETE';
 
-const todoState = new List();
+const InitialState = new Record({
+  list: new List(),
+  state: null,
+});
 
-export default function todoReducer(state = todoState, action) {
+export default function todoReducer(state = new InitialState(), action) {
+  if (!(state instanceof InitialState)) return new InitialState(state);
+
   switch (action.type) {
+    case FETCH:
+    case CREATE:
+      return state
+        .setIn(['state'], LOADING);
+
     case FETCH_SUCCESS:
-      return new List(action.todos);
+      return state
+        .setIn(['list'], new List(action.todos))
+        .setIn(['state'], SUCCESS);
 
     case CREATE_SUCCESS:
-      return state.push(action.text);
+      return state
+        .mergeIn(['list'], action.text)
+        .setIn(['state'], SUCCESS);
 
     case EDIT:
-      return state.set(action.id, action.text);
+      return state
+        .setIn(['list', action.id], action.text);
 
     case DELETE:
-      return state.delete(action.id);
+      return state
+        .deleteIn(['list', action.id]);
 
     default:
       return state;
