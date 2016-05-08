@@ -8,7 +8,7 @@ const Html = props =>
       {props.head.meta.toComponent()}
       {props.head.link.toComponent()}
       {props.head.script.toComponent()}
-      {props.assets.css && <link href={props.assets.main.css} rel="stylesheet" />}
+      <link href={props.assets.main.css} rel="stylesheet" />
     </head>
     <body data-redux-state={props.state}>
       <div id="react-view">{props.children}</div>
