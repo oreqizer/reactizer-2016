@@ -57,7 +57,7 @@ gulp.task('messages', ['clean:data'], () => {
     }))
     .on('end', () => {
       messages.sort((a, b) => a.id.localeCompare(b.id));
-      outputJsonSync('./data/locales/en.json', messages, { spaces: 2 });
+      outputJsonSync('./data/locales/_default.json', messages, { spaces: 2 });
     });
 });
 
