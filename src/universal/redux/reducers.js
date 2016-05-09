@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import config from './ducks/configDuck';
-import intl from './ducks/intlDuck';
-import todos from './ducks/todoDuck';
+import config from './modules/config/configDuck';
+import intl from './modules/intl/intlDuck';
+import todos from './modules/todo/todoDuck';
 
 export default combineReducers({
   config,

@@ -1,18 +1,19 @@
 import { Record, List, fromJS } from 'immutable';
 
-import { SUCCESS, LOADING } from '../../consts/asyncConsts';
+import { SUCCESS, LOADING } from '../../../consts/asyncConsts';
+
+import {
+  FETCH,
+  FETCH_SUCCESS,
+  CREATE,
+  CREATE_SUCCESS,
+  EDIT,
+  DELETE,
+} from './todoActions';
 
 // TODO:
 // a very simplified example. no error actions
-
-export const FETCH = 'todo/FETCH';
-export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
-
-export const CREATE = 'todo/CREATE';
-export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
-
-export const EDIT = 'todo/EDIT';
-export const DELETE = 'todo/DELETE';
+// EDIT and DELETE are not persistent
 
 const InitialState = new Record({
   list: new List(),

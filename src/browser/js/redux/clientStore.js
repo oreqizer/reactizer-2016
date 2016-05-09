@@ -6,7 +6,7 @@ import { values } from 'ramda';
 
 import configureStore from './../../../universal/redux/configureStore';
 
-import * as watchers from './../../../universal/redux/sagaWatchers';
+import * as watchers from './../../../universal/redux/watchers';
 
 const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);

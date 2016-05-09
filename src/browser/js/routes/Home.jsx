@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import * as todoActions from './../../../universal/redux/ducks/todoDuck';
-import todoSagas from './../../../universal/redux/sagas/todoSagas';
+import * as todoActions from './../../../universal/redux/modules/todo/todoDuck';
+import { fetchTodos } from './../../../universal/redux/modules/todo/todoSagas';
 
 import TodosView from './../modules/Todo/TodosView';
 import TodosForm from './../modules/Todo/TodosForm';
@@ -19,7 +19,7 @@ export default class Home extends Component { // eslint-disable-line react/prefe
   };
 
   static needs = [
-    todoSagas.fetchTodos,
+    fetchTodos,
   ];
 
   render() {
