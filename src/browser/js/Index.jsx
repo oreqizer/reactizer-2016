@@ -7,11 +7,11 @@ import start from '../../universal/decorators/startDecorator';
 
 const messages = defineMessages({
   title: {
-    id: 'seo.title',
+    id: 'seo.title.index',
     defaultMessage: 'Index',
   },
   description: {
-    id: 'seo.description',
+    id: 'seo.description.index',
     description: 'In EN, the "Teh" is intentional',
     defaultMessage: 'Teh best boilerplate',
   },

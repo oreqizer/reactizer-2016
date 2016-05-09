@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -9,9 +9,11 @@ import Html from './Html.jsx';
 import fetchAssetInfo from './../tools/fetchAssetInfo';
 
 const renderApp = (store, props) =>
-  <Provider store={store}>
-    <RouterContext {...props} />
-  </Provider>;
+  renderToString(
+    <Provider store={store}>
+      <RouterContext {...props} />
+    </Provider>
+  );
 
 export default function (store, renderProps) {
   const assets = fetchAssetInfo();
@@ -25,9 +27,8 @@ export default function (store, renderProps) {
       head={head}
       assets={assets}
       state={reduxState}
-    >
-      {app}
-    </Html>
+      app={app}
+    />
   );
 
   return `<!DOCTYPE html>${html}`;

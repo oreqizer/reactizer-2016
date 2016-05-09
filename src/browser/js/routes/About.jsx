@@ -8,8 +8,8 @@ const messages = defineMessages({
     defaultMessage: 'Some arbitary text',
   },
   home: {
-    id: 'about.home',
-    defaultMessage: 'Home',
+    id: 'about.todos',
+    defaultMessage: 'Todos',
   },
 });
 

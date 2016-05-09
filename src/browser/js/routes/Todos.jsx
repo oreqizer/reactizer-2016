@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 import * as todoActions from './../../../universal/redux/modules/todo/todoDuck';
 import { fetchTodos } from './../../../universal/redux/modules/todo/todoSagas';
+import { EMPTY } from '../../../universal/consts/stateConsts';
 
 import TodosView from './../modules/Todo/TodosView';
 import TodosForm from './../modules/Todo/TodosForm';
@@ -21,6 +22,14 @@ export default class Home extends Component { // eslint-disable-line react/prefe
   static needs = [
     fetchTodos,
   ];
+
+  componentDidMount() {
+    const { todos, dispatch } = this.props;
+
+    if (todos.state === EMPTY) {
+      dispatch(todoActions.fetchTodos());
+    }
+  }
 
   render() {
     const { todos, dispatch } = this.props;

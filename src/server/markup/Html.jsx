@@ -11,7 +11,10 @@ const Html = props =>
       <link href={props.assets.main.css} rel="stylesheet" />
     </head>
     <body data-redux-state={props.state}>
-      <div id="react-view">{props.children}</div>
+      <div
+        id="react-view"
+        dangerouslySetInnerHTML={{ __html: props.app }}
+      />
       <script src={props.assets.main.js} />
     </body>
   </html>;
@@ -21,6 +24,7 @@ Html.propTypes = {
   assets: PropTypes.object.isRequired,
   state: PropTypes.string.isRequired,
   children: PropTypes.object.isRequired,
+  app: PropTypes.string.isRequired,
 };
 
 export default Html;

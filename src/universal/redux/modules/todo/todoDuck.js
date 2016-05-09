@@ -1,6 +1,6 @@
 import { Record, List, fromJS } from 'immutable';
 
-import { SUCCESS, LOADING } from '../../../consts/asyncConsts';
+import { CLEAN, SUCCESS, LOADING } from '../../../consts/stateConsts';
 
 import {
   FETCH,
@@ -17,7 +17,7 @@ import {
 
 const InitialState = new Record({
   list: new List(),
-  state: null,
+  state: CLEAN,
 });
 
 export default function todoReducer(state = new InitialState(), action) {
