@@ -23,7 +23,6 @@ Html.propTypes = {
   head: PropTypes.object.isRequired,
   assets: PropTypes.object.isRequired,
   state: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
   app: PropTypes.string.isRequired,
 };
 

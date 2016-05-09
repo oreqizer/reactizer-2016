@@ -35,7 +35,7 @@ nconf.defaults({
   output,
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
-  locales: ['cs', 'de', 'es', 'en', 'fr', 'no', 'pt', 'ro'],
+  locales: ['en'],
   port: 3000,
   portDev: 8080,
 });

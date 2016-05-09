@@ -2,6 +2,7 @@ import { outputJsonSync } from 'fs-extra';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import clean from 'gulp-clean';
+import rename from 'gulp-rename';
 import spritesmith from 'gulp.spritesmith';
 import webpack from 'webpack';
 import shell from 'shelljs';
@@ -73,6 +74,11 @@ const ASSETS = [
 gulp.task('assets', ['clean', 'sprites'], () =>
   gulp.src(ASSETS, { base: './src/browser/assets' })
     .pipe(gulp.dest(config.output)));
+
+gulp.task('locales:test', ['messages'], () =>
+  gulp.src('./data/locales/_default.json')
+    .pipe(rename('en.json'))
+    .pipe(gulp.dest('./data/locales')));
 
 // --------
 // subtasks
