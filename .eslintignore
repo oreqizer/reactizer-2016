@@ -3,4 +3,4 @@ dist/**
 .tmp/**
 android/**
 ios/**
-__tests__/*
+**/__tests__/*.js
