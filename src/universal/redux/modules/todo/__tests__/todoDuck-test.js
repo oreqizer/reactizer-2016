@@ -1,4 +1,8 @@
-import * as actions from '../todoDuck';
+import { List } from 'immutable';
+
+import { CLEAN } from '../../../../consts/stateConsts';
+
+import reducer, * as actions from '../todoDuck';
 import {
   FETCH,
   CREATE,
@@ -47,5 +51,14 @@ describe('todo action creators', () => {
     };
 
     expect(actions.deleteTodo(id)).toEqual(expected);
+  });
+});
+
+describe('todo reducer', () => {
+  it('should return initial state', () => {
+    const { todos, state } = reducer(undefined, {});
+
+    expect(todos.equals(new List())).toBe(true);
+    expect(state).toBe(CLEAN);
   });
 });
