@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import { injectIntl, intlShape } from 'react-intl';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
+@injectIntl // TODO use
 export default class TodosForm extends Component {
   static propTypes = {
-    createTodo: PropTypes.func,
-    fetchTodos: PropTypes.func,
+    intl: intlShape.isRequired,
+    createTodo: PropTypes.func.isRequired,
+    fetchTodos: PropTypes.func.isRequired,
   };
 
   @autobind
