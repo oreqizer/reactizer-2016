@@ -45,7 +45,7 @@ gulp.task('build', ['assets'], cb =>
   })
 );
 
-gulp.task('messages', ['clean:data'], () => {
+gulp.task('messages', () => {
   let messages = [];
 
   const getMessages = code => babel.transform(code, {

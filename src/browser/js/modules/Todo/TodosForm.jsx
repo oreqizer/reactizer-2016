@@ -5,7 +5,7 @@ import { autobind } from 'core-decorators';
 export default class TodosForm extends Component {
   static propTypes = {
     createTodo: PropTypes.func,
-    fetchTodos: PropTypes.func
+    fetchTodos: PropTypes.func,
   };
 
   @autobind

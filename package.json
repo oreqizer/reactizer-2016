@@ -1,6 +1,6 @@
 {
   "name": "reactizer",
-  "version": "0.2.0-beta3",
+  "version": "0.2.1-alpha7",
   "description": "The most hipster React boilerplate",
   "repository": {
     "type": "git",
@@ -10,13 +10,12 @@
     "start": "nodemon --exec babel-node ./src/server/server.dev.js",
     "server": "babel-node ./src/server/server.js",
     "server:beta": "NODE_ENV=beta babel-node ./src/server/server.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint ./**/*.{js,jsx}",
+    "lint:fix": "eslint ./**/*.{js,jsx} --fix",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "native": "node node_modules/react-native/local-cli/cli.js start",
-    "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "babel": "babel ./src/browser/js/app.jsx"
+    "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache"
   },
   "author": "oreqizer",
   "license": "MIT",
