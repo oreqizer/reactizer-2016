@@ -16,7 +16,7 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "test": "jest",
+    "test": "jest --verbose",
     "test:watch": "jest --watch"
   },
   "author": "oreqizer",
