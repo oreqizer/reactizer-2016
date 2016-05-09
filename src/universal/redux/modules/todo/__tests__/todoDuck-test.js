@@ -11,6 +11,7 @@ import {
 } from '../todoActions';
 
 jest.unmock('../todoDuck');
+jest.unmock('immutable');
 
 describe('todo action creators', () => {
   it('should make a fetch action', () => {
@@ -56,9 +57,9 @@ describe('todo action creators', () => {
 
 describe('todo reducer', () => {
   it('should return initial state', () => {
-    const { todos, state } = reducer(undefined, {});
+    const { list, state } = reducer(undefined, {});
 
-    expect(todos.equals(new List())).toBe(true);
+    expect(list.equals(new List())).toBe(true);
     expect(state).toBe(CLEAN);
   });
 });
