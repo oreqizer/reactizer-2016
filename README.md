@@ -2,6 +2,8 @@
 
 A React boilerplate that's always ahead!
 
+[![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
+
 ## WORK IN PROGRESS
 
 I change stuff. A lot. I move folders, files, change dependencies etc. Please keep that in mind. This is a very fresh project and frequent changes are inevitable. Keep calm - this is all temporary.
@@ -22,21 +24,27 @@ If you find anything outdated, feel free to submit a pull request with an update
 
 ### Tasks
 
-Simply `npm i`. Then you have these following tasks available:
+Simply `npm i` and `npm i gulp -g`. Then you have these following tasks available:
 
-* `npm start` - run when you want to develop
-* `npm run build` - builds assets for production
-* `npm run build:beta` - bu ilds assets for beta
-* `npm run server` - runs the server for production (note: no static asset serving)
-* `npm run server:beta` - runs the server for beta
-* `npm run lint` - runs eslint
-* `npm run lint:fix` - runs eslint and fixes problems, if it can
-* `npm run ios` - runs react native ios
-* `npm run android` - runs react native android
-* `npm run native` - runs react native server
-* `npm run native:clean` - runs react native server and clears the cache
-
-I'm slowly moving tasks to **Gulp**. I'll update this once I'm done.
+* `gulp start` - run when you want to develop
+* `gulp server` - runs the server for production (note: no static asset serving)
+* `gulp build` - builds assets for production
+* `gulp verify` - runs all tests and eslint
+* `gulp ios` - runs react native ios
+* `gulp android` - runs react native android
+* `gulp native` - runs react native server
+* `gulp native:clean` - runs react native server and clears the cache
+* `gulp lint` - runs eslint
+* `gulp lint:tests` - runs eslint and fixes problems, if it can
+* `gulp lint:fix` - runs eslint and fixes problems, if it can
+* `gulp test` - runs tests
+* `gulp test:watch` - runs tests in watch mode
+* `gulp messages` - collects `react-intl`'s default messages
+* `gulp assets` - cleans up, makes sprites and moves files
+* `gulp locales:default` - copies `_default.json` to `en.json` to test real messages
+* `gulp sprites` - makes sprites - keep those in `src/browser/assets/sprites`
+* `gulp clean` - cleans distribution directory based on config
+* `gulp clean:all` - cleans all distribution directories
 
 ### Philosophy
 

@@ -43,6 +43,19 @@ gulp.task('build', ['assets'], cb =>
 
 gulp.task('verify', ['test', 'lint', 'lint:tests']);
 
+// ------
+// native
+// ------
+
+const nativebase = 'node node_modules/react-native/local-cli/cli.js';
+gulp.task('ios', nodeShell(`${nativebase} run-ios`, { raw: true }));
+
+gulp.task('android', nodeShell(`${nativebase} run-android`, { raw: true }));
+
+gulp.task('native', nodeShell(`${nativebase} start`, { raw: true }));
+
+gulp.task('native:clean', nodeShell(`${nativebase} start --reset-cache`, { raw: true }));
+
 // -----
 // tests
 // -----
