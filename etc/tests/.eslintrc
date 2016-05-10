@@ -1,0 +1,11 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "env": {
+    "node": true,
+    "jasmine": true
+  },
+  "globals": {
+    "jest": true
+  }
+}

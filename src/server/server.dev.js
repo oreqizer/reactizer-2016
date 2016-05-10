@@ -5,7 +5,7 @@ import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 
 import config from './../../etc/webpack/webpack.dev';
-import logger from './../../etc/tools/logger';
+import logger from '../../etc/lib/logger';
 import { TMP, portDev } from './../../etc/config';
 
 import reactMiddleware from './middleware/reactMiddleware';

@@ -8,7 +8,7 @@ import fetchData from './../tools/fetchData';
 import render from './../markup';
 
 import routes from './../../browser/js/router';
-import logger from './../../../etc/tools/logger';
+import logger from '../../../etc/lib/logger';
 import { locales, defaultLocale, appName } from './../../../etc/config';
 
 function getInitialState(req) {

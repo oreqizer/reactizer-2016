@@ -1,7 +1,7 @@
 import { join } from 'path';
 import express from 'express';
 
-import logger from './../../etc/tools/logger';
+import logger from '../../etc/lib/logger';
 import { port, production, output } from './../../etc/config';
 
 import reactMiddleware from './middleware/reactMiddleware';
