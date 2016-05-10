@@ -19,7 +19,6 @@
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.3.6",
     "axios": "^0.11.0",
-    "babel-cli": "^6.8.0",
     "chalk": "^1.1.3",
     "core-decorators": "^0.12.2",
     "css-loader": "^0.23.1",
@@ -61,8 +60,8 @@
     "webpack-visualizer-plugin": "^0.1.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.7",
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-jest": "^12.0.2",
     "babel-loader": "^6.2.4",
@@ -79,7 +78,7 @@
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^1.1.0",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "^5.1.1",
     "immutable-devtools": "0.0.7",
     "jest-cli": "^12.0.2",
     "nodemon": "^1.9.1",
