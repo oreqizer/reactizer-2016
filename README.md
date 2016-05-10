@@ -26,12 +26,20 @@ If you find anything outdated, feel free to submit a pull request with an update
 
 Simply `npm i` and `npm i gulp -g`. Then you have these following tasks available:
 
-* `gulp start` - run when you want to develop
-* `gulp server` - runs the server for production (note: no static asset serving)
-* `gulp build` - builds assets for production
+**CORE**
+
+Web:
+* `gulp start` - starts HMR and server (default at *:8080*)
+* `gulp server` - runs the server (note: no static asset in production mode)
+* `gulp build` - builds all assets and sources
 * `gulp verify` - runs all tests and eslint
+
+Native:
 * `gulp ios` - runs react native ios
 * `gulp android` - runs react native android
+
+**OTHER**
+
 * `gulp native` - runs react native server
 * `gulp native:clean` - runs react native server and clears the cache
 * `gulp lint` - runs eslint
