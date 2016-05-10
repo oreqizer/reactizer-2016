@@ -7,18 +7,8 @@
     "url": "https://github.com/oreqizer/reactizer.git"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/server/server.dev.js",
-    "server": "babel-node ./src/server/server.js",
-    "server:beta": "NODE_ENV=beta babel-node ./src/server/server.js",
-    "lint": "eslint './**/*.{js,jsx}'",
-    "lint:tests": "eslint './**/*.{js,jsx}' --ignore-path './etc/tests/.eslintignore' -c './etc/tests/.eslintrc'",
-    "lint:fix": "eslint './**/*.{js,jsx}' --fix",
-    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-    "android": "node node_modules/react-native/local-cli/cli.js run-android",
-    "native": "node node_modules/react-native/local-cli/cli.js start",
-    "native:clean": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "test": "jest --verbose",
-    "test:watch": "jest --watch"
+    "start": "gulp start",
+    "test": "gulp test"
   },
   "author": "oreqizer",
   "license": "MIT",
