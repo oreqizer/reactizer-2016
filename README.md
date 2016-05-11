@@ -1,4 +1,4 @@
-# Reactizer
+# REACTIZER
 
 A React boilerplate that's always ahead!
 
