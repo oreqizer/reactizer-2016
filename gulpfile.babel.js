@@ -21,7 +21,8 @@ gulp.task('default', ['start']);
 const start = 'nodemon --exec ./node_modules/.bin/babel-node ./src/server/server.dev.js --color';
 gulp.task('start', ['assets'], nodeShell(start));
 
-gulp.task('server', ['build'], nodeShell(`node ${config.output}/server/server.js --color`, { raw: true }));
+const server = `node ${config.output}/server/server.js --color`;
+gulp.task('server', ['build'], nodeShell(server, { raw: true }));
 
 gulp.task('build', ['build:node', 'build:client']);
 
@@ -153,11 +154,11 @@ gulp.task('sprites', () => {
 });
 
 gulp.task('clean', () =>
-  gulp.src([`${config.output}/**`])
+  gulp.src(`${config.output}/**`, { read: false })
     .pipe(plumber())
-    .pipe(clean({ force: true })));
+    .pipe(clean()));
 
 gulp.task('clean:all', () =>
-  gulp.src([`${config.TMP}/**`, `${config.DIST}/**`])
+  gulp.src([`${config.TMP}/**`, `${config.DIST}/**`], { read: false })
     .pipe(plumber())
-    .pipe(clean({ force: true })));
+    .pipe(clean()));
