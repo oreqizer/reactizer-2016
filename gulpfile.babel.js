@@ -1,17 +1,18 @@
 import { outputJsonSync } from 'fs-extra';
+import { transform } from 'babel-core';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
+import babel from 'gulp-babel';
 import clean from 'gulp-clean';
 import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import spritesmith from 'gulp.spritesmith';
 import webpack from 'webpack';
-import * as babel from 'babel-core';
 import through from 'through2';
 import mergestream from 'merge-stream';
 
 import buildConfig from './etc/webpack/webpack.build';
-import config from './etc/config';
+import config from './src/server/config';
 
 import nodeShell from './etc/utils/nodeShell';
 
@@ -20,9 +21,21 @@ gulp.task('default', ['start']);
 const start = 'nodemon --exec ./node_modules/.bin/babel-node ./src/server/server.dev.js --color';
 gulp.task('start', ['assets'], nodeShell(start));
 
-gulp.task('server', ['build'], nodeShell('babel-node ./src/server/server.js --color'));
+gulp.task('server', ['build'], nodeShell(`node ${config.output}/server/server.js --color`, { raw: true }));
 
-gulp.task('build', ['assets'], cb =>
+gulp.task('build', ['build:node', 'build:client']);
+
+gulp.task('build:node', () =>
+  gulp.src([
+    './src/**/*.{js,jsx}',
+    '!**/__tests__/**',
+    '!./src/native/**',
+  ])
+    .pipe(plumber())
+    .pipe(babel())
+    .pipe(gulp.dest(config.output)));
+
+gulp.task('build:client', ['assets'], cb =>
   webpack(buildConfig, (err, stats) => {
     if (err) {
       throw new gutil.PluginError('webpack', err);
@@ -71,7 +84,7 @@ gulp.task('test:watch', ['lint:tests'], nodeShell('jest --watch'));
 gulp.task('messages', () => {
   let messages = [];
 
-  const getMessages = code => babel.transform(code, {
+  const getMessages = code => transform(code, {
     presets: ['react', 'es2015', 'stage-1'],
     plugins: ['react-intl', 'transform-decorators-legacy'],
   }).metadata['react-intl'].messages;
@@ -112,10 +125,10 @@ gulp.task('locales:default', ['messages'], () =>
 const lintbase = 'eslint ./**/*.{js,jsx}';
 gulp.task('lint', nodeShell(lintbase));
 
-const linttest = '--ignore-path ./etc/tests/.eslintignore -c ./etc/tests/.eslintrc';
+const linttest = ' --ignore-path ./etc/tests/.eslintignore -c ./etc/tests/.eslintrc';
 gulp.task('lint:tests', nodeShell(lintbase + linttest));
 
-const lintfix = '--fix';
+const lintfix = ' --fix';
 gulp.task('lint:fix', nodeShell(lintbase + lintfix));
 
 // --------
@@ -140,11 +153,11 @@ gulp.task('sprites', () => {
 });
 
 gulp.task('clean', () =>
-  gulp.src([`${config.output}/*`])
+  gulp.src([`${config.output}/**`])
     .pipe(plumber())
-    .pipe(clean()));
+    .pipe(clean({ force: true })));
 
 gulp.task('clean:all', () =>
-  gulp.src([`${config.TMP}/*`, `${config.DIST}/*`])
+  gulp.src([`${config.TMP}/**`, `${config.DIST}/**`])
     .pipe(plumber())
-    .pipe(clean()));
+    .pipe(clean({ force: true })));

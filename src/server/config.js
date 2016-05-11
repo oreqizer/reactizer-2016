@@ -7,7 +7,7 @@ const production = nconf.get('production');
 // set ENV for Node here - webpack sets it for itself
 process.env.NODE_ENV = production ? 'production' : 'dev';
 
-const appName = readJsonSync(join(__dirname, '../package.json')).name;
+const appName = readJsonSync(join(__dirname, '../../package.json')).name;
 
 const OUTPUTS = {
   TMP: '.tmp',

@@ -4,7 +4,7 @@ import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import Html from './Html.jsx';
+import Html from './Html';
 
 import fetchAssetInfo from './../tools/fetchAssetInfo';
 

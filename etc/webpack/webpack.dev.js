@@ -2,7 +2,7 @@ import { join } from 'path';
 import webpack from 'webpack';
 
 import base from './webpack.base';
-import { TMP } from './../config';
+import { TMP } from './../../src/server/config';
 
 const styleLoader = {
   test: /\.styl$/,

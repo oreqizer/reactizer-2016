@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { readJsonSync } from 'fs-extra';
 
-import logger from '../../../etc/lib/logger';
+import logger from './logger';
 
 export default function (locale) {
   try {
