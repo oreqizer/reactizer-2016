@@ -3,36 +3,26 @@ import util from 'util';
 import chalk from 'chalk';
 // TODO consider winston in a real app
 
-function info(...messages) {
+const report = (prefix, messages) => {
   messages.forEach(msg => {
-    process.stdout.write(`${chalk.cyan('[INFO]')}: `);
-    process.stdout.write(util.format(msg));
-    process.stdout.write('\n');
+    process.stdout.write(`${prefix}: ${util.format(msg)}\n`);
   });
+};
+
+function info(...messages) {
+  report(chalk.cyan('[INFO]'), messages);
 }
 
 function success(...messages) {
-  messages.forEach(msg => {
-    process.stdout.write(`${chalk.green('[SUCCESS]')}: `);
-    process.stdout.write(util.format(msg));
-    process.stdout.write('\n');
-  });
+  report(chalk.green('[SUCCESS]'), messages);
 }
 
 function warn(...messages) {
-  messages.forEach(msg => {
-    process.stderr.write(`${chalk.yellow('[WARNING]')}: `);
-    process.stderr.write(util.format(msg));
-    process.stderr.write('\n');
-  });
+  report(chalk.yellow('[WARNING]'), messages);
 }
 
 function error(...messages) {
-  messages.forEach(msg => {
-    process.stderr.write(`${chalk.red('[ERROR]')}: `);
-    process.stderr.write(util.format(msg));
-    process.stderr.write('\n');
-  });
+  report(chalk.red('[ERROR]'), messages);
 }
 
 export default {
