@@ -73,8 +73,7 @@
     "stylus-loader": "^2.0.0",
     "through2": "^2.0.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.7",
-    "webpack-visualizer-plugin": "^0.1.5"
+    "webpack": "^2.1.0-beta.7"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

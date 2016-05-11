@@ -30,18 +30,16 @@ local.properties
 
 # node.js
 #
-node_modules
+node_modules/
+npm-debug.log
 
 # BUCK
-#
 buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
 
-# Local
-#
-.idea
-data
-dist
+# custom
 .tmp
+dist
+data
