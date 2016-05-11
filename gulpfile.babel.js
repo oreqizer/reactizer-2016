@@ -109,10 +109,10 @@ gulp.task('locales:default', ['messages'], () =>
 // lint
 // ----
 
-const lintbase = 'eslint "./**/*.{js,jsx}"';
+const lintbase = 'eslint ./**/*.{js,jsx}';
 gulp.task('lint', nodeShell(lintbase));
 
-const linttest = '--ignore-path "./etc/tests/.eslintignore" -c "./etc/tests/.eslintrc"';
+const linttest = '--ignore-path ./etc/tests/.eslintignore -c ./etc/tests/.eslintrc';
 gulp.task('lint:tests', nodeShell(lintbase + linttest));
 
 const lintfix = '--fix';
