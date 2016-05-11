@@ -2,11 +2,6 @@ import { join } from 'path';
 import { readJsonSync } from 'fs-extra';
 import nconf from 'nconf';
 
-const production = nconf.get('production');
-
-// set ENV for Node here - webpack sets it for itself
-process.env.NODE_ENV = production ? 'production' : 'dev';
-
 const appName = readJsonSync(join(__dirname, '../../package.json')).name;
 
 const OUTPUTS = {
@@ -23,7 +18,14 @@ nconf.env('__');
 // allow command-line args
 nconf.argv();
 
-const output = nconf.get('production') ? OUTPUTS.DIST : OUTPUTS.TMP;
+const production = nconf.get('production') || process.env.NODE_ENV === 'production';
+
+// set ENV for Node here - webpack sets it for itself
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = production ? 'production' : 'dev';
+}
+
+const output = production ? OUTPUTS.DIST : OUTPUTS.TMP;
 
 // DEV: secrets in some JSON file, TODO: add one
 // PRODUCTION: secrets from environment variables

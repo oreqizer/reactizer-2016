@@ -154,11 +154,11 @@ gulp.task('sprites', () => {
 });
 
 gulp.task('clean', () =>
-  gulp.src(`${config.output}/**`, { read: false })
+  gulp.src(`${config.output}/**/*`, { read: false })
     .pipe(plumber())
     .pipe(clean()));
 
 gulp.task('clean:all', () =>
-  gulp.src([`${config.TMP}/**`, `${config.DIST}/**`], { read: false })
+  gulp.src([`${config.TMP}/**/*`, `${config.DIST}/**/*`], { read: false })
     .pipe(plumber())
     .pipe(clean()));
