@@ -20,7 +20,7 @@ gulp.task('default', ['start']);
 const start = 'nodemon --exec ./node_modules/.bin/babel-node ./src/server/server.dev.js --color';
 gulp.task('start', ['assets'], nodeShell(start));
 
-gulp.task('server', ['build'], nodeShell('babel-node ./src/server/server.js'));
+gulp.task('server', ['build'], nodeShell('babel-node ./src/server/server.js --color'));
 
 gulp.task('build', ['assets'], cb =>
   webpack(buildConfig, (err, stats) => {
