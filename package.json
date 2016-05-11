@@ -7,8 +7,14 @@
     "url": "https://github.com/oreqizer/reactizer.git"
   },
   "scripts": {
-    "start": "gulp start",
-    "test": "gulp verify"
+    "start": "gulp",
+    "test": "gulp verify",
+    "server": "gulp server",
+    "build": "gulp build",
+    "ios": "gulp ios",
+    "android": "gulp android",
+    "native": "gulp native",
+    "native:clean": "gulp native:clean"
   },
   "author": "oreqizer",
   "license": "MIT",
