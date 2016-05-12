@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
   },
 });
 
+
+// REACT NATIVE 0.26: comment this
 const App = () =>
   <View style={styles.container}>
     <Text style={styles.welcome}>
@@ -39,3 +41,24 @@ const App = () =>
   </View>;
 
 export default App;
+
+
+// REACT NATIVE 0.26: uncomment this
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Text style={styles.welcome}>
+//           Welcome to Reactizer's React Native!
+//         </Text>
+//         <Text style={styles.instructions}>
+//           To get started, edit ./src/native/index.js
+//         </Text>
+//         <Text style={styles.instructions}>
+//           Press Cmd+R to reload,{'\n'}
+//           Cmd+D or shake for dev menu
+//         </Text>
+//       </View>
+//     );
+//   }
+// }
