@@ -22,6 +22,10 @@ If you find anything outdated, feel free to submit a pull request with an update
 
 * Koa2 (once Node supports `async await`)
 
+### Note:
+
+As of React Native v. 0.26-rc, HMR on functional components is broken. I'm working on making it work ASAP.
+
 ### Tasks
 
 Simply `npm i` and `npm i gulp -g`. Then you have these following tasks available:
