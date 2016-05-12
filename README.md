@@ -31,8 +31,8 @@ Simply `npm i` and `npm i gulp -g`. Then you have these following tasks availabl
 Web:
 * `gulp` - runs `gulp start`
 * `gulp start` - starts HMR and server (default at *:8080*)
-* `gulp server` - runs the server (note: no static asset in production mode)
-* `gulp build` - builds all assets and sources
+* `gulp server` - builds and runs the server (note: no static asset in production mode)
+* `gulp build` - builds all web assets and sources
 * `gulp verify` - runs all tests and eslint
 
 Native:
@@ -43,8 +43,9 @@ Native:
 
 **OTHER**
 
+* `gulp build:client` - builds client-related web stuff
+* `gulp build:server` - builds server-related web stuff
 * `gulp lint` - runs eslint
-* `gulp lint:tests` - runs eslint and fixes problems, if it can
 * `gulp lint:fix` - runs eslint and fixes problems, if it can
 * `gulp test` - runs tests
 * `gulp test:watch` - runs tests in watch mode
