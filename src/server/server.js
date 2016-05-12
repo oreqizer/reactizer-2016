@@ -1,8 +1,10 @@
+import 'babel-polyfill';
+// babel's regenerator-runtime ready
 import { join } from 'path';
 import express from 'express';
 
-import logger from '../../etc/lib/logger';
-import { port, production, output } from './../../etc/config';
+import logger from './tools/logger';
+import { port, production, output } from './config';
 
 import reactMiddleware from './middleware/reactMiddleware';
 

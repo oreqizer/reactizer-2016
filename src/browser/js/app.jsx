@@ -7,7 +7,7 @@ import immutableDevtools from 'immutable-devtools';
 // nice console logs
 immutableDevtools(immutable);
 
-import Root from './modules/Root.jsx';
+import Root from './modules/Root';
 
 const view = document.getElementById('react-view');
 
@@ -22,7 +22,7 @@ render(
 
 /* eslint-disable no-undef */
 if (module.hot) {
-  module.hot.accept('./modules/Root.jsx', () => {
+  module.hot.accept('./modules/Root', () => {
     render(
       <Root />,
       view

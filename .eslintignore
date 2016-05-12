@@ -3,4 +3,3 @@ dist/**
 .tmp/**
 android/**
 ios/**
-**/__tests__/**
