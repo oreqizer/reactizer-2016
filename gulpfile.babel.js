@@ -31,6 +31,7 @@ gulp.task('build:node', () =>
     './src/**/*.{js,jsx}',
     '!**/__tests__/**',
     '!./src/native/**',
+    '!**/*.dev.*',
   ])
     .pipe(plumber())
     .pipe(babel())

@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { spawn } from 'child_process';
-
-import logger from '../../src/server/tools/logger';
+import gutil from 'gulp-util';
+import chalk from 'chalk';
 
 /**
  * @param fullCommand {string} command + args to run
@@ -13,8 +13,7 @@ export default function (fullCommand, options = {}) {
     const [command, ...args] = fullCommand.split(' ');
     const prefix = options.raw ? '' : join(__dirname, '../../node_modules/.bin/');
 
-    logger.info(prefix + command);
-    logger.info(args.join(' '));
+    gutil.log(`Executing ${chalk.yellow([command, ...args].join(' '))}`);
 
     const child = spawn(prefix + command, args, {
       stdio: 'inherit',
