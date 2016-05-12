@@ -11,6 +11,7 @@ nconf.env('__');
 nconf.argv();
 
 const production = process.env.NODE_ENV === 'production';
+const output = process.env.OUTPUT_DIR;
 
 // DEV: secrets in some JSON file, TODO: add one
 // PRODUCTION: secrets from environment variables
@@ -18,6 +19,7 @@ const production = process.env.NODE_ENV === 'production';
 
 nconf.defaults({
   production,
+  output,
   appName,
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',

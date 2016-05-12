@@ -20,6 +20,9 @@ if (!process.env.NODE_ENV) {
 
 const output = production ? OUTPUTS.DIST : OUTPUTS.TMP;
 
+// set output directory for servers
+process.env.OUTPUT_DIR = output;
+
 nconf.defaults({
   production,
   output,
