@@ -3,7 +3,7 @@ import { transform } from 'babel-core';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import babel from 'gulp-babel';
-import clean from 'gulp-clean';
+import rimraf from 'gulp-rimraf';
 import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import spritesmith from 'gulp.spritesmith';
@@ -55,7 +55,7 @@ gulp.task('build:client', ['assets'], cb =>
   })
 );
 
-gulp.task('verify', ['test', 'lint', 'lint:tests']);
+gulp.task('verify', ['test', 'lint']);
 
 // ------
 // native
@@ -74,9 +74,9 @@ gulp.task('native:clean', nodeShell(`${nativebase} start --reset-cache`, { raw: 
 // tests
 // -----
 
-gulp.task('test', ['lint:tests'], nodeShell('jest --verbose'));
+gulp.task('test', ['lint'], nodeShell('jest --verbose'));
 
-gulp.task('test:watch', ['lint:tests'], nodeShell('jest --watch'));
+gulp.task('test:watch', ['lint'], nodeShell('jest --watch'));
 
 // ------
 // assets
@@ -126,9 +126,6 @@ gulp.task('locales:default', ['messages'], () =>
 const lintbase = 'eslint ./**/*.{js,jsx}';
 gulp.task('lint', nodeShell(lintbase));
 
-const linttest = ' --ignore-path ./etc/tests/.eslintignore -c ./etc/tests/.eslintrc';
-gulp.task('lint:tests', nodeShell(lintbase + linttest));
-
 const lintfix = ' --fix';
 gulp.task('lint:fix', nodeShell(lintbase + lintfix));
 
@@ -156,9 +153,9 @@ gulp.task('sprites', () => {
 gulp.task('clean', () =>
   gulp.src(`${config.output}/**/*`, { read: false })
     .pipe(plumber())
-    .pipe(clean()));
+    .pipe(rimraf()));
 
 gulp.task('clean:all', () =>
   gulp.src([`${config.TMP}/**/*`, `${config.DIST}/**/*`], { read: false })
     .pipe(plumber())
-    .pipe(clean()));
+    .pipe(rimraf()));
