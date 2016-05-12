@@ -12,7 +12,7 @@ import through from 'through2';
 import mergestream from 'merge-stream';
 
 import buildConfig from './etc/webpack/webpack.build';
-import config from './src/server/config';
+import config from './etc/config';
 
 import nodeShell from './etc/utils/nodeShell';
 

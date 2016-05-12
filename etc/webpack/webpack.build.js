@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
-import { output } from './../../src/server/config';
+import { output } from './../config';
 
 const styleLoader = {
   test: /\.styl$/,
