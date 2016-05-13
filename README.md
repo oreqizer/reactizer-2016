@@ -18,13 +18,11 @@ A React boilerplate that's always ahead!
 
 If you find anything outdated, feel free to submit a pull request with an update.
 
-### TODO:
-
-* Koa2 (once Node supports `async await`)
-
-### Note:
+### Known issues:
 
 As of React Native v. 0.26-rc, HMR on functional components is broken. I'm working on making it work ASAP.
+
+React Native also requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
 
 ### Tasks
 
@@ -80,3 +78,7 @@ Compilation is done by **Webpack**, however I tried to keep it as barebones as p
 The only thing I couldn't pass on was hot-reloading, though. That is way too awesome to miss. Keep in mind that I'm using Webpack's built-in hot module reloading. There is neither `react-hot-loader`, nor `react-transform` taking place. This is because I keep all of my state in **Redux**.
 
 If you'd like to keep your state in your application, feel free to include one of the implementations. However, keeping state in Redux has many benefits, I highly recommend this approach.
+
+### TODO:
+
+* Koa2 (once Node supports `async await`)
