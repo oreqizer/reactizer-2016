@@ -4,7 +4,6 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import babel from 'gulp-babel';
 import rimraf from 'gulp-rimraf';
-import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import spritesmith from 'gulp.spritesmith';
 import webpack from 'webpack';
@@ -29,9 +28,8 @@ gulp.task('build', ['build:node', 'build:client']);
 gulp.task('build:node', () =>
   gulp.src([
     './src/**/*.{js,jsx}',
-    '!**/__tests__/**',
     '!./src/native/**',
-    '!**/*.dev.*',
+    '!**/__tests__/**',
   ])
     .pipe(plumber())
     .pipe(babel())
@@ -109,16 +107,10 @@ const ASSETS = [
   '!./src/browser/assets/sprites/*',
 ];
 
-gulp.task('assets', ['clean', 'sprites'], () =>
+gulp.task('assets', ['sprites'], () =>
   gulp.src(ASSETS, { base: './src/browser/assets' })
     .pipe(plumber())
     .pipe(gulp.dest(config.output)));
-
-gulp.task('locales:default', ['messages'], () =>
-  gulp.src('./data/locales/_default.json')
-    .pipe(plumber())
-    .pipe(rename('en.json'))
-    .pipe(gulp.dest('./data/locales')));
 
 // ----
 // lint
