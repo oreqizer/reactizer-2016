@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-export const SET_LOCALE = 'intl/SET_LOCALE';
+import { SET_LOCALE } from './intlActions';
 
 const InitialState = new Record({
   defaultLocale: null,
@@ -16,7 +16,7 @@ export default function intlReducer(state = new InitialState(), action) {
   switch (action.type) {
 
     case SET_LOCALE:
-      return state.set('currentLocale', action.locale);
+      return state.set('locale', action.locale);
 
     default:
       return state;
