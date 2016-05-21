@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 
-import { fetch, create, edit, remove } from '../../../api/todoApi';
+import { fetch, create, edit, remove } from './todoApi';
 
 import {
   FETCH_SUCCESS,

@@ -1,9 +1,11 @@
+import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 // import { values } from 'ramda';
 
 import reducers from './reducers';
 // import * as middleware from './middleware';
-import api from './../api';
+
+import { URL } from '../consts/apiConsts';
 
 /**
  * @prop initialState {Object}
@@ -32,7 +34,7 @@ export default function (options = {}) {
   );
 
   // sets up 'axios' defaults
-  api();
+  axios.defaults.baseURL = URL;
 
   // -------------------
   // Hot-reloading Redux

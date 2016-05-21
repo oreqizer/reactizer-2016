@@ -1,9 +1,9 @@
 import { takeEvery } from 'redux-saga';
 import { fork } from 'redux-saga/effects';
 
-import { fetchTodos, createTodo, resetTodos } from './todoSagas';
+import { fetchTodos, createTodo, editTodo, deleteTodo, resetTodos } from './todoSagas';
 
-import { FETCH, CREATE } from './todoActions';
+import { FETCH, CREATE, EDIT, DELETE } from './todoActions';
 import { LOGOUT } from '../user/userActions';
 
 function* fetchTodosWatcher() {
@@ -12,6 +12,14 @@ function* fetchTodosWatcher() {
 
 function* createTodoWatcher() {
   yield* takeEvery(CREATE, createTodo);
+}
+
+function* fetchTodosWatcher() {
+  yield* takeEvery(EDIT, editTodo);
+}
+
+function* createTodoWatcher() {
+  yield* takeEvery(DELETE, deleteTodo);
 }
 
 function* logoutWatcher() {
