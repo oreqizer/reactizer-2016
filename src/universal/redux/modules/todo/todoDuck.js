@@ -11,10 +11,6 @@ import {
   DELETE,
 } from './todoActions';
 
-// TODO:
-// a very simplified example. no error actions
-// EDIT and DELETE are not persistent
-
 const InitialState = new Record({
   list: new List(),
   state: CLEAN,

@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 // import * as middleware from './middleware';
+import api from './../api';
 
 /**
  * @prop initialState {Object}
@@ -29,6 +30,9 @@ export default function (options = {}) {
       ...enhancers
     )
   );
+
+  // sets up 'axios' defaults
+  api();
 
   // -------------------
   // Hot-reloading Redux

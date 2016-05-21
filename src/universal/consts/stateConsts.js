@@ -1,4 +1,7 @@
-export const CLEAN = 'clean';
-export const LOADING = 'loading';
-export const SUCCESS = 'success';
-export const ERROR = 'error';
+export default {
+  CLEAN: 'clean',
+  LOADING: 'loading',
+  SUCCESS: 'success',
+  ERROR: 'error',
+};
+

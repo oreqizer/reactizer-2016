@@ -1,28 +1,33 @@
-import request from 'axios';
 import { call, put } from 'redux-saga/effects';
+
+import { fetch, create } from '../../../api/todoApi';
 
 import {
   FETCH_SUCCESS,
   CREATE_SUCCESS,
+  FETCH_ERROR,
+  CREATE_ERROR,
+  RESET,
 } from './todoActions';
-
-// TODO: for demonstration pursposes
-const BACKEND_URL = 'https://webtask.it.auth0.com/api/run/wt-milomord-gmail_com-0/redux-tutorial-backend?webtask_no_cache=1';
 
 export function* fetchTodos() {
   try {
-    const res = yield call(request.get, BACKEND_URL);
-    yield put({ type: FETCH_SUCCESS, todos: res.data });
-  } catch (err) {
-    // pass
+    const { todos } = yield call(fetch);
+    yield put({ type: FETCH_SUCCESS, todos });
+  } catch (error) {
+    yield put({ type: FETCH_ERROR, error });
   }
 }
 
 export function* createTodo({ text }) {
   try {
-    const res = yield call(request.post, BACKEND_URL, { text });
-    yield put({ type: CREATE_SUCCESS, text: res.data.text });
-  } catch (err) {
-    // pass
+    const todo = yield call(create, { text });
+    yield put({ type: CREATE_SUCCESS, todo });
+  } catch (error) {
+    yield put({ type: CREATE_ERROR, error });
   }
+}
+
+export function* resetTodos() {
+  yield put({ type: RESET });
 }
