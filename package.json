@@ -19,7 +19,7 @@
   "author": "oreqizer",
   "license": "MIT",
   "engines": {
-    "node": ">=5.10"
+    "node": ">=5"
   },
   "dependencies": {
     "axios": "^0.11.1",
