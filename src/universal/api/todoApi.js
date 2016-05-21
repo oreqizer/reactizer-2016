@@ -14,7 +14,7 @@ export async function create({ text }) {
 
 export async function edit({ id, text, done }) {
   return await axios
-    .post(`/api/todos/${id}`, {
+    .put(`/api/todos/${id}`, {
       text,
       done,
     });

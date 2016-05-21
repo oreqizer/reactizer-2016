@@ -1,12 +1,16 @@
 import { call, put } from 'redux-saga/effects';
 
-import { fetch, create } from '../../../api/todoApi';
+import { fetch, create, edit, remove } from '../../../api/todoApi';
 
 import {
   FETCH_SUCCESS,
-  CREATE_SUCCESS,
   FETCH_ERROR,
+  CREATE_SUCCESS,
   CREATE_ERROR,
+  EDIT_SUCCESS,
+  EDIT_ERROR,
+  DELETE_SUCCESS,
+  DELETE_ERROR,
   RESET,
 } from './todoActions';
 
@@ -25,6 +29,24 @@ export function* createTodo({ text }) {
     yield put({ type: CREATE_SUCCESS, todo });
   } catch (error) {
     yield put({ type: CREATE_ERROR, error });
+  }
+}
+
+export function* editTodo({ todo }) {
+  try {
+    const edited = yield call(edit, todo);
+    yield put({ type: EDIT_SUCCESS, todo: edited });
+  } catch (error) {
+    yield put({ type: EDIT_ERROR, error });
+  }
+}
+
+export function* deleteTodo({ id }) {
+  try {
+    yield call(remove, { id });
+    yield put({ type: DELETE_SUCCESS, id });
+  } catch (error) {
+    yield put({ type: DELETE_ERROR, error });
   }
 }
 
