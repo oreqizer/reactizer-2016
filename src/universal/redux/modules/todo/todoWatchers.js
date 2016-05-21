@@ -14,11 +14,11 @@ function* createTodoWatcher() {
   yield* takeEvery(CREATE, createTodo);
 }
 
-function* fetchTodosWatcher() {
+function* editTodoWatcher() {
   yield* takeEvery(EDIT, editTodo);
 }
 
-function* createTodoWatcher() {
+function* deleteTodoWatcher() {
   yield* takeEvery(DELETE, deleteTodo);
 }
 
@@ -30,6 +30,8 @@ export default function* todoWatchers() {
   yield [
     fork(fetchTodosWatcher),
     fork(createTodoWatcher),
+    fork(editTodoWatcher),
+    fork(deleteTodoWatcher),
     fork(logoutWatcher),
   ];
 }
