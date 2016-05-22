@@ -28,7 +28,7 @@ const InitialState = new Record({
 function toInitialState(state) {
   const newState = new InitialState(fromJS(state));
   const todos = newState.todos.map(value => new Todo(value));
-  
+
   return newState.set('todos', todos);
 }
 
