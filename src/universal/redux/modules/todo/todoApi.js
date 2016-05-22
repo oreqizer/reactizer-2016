@@ -8,7 +8,7 @@ export async function fetch() {
   const todos = await axios
     .get('/todos');
 
-  return new Map(todos);
+  return new Map(todos).map(new Todo);
 }
 
 export async function create({ text }) {
