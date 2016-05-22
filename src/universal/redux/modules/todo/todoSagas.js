@@ -41,10 +41,10 @@ export function* editTodo({ todo }) {
   }
 }
 
-export function* deleteTodo({ id }) {
+export function* deleteTodo({ todo }) {
   try {
-    yield call(remove, { id });
-    yield put({ type: DELETE_SUCCESS, id });
+    yield call(remove, todo);
+    yield put({ type: DELETE_SUCCESS, id: todo.id });
   } catch (error) {
     yield put({ type: DELETE_ERROR, error });
   }

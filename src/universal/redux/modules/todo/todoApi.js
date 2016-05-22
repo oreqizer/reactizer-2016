@@ -2,19 +2,19 @@ import axios from 'axios';
 
 export async function fetch() {
   return await axios
-    .get('/api/todos');
+    .get('/todos');
 }
 
 export async function create({ text }) {
   return await axios
-    .post('/api/todos', {
+    .post('/todos', {
       text,
     });
 }
 
 export async function edit({ id, text, done }) {
   return await axios
-    .put(`/api/todos/${id}`, {
+    .put(`/todos/${id}`, {
       text,
       done,
     });
@@ -22,5 +22,5 @@ export async function edit({ id, text, done }) {
 
 export async function remove({ id }) {
   return await axios
-    .delete(`/api/todos/${id}`);
+    .delete(`/todos/${id}`);
 }

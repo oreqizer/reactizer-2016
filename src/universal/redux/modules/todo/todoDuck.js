@@ -1,47 +1,74 @@
-import { Record, List, fromJS } from 'immutable';
+import { Record, Map, fromJS } from 'immutable';
 
-import { CLEAN, SUCCESS, LOADING } from '../../../consts/stateConsts';
+import Todo from '../../../containers/Todo';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/stateConsts';
 
 import {
   FETCH,
   FETCH_SUCCESS,
+  FETCH_ERROR,
   CREATE,
   CREATE_SUCCESS,
+  CREATE_ERROR,
   EDIT,
+  EDIT_SUCCESS,
+  EDIT_ERROR,
   DELETE,
+  DELETE_SUCCESS,
+  DELETE_ERROR,
+  RESET,
 } from './todoActions';
 
 const InitialState = new Record({
-  list: new List(),
+  todos: new Map(),
   state: CLEAN,
+  error: null,
 });
 
+function toInitialState(state) {
+  const newState = new InitialState(fromJS(state));
+  const todos = newState.todos.map(value => new Todo(value));
+  
+  return newState.set('todos', todos);
+}
+
 export default function todoReducer(state = new InitialState(), action) {
-  if (!(state instanceof InitialState)) return new InitialState(fromJS(state));
+  if (!(state instanceof InitialState)) return toInitialState(state);
 
   switch (action.type) {
     case FETCH:
     case CREATE:
+    case EDIT:
+    case DELETE:
       return state
-        .setIn(['state'], LOADING);
+        .set('state', LOADING);
 
     case FETCH_SUCCESS:
       return state
-        .setIn(['list'], new List(action.todos))
-        .setIn(['state'], SUCCESS);
+        .set('todos', action.todos)
+        .set('state', SUCCESS);
 
     case CREATE_SUCCESS:
+    case EDIT_SUCCESS:
       return state
-        .updateIn(['list'], list => list.push(action.text))
-        .setIn(['state'], SUCCESS);
+        .setIn(['todos', action.todo.id], action.todo)
+        .set('state', SUCCESS);
 
-    case EDIT:
+    case DELETE_SUCCESS:
       return state
-        .setIn(['list', action.id], action.text);
+        .deleteIn(['todos', action.todo.id])
+        .set('state', SUCCESS);
 
-    case DELETE:
+    case FETCH_ERROR:
+    case CREATE_ERROR:
+    case EDIT_ERROR:
+    case DELETE_ERROR:
       return state
-        .deleteIn(['list', action.id]);
+        .set('state', ERROR)
+        .set('error', action.error);
+
+    case RESET:
+      return new InitialState();
 
     default:
       return state;
@@ -61,17 +88,22 @@ export function createTodo(text) {
   };
 }
 
-export function editTodo(id, text) {
+export function editTodo(todo) {
   return {
     type: EDIT,
-    id,
-    text,
+    todo,
   };
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(todo) {
   return {
     type: DELETE,
-    id,
+    todo,
+  };
+}
+
+export function resetTodos() {
+  return {
+    type: RESET,
   };
 }

@@ -1,3 +1,3 @@
 export default {
-  URL: 'https://reactizer.herokuapp.com',
+  URL: 'https://reactizer.herokuapp.com/api',
 };
