@@ -16,7 +16,7 @@ import {
 
 export function* fetchTodos() {
   try {
-    const { todos } = yield call(fetch);
+    const todos = yield call(fetch);
     yield put({ type: FETCH_SUCCESS, todos });
   } catch (error) {
     yield put({ type: FETCH_ERROR, error });

@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-import Todo, { mapFromArray } from '../../../../containers/Todo';
+import Todo from '../../../../containers/Todo';
 import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/stateConsts';
 
 import reducer, * as actions from '../todoDuck';
@@ -49,7 +49,9 @@ const todo2 = new Todo({
   done,
 });
 
-const todosMock = mapFromArray([todo, todo2]);
+const todosMock = new Map()
+  .set(todo.id, todo)
+  .set(todo2.id, todo2);
 
 describe('todo action creators', () => {
   it('should make a fetch action', () => {

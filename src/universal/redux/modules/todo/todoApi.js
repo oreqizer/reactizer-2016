@@ -1,23 +1,33 @@
+import { Map } from 'immutable';
+
+import Todo from '../../../containers/Todo';
+
 import axios from 'axios';
 
 export async function fetch() {
-  return await axios
+  const todos = await axios
     .get('/todos');
+
+  return new Map(todos);
 }
 
 export async function create({ text }) {
-  return await axios
+  const todo = await axios
     .post('/todos', {
       text,
     });
+
+  return new Todo(todo);
 }
 
 export async function edit({ id, text, done }) {
-  return await axios
+  const todo = await axios
     .put(`/todos/${id}`, {
       text,
       done,
     });
+
+  return new Todo(todo);
 }
 
 export async function remove({ id }) {
