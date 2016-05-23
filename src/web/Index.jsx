@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { AppBar, Drawer, MenuItem } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
-import start from '../../universal/decorators/startDecorator';
+import start from '../universal/decorators/startDecorator';
 
 const messages = defineMessages({
   title: {
@@ -16,6 +16,14 @@ const messages = defineMessages({
     id: 'seo.description.index',
     description: 'In EN, the "Teh" is intentional',
     defaultMessage: 'Teh best boilerplate',
+  },
+  user: {
+    id: 'sidebar.user',
+    defaultMessage: 'User',
+  },
+  todos: {
+    id: 'sidebar.todos',
+    defaultMessage: 'Todos',
   },
 });
 
@@ -61,15 +69,21 @@ export default class Index extends Component {
           ]}
         />
         <AppBar
+          title={appName}
           onLeftIconButtonTouchTap={this.handleToggleDrawer}
         />
-        <Drawer open={open}>
-          <AppBar
-            title={appName}
-            onTitleTouchTap={this.handleToggleDrawer}
-          />
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
+        <Drawer
+          open={open}
+          docked={false}
+          onRequestChange={this.handleToggleDrawer}
+        >
+          <AppBar showMenuIconButton={false} />
+          <MenuItem>
+            <FormattedMessage {...messages.user} />
+          </MenuItem>
+          <MenuItem>
+            <FormattedMessage {...messages.todos} />
+          </MenuItem>
         </Drawer>
         {children}
       </div>

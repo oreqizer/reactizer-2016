@@ -3,13 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import * as todoActions from './../../../universal/redux/modules/todo/todoDuck';
-import { fetchTodos } from './../../../universal/redux/modules/todo/todoSagas';
+import * as todoActions from '../../universal/redux/modules/todo/todoDuck';
+import { fetchTodos } from '../../universal/redux/modules/todo/todoSagas';
 
-import { CLEAN } from '../../../universal/consts/stateConsts';
+import { CLEAN } from '../../universal/consts/stateConsts';
 
-import TodosView from './../modules/Todo/TodosView';
-import TodosForm from './../modules/Todo/TodosForm';
+import TodosView from '../modules/Todo/TodosView';
+import TodosForm from '../modules/Todo/TodosForm';
 
 @connect(state => ({
   todos: state.todos,

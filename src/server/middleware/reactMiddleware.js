@@ -7,7 +7,7 @@ import fetchMessages from './../tools/fetchMessages';
 import fetchData from './../tools/fetchData';
 import render from './../markup';
 
-import routes from '../../browser/js/Router';
+import routes from '../../web/Router';
 import logger from '../tools/logger';
 import { locales, defaultLocale, appName } from './../config';
 
