@@ -2,12 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import Index from './Index';
-import Home from './routes/Todos';
+// import Todos from './routes/Todos';
 import About from './routes/About';
 
 export default (
   <Route name="app" component={Index} path="/">
-    <IndexRoute component={Home} />
-    <Route component={About} path="about" />
+    <IndexRoute component={About} />
   </Route>
 );

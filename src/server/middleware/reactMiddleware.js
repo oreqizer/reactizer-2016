@@ -7,7 +7,7 @@ import fetchMessages from './../tools/fetchMessages';
 import fetchData from './../tools/fetchData';
 import render from './../markup';
 
-import routes from './../../browser/js/router';
+import routes from '../../browser/js/Router';
 import logger from '../tools/logger';
 import { locales, defaultLocale, appName } from './../config';
 
@@ -69,7 +69,7 @@ export default function (req, res, next) {
       await fetchData(store, sagaMiddleware, renderProps);
 
       logger.info('Rendering HTML...');
-      const html = render(store, renderProps, req.url);
+      const html = render({ store, renderProps, req });
 
       res.end(html);
       logger.success('Response ended successfully');

@@ -14,7 +14,7 @@ import TodosForm from './../modules/Todo/TodosForm';
 @connect(state => ({
   todos: state.todos,
 }))
-export default class Home extends Component { // eslint-disable-line react/prefer-stateless-function
+export default class Home extends Component {
   static propTypes = {
     todos: PropTypes.object,
     dispatch: PropTypes.func,

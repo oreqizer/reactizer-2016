@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { AppBar } from 'material-ui';
 import Helmet from 'react-helmet';
 
 import start from '../../universal/decorators/startDecorator';
@@ -31,9 +32,7 @@ const Index = props =>
           { property: 'og:type', content: 'boilerplate' },
       ]}
     />
-    <h1>
-      <FormattedMessage {...messages.todos} />
-    </h1>
+    <AppBar title={props.intl.formatMessage(messages.todos)} />
     <hr />
     {props.children}
   </div>;
