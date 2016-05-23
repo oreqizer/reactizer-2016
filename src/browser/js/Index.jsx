@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import React, { Component, PropTypes } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { AppBar } from 'material-ui';
+import { AppBar, Drawer, MenuItem } from 'material-ui';
 import Helmet from 'react-helmet';
+import { autobind } from 'core-decorators';
 
 import start from '../../universal/decorators/startDecorator';
 
@@ -16,37 +17,63 @@ const messages = defineMessages({
     description: 'In EN, the "Teh" is intentional',
     defaultMessage: 'Teh best boilerplate',
   },
-  todos: {
-    id: 'index.todos',
-    defaultMessage: 'Todos',
-  },
 });
 
-const Index = props =>
-  <div id="app-view">
-    <Helmet
-      title={props.intl.formatMessage(messages.title)}
-      titleTemplate={`%s | ${props.appName}`}
-      meta={[
-          { name: 'description', content: props.intl.formatMessage(messages.description) },
-          { property: 'og:type', content: 'boilerplate' },
-      ]}
-    />
-    <AppBar title={props.intl.formatMessage(messages.todos)} />
-    <hr />
-    {props.children}
-  </div>;
-
-Index.propTypes = {
-  children: PropTypes.node,
-  appName: PropTypes.string,
-  intl: PropTypes.object,
-};
-
-const connected = connect(state => ({
+@start
+@injectIntl
+@connect(state => ({
   appName: state.config.appName,
-}))(Index);
+}))
+export default class Index extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    appName: PropTypes.string,
+    intl: PropTypes.object,
+  };
 
-const intled = injectIntl(connected);
+  constructor(props) {
+    super(props);
 
-export default start(intled);
+    this.state = {
+      open: false,
+    };
+  }
+
+  @autobind
+  handleToggleDrawer() {
+    this.setState({
+      open: !this.state.open, // TODO redux
+    });
+  }
+
+  render() {
+    const { intl, children, appName } = this.props;
+    const { open } = this.state;
+
+    return (
+      <div id="app-view">
+        <Helmet
+          title={intl.formatMessage(messages.title)}
+          titleTemplate={`%s | ${appName}`}
+          meta={[
+            { name: 'description', content: intl.formatMessage(messages.description) },
+            { property: 'og:type', content: 'boilerplate' },
+          ]}
+        />
+        <AppBar
+          onLeftIconButtonTouchTap={this.handleToggleDrawer}
+        />
+        <Drawer open={open}>
+          <AppBar
+            title={appName}
+            onTitleTouchTap={this.handleToggleDrawer}
+          />
+          <MenuItem>Menu Item</MenuItem>
+          <MenuItem>Menu Item 2</MenuItem>
+        </Drawer>
+        {children}
+      </div>
+    );
+  }
+}
+

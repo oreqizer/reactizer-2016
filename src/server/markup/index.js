@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
-import { MuiThemeProvider, getMuiTheme, darkBaseTheme } from 'material-ui/styles';
+import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 import Helmet from 'react-helmet';
 
 import Html from './Html';
@@ -20,7 +20,6 @@ const renderApp = (store, props, muiTheme) =>
 
 const muiTheme = req =>
   getMuiTheme({
-    ...darkBaseTheme,
     userAgent: req.headers['user-agent'],
   });
 

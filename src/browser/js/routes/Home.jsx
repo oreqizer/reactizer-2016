@@ -13,10 +13,8 @@ const messages = defineMessages({
   },
 });
 
-const About = () =>
-  <div className="about">
-    <div className="about-bg"></div>
-    <img src="/images/about.png" alt="about" className="about-img" />
+const Home = () =>
+  <div className="About">
     <p className="about-text">
       <FormattedMessage {...messages.text} />
     </p>
@@ -25,4 +23,4 @@ const About = () =>
     </Link>
   </div>;
 
-export default About;
+export default Home;

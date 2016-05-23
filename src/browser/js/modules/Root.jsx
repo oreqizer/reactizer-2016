@@ -2,13 +2,13 @@ import React from 'react';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { MuiThemeProvider, getMuiTheme, darkBaseTheme } from 'material-ui/styles';
+import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 
 import store from '../redux/clientStore';
 import routes from '../Router';
 
 const history = syncHistoryWithStore(browserHistory, store);
-const muiTheme = getMuiTheme(darkBaseTheme);
+const muiTheme = getMuiTheme();
 
 const Root = () =>
   <Provider store={store}>
