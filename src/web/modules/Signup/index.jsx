@@ -12,10 +12,10 @@ import { userMessages }from '../../../universal/messages';
 @connect(state => ({
   user: state.user,
 }))
-export default class Login extends Component {
+export default class Signup extends Component {
   render() {
     return (
-      <div id="Login">
+      <div id="Login" className="markdown-body">
         <h2>
           <FormattedMessage {...userMessages.login} />
         </h2>

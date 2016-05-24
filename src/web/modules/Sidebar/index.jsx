@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem } from 'material-ui';
 import { autobind } from 'core-decorators';
 
@@ -44,23 +45,38 @@ export default class Sidebar extends Component {
   }
 
   @autobind
+  handleMenuClick(path) {
+    this.handleToggleDrawer();
+    this.props.dispatch(push(path));
+  }
+
+  @autobind
   renderMenuItems() {
     const { user } = this.props;
 
     switch (user.state) {
       case SUCCESS:
         return [
-          <MenuItem key="profile">
+          <MenuItem
+            key="profile"
+            onTouchTap={() => this.handleMenuClick('/profile')}
+          >
             <FormattedMessage {...messages.profile} />
           </MenuItem>,
-          <MenuItem key="todos">
+          <MenuItem
+            key="todos"
+            onTouchTap={() => this.handleMenuClick('/todos')}
+          >
             <FormattedMessage {...messages.todos} />
           </MenuItem>,
         ];
 
       default:
         return [
-          <MenuItem key="signup">
+          <MenuItem
+            key="signup"
+            onTouchTap={() => this.handleMenuClick('/signup')}
+          >
             <FormattedMessage {...messages.signup} />
           </MenuItem>,
         ];

@@ -67,7 +67,9 @@ export default class Index extends Component {
           onLeftIconButtonTouchTap={this.handleToggleDrawer}
         />
         <Sidebar />
-        {children}
+        <div id="container">
+          {children}
+        </div>
       </div>
     );
   }
