@@ -9,4 +9,16 @@ export default defineMessages({
     id: 'user.register',
     defaultMessage: 'Register',
   },
+  username: {
+    id: 'user.username',
+    defaultMessage: 'Username',
+  },
+  password: {
+    id: 'user.password',
+    defaultMessage: 'Password',
+  },
+  email: {
+    id: 'user.email',
+    defaultMessage: 'E-mail',
+  },
 });

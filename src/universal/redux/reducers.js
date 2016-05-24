@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 import config from './modules/config/configDuck';
 import intl from './modules/intl/intlDuck';
@@ -13,5 +14,6 @@ export default combineReducers({
   todo,
   ui,
   user,
+  form: formReducer,
   routing: routerReducer,
 });
