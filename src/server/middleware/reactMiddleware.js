@@ -1,32 +1,14 @@
 import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import configureStore from './../../universal/redux/configureStore';
-import logMiddleware from './../redux/logMiddleware';
-import fetchMessages from './../tools/fetchMessages';
-import fetchData from './../tools/fetchData';
-import render from './../markup';
+import configureStore from '../../universal/redux/configureStore';
+import logMiddleware from '../redux/logMiddleware';
+import getInitialState from '../redux/getInitialState';
+import fetchData from '../tools/fetchData';
+import render from '../markup';
 
 import routes from '../../web/Router';
-import logger from '../tools/logger';
-import { locales, defaultLocale, appName } from './../config';
-
-function getInitialState(req) {
-  const locale = req.acceptsLanguages(locales) || defaultLocale;
-
-  return {
-    intl: {
-      defaultLocale,
-      locale,
-      locales,
-      initialNow: Date.now(),
-      messages: fetchMessages(locale),
-    },
-    config: {
-      appName,
-    },
-  };
-}
+import logger from '../lib/logger';
 
 export default function (req, res, next) {
   const history = createMemoryHistory(req.url);

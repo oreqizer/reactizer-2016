@@ -17,13 +17,21 @@ const messages = defineMessages({
     description: 'In EN, the "Teh" is intentional',
     defaultMessage: 'Teh best boilerplate',
   },
-  user: {
-    id: 'sidebar.user',
-    defaultMessage: 'User',
+  profile: {
+    id: 'sidebar.profile',
+    defaultMessage: 'Profile',
   },
   todos: {
     id: 'sidebar.todos',
     defaultMessage: 'Todos',
+  },
+  login: {
+    id: 'user.login',
+    defaultMessage: 'Log in',
+  },
+  register: {
+    id: 'user.register',
+    defaultMessage: 'Register',
   },
 });
 
@@ -31,6 +39,7 @@ const messages = defineMessages({
 @injectIntl
 @connect(state => ({
   appName: state.config.appName,
+  user: state.user,
 }))
 export default class Index extends Component {
   static propTypes = {
@@ -55,7 +64,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { intl, children, appName } = this.props;
+    const { intl, children, appName, } = this.props;
     const { open } = this.state;
 
     return (

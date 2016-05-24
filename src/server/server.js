@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import { join } from 'path';
 import express from 'express';
 
-import logger from './tools/logger';
+import logger from './lib/logger';
 import { port, production, output } from './config';
 
 import reactMiddleware from './middleware/reactMiddleware';

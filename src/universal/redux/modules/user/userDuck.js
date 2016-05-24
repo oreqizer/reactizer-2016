@@ -14,6 +14,7 @@ import {
 
 const InitialState = new Record({
   token: null,
+  refreshToken: null,
   user: null,
   state: CLEAN,
   error: null,
@@ -34,6 +35,7 @@ export default function todoReducer(state = new InitialState(), action) {
       return state
         .set('user', action.user)
         .set('token', action.token)
+        .set('refreshToken', action.refreshToken)
         .set('state', SUCCESS);
 
     case LOGIN_ERROR:
