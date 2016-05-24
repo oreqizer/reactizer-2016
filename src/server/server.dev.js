@@ -1,5 +1,6 @@
 import { join } from 'path';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
@@ -26,6 +27,9 @@ app.use(webpackDev(compiler, {
 app.use(webpackHot(compiler, {
   noInfo: true,
 }));
+
+// allows getting cookies on server
+app.use(cookieParser());
 
 app.use(reactMiddleware);
 

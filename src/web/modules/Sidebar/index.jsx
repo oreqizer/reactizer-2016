@@ -1,0 +1,86 @@
+import React, { Component, PropTypes } from 'react';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { AppBar, Drawer, MenuItem } from 'material-ui';
+import { autobind } from 'core-decorators';
+
+import { SUCCESS } from '../../../universal/consts/stateConsts';
+import { toggleSidebar } from '../../../universal/redux/modules/ui/uiDuck';
+
+const messages = defineMessages({
+  profile: {
+    id: 'sidebar.profile',
+    defaultMessage: 'Profile',
+  },
+  signup: {
+    id: 'sidebar.profile',
+    defaultMessage: 'Sign up',
+  },
+  todos: {
+    id: 'sidebar.todos',
+    defaultMessage: 'Todos',
+  },
+});
+
+@injectIntl
+@connect(state => ({
+  sidebar: state.ui.sidebar,
+  appName: state.config.appName,
+  user: state.user,
+}))
+export default class Sidebar extends Component {
+  static propTypes = {
+    intl: PropTypes.object,
+    appName: PropTypes.string,
+    user: PropTypes.object,
+    sidebar: PropTypes.bool,
+    children: PropTypes.node,
+    dispatch: PropTypes.func,
+  };
+
+  @autobind
+  handleToggleDrawer() {
+    this.props.dispatch(toggleSidebar());
+  }
+
+  @autobind
+  renderMenuItems() {
+    const { user } = this.props;
+
+    switch (user.state) {
+      case SUCCESS:
+        return [
+          <MenuItem key="profile">
+            <FormattedMessage {...messages.profile} />
+          </MenuItem>,
+          <MenuItem key="todos">
+            <FormattedMessage {...messages.todos} />
+          </MenuItem>,
+        ];
+
+      default:
+        return [
+          <MenuItem key="signup">
+            <FormattedMessage {...messages.signup} />
+          </MenuItem>,
+        ];
+    }
+  }
+
+  render() {
+    const { sidebar } = this.props;
+
+    return (
+      <Drawer
+        open={sidebar}
+        docked={false}
+        onRequestChange={this.handleToggleDrawer}
+      >
+        <AppBar showMenuIconButton={false} />
+
+        {this.renderMenuItems()}
+      </Drawer>
+    );
+  }
+}
+

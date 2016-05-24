@@ -8,11 +8,11 @@ import { fetchTodos } from '../../universal/redux/modules/todo/todoSagas';
 
 import { CLEAN } from '../../universal/consts/stateConsts';
 
-import TodosView from '../modules/Todo/TodosView';
-import TodosForm from '../modules/Todo/TodosForm';
+import TodosView from '../modules/Todos/TodosView';
+import TodosForm from '../modules/Todos/TodosForm';
 
 @connect(state => ({
-  todos: state.todos,
+  todo: state.todo.todos,
 }))
 export default class Home extends Component {
   static propTypes = {

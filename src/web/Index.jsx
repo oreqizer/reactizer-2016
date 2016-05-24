@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { AppBar, Drawer, MenuItem } from 'material-ui';
+import { AppBar } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
 import start from '../universal/decorators/startDecorator';
+import { toggleSidebar } from '../universal/redux/modules/ui/uiDuck';
+
+import Sidebar from './modules/Sidebar';
 
 const messages = defineMessages({
   title: {
@@ -17,35 +20,20 @@ const messages = defineMessages({
     description: 'In EN, the "Teh" is intentional',
     defaultMessage: 'Teh best boilerplate',
   },
-  profile: {
-    id: 'sidebar.profile',
-    defaultMessage: 'Profile',
-  },
-  todos: {
-    id: 'sidebar.todos',
-    defaultMessage: 'Todos',
-  },
-  login: {
-    id: 'user.login',
-    defaultMessage: 'Log in',
-  },
-  register: {
-    id: 'user.register',
-    defaultMessage: 'Register',
-  },
 });
 
 @start
 @injectIntl
 @connect(state => ({
   appName: state.config.appName,
-  user: state.user,
 }))
 export default class Index extends Component {
   static propTypes = {
-    children: PropTypes.node,
-    appName: PropTypes.string,
     intl: PropTypes.object,
+    appName: PropTypes.string,
+    user: PropTypes.object,
+    children: PropTypes.node,
+    dispatch: PropTypes.func,
   };
 
   constructor(props) {
@@ -58,17 +46,14 @@ export default class Index extends Component {
 
   @autobind
   handleToggleDrawer() {
-    this.setState({
-      open: !this.state.open, // TODO redux
-    });
+    this.props.dispatch(toggleSidebar());
   }
 
   render() {
     const { intl, children, appName } = this.props;
-    const { open } = this.state;
 
     return (
-      <div id="app-view">
+      <div id="Index">
         <Helmet
           title={intl.formatMessage(messages.title)}
           titleTemplate={`%s | ${appName}`}
@@ -81,22 +66,9 @@ export default class Index extends Component {
           title={appName}
           onLeftIconButtonTouchTap={this.handleToggleDrawer}
         />
-        <Drawer
-          open={open}
-          docked={false}
-          onRequestChange={this.handleToggleDrawer}
-        >
-          <AppBar showMenuIconButton={false} />
-          <MenuItem>
-            <FormattedMessage {...messages.user} />
-          </MenuItem>
-          <MenuItem>
-            <FormattedMessage {...messages.todos} />
-          </MenuItem>
-        </Drawer>
+        <Sidebar />
         {children}
       </div>
     );
   }
 }
-
