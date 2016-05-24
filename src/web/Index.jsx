@@ -64,7 +64,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { intl, children, appName, } = this.props;
+    const { intl, children, appName } = this.props;
     const { open } = this.state;
 
     return (

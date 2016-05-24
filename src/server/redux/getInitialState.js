@@ -1,13 +1,23 @@
 import fetchMessages from '../tools/fetchMessages';
 import matchLocale from '../tools/matchLocale';
 
+import { refreshLogin } from '../../universal/redux/modules/user/userApi';
+
 import { appName, defaultLocale, locales } from './../config';
+
+async function maybeUser(refreshToken) {
+  if (refreshToken) {
+    return await refreshLogin(refreshToken);
+  }
+
+  return null;
+}
 
 export default function getInitialState(req) {
   const locale = matchLocale(req);
-  const { refreshToken } = req.cookies.refreshToken;
 
-  // TODO: add a function that fetches user data if 'refreshToken'
+  const { refreshToken } = req.cookies;
+  const user = maybeUser(refreshToken);
 
   return {
     intl: {
@@ -21,6 +31,7 @@ export default function getInitialState(req) {
       appName,
     },
     user: {
+      user,
       refreshToken,
     },
   };
