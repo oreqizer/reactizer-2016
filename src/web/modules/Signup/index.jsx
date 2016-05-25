@@ -1,8 +1,12 @@
-import React from 'react';
-import { defineMessages, FormattedMessage } from 'react-intl';
-import { Paper } from 'material-ui';
+import React, { Component } from 'react';
+import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-intl';
+import { Paper, Tabs, Tab } from 'material-ui';
+import { autobind } from 'core-decorators';
 
-import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
+// import RegisterForm from './RegisterForm';
+
+import { userMessages } from '../../../universal/messages';
 
 const messages = defineMessages({
   signup: {
@@ -11,16 +15,59 @@ const messages = defineMessages({
   },
 });
 
-const Signup = props =>
-  <div id="Login">
-    <div className="markdown-body">
-      <h2>
-        <FormattedMessage {...messages.signup} />
-      </h2>
-    </div>
-    <Paper>
-      <SignupForm />
-    </Paper>
-  </div>;
+const LOGIN = 'login';
+const SIGNUP = 'signup';
 
-export default Signup;
+@injectIntl
+export default class Singup extends Component {
+  static propTypes = {
+    intl: intlShape.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tab: LOGIN,
+    };
+  }
+
+  @autobind
+  handleTabSwitch(tab) {
+    this.setState({
+      tab,
+    });
+  }
+
+  render() {
+    const { intl } = this.props;
+    const { tab } = this.state;
+
+    const login = intl.formatMessage(userMessages.login);
+    const register = intl.formatMessage(userMessages.register);
+
+    return (
+      <div className="Signup">
+        <div className="markdown-body">
+          <h2>
+            <FormattedMessage {...messages.signup} />
+          </h2>
+        </div>
+        <Paper>
+          <Tabs value={tab} onChange={this.handleTabSwitch}>
+            <Tab label={login} value={LOGIN}>
+              <div className="Signup-form">
+                <LoginForm />
+              </div>
+            </Tab>
+            <Tab label={register} value={SIGNUP}>
+              <div className="Signup-form">
+                asdf
+              </div>
+            </Tab>
+          </Tabs>
+        </Paper>
+      </div>
+    );
+  }
+}

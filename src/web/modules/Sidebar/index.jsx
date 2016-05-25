@@ -14,7 +14,7 @@ const messages = defineMessages({
     defaultMessage: 'Profile',
   },
   signup: {
-    id: 'sidebar.profile',
+    id: 'sidebar.signup',
     defaultMessage: 'Sign up',
   },
   todos: {
