@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import * as todoActions from '../../universal/redux/modules/todo/todoDuck';
 import { fetchTodos } from '../../universal/redux/modules/todo/todoSagas';
 
-import { CLEAN } from '../../universal/consts/stateConsts';
+import { CLEAN } from '../../universal/consts/phaseConsts';
 
 import TodosView from '../modules/Todos/TodosView';
 import TodosForm from '../modules/Todos/TodosForm';

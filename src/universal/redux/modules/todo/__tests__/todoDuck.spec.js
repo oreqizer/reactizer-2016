@@ -1,10 +1,11 @@
 import { Map } from 'immutable';
 
 import Todo from '../../../../containers/Todo';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/stateConsts';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/phaseConsts';
 
-import reducer, * as actions from '../todoDuck';
-import {
+import reducer, * as duck from '../todoDuck';
+
+const {
   FETCH,
   FETCH_SUCCESS,
   FETCH_ERROR,
@@ -18,7 +19,7 @@ import {
   DELETE_SUCCESS,
   DELETE_ERROR,
   RESET,
-} from '../todoActions';
+} = duck;
 
 jest.unmock('immutable');
 jest.unmock('../todoDuck');
@@ -59,7 +60,7 @@ describe('todo action creators', () => {
       type: FETCH,
     };
 
-    expect(actions.fetchTodos()).toEqual(expected);
+    expect(duck.fetchTodos()).toEqual(expected);
   });
 
   it('should make a create action', () => {
@@ -68,7 +69,7 @@ describe('todo action creators', () => {
       text,
     };
 
-    expect(actions.createTodo(text)).toEqual(expected);
+    expect(duck.createTodo(text)).toEqual(expected);
   });
 
   it('should make an edit action', () => {
@@ -77,7 +78,7 @@ describe('todo action creators', () => {
       todo,
     };
 
-    expect(actions.editTodo(todo)).toEqual(expected);
+    expect(duck.editTodo(todo)).toEqual(expected);
   });
 
   it('should make a delete action', () => {
@@ -86,7 +87,7 @@ describe('todo action creators', () => {
       todo,
     };
 
-    expect(actions.deleteTodo(todo)).toEqual(expected);
+    expect(duck.deleteTodo(todo)).toEqual(expected);
   });
 
   it('should make a delete action', () => {
@@ -94,7 +95,7 @@ describe('todo action creators', () => {
       type: RESET,
     };
 
-    expect(actions.resetTodos()).toEqual(expected);
+    expect(duck.resetTodos()).toEqual(expected);
   });
 });
 

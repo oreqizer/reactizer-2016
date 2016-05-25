@@ -1,23 +1,25 @@
 import { Record, Map, fromJS } from 'immutable';
 
 import Todo from '../../../containers/Todo';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/stateConsts';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
-import {
-  FETCH,
-  FETCH_SUCCESS,
-  FETCH_ERROR,
-  CREATE,
-  CREATE_SUCCESS,
-  CREATE_ERROR,
-  EDIT,
-  EDIT_SUCCESS,
-  EDIT_ERROR,
-  DELETE,
-  DELETE_SUCCESS,
-  DELETE_ERROR,
-  RESET,
-} from './todoActions';
+export const FETCH = 'todo/FETCH';
+export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
+export const FETCH_ERROR = 'todo/FETCH_ERROR';
+
+export const CREATE = 'todo/CREATE';
+export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
+export const CREATE_ERROR = 'todo/CREATE_ERROR';
+
+export const EDIT = 'todo/EDIT';
+export const EDIT_SUCCESS = 'todo/EDIT_SUCCESS';
+export const EDIT_ERROR = 'todo/EDIT_ERROR';
+
+export const DELETE = 'todo/DELETE';
+export const DELETE_SUCCESS = 'todo/DELETE_SUCCESS';
+export const DELETE_ERROR = 'todo/DELETE_ERROR';
+
+export const RESET = 'todo/RESET';
 
 const InitialState = new Record({
   todos: new Map(),

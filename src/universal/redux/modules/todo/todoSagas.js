@@ -12,7 +12,7 @@ import {
   DELETE_SUCCESS,
   DELETE_ERROR,
   RESET,
-} from './todoActions';
+} from './todoDuck';
 
 export function* fetchTodos() {
   try {

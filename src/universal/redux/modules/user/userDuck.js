@@ -1,17 +1,17 @@
 import { Record, fromJS } from 'immutable';
 
 import User from '../../../containers/User';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/stateConsts';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
-import {
-  LOGIN,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGOUT,
-  REGISTER,
-  REGISTER_SUCCESS,
-  REGISTER_ERROR,
-} from './userActions';
+export const LOGIN = 'user/LOGIN';
+export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'user/LOGIN_ERROR';
+
+export const LOGOUT = 'user/LOGOUT';
+
+export const REGISTER = 'user/REGISTER';
+export const REGISTER_SUCCESS = 'user/REGISTER_SUCCESS';
+export const REGISTER_ERROR = 'user/REGISTER_ERROR';
 
 const InitialState = new Record({
   token: null,

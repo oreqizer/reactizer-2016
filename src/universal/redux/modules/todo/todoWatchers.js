@@ -3,8 +3,8 @@ import { fork } from 'redux-saga/effects';
 
 import { fetchTodos, createTodo, editTodo, deleteTodo, resetTodos } from './todoSagas';
 
-import { FETCH, CREATE, EDIT, DELETE } from './todoActions';
-import { LOGOUT } from '../user/userActions';
+import { FETCH, CREATE, EDIT, DELETE } from './todoDuck';
+import { LOGOUT } from '../user/userDuck';
 
 function* fetchTodosWatcher() {
   yield* takeEvery(FETCH, fetchTodos);

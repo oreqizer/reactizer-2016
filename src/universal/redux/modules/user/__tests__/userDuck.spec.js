@@ -1,7 +1,8 @@
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/stateConsts';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/phaseConsts';
 
-import reducer, * as actions from '../userDuck';
-import {
+import reducer, * as duck from '../userDuck';
+
+const {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
@@ -9,7 +10,7 @@ import {
   REGISTER,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
-} from '../userActions';
+} = duck;
 
 jest.unmock('immutable');
 jest.unmock('../userDuck');
@@ -26,7 +27,7 @@ describe('user action creators', () => {
       password,
     };
 
-    expect(actions.loginUser({ username, password })).toEqual(expected);
+    expect(duck.loginUser({ username, password })).toEqual(expected);
   });
 
   it('should make a register action', () => {
@@ -37,7 +38,7 @@ describe('user action creators', () => {
       password,
     };
 
-    expect(actions.registerUser({ email, username, password })).toEqual(expected);
+    expect(duck.registerUser({ email, username, password })).toEqual(expected);
   });
 
   it('should make a logout action', () => {
@@ -45,7 +46,7 @@ describe('user action creators', () => {
       type: LOGOUT,
     };
 
-    expect(actions.logoutUser()).toEqual(expected);
+    expect(duck.logoutUser()).toEqual(expected);
   });
 });
 

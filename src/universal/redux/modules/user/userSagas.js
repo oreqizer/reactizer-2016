@@ -7,7 +7,7 @@ import {
   LOGIN_ERROR,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
-} from './userActions';
+} from './userDuck';
 
 export function* loginUser(data) {
   try {

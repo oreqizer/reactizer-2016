@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem } from 'material-ui';
 import { autobind } from 'core-decorators';
 
-import { SUCCESS } from '../../../universal/consts/stateConsts';
+import { SUCCESS } from '../../../universal/consts/phaseConsts';
 import { toggleSidebar } from '../../../universal/redux/modules/ui/uiDuck';
 
 const messages = defineMessages({
