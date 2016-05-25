@@ -7,6 +7,10 @@ export const LOGIN = 'user/LOGIN';
 export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'user/LOGIN_ERROR';
 
+export const REFRESH = 'user/REFRESH';
+export const REFRESH_SUCCESS = 'user/REFRESH_SUCCESS';
+export const REFRESH_ERROR = 'user/REFRESH_ERROR';
+
 export const LOGOUT = 'user/LOGOUT';
 
 export const REGISTER = 'user/REGISTER';
@@ -28,24 +32,27 @@ function toInitialState(state) {
 }
 
 export default function todoReducer(state = new InitialState(), action) {
-  if (!(state instanceof InitialState)) return new toInitialState(state);
+  if (!(state instanceof InitialState)) return toInitialState(state);
 
   switch (action.type) {
     case LOGIN:
+    case REFRESH:
     case REGISTER:
       return new InitialState({
         phase: LOADING,
       });
 
     case LOGIN_SUCCESS:
+    case REFRESH_SUCCESS:
     case REGISTER_SUCCESS:
       return state
-        .set('user', new User(action.user))
+        .set('user', action.user)
         .set('token', action.token)
         .set('refreshToken', action.refreshToken)
         .set('phase', SUCCESS);
 
     case LOGIN_ERROR:
+    case REFRESH_ERROR:
     case REGISTER_ERROR:
       return state
         .set('phase', ERROR)
@@ -64,6 +71,13 @@ export function loginUser({ username, password }) {
     type: LOGIN,
     username,
     password,
+  };
+}
+
+export function refreshUser({ refreshToken }) {
+  return {
+    type: REFRESH,
+    refreshToken,
   };
 }
 
