@@ -28,7 +28,10 @@ const messages = defineMessages({
   sidebar: state.ui.sidebar,
   appName: state.config.appName,
   user: state.user,
-}))
+}), {
+  push,
+  toggleSidebar,
+})
 export default class Sidebar extends Component {
   static propTypes = {
     intl: PropTypes.object,
@@ -36,25 +39,26 @@ export default class Sidebar extends Component {
     user: PropTypes.object,
     sidebar: PropTypes.bool,
     children: PropTypes.node,
-    dispatch: PropTypes.func,
+    push: PropTypes.func,
+    toggleSidebar: PropTypes.func,
   };
 
   @autobind
   handleToggleDrawer() {
-    this.props.dispatch(toggleSidebar());
+    this.props.toggleSidebar();
   }
 
   @autobind
   handleMenuClick(path) {
     this.handleToggleDrawer();
-    this.props.dispatch(push(path));
+    this.props.push(path);
   }
 
   @autobind
   renderMenuItems() {
     const { user } = this.props;
 
-    switch (user.state) {
+    switch (user.phase) {
       case SUCCESS:
         return [
           <MenuItem

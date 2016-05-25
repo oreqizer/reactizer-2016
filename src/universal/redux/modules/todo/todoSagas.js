@@ -1,6 +1,9 @@
+import { Map } from 'immutable';
 import { call, put } from 'redux-saga/effects';
 
 import { fetch, create, edit, remove } from './todoApi';
+
+import Todo from '../../../containers/Todo';
 
 import {
   FETCH_SUCCESS,
@@ -16,31 +19,32 @@ import {
 
 export function* fetchTodos() {
   try {
-    const todos = yield call(fetch);
+    const res = yield call(fetch);
+    const todos = res.data.reduce((map, todo) => map.set(todo.id, new Todo(todo)), new Map());
+
     yield put({ type: FETCH_SUCCESS, todos });
   } catch (err) {
-    const error = err.data;
-    yield put({ type: FETCH_ERROR, error });
+    yield put({ type: FETCH_ERROR, error: err.data });
   }
 }
 
 export function* createTodo({ text }) {
   try {
-    const todo = yield call(create, { text });
-    yield put({ type: CREATE_SUCCESS, todo });
+    const res = yield call(create, { text });
+
+    yield put({ type: CREATE_SUCCESS, todo: res.data });
   } catch (err) {
-    const error = err.data;
-    yield put({ type: CREATE_ERROR, error });
+    yield put({ type: CREATE_ERROR, error: err.data });
   }
 }
 
 export function* editTodo({ todo }) {
   try {
-    const edited = yield call(edit, todo);
-    yield put({ type: EDIT_SUCCESS, todo: edited });
+    const res = yield call(edit, todo);
+
+    yield put({ type: EDIT_SUCCESS, todo: res.data });
   } catch (err) {
-    const error = err.data;
-    yield put({ type: EDIT_ERROR, error });
+    yield put({ type: EDIT_ERROR, error: err.data });
   }
 }
 
@@ -49,8 +53,7 @@ export function* deleteTodo({ todo }) {
     yield call(remove, todo);
     yield put({ type: DELETE_SUCCESS, id: todo.id });
   } catch (err) {
-    const error = err.data;
-    yield put({ type: DELETE_ERROR, error });
+    yield put({ type: DELETE_ERROR, error: err.data });
   }
 }
 

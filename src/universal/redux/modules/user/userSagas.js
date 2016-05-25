@@ -11,18 +11,20 @@ import {
 
 export function* loginUser(data) {
   try {
-    const profile = yield call(login, data);
-    yield put({ type: LOGIN_SUCCESS, ...profile });
-  } catch (error) {
-    yield put({ type: LOGIN_ERROR, error: error.data });
+    const res = yield call(login, data);
+
+    yield put({ type: LOGIN_SUCCESS, ...res.data });
+  } catch (err) {
+    yield put({ type: LOGIN_ERROR, error: err.data });
   }
 }
 
 export function* registerUser(data) {
   try {
-    const profile = yield call(register, data);
-    yield put({ type: REGISTER_SUCCESS, ...profile });
-  } catch (error) {
-    yield put({ type: REGISTER_ERROR, error: error.data });
+    const res = yield call(register, data);
+
+    yield put({ type: REGISTER_SUCCESS, ...res.data });
+  } catch (err) {
+    yield put({ type: REGISTER_ERROR, error: err.data });
   }
 }
