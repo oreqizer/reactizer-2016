@@ -21,7 +21,6 @@ describe('todo reducer', () => {
     const { sidebar } = reducer(undefined, {});
 
     expect(sidebar).toBe(false);
-
   });
 
   it('should handle TOGGLE_SIDEBAR', () => {
