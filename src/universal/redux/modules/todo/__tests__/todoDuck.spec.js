@@ -254,7 +254,7 @@ describe('todo reducer', () => {
   it('should handle RESET', () => {
     const initialState = reducer({
       todos: todosMock,
-      state: SUCCESS,
+      phase: SUCCESS,
     });
 
     const { todos, state, error } = reducer(initialState, {

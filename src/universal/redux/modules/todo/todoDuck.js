@@ -21,7 +21,7 @@ import {
 
 const InitialState = new Record({
   todos: new Map(),
-  state: CLEAN,
+  phase: CLEAN,
   error: null,
 });
 
@@ -41,30 +41,30 @@ export default function todoReducer(state = new InitialState(), action) {
     case EDIT:
     case DELETE:
       return state
-        .set('state', LOADING);
+        .set('phase', LOADING);
 
     case FETCH_SUCCESS:
       return state
         .set('todos', action.todos)
-        .set('state', SUCCESS);
+        .set('phase', SUCCESS);
 
     case CREATE_SUCCESS:
     case EDIT_SUCCESS:
       return state
         .setIn(['todos', action.todo.id], action.todo)
-        .set('state', SUCCESS);
+        .set('phase', SUCCESS);
 
     case DELETE_SUCCESS:
       return state
         .deleteIn(['todos', action.todo.id])
-        .set('state', SUCCESS);
+        .set('phase', SUCCESS);
 
     case FETCH_ERROR:
     case CREATE_ERROR:
     case EDIT_ERROR:
     case DELETE_ERROR:
       return state
-        .set('state', ERROR)
+        .set('phase', ERROR)
         .set('error', action.error);
 
     case RESET:

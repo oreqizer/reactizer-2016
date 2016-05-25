@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-intl';
 import { Paper, Tabs, Tab } from 'material-ui';
 import { autobind } from 'core-decorators';
@@ -6,6 +7,7 @@ import { autobind } from 'core-decorators';
 import LoginForm from './LoginForm';
 // import RegisterForm from './RegisterForm';
 
+import { loginUser, registerUser } from '../../../universal/redux/modules/user/userDuck';
 import { userMessages } from '../../../universal/messages';
 
 const messages = defineMessages({
@@ -19,9 +21,11 @@ const LOGIN = 'login';
 const SIGNUP = 'signup';
 
 @injectIntl
+@connect()
 export default class Singup extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -30,6 +34,11 @@ export default class Singup extends Component {
     this.state = {
       tab: LOGIN,
     };
+  }
+
+  @autobind
+  handleLogin(data) {
+    this.props.dispatch(loginUser(data));
   }
 
   @autobind
@@ -57,7 +66,7 @@ export default class Singup extends Component {
           <Tabs value={tab} onChange={this.handleTabSwitch}>
             <Tab label={login} value={LOGIN}>
               <div className="Signup-form">
-                <LoginForm />
+                <LoginForm onSubmit={this.handleLogin} />
               </div>
             </Tab>
             <Tab label={register} value={SIGNUP}>

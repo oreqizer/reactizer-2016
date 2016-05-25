@@ -26,7 +26,7 @@ describe('user action creators', () => {
       password,
     };
 
-    expect(actions.login({ username, password })).toEqual(expected);
+    expect(actions.loginUser({ username, password })).toEqual(expected);
   });
 
   it('should make a register action', () => {
@@ -37,7 +37,7 @@ describe('user action creators', () => {
       password,
     };
 
-    expect(actions.register({ email, username, password })).toEqual(expected);
+    expect(actions.registerUser({ email, username, password })).toEqual(expected);
   });
 
   it('should make a logout action', () => {
@@ -45,7 +45,7 @@ describe('user action creators', () => {
       type: LOGOUT,
     };
 
-    expect(actions.logout()).toEqual(expected);
+    expect(actions.logoutUser()).toEqual(expected);
   });
 });
 

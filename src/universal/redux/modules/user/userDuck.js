@@ -1,5 +1,6 @@
 import { Record, fromJS } from 'immutable';
 
+import User from '../../../containers/User';
 import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/stateConsts';
 
 import {
@@ -16,32 +17,38 @@ const InitialState = new Record({
   token: null,
   refreshToken: null,
   user: null,
-  state: CLEAN,
+  phase: CLEAN,
   error: null,
 });
 
+function toInitialState(state) {
+  const user = new User(state.user);
+
+  return new InitialState(fromJS(state)).set('user', user);
+}
+
 export default function todoReducer(state = new InitialState(), action) {
-  if (!(state instanceof InitialState)) return new InitialState(fromJS(state));
+  if (!(state instanceof InitialState)) return new toInitialState(state);
 
   switch (action.type) {
     case LOGIN:
     case REGISTER:
       return new InitialState({
-        state: LOADING,
+        phase: LOADING,
       });
 
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       return state
-        .set('user', action.user)
+        .set('user', new User(action.user))
         .set('token', action.token)
         .set('refreshToken', action.refreshToken)
-        .set('state', SUCCESS);
+        .set('phase', SUCCESS);
 
     case LOGIN_ERROR:
     case REGISTER_ERROR:
       return state
-        .set('state', ERROR)
+        .set('phase', ERROR)
         .set('error', action.error);
 
     case LOGOUT:
@@ -52,7 +59,7 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export function login({ username, password }) {
+export function loginUser({ username, password }) {
   return {
     type: LOGIN,
     username,
@@ -60,7 +67,7 @@ export function login({ username, password }) {
   };
 }
 
-export function register({ email, username, password }) {
+export function registerUser({ email, username, password }) {
   return {
     type: REGISTER,
     email,
@@ -69,7 +76,7 @@ export function register({ email, username, password }) {
   };
 }
 
-export function logout() {
+export function logoutUser() {
   return {
     type: LOGOUT,
   };
