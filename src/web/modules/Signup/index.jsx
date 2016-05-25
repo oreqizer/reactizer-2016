@@ -7,7 +7,7 @@ import { autobind } from 'core-decorators';
 import LoginForm from './LoginForm';
 // import RegisterForm from './RegisterForm';
 
-import { loginUser, registerUser } from '../../../universal/redux/modules/user/userDuck';
+import { loginUser } from '../../../universal/redux/modules/user/userDuck';
 import { userMessages } from '../../../universal/messages';
 
 const messages = defineMessages({

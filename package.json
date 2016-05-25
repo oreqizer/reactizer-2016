@@ -84,7 +84,7 @@
     "gulp.spritesmith": "^6.2.1",
     "image-webpack-loader": "^1.8.0",
     "immutable-devtools": "0.0.7",
-    "jest-cli": "^12.1.0",
+    "jest-cli": "^12.1.1",
     "json-loader": "^0.5.4",
     "nodemon": "^1.9.2",
     "postcss-loader": "^0.9.1",
