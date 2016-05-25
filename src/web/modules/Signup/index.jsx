@@ -22,7 +22,7 @@ const SIGNUP = 'signup';
 
 @injectIntl
 @connect()
-export default class Singup extends Component {
+export default class Signup extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     dispatch: PropTypes.func.isRequired,

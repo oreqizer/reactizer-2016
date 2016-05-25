@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
-import { TextField, FlatButton } from 'material-ui';
+import { TextField, RaisedButton } from 'material-ui';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
@@ -48,7 +48,7 @@ const LoginForm = props =>
         }
       />
     </div>
-    <FlatButton
+    <RaisedButton
       primary
       type="submit"
       label={props.intl.formatMessage(formMessages.submit)}
