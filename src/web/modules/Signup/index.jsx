@@ -7,8 +7,9 @@ import { autobind } from 'core-decorators';
 import LoginForm from './LoginForm';
 // import RegisterForm from './RegisterForm';
 
-import { loginUser } from '../../../universal/redux/modules/user/userDuck';
+import * as userActions from '../../../universal/redux/modules/user/userDuck';
 import { userMessages } from '../../../universal/messages';
+import { LOADING } from '../../../universal/consts/phaseConsts';
 
 const messages = defineMessages({
   signup: {
@@ -21,11 +22,15 @@ const LOGIN = 'login';
 const SIGNUP = 'signup';
 
 @injectIntl
-@connect()
+@connect(state => ({
+  user: state.user,
+}), userActions)
 export default class Signup extends Component {
   static propTypes = {
+    user: PropTypes.object.isRequired,
+    loginUser: PropTypes.func.isRequired,
+    registerUser: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
-    dispatch: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -38,7 +43,12 @@ export default class Signup extends Component {
 
   @autobind
   handleLogin(data) {
-    this.props.dispatch(loginUser(data));
+    this.props.loginUser(data);
+  }
+
+  @autobind
+  handleRegister(data) {
+    this.props.registerUser(data);
   }
 
   @autobind
@@ -49,7 +59,7 @@ export default class Signup extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, user } = this.props;
     const { tab } = this.state;
 
     const login = intl.formatMessage(userMessages.login);
@@ -66,7 +76,10 @@ export default class Signup extends Component {
           <Tabs value={tab} onChange={this.handleTabSwitch}>
             <Tab label={login} value={LOGIN}>
               <div className="Signup-form">
-                <LoginForm onSubmit={this.handleLogin} />
+                <LoginForm
+                  submitting={user.phase === LOADING}
+                  onSubmit={this.handleLogin}
+                />
               </div>
             </Tab>
             <Tab label={register} value={SIGNUP}>

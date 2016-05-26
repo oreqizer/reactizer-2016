@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
-import { TextField, RaisedButton } from 'material-ui';
+import { TextField, RaisedButton, CircularProgress } from 'material-ui';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
 const LoginForm = props =>
+  console.log(props) || // TODO remove
   <form
     className="LoginForm"
     onSubmit={props.handleSubmit}
@@ -50,12 +51,14 @@ const LoginForm = props =>
     </div>
     <RaisedButton
       primary
+      disabled={props.submitting}
       type="submit"
       label={props.intl.formatMessage(formMessages.submit)}
     />
   </form>;
 
 LoginForm.propTypes = {
+  submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
 };
