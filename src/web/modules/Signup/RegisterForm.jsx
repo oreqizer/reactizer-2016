@@ -5,9 +5,9 @@ import { TextField, RaisedButton } from 'material-ui';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
-const LoginForm = props =>
+const RegisterForm = props =>
   <form
-    className="LoginForm"
+    className="RegisterForm"
     onSubmit={props.handleSubmit}
     onChange={ev => ev.stopPropagation()}
   >
@@ -18,6 +18,18 @@ const LoginForm = props =>
           <TextField
             id={userMessages.username.id}
             floatingLabelText={props.intl.formatMessage(userMessages.username)}
+            {...username}
+          />
+        }
+      />
+    </div>
+    <div className="Form-field">
+      <Field
+        name="email"
+        component={username =>
+          <TextField
+            id={userMessages.email.id}
+            floatingLabelText={props.intl.formatMessage(userMessages.email)}
             {...username}
           />
         }
@@ -44,14 +56,14 @@ const LoginForm = props =>
     />
   </form>;
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
 };
 
-const Intled = injectIntl(LoginForm);
+const Intled = injectIntl(RegisterForm);
 
 export default reduxForm({
-  form: 'login',
+  form: 'register',
 })(Intled);

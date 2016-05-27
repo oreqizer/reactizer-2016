@@ -5,16 +5,19 @@ import { Paper, Tabs, Tab } from 'material-ui';
 import { autobind } from 'core-decorators';
 
 import LoginForm from './LoginForm';
-// import RegisterForm from './RegisterForm';
+import RegisterForm from './RegisterForm';
 
 import * as userActions from '../../../universal/redux/modules/user/userDuck';
 import { userMessages } from '../../../universal/messages';
-import { LOADING } from '../../../universal/consts/phaseConsts';
 
 const messages = defineMessages({
   signup: {
     id: 'signup.header',
     defaultMessage: 'Sign up',
+  },
+  loggedInAs: {
+    id: 'signup.logged_in_as',
+    defaultMessage: 'Hi {name}, you are already logged in.',
   },
 });
 
@@ -67,24 +70,27 @@ export default class Signup extends Component {
 
     return (
       <div className="Signup">
-        <div className="markdown-body">
+        <div className="Signup-header markdown-body">
           <h2>
             <FormattedMessage {...messages.signup} />
           </h2>
+          {user.user &&
+            <FormattedMessage
+              {...messages.loggedInAs}
+              values={{ name: user.user.username }}
+            />
+          }
         </div>
         <Paper>
           <Tabs value={tab} onChange={this.handleTabSwitch}>
             <Tab label={login} value={LOGIN}>
               <div className="Signup-form">
-                <LoginForm
-                  submitting={user.phase === LOADING}
-                  onSubmit={this.handleLogin}
-                />
+                <LoginForm onSubmit={this.handleLogin} />
               </div>
             </Tab>
             <Tab label={register} value={SIGNUP}>
               <div className="Signup-form">
-                asdf
+                <RegisterForm onSubmit={this.handleRegister} />
               </div>
             </Tab>
           </Tabs>
