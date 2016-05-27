@@ -1,4 +1,4 @@
-import { takeEvery } from 'redux-saga';
+import { takeLatest } from 'redux-saga';
 import { fork } from 'redux-saga/effects';
 
 import { loginUser, registerUser } from './userSagas';
@@ -6,11 +6,11 @@ import { loginUser, registerUser } from './userSagas';
 import { LOGIN, REGISTER } from './userDuck';
 
 function* loginUserWatcher() {
-  yield* takeEvery(LOGIN, loginUser);
+  yield* takeLatest(LOGIN, loginUser);
 }
 
 function* registerUserWatcher() {
-  yield* takeEvery(REGISTER, registerUser);
+  yield* takeLatest(REGISTER, registerUser);
 }
 
 export default function* todoWatchers() {
