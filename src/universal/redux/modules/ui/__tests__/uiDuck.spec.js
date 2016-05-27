@@ -1,4 +1,5 @@
 import reducer, * as duck from '../uiDuck';
+
 const {
   TOGGLE_SIDEBAR,
 } = duck;
