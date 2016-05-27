@@ -3,18 +3,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import * as todoActions from './../../../universal/redux/modules/todo/todoDuck';
-import { fetchTodos } from './../../../universal/redux/modules/todo/todoSagas';
+import * as todoActions from '../../universal/redux/modules/todo/todoDuck';
+import { fetchTodos } from '../../universal/redux/modules/todo/todoSagas';
 
-import { CLEAN } from '../../../universal/consts/stateConsts';
+import { CLEAN } from '../../universal/consts/phaseConsts';
 
-import TodosView from './../modules/Todo/TodosView';
-import TodosForm from './../modules/Todo/TodosForm';
+import TodosView from '../modules/Todos/TodosView';
+import TodosForm from '../modules/Todos/TodosForm';
 
 @connect(state => ({
-  todos: state.todos,
+  todo: state.todo.todos,
 }))
-export default class Home extends Component { // eslint-disable-line react/prefer-stateless-function
+export default class Home extends Component {
   static propTypes = {
     todos: PropTypes.object,
     dispatch: PropTypes.func,

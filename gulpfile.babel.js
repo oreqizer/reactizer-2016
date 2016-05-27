@@ -76,7 +76,7 @@ gulp.task('native:clean', nodeShell(`${nativebase} start --reset-cache`, { raw: 
 
 gulp.task('test', nodeShell('jest --verbose'));
 
-gulp.task('test:watch', nodeShell('jest --watch'));
+gulp.task('test:watch', nodeShell('jest --watch=all'));
 
 // ------
 // assets

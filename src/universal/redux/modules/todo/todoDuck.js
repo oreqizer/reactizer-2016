@@ -1,51 +1,76 @@
-import { Record, List, fromJS } from 'immutable';
+import { Record, Map, fromJS } from 'immutable';
 
-import { CLEAN, SUCCESS, LOADING } from '../../../consts/stateConsts';
+import Todo from '../../../containers/Todo';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
-import {
-  FETCH,
-  FETCH_SUCCESS,
-  CREATE,
-  CREATE_SUCCESS,
-  EDIT,
-  DELETE,
-} from './todoActions';
+export const FETCH = 'todo/FETCH';
+export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
+export const FETCH_ERROR = 'todo/FETCH_ERROR';
 
-// TODO:
-// a very simplified example. no error actions
-// EDIT and DELETE are not persistent
+export const CREATE = 'todo/CREATE';
+export const CREATE_SUCCESS = 'todo/CREATE_SUCCESS';
+export const CREATE_ERROR = 'todo/CREATE_ERROR';
+
+export const EDIT = 'todo/EDIT';
+export const EDIT_SUCCESS = 'todo/EDIT_SUCCESS';
+export const EDIT_ERROR = 'todo/EDIT_ERROR';
+
+export const DELETE = 'todo/DELETE';
+export const DELETE_SUCCESS = 'todo/DELETE_SUCCESS';
+export const DELETE_ERROR = 'todo/DELETE_ERROR';
+
+export const RESET = 'todo/RESET';
 
 const InitialState = new Record({
-  list: new List(),
-  state: CLEAN,
+  todos: new Map(),
+  phase: CLEAN,
+  error: null,
 });
 
+function toInitialState(state) {
+  const newState = new InitialState(fromJS(state));
+  const todos = newState.todos.map(todo => new Todo(todo));
+
+  return newState.set('todos', todos);
+}
+
 export default function todoReducer(state = new InitialState(), action) {
-  if (!(state instanceof InitialState)) return new InitialState(fromJS(state));
+  if (!(state instanceof InitialState)) return toInitialState(state);
 
   switch (action.type) {
     case FETCH:
     case CREATE:
+    case EDIT:
+    case DELETE:
       return state
-        .setIn(['state'], LOADING);
+        .set('phase', LOADING);
 
     case FETCH_SUCCESS:
       return state
-        .setIn(['list'], new List(action.todos))
-        .setIn(['state'], SUCCESS);
+        .set('todos', action.todos)
+        .set('phase', SUCCESS);
 
     case CREATE_SUCCESS:
+    case EDIT_SUCCESS:
       return state
-        .updateIn(['list'], list => list.push(action.text))
-        .setIn(['state'], SUCCESS);
+        .setIn(['todos', action.todo.id], action.todo)
+        .set('phase', SUCCESS);
 
-    case EDIT:
+    case DELETE_SUCCESS:
       return state
-        .setIn(['list', action.id], action.text);
+        .deleteIn(['todos', action.todo.id])
+        .set('phase', SUCCESS);
 
-    case DELETE:
+    case FETCH_ERROR:
+    case CREATE_ERROR:
+    case EDIT_ERROR:
+    case DELETE_ERROR:
       return state
-        .deleteIn(['list', action.id]);
+        .set('phase', ERROR)
+        .set('error', action.error);
+
+    case RESET:
+      return new InitialState();
 
     default:
       return state;
@@ -65,17 +90,22 @@ export function createTodo(text) {
   };
 }
 
-export function editTodo(id, text) {
+export function editTodo(todo) {
   return {
     type: EDIT,
-    id,
-    text,
+    todo,
   };
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(todo) {
   return {
     type: DELETE,
-    id,
+    todo,
+  };
+}
+
+export function resetTodos() {
+  return {
+    type: RESET,
   };
 }
