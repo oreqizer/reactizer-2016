@@ -1,4 +1,5 @@
 import { call, put } from 'redux-saga/effects';
+import { startSubmit, stopSubmit } from 'redux-form';
 import { push } from 'react-router-redux';
 
 import { login, register } from './userApi';
@@ -12,9 +13,11 @@ import {
 
 export function* loginUser(data) {
   try {
+    yield put(startSubmit('login'));
     const res = yield call(login, data);
 
     yield put({ type: LOGIN_SUCCESS, ...res.data });
+    yield put(stopSubmit('login'));
     yield put(push('/profile'));
   } catch (err) {
     yield put({ type: LOGIN_ERROR, error: err.data });
@@ -23,9 +26,11 @@ export function* loginUser(data) {
 
 export function* registerUser(data) {
   try {
+    yield put(startSubmit('register'));
     const res = yield call(register, data);
 
     yield put({ type: REGISTER_SUCCESS, ...res.data });
+    yield put(startSubmit('register'));
     yield put(push('/profile'));
   } catch (err) {
     yield put({ type: REGISTER_ERROR, error: err.data });
