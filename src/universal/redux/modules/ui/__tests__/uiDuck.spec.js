@@ -1,22 +1,22 @@
-import reducer, * as actions from '../uiDuck';
-import {
+import reducer, * as duck from '../uiDuck';
+const {
   TOGGLE_SIDEBAR,
-} from '../uiActions';
+} = duck;
 
 jest.unmock('immutable');
 jest.unmock('../uiDuck');
 
 describe('ui action creators', () => {
-  it('should make a fetch action', () => {
+  it('should make a toggle sidebar action', () => {
     const expected = {
       type: TOGGLE_SIDEBAR,
     };
 
-    expect(actions.toggleSidebar()).toEqual(expected);
+    expect(duck.toggleSidebar()).toEqual(expected);
   });
 });
 
-describe('todo reducer', () => {
+describe('ui reducer', () => {
   it('should return initial state', () => {
     const { sidebar } = reducer(undefined, {});
 

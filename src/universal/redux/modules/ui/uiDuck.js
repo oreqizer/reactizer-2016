@@ -1,8 +1,6 @@
 import { Record, fromJS } from 'immutable';
 
-import {
-  TOGGLE_SIDEBAR,
-} from './uiActions';
+export const TOGGLE_SIDEBAR = 'ui/TOGGLE_SIDEBAR';
 
 const InitialState = new Record({
   sidebar: false,
