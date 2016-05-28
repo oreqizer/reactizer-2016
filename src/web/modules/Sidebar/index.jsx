@@ -7,6 +7,7 @@ import { autobind } from 'core-decorators';
 
 import { SUCCESS } from '../../../universal/consts/phaseConsts';
 import { toggleSidebar } from '../../../universal/redux/modules/ui/uiDuck';
+import { logoutUser } from '../../../universal/redux/modules/user/userDuck';
 
 const messages = defineMessages({
   profile: {
@@ -21,6 +22,10 @@ const messages = defineMessages({
     id: 'sidebar.todos',
     defaultMessage: 'Todos',
   },
+  logout: {
+    id: 'sidebar.logout',
+    defaultMessage: 'Log out',
+  },
 });
 
 @injectIntl
@@ -31,6 +36,7 @@ const messages = defineMessages({
 }), {
   push,
   toggleSidebar,
+  logoutUser,
 })
 export default class Sidebar extends Component {
   static propTypes = {
@@ -41,6 +47,7 @@ export default class Sidebar extends Component {
     children: PropTypes.node,
     push: PropTypes.func,
     toggleSidebar: PropTypes.func,
+    logoutUser: PropTypes.func,
   };
 
   @autobind
@@ -52,6 +59,11 @@ export default class Sidebar extends Component {
   handleMenuClick(path) {
     this.handleToggleDrawer();
     this.props.push(path);
+  }
+
+  @autobind
+  handleLogout() {
+    this.props.logoutUser();
   }
 
   @autobind
@@ -72,6 +84,12 @@ export default class Sidebar extends Component {
             onTouchTap={() => this.handleMenuClick('/todos')}
           >
             <FormattedMessage {...messages.todos} />
+          </MenuItem>,
+          <MenuItem
+            key="logout"
+            onTouchTap={this.handleLogout}
+          >
+            <FormattedMessage {...messages.logout} />
           </MenuItem>,
         ];
 

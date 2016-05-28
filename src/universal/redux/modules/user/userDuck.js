@@ -26,7 +26,7 @@ const InitialState = new Record({
 });
 
 function toInitialState(state) {
-  const user = new User(state.user);
+  const user = state.user && new User(state.user);
 
   return new InitialState(fromJS(state)).set('user', user);
 }

@@ -1,23 +1,32 @@
 import fetchMessages from '../tools/fetchMessages';
 import matchLocale from '../tools/matchLocale';
 
+import { appName, defaultLocale, locales } from '../config';
+
+import logger from '../lib/logger';
+
 import { refreshLogin } from '../../universal/redux/modules/user/userApi';
+import { SUCCESS, ERROR } from '../../universal/consts/phaseConsts';
 
-import { appName, defaultLocale, locales } from './../config';
+async function maybeLogin(refreshToken) {
+  try {
+    if (refreshToken) {
+      const { data } = await refreshLogin(refreshToken);
+      return { token: data.token, user: data.user, phase: SUCCESS };
+    }
 
-async function maybeUser(refreshToken) {
-  if (refreshToken) {
-    return await refreshLogin(refreshToken);
+    return {};
+  } catch (err) {
+    logger.error('[getInitialState] Login failed', err);
+    return { phase: ERROR, error: err.data };
   }
-
-  return null;
 }
 
 export default function getInitialState(req) {
   const locale = matchLocale(req);
 
   const { refreshToken } = req.cookies;
-  const user = maybeUser(refreshToken);
+  const login = maybeLogin(refreshToken);
 
   return {
     intl: {
@@ -31,7 +40,7 @@ export default function getInitialState(req) {
       appName,
     },
     user: {
-      user,
+      ...login,
       refreshToken,
     },
   };
