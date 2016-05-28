@@ -28,11 +28,12 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="email"
-        component={username =>
+        component={email =>
           <TextField
             id={ID_PREFIX + userMessages.email.id}
             floatingLabelText={props.intl.formatMessage(userMessages.email)}
-            {...username}
+            type="email"
+            {...email}
           />
         }
       />
@@ -40,12 +41,12 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="password"
-        component={username =>
+        component={password =>
           <TextField
             id={ID_PREFIX + userMessages.password.id}
             floatingLabelText={props.intl.formatMessage(userMessages.password)}
             type="password"
-            {...username}
+            {...password}
           />
         }
       />

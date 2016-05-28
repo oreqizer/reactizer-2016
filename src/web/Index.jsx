@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
@@ -53,9 +52,9 @@ export default class Index extends Component {
 
   renderGithub() {
     return (
-      <Link to="https://github.com/oreqizer/reactizer">
+      <a href="https://github.com/oreqizer/reactizer" target="_blank" rel="noopener noreferrer">
         <FontIcon className="octocat" style={{ margin: 12 }} />
-      </Link>
+      </a>
     );
   }
 

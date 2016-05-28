@@ -18,6 +18,14 @@ const messages = defineMessages({
     id: 'profile.no_user',
     defaultMessage: 'You are not logged in. :( Click the button to log in/register.',
   },
+  username: {
+    id: 'profile.username',
+    defaultMessage: 'Username: {username}',
+  },
+  email: {
+    id: 'profile.email',
+    defaultMessage: 'Email: {email}',
+  },
 });
 
 @connect(state => ({
@@ -36,12 +44,19 @@ export default class Profile extends Component {
 
   @autobind
   renderUser() {
+    const { username, email } = this.props.user.user;
+
     return (
-      <div className="Profile-user">
+      <div className="Profile-user markdown-body">
         <h2>
           <FormattedMessage {...messages.heading} />
         </h2>
-
+        <p>
+          <FormattedMessage {...messages.username} values={{ username }} />
+        </p>
+        <p>
+          <FormattedMessage {...messages.email} values={{ email }} />
+        </p>
       </div>
     );
   }

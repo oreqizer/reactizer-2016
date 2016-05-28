@@ -28,12 +28,12 @@ const LoginForm = props =>
     <div className="Form-field">
       <Field
         name="password"
-        component={username =>
+        component={password =>
           <TextField
             id={ID_PREFIX + userMessages.password.id}
             floatingLabelText={props.intl.formatMessage(userMessages.password)}
             type="password"
-            {...username}
+            {...password}
           />
         }
       />
