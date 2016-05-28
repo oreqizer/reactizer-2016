@@ -22,7 +22,7 @@ const messages = defineMessages({
 });
 
 const LOGIN = 'login';
-const SIGNUP = 'signup';
+const REGISTER = 'register';
 
 @injectIntl
 @connect(state => ({
@@ -88,7 +88,7 @@ export default class Signup extends Component {
                 <LoginForm onSubmit={this.handleLogin} />
               </div>
             </Tab>
-            <Tab label={register} value={SIGNUP}>
+            <Tab label={register} value={REGISTER}>
               <div className="Signup-form">
                 <RegisterForm onSubmit={this.handleRegister} />
               </div>

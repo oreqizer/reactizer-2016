@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { AppBar, Drawer, MenuItem } from 'material-ui';
+import { AppBar, Drawer, MenuItem, Divider } from 'material-ui';
 import { autobind } from 'core-decorators';
 
 import { SUCCESS } from '../../../universal/consts/phaseConsts';
@@ -57,13 +57,15 @@ export default class Sidebar extends Component {
 
   @autobind
   handleMenuClick(path) {
-    this.handleToggleDrawer();
+    this.props.toggleSidebar();
     this.props.push(path);
   }
 
   @autobind
   handleLogout() {
+    this.props.toggleSidebar();
     this.props.logoutUser();
+    this.props.push('/');
   }
 
   @autobind
@@ -85,6 +87,7 @@ export default class Sidebar extends Component {
           >
             <FormattedMessage {...messages.todos} />
           </MenuItem>,
+          <Divider key="divider" />,
           <MenuItem
             key="logout"
             onTouchTap={this.handleLogout}

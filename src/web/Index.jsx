@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { AppBar } from 'material-ui';
+import { Link } from 'react-router';
+import { defineMessages, injectIntl } from 'react-intl';
+import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
@@ -49,6 +50,14 @@ export default class Index extends Component {
     this.props.dispatch(toggleSidebar());
   }
 
+  renderGithub() {
+    return (
+      <Link to="https://github.com/oreqizer/reactizer">
+        <FontIcon className="octocat" style={{ margin: 12 }} />
+      </Link>
+    );
+  }
+
   render() {
     const { intl, children, appName } = this.props;
 
@@ -64,6 +73,7 @@ export default class Index extends Component {
         />
         <AppBar
           title={appName}
+          iconElementRight={this.renderGithub()}
           onLeftIconButtonTouchTap={this.handleToggleDrawer}
         />
         <Sidebar />

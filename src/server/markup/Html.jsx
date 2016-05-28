@@ -9,6 +9,7 @@ const Html = props =>
       {props.head.link.toComponent()}
       {props.head.script.toComponent()}
       <link href={props.assets.main.css} rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </head>
     <body data-redux-state={props.state}>
       <div

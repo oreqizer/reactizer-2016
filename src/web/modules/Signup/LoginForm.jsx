@@ -5,6 +5,8 @@ import { TextField, RaisedButton } from 'material-ui';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
+const ID_PREFIX = 'login_id_';
+
 const LoginForm = props =>
   <form
     className="LoginForm"
@@ -16,7 +18,7 @@ const LoginForm = props =>
         name="username"
         component={username =>
           <TextField
-            id={userMessages.username.id}
+            id={ID_PREFIX + userMessages.username.id}
             floatingLabelText={props.intl.formatMessage(userMessages.username)}
             {...username}
           />
@@ -28,7 +30,7 @@ const LoginForm = props =>
         name="password"
         component={username =>
           <TextField
-            id={userMessages.password.id}
+            id={ID_PREFIX + userMessages.password.id}
             floatingLabelText={props.intl.formatMessage(userMessages.password)}
             type="password"
             {...username}

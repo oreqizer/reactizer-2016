@@ -131,6 +131,7 @@ gulp.task('sprites', () => {
   const spriteData = gulp.src('./src/browser/assets/sprites/*')
     .pipe(plumber())
     .pipe(spritesmith({
+      imgPath: '../assets/images/sprite.png',
       imgName: 'sprite.png',
       cssName: 'sprite.styl',
     }));
@@ -139,7 +140,7 @@ gulp.task('sprites', () => {
     .pipe(gulp.dest('./src/browser/assets/images'));
 
   const cssStream = spriteData.css
-    .pipe(gulp.dest('./src/browser/core/css'));
+    .pipe(gulp.dest('./src/browser/css/core'));
 
   return mergestream(imgStream, cssStream);
 });
