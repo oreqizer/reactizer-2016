@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { defineMessages, injectIntl } from 'react-intl';
+import { push } from 'react-router-redux';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
@@ -27,14 +28,14 @@ const messages = defineMessages({
 @injectIntl
 @connect(state => ({
   appName: state.config.appName,
-}))
+}), { push, toggleSidebar })
 export default class Index extends Component {
   static propTypes = {
-    intl: PropTypes.object,
-    appName: PropTypes.string,
-    user: PropTypes.object,
-    children: PropTypes.node,
-    dispatch: PropTypes.func,
+    intl: intlShape.isRequired,
+    appName: PropTypes.string.isRequired,
+    push: PropTypes.func.isRequired,
+    toggleSidebar: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
   };
 
   constructor(props) {
@@ -47,7 +48,7 @@ export default class Index extends Component {
 
   @autobind
   handleToggleDrawer() {
-    this.props.dispatch(toggleSidebar());
+    this.props.toggleSidebar();
   }
 
   renderGithub() {
@@ -72,8 +73,9 @@ export default class Index extends Component {
           ]}
         />
         <AppBar
-          title={appName}
+          title={<span style={{ cursor: 'pointer' }}>{appName}</span>}
           iconElementRight={this.renderGithub()}
+          onTitleTouchTap={() => this.props.push('/')}
           onLeftIconButtonTouchTap={this.handleToggleDrawer}
         />
         <Sidebar />
