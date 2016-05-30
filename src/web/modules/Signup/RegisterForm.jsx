@@ -58,5 +58,5 @@ const Intled = injectIntl(RegisterForm);
 
 export default reduxForm({
   form: 'register',
-  adapter
+  adapter,
 })(Intled);

@@ -49,5 +49,5 @@ const Intled = injectIntl(LoginForm);
 
 export default reduxForm({
   form: 'login',
-  adapter
+  adapter,
 })(Intled);
