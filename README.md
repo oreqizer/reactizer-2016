@@ -20,9 +20,9 @@ If you find anything outdated, feel free to submit a pull request with an update
 
 ### Known issues:
 
-As of React Native v. 0.26, HMR on functional components is broken. I'm working on making it work ASAP.
+Please note that this project is **very** young. There are still incomplete things, and this README is just a quickfix. I have a lot of work + school, but I will try to improve everything on the go!
 
-React Native also requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
+React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
 
 Having problems? Try running `watchman watch-del-all`
 
