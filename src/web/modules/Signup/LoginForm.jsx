@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import { RaisedButton } from 'material-ui';
-import adapter from 'redux-form-material-ui';
+import adapter from 'redux-form-material-ui'; // eslint-disable-line
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
