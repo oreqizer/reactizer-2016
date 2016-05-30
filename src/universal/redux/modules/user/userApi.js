@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function login({ username, password }) {
   return axios
-    .post('https://reactizer.herokuapp.com/api/users/login', {
+    .post('/users/login', {
       username,
       password,
     });
@@ -10,14 +10,14 @@ export function login({ username, password }) {
 
 export function refreshLogin({ refreshToken }) {
   return axios
-    .post('https://reactizer.herokuapp.com/api/users/refresh', {
+    .post('/users/refresh', {
       refreshToken,
     });
 }
 
 export function register({ username, password, email }) {
   return axios
-    .post('https://reactizer.herokuapp.com/api/users/register', {
+    .post('/users/register', {
       username,
       password,
       email,

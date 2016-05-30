@@ -20,7 +20,7 @@ import {
 export function* fetchTodos() {
   try {
     const res = yield call(fetch);
-    const todos = res.data.reduce((map, todo) => map.set(todo.id, new Todo(todo)), new Map());
+    const todos = res.data.todos.reduce((map, todo) => map.set(todo.id, new Todo(todo)), new Map());
 
     yield put({ type: FETCH_SUCCESS, todos });
   } catch (err) {
