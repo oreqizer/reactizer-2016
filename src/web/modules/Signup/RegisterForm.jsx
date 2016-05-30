@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import { RaisedButton } from 'material-ui';
-import adapter from 'redux-form-material-ui'; // eslint-disable-line
+import { TextField } from 'redux-form-material-ui'; // eslint-disable-line
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
@@ -17,7 +17,7 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="username"
-        component="TextField"
+        component={TextField}
         id={ID_PREFIX + userMessages.username.id}
         floatingLabelText={props.intl.formatMessage(userMessages.username)}
       />
@@ -25,7 +25,7 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="email"
-        component="TextField"
+        component={TextField}
         id={ID_PREFIX + userMessages.email.id}
         floatingLabelText={props.intl.formatMessage(userMessages.email)}
         type="email"
@@ -34,7 +34,7 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="password"
-        component="TextField"
+        component={TextField}
         id={ID_PREFIX + userMessages.password.id}
         floatingLabelText={props.intl.formatMessage(userMessages.password)}
         type="password"
@@ -58,5 +58,4 @@ const Intled = injectIntl(RegisterForm);
 
 export default reduxForm({
   form: 'register',
-  adapter,
 })(Intled);
