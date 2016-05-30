@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
-import { TextField, RaisedButton } from 'material-ui';
+import { RaisedButton } from 'material-ui';
+import adapter from 'redux-form-material-ui'
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
@@ -16,39 +17,27 @@ const RegisterForm = props =>
     <div className="Form-field">
       <Field
         name="username"
-        component={username =>
-          <TextField
-            id={ID_PREFIX + userMessages.username.id}
-            floatingLabelText={props.intl.formatMessage(userMessages.username)}
-            {...username}
-          />
-        }
+        component="TextField"
+        id={ID_PREFIX + userMessages.username.id}
+        floatingLabelText={props.intl.formatMessage(userMessages.username)}
       />
     </div>
     <div className="Form-field">
       <Field
         name="email"
-        component={email =>
-          <TextField
-            id={ID_PREFIX + userMessages.email.id}
-            floatingLabelText={props.intl.formatMessage(userMessages.email)}
-            type="email"
-            {...email}
-          />
-        }
+        component="TextField"
+        id={ID_PREFIX + userMessages.email.id}
+        floatingLabelText={props.intl.formatMessage(userMessages.email)}
+        type="email"
       />
     </div>
     <div className="Form-field">
       <Field
         name="password"
-        component={password =>
-          <TextField
-            id={ID_PREFIX + userMessages.password.id}
-            floatingLabelText={props.intl.formatMessage(userMessages.password)}
-            type="password"
-            {...password}
-          />
-        }
+        component="TextField"
+        id={ID_PREFIX + userMessages.password.id}
+        floatingLabelText={props.intl.formatMessage(userMessages.password)}
+        type="password"
       />
     </div>
     <RaisedButton
@@ -69,4 +58,5 @@ const Intled = injectIntl(RegisterForm);
 
 export default reduxForm({
   form: 'register',
+  adapter
 })(Intled);
