@@ -8,7 +8,7 @@ A React boilerplate that's always ahead!
 [![devDependency Status](https://david-dm.org/oreqizer/reactizer/dev-status.svg)](https://david-dm.org/oreqizer/reactizer#info=devDependencies)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/oreqizer/reactizer/develop/LICENSE)
 
-**Features:**
+**Overview:**
 
 * React and React Native
 * Redux with router, selectors and Sagas
@@ -25,6 +25,27 @@ Please note that this project is **very** young. There are still incomplete thin
 React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
 
 Having problems? Try running `watchman watch-del-all`
+
+### Tech stack
+
+* [React](https://github.com/facebook/react) and [React Native](https://github.com/facebook/react-native) as the core libs
+* [React Router](https://github.com/reactjs/react-router) for web routing
+* [Redux](https://github.com/reactjs/redux) with [React Redux](https://github.com/reactjs/react-redux) data flow
+* [Redux Saga](https://github.com/yelouafi/redux-saga) for async flow
+* [Redux Form](https://github.com/erikras/redux-form) makes forms uber-easy
+* [React Intl](https://github.com/yahoo/react-intl) i18n
+* [Jest](https://github.com/facebook/jest) testing
+* [Babel](https://github.com/babel/babel) for all the ES6+ goodness
+* [Material UI](https://github.com/callemall/material-ui) makes the web sexy
+* [Webpack 2](https://github.com/webpack/webpack) client compilation
+* [ESlint](https://github.com/eslint/eslint) and Airbnb level code quality
+* [Gulp](https://github.com/gulpjs/gulp) tasks, because `npm` just doesn't scale
+
+**Also in the bundle:**
+
+* Sprites with `gulp.spritesmith`
+* Translation message collection with `babel-plugin-react-intl`
+* Server compilation with Babel, because that's the way it's [supposed to be](https://medium.com/@Cuadraman/how-to-use-babel-for-production-5b95e7323c2f#.qer1pvtrg)
 
 ### Tasks
 
