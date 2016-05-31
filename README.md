@@ -37,7 +37,8 @@ Web:
 * `gulp start` - starts HMR and server (default at *:8080*)
 * `gulp server` - builds and runs the server (note: no static asset in production mode)
 * `gulp build` - builds all web assets and sources
-* `gulp verify` - runs all tests and eslint
+* `gulp test` - runs tests
+* `gulp lint` - runs eslint
 
 Native:
 * `gulp ios` - runs react native ios
@@ -49,9 +50,7 @@ Native:
 
 * `gulp build:client` - builds client-related web stuff
 * `gulp build:server` - builds server-related web stuff
-* `gulp lint` - runs eslint
 * `gulp lint:fix` - runs eslint and fixes problems, if it can
-* `gulp test` - runs tests
 * `gulp test:watch` - runs tests in watch mode
 * `gulp messages` - collects `react-intl`'s default messages
 * `gulp assets` - cleans up, makes sprites and moves files
@@ -63,7 +62,8 @@ Native:
 There are also `npm` alternatives of **core** tasks, in case you don't fancy a global `gulp` install:
 
 * `npm start` - `gulp`
-* `npm test` - `gulp verify`
+* `npm test` - `gulp test`
+* `npm run lint` - `gulp lint`
 * `npm run server` - `gulp server`
 * `npm run build` - `gulp build`
 * `npm run ios` - `gulp ios`

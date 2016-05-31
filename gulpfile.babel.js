@@ -55,8 +55,6 @@ gulp.task('build:client', ['assets'], cb =>
   })
 );
 
-gulp.task('verify', ['test', 'lint']);
-
 // ------
 // native
 // ------
@@ -74,7 +72,7 @@ gulp.task('native:clean', nodeShell(`${nativebase} start --reset-cache`, { raw: 
 // tests
 // -----
 
-gulp.task('test', nodeShell('jest --verbose'));
+gulp.task('test', nodeShell('jest --verbose --coverage'));
 
 gulp.task('test:watch', nodeShell('jest --watch=all'));
 
