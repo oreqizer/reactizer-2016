@@ -1,4 +1,4 @@
-import { Record, Map, fromJS } from 'immutable';
+import { Record, Set, fromJS } from 'immutable';
 
 import Todo from '../../../containers/Todo';
 import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
@@ -22,16 +22,16 @@ export const DELETE_ERROR = 'todo/DELETE_ERROR';
 export const RESET = 'todo/RESET';
 
 const InitialState = new Record({
-  todos: new Map(),
+  todos: new Set(),
   phase: CLEAN,
   error: null,
 });
 
 function toInitialState(state) {
-  const newState = new InitialState(fromJS(state));
-  const todos = newState.todos.map(todo => new Todo(todo));
-
-  return newState.set('todos', todos);
+  return new InitialState({
+    ...state,
+    todos: new Set(state.todos.map(todo => new Todo(todo))),
+  });
 }
 
 export default function todoReducer(state = new InitialState(), action) {
@@ -51,14 +51,20 @@ export default function todoReducer(state = new InitialState(), action) {
         .set('phase', SUCCESS);
 
     case CREATE_SUCCESS:
+      return state
+        .update('todos', todos => todos.add(action.todo))
+        .set('phase', SUCCESS);
+
     case EDIT_SUCCESS:
       return state
-        .setIn(['todos', action.todo.id], action.todo)
-        .set('phase', SUCCESS);
+        .set('phase', SUCCESS)
+        .update('todos', todos => todos
+          .delete(action.oldTodo)
+          .add(action.newTodo));
 
     case DELETE_SUCCESS:
       return state
-        .deleteIn(['todos', action.todo.id])
+        .update('todos', todos => todos.delete(action.todo))
         .set('phase', SUCCESS);
 
     case FETCH_ERROR:

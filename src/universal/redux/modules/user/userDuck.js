@@ -26,8 +26,10 @@ const InitialState = new Record({
 });
 
 function toInitialState(state) {
-  return new InitialState(fromJS(state))
-    .set('user', state.user ? new User(state.user) : null);
+  return new InitialState({
+    ...state,
+    user: state.user ? new User(state.user) : null,
+  });
 }
 
 export default function todoReducer(state = new InitialState(), action) {
