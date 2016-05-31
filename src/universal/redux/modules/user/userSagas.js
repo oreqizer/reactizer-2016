@@ -12,12 +12,16 @@ import {
   REGISTER_ERROR,
 } from './userDuck';
 
+function setAuthHeader(value) {
+  axios.defaults.headers.common.Authorization = value;
+}
+
 export function* loginUser(data) {
   try {
     yield put(startSubmit('login'));
     const res = yield call(login, data);
 
-    axios.defaults.headers.common.Authorization = res.data.token;
+    setAuthHeader(res.data.token);
 
     yield put({ type: LOGIN_SUCCESS, ...res.data });
     yield put(push('/todos'));
@@ -33,7 +37,7 @@ export function* registerUser(data) {
     yield put(startSubmit('register'));
     const res = yield call(register, data);
 
-    axios.defaults.headers.common.Authorization = res.data.token;
+    setAuthHeader(res.data.token);
 
     yield put({ type: REGISTER_SUCCESS, ...res.data });
     yield put(push('/todos'));
@@ -45,5 +49,5 @@ export function* registerUser(data) {
 }
 
 export function* logoutUser() {
-  axios.defaults.headers.common.Authorization = null;
+  setAuthHeader(null);
 }

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import fetchMessages from '../tools/fetchMessages';
 import matchLocale from '../tools/matchLocale';
 
@@ -29,11 +27,6 @@ export default function getInitialState(req) {
 
   const { refreshToken } = req.cookies;
   const login = maybeLogin(refreshToken);
-
-  if (login.token) {
-    // needs to be set for API calls to work
-    axios.headers.common.Authorization = login.token;
-  }
 
   return {
     intl: {

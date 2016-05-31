@@ -21,7 +21,7 @@ export function* fetchTodos() {
   try {
     const res = yield call(fetch);
     const todos = new Set(res.data.todos.map(todo => new Todo(todo)));
-    
+
     yield put({ type: FETCH_SUCCESS, todos });
   } catch (err) {
     yield put({ type: FETCH_ERROR, error: err.data });

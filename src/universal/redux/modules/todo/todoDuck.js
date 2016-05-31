@@ -1,4 +1,4 @@
-import { Record, Set, fromJS } from 'immutable';
+import { Record, Set } from 'immutable';
 
 import Todo from '../../../containers/Todo';
 import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
