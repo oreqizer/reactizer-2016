@@ -37,7 +37,7 @@ Having problems? Try running `watchman watch-del-all`
 * [Jest](https://github.com/facebook/jest) testing
 * [Babel](https://github.com/babel/babel) for all the ES6+ goodness
 * [Material UI](https://github.com/callemall/material-ui) makes the web sexy
-* [Webpack 2](https://github.com/webpack/webpack) client compilation
+* [Webpack 2](https://github.com/webpack/webpack) client compilation + Hot Reloading
 * [ESlint](https://github.com/eslint/eslint) and Airbnb level code quality
 * [Gulp](https://github.com/gulpjs/gulp) tasks, because `npm` just doesn't scale
 
