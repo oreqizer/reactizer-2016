@@ -61,7 +61,7 @@ describe('todo action creators', () => {
       token,
     };
 
-    expect(duck.fetchTodos(token, )).toEqual(expected);
+    expect(duck.fetchTodos(token)).toEqual(expected);
   });
 
   it('should make a create action', () => {
