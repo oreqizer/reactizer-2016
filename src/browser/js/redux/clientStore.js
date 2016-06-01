@@ -4,9 +4,9 @@ import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import { values } from 'ramda';
 
-import configureStore from './../../../universal/redux/configureStore';
+import configureStore from '../../../universal/configureStore';
 
-import * as watchers from './../../../universal/redux/watchers';
+import * as watchers from '../../../universal/watchers';
 
 const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);
@@ -33,6 +33,7 @@ const store = configureStore({
   enhancers,
 });
 
+// run saga watchers
 values(watchers).forEach(sagaMiddleware.run);
 
 export default store;

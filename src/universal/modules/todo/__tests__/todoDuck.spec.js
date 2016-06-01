@@ -1,7 +1,7 @@
 import { Set } from 'immutable';
 
-import Todo from '../../../../containers/Todo';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/phaseConsts';
+import Todo from '../../../containers/Todo';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../todoDuck';
 
@@ -23,7 +23,7 @@ const {
 
 jest.unmock('immutable');
 jest.unmock('../todoDuck');
-jest.unmock('../../../../containers/Todo');
+jest.unmock('../../../containers/Todo');
 
 const id = 1337;
 const id2 = 420;
@@ -50,42 +50,48 @@ const todo2 = new Todo({
   done,
 });
 
+const token = '123sampleToken';
+
 const todosMock = new Set([todo, todo2]);
 
 describe('todo action creators', () => {
   it('should make a fetch action', () => {
     const expected = {
       type: FETCH,
+      token,
     };
 
-    expect(duck.fetchTodos()).toEqual(expected);
+    expect(duck.fetchTodos(token, )).toEqual(expected);
   });
 
   it('should make a create action', () => {
     const expected = {
       type: CREATE,
+      token,
       text,
     };
 
-    expect(duck.createTodo(text)).toEqual(expected);
+    expect(duck.createTodo(token, text)).toEqual(expected);
   });
 
   it('should make an edit action', () => {
     const expected = {
       type: EDIT,
+      token,
       todo,
     };
 
-    expect(duck.editTodo(todo)).toEqual(expected);
+    expect(duck.editTodo(token, todo)).toEqual(expected);
   });
 
   it('should make a delete action', () => {
     const expected = {
       type: DELETE,
+      token,
       todo,
     };
 
-    expect(duck.deleteTodo(todo)).toEqual(expected);
+    expect(duck.deleteTodo(token, todo)).toEqual(expected);
   });
 
   it('should make a delete action', () => {

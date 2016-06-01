@@ -1,11 +1,10 @@
 import { call, put } from 'redux-saga/effects';
 import { startSubmit, stopSubmit } from 'redux-form';
 import { push } from 'react-router-redux';
-import axios from 'axios';
 
 import { login, register } from './userApi';
 
-import User from '../../../containers/User';
+import User from '../../containers/User';
 
 import {
   LOGIN_SUCCESS,
@@ -14,17 +13,11 @@ import {
   REGISTER_ERROR,
 } from './userDuck';
 
-function setAuthHeader(value) {
-  axios.defaults.headers.common.Authorization = value;
-}
-
 export function* loginUser(data) {
   try {
     yield put(startSubmit('login'));
     const res = yield call(login, data);
     const user = new User(res.data.user);
-
-    setAuthHeader(res.data.token);
 
     yield put({ type: LOGIN_SUCCESS, ...res.data, user });
     yield put(push('/todos'));
@@ -41,8 +34,6 @@ export function* registerUser(data) {
     const res = yield call(register, data);
     const user = new User(res.data.user);
 
-    setAuthHeader(res.data.token);
-
     yield put({ type: REGISTER_SUCCESS, ...res.data, user });
     yield put(push('/todos'));
   } catch (err) {
@@ -50,8 +41,4 @@ export function* registerUser(data) {
   } finally {
     yield put(stopSubmit('register'));
   }
-}
-
-export function* logoutUser() {
-  setAuthHeader(null);
 }

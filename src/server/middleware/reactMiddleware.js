@@ -1,7 +1,7 @@
 import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import configureStore from '../../universal/redux/configureStore';
+import configureStore from '../../universal/configureStore';
 import logMiddleware from '../redux/logMiddleware';
 import getInitialState from '../redux/getInitialState';
 import fetchData from '../tools/fetchData';

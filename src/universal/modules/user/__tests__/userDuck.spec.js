@@ -1,4 +1,4 @@
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../../consts/phaseConsts';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../userDuck';
 

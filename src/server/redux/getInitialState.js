@@ -5,7 +5,7 @@ import { appName, defaultLocale, locales } from '../config';
 
 import logger from '../lib/logger';
 
-import { refreshLogin } from '../../universal/redux/modules/user/userApi';
+import { refreshLogin } from '../../universal/modules/user/userApi';
 import { SUCCESS, ERROR } from '../../universal/consts/phaseConsts';
 
 async function maybeLogin(refreshToken) {

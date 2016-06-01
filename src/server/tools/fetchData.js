@@ -1,18 +1,12 @@
-import axios from 'axios';
-
 export default function (store, sagaMiddleware, params) {
   const sagas = params.components
     .filter(component => component.needs)
     .reduce((list, component) => list.concat(component.needs), []);
 
-  const { user } = store.getState();
+  // we need to pass token as an arg for API calls
+  const { token } = store.getState().user;
 
-  if (user.token) {
-    // needs to be set for API calls to work
-    axios.headers.common.Authorization = user.token;
-  }
-
-  const promises = sagas.map(saga => sagaMiddleware.run(saga, params).done);
+  const promises = sagas.map(saga => sagaMiddleware.run(saga, { token }).done);
 
   return Promise.all(promises);
 }

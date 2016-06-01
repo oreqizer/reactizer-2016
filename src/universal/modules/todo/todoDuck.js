@@ -1,7 +1,7 @@
 import { Record, Set } from 'immutable';
 
-import Todo from '../../../containers/Todo';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
+import Todo from '../../containers/Todo';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 export const FETCH = 'todo/FETCH';
 export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
@@ -83,29 +83,33 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export function fetchTodos() {
+export function fetchTodos(token) {
   return {
     type: FETCH,
+    token,
   };
 }
 
-export function createTodo(text) {
+export function createTodo(token, text) {
   return {
     type: CREATE,
+    token,
     text,
   };
 }
 
-export function editTodo(todo) {
+export function editTodo(token, todo) {
   return {
     type: EDIT,
+    token,
     todo,
   };
 }
 
-export function deleteTodo(todo) {
+export function deleteTodo(token, todo) {
   return {
     type: DELETE,
+    token,
     todo,
   };
 }

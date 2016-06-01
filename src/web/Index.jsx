@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
 import start from '../universal/decorators/startDecorator';
-import { toggleSidebar } from '../universal/redux/modules/ui/uiDuck';
+import { toggleSidebar } from '../universal/modules/ui/uiDuck';
 
 import Sidebar from './modules/Sidebar';
 

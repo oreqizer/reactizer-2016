@@ -1,8 +1,8 @@
 language: node_js
 
 node_js:
-#  - "4.2"
-#  - "4.3"
+  - "4.2"
+  - "4.3"
 #  - "4.4" react native has an issue with C++ on node 4
   - "5.10"
   - "6"

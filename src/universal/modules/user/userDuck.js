@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
 
-import User from '../../../containers/User';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
+import User from '../../containers/User';
+import { CLEAN, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 export const LOGIN = 'user/LOGIN';
 export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';

@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
-import * as todoActions from '../../../universal/redux/modules/todo/todoDuck';
-import * as todoSagas from '../../../universal/redux/modules/todo/todoSagas';
+import * as todoActions from '../../../universal/modules/todo/todoDuck';
+import * as todoSagas from '../../../universal/modules/todo/todoSagas';
 
-import { CLEAN } from '../../../universal/consts/phaseConsts';
+import { SUCCESS } from '../../../universal/consts/phaseConsts';
 
 const messages = defineMessages({
   header: {
@@ -15,10 +15,12 @@ const messages = defineMessages({
 });
 
 @connect(state => ({
+  token: state.user.token,
   todo: state.todo,
 }), todoActions)
 export default class Home extends Component {
   static propTypes = {
+    token: PropTypes.string,
     todo: PropTypes.object.isRequired,
     fetchTodos: PropTypes.func.isRequired,
   };
@@ -28,10 +30,10 @@ export default class Home extends Component {
   ];
 
   componentDidMount() {
-    const { todo, fetchTodos } = this.props;
+    const { token, todo, fetchTodos } = this.props;
 
-    if (todo.phase === CLEAN) {
-      fetchTodos();
+    if (todo.phase !== SUCCESS) {
+      fetchTodos(token);
     }
   }
 
