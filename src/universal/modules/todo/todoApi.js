@@ -10,10 +10,12 @@ export function create({ token, text }) {
   return axios.post('/todos', { text }, authHeader(token));
 }
 
-export function edit({ token, id, text, done }) {
+export function edit({ token, todo }) {
+  const { id, text, done } = todo;
+
   return axios.put(`/todos/${id}`, { text, done }, authHeader(token));
 }
 
-export function remove({ token, id }) {
-  return axios.delete(`/todos/${id}`, authHeader(token));
+export function remove({ token, todo }) {
+  return axios.delete(`/todos/${todo.id}`, authHeader(token));
 }

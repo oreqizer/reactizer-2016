@@ -61,7 +61,7 @@ describe('todo action creators', () => {
       token,
     };
 
-    expect(duck.fetchTodos(token)).toEqual(expected);
+    expect(duck.fetchTodos({ token })).toEqual(expected);
   });
 
   it('should make a create action', () => {
@@ -71,7 +71,7 @@ describe('todo action creators', () => {
       text,
     };
 
-    expect(duck.createTodo(token, text)).toEqual(expected);
+    expect(duck.createTodo({ token, text })).toEqual(expected);
   });
 
   it('should make an edit action', () => {
@@ -81,7 +81,7 @@ describe('todo action creators', () => {
       todo,
     };
 
-    expect(duck.editTodo(token, todo)).toEqual(expected);
+    expect(duck.editTodo({ token, todo })).toEqual(expected);
   });
 
   it('should make a delete action', () => {
@@ -91,7 +91,7 @@ describe('todo action creators', () => {
       todo,
     };
 
-    expect(duck.deleteTodo(token, todo)).toEqual(expected);
+    expect(duck.deleteTodo({ token, todo })).toEqual(expected);
   });
 
   it('should make a delete action', () => {

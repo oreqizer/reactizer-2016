@@ -83,14 +83,14 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export function fetchTodos(token) {
+export function fetchTodos({ token }) {
   return {
     type: FETCH,
     token,
   };
 }
 
-export function createTodo(token, text) {
+export function createTodo({ token, text }) {
   return {
     type: CREATE,
     token,
@@ -98,15 +98,16 @@ export function createTodo(token, text) {
   };
 }
 
-export function editTodo(token, todo) {
+export function editTodo({ token, oldTodo, newTodo }) {
   return {
     type: EDIT,
     token,
-    todo,
+    oldTodo,
+    newTodo,
   };
 }
 
-export function deleteTodo(token, todo) {
+export function deleteTodo({ token, todo }) {
   return {
     type: DELETE,
     token,

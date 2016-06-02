@@ -38,19 +38,19 @@ export function* createTodo({ token, text }) {
   }
 }
 
-export function* editTodo({ token, todo }) {
+export function* editTodo({ token, oldTodo, newTodo }) {
   try {
-    const res = yield call(edit, { ...todo, token });
+    const res = yield call(edit, { todo: newTodo, token });
 
-    yield put({ type: EDIT_SUCCESS, oldTodo: todo, newTodo: res.data });
+    yield put({ type: EDIT_SUCCESS, oldTodo, newTodo: new Todo(res.data) });
   } catch (err) {
     yield put({ type: EDIT_ERROR, error: err.data });
   }
 }
 
-export function* deleteTodo({ ...todo, token }) {
+export function* deleteTodo({ token, todo }) {
   try {
-    yield call(remove, { token, todo });
+    yield call(remove, { todo, token });
     yield put({ type: DELETE_SUCCESS, todo });
   } catch (err) {
     yield put({ type: DELETE_ERROR, error: err.data });
