@@ -57,5 +57,5 @@ RegisterForm.propTypes = {
 const Intled = injectIntl(RegisterForm);
 
 export default reduxForm({
-  form: 'register',
+  form: 'signup/register',
 })(Intled);

@@ -12,13 +12,12 @@ const Todos = ({ todos, token, onEdit, onDelete }) =>
             checked={todo.done}
             onCheck={(ev, checked) => onEdit({
               token,
-              oldTodo: todo,
-              newTodo: todo.set('done', checked),
+              todo: todo.set('done', checked),
             })}
           />
         }
         rightIconButton={
-          <IconButton onTouchTapp={() => onDelete({ token, todo })}>
+          <IconButton onTouchTap={() => onDelete({ token, id: todo.id })}>
             <FontIcon className="material-icons">delete</FontIcon>
           </IconButton>
         }

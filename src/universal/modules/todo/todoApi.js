@@ -16,6 +16,6 @@ export function edit({ token, todo }) {
   return axios.put(`/todos/${id}`, { text, done }, authHeader(token));
 }
 
-export function remove({ token, todo }) {
-  return axios.delete(`/todos/${todo.id}`, authHeader(token));
+export function remove({ token, id }) {
+  return axios.delete(`/todos/${id}`, authHeader(token));
 }

@@ -15,7 +15,7 @@ import {
 
 export function* loginUser(data) {
   try {
-    yield put(startSubmit('login'));
+    yield put(startSubmit('signup/login'));
     const res = yield call(login, data);
     const user = new User(res.data.user);
 
@@ -24,13 +24,13 @@ export function* loginUser(data) {
   } catch (err) {
     yield put({ type: LOGIN_ERROR, error: err.data });
   } finally {
-    yield put(stopSubmit('login'));
+    yield put(stopSubmit('signup/login'));
   }
 }
 
 export function* registerUser(data) {
   try {
-    yield put(startSubmit('register'));
+    yield put(startSubmit('signup/register'));
     const res = yield call(register, data);
     const user = new User(res.data.user);
 
@@ -39,6 +39,6 @@ export function* registerUser(data) {
   } catch (err) {
     yield put({ type: REGISTER_ERROR, error: err.data });
   } finally {
-    yield put(stopSubmit('register'));
+    yield put(stopSubmit('signup/register'));
   }
 }
