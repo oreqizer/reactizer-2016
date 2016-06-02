@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { List, ListItem, Checkbox, IconButton, FontIcon } from 'material-ui';
 
-const Todos = ({ todos, token, onEdit, onDelete }) =>
+const TodosList = ({ todos, token, onEdit, onDelete }) =>
   <List>
     {todos.map(todo => (
       <ListItem
@@ -25,11 +25,11 @@ const Todos = ({ todos, token, onEdit, onDelete }) =>
     ))}
   </List>;
 
-Todos.propTypes = {
+TodosList.propTypes = {
   token: PropTypes.string.isRequired,
   todos: PropTypes.object.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
-export default Todos;
+export default TodosList;

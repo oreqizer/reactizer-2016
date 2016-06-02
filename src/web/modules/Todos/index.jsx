@@ -4,8 +4,8 @@ import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-i
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
-import Todos from './Todos';
-import TodoForm from './TodosForm';
+import TodosList from './TodosList';
+import TodosForm from './TodosForm';
 
 import * as todoActions from '../../../universal/modules/todo/todoDuck';
 import * as todoSagas from '../../../universal/modules/todo/todoSagas';
@@ -28,7 +28,7 @@ const messages = defineMessages({
   token: state.user.token,
   todo: state.todo,
 }), todoActions)
-export default class Home extends Component {
+export default class Todos extends Component {
   static propTypes = {
     token: PropTypes.string,
     intl: intlShape.isRequired,
@@ -76,15 +76,15 @@ export default class Home extends Component {
           </h2>
         </div>
         <div className="Todos-list">
-          <Todos
+          <TodosList
             token={token}
-            todos={todos}
+            todos={todos.valueSeq()}
             onEdit={editTodo}
             onDelete={deleteTodo}
           />
         </div>
         <div className="Todos-form">
-          <TodoForm
+          <TodosForm
             token={token}
             onSubmit={this.handleSubmit}
           />

@@ -1,4 +1,5 @@
 import { Record, Map } from 'immutable';
+import { values } from 'ramda';
 
 import { toMap } from './todoMapper';
 import { CLEAN, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
@@ -30,7 +31,7 @@ const InitialState = new Record({
 function toInitialState(state) {
   return new InitialState({
     ...state,
-    todos: toMap(state.todos),
+    todos: toMap(values(state.todos)),
   });
 }
 
