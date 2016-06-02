@@ -78,10 +78,11 @@ describe('todo action creators', () => {
     const expected = {
       type: EDIT,
       token,
-      todo,
+      oldTodo: todo,
+      newTodo: todoEdit,
     };
 
-    expect(duck.editTodo({ token, todo })).toEqual(expected);
+    expect(duck.editTodo({ token, oldTodo: todo, newTodo: todoEdit })).toEqual(expected);
   });
 
   it('should make a delete action', () => {
