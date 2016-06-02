@@ -22,6 +22,7 @@ const {
   RESET,
 } = duck;
 
+jest.unmock('ramda');
 jest.unmock('immutable');
 jest.unmock('../todoDuck');
 jest.unmock('../todoMapper');
@@ -183,7 +184,7 @@ describe('todo reducer', () => {
 
   it('should handle EDIT_SUCCESS', () => {
     const initialState = reducer({
-      todos: todosMock,
+      todos: todosMock.toJS(),
     });
 
     const { todos, phase, error } = reducer(initialState, {
@@ -201,7 +202,7 @@ describe('todo reducer', () => {
   it('should handle DELETE_SUCCESS', () => {
     const expectedTodos = todosMock.delete(todo.id);
     const initialState = reducer({
-      todos: todosMock,
+      todos: todosMock.toJS(),
     });
 
     const { todos, phase, error } = reducer(initialState, {
@@ -260,7 +261,7 @@ describe('todo reducer', () => {
 
   it('should handle RESET', () => {
     const initialState = reducer({
-      todos: todosMock,
+      todos: todosMock.toJS(),
       phase: SUCCESS,
     });
 
