@@ -1,6 +1,6 @@
 # REACTIZER
 
-A React boilerplate that's always ahead!
+A React boilerplate that's always ahead! To check out the backend of the demo, click [here](https://github.com/oreqizer/reactizer-api).
 
 [![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
 [![Code Climate](https://codeclimate.com/github/oreqizer/reactizer/badges/gpa.svg)](https://codeclimate.com/github/oreqizer/reactizer)
@@ -8,29 +8,18 @@ A React boilerplate that's always ahead!
 [![devDependency Status](https://david-dm.org/oreqizer/reactizer/dev-status.svg)](https://david-dm.org/oreqizer/reactizer#info=devDependencies)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/oreqizer/reactizer/develop/LICENSE)
 
-**Overview:**
-
-* React and React Native
-* Redux with router, selectors and Sagas
-* Server-side rendering (Universal Javascript)
-* Complete ES6 with some ES7 goodies
-* Hot-reloading
-
-If you find anything outdated, feel free to submit a pull request with an update.
-
-### Known issues:
-
-Please note that this project is **very** young. There are still incomplete things, and this README is just a quickfix. I have a lot of work + school, but I will try to improve everything on the go!
-
-React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
-
-Having problems? Try running `watchman watch-del-all`
+> This boilerplate has one thing in mind - use as few dependencies as possible, while having all the best features. If something is not absolutely necessary, you won't find it here.
+>
+> **Reactizer**'s goal is mainly to provide you with the best practices of building a modern **React** application. Feel free to open an issue or a pull request!
+>
+> All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
 
 ### Tech stack
 
 * [React](https://github.com/facebook/react) and [React Native](https://github.com/facebook/react-native) as the core libs
 * [React Router](https://github.com/reactjs/react-router) for web routing
 * [Redux](https://github.com/reactjs/redux) with [React Redux](https://github.com/reactjs/react-redux) data flow
+* [Reselect](https://github.com/reactjs/reselect) derives data
 * [Redux Saga](https://github.com/yelouafi/redux-saga) for async flow
 * [Redux Form](https://github.com/erikras/redux-form) makes forms uber-easy
 * [React Intl](https://github.com/yahoo/react-intl) i18n
@@ -46,6 +35,14 @@ Having problems? Try running `watchman watch-del-all`
 * Sprites with `gulp.spritesmith`
 * Translation message collection with `babel-plugin-react-intl`
 * Server compilation with Babel, because that's the way it's [supposed to be](https://medium.com/@Cuadraman/how-to-use-babel-for-production-5b95e7323c2f#.qer1pvtrg)
+
+### Known issues:
+
+Please note that this project is **very** young. There are still incomplete things, and this README is just a quickfix. I have a lot of work + school, but I will try to improve everything on the go!
+
+React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
+
+Having problems? Try running `watchman watch-del-all`
 
 ### Tasks
 
