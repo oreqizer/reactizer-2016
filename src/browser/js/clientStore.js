@@ -24,10 +24,11 @@ const ownMiddleware = [
   cookieMiddleware,
 ];
 
-const enhancers = [
+const enhancers = [];
+if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
   // chrome Redux extension: https://github.com/zalmoxisus/redux-devtools-extension
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
-];
+  enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
+}
 
 const store = configureStore({
   initialState,

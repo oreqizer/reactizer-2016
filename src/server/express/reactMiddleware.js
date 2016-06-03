@@ -10,7 +10,7 @@ import render from '../markup';
 import routes from '../../web/Router';
 import logger from '../lib/logger';
 
-export default async function (req, res, next) {
+export default async function reactMiddleware(req, res, next) {
   const history = createMemoryHistory(req.url);
 
   const sagaMiddleware = createSagaMiddleware();
