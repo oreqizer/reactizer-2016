@@ -82,39 +82,29 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export function fetchTodos({ token }) {
-  return {
-    type: FETCH,
-    token,
-  };
-}
+export const fetchTodos = ({ token }) => ({
+  type: FETCH,
+  token,
+});
 
-export function createTodo({ token, text }) {
-  return {
-    type: CREATE,
-    token,
-    text,
-  };
-}
+export const createTodo = ({ token, text }) => ({
+  type: CREATE,
+  token,
+  text,
+});
 
-export function editTodo({ token, todo }) {
-  return {
-    type: EDIT,
-    token,
-    todo,
-  };
-}
+export const editTodo = ({ token, todo }) => ({
+  type: EDIT,
+  token,
+  todo,
+});
 
-export function deleteTodo({ token, id }) {
-  return {
-    type: DELETE,
-    token,
-    id,
-  };
-}
+export const deleteTodo = ({ token, id }) => ({
+  type: DELETE,
+  token,
+  id,
+});
 
-export function resetTodos() {
-  return {
-    type: RESET,
-  };
-}
+export const resetTodos = () => ({
+  type: RESET,
+});

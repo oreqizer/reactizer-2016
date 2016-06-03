@@ -18,8 +18,6 @@ export default function uiReducer(state = new InitialState(), action) {
   }
 }
 
-export function toggleSidebar() {
-  return {
-    type: TOGGLE_SIDEBAR,
-  };
-}
+export const toggleSidebar = () => ({
+  type: TOGGLE_SIDEBAR,
+});

@@ -49,7 +49,7 @@ export default function todoReducer(state = new InitialState(), action) {
       return state
         .set('user', action.user)
         .set('token', action.token)
-        .set('refreshToken', action.refreshToken)
+        .set('refreshToken', action.refresh_token)
         .set('phase', SUCCESS);
 
     case LOGIN_ERROR:
@@ -67,32 +67,24 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export function loginUser({ username, password }) {
-  return {
-    type: LOGIN,
-    username,
-    password,
-  };
-}
+export const loginUser = ({ username, password }) => ({
+  type: LOGIN,
+  username,
+  password,
+});
 
-export function refreshUser({ refreshToken }) {
-  return {
-    type: REFRESH,
-    refreshToken,
-  };
-}
+export const refreshUser = ({ refreshToken }) => ({
+  type: REFRESH,
+  refreshToken,
+});
 
-export function registerUser({ email, username, password }) {
-  return {
-    type: REGISTER,
-    email,
-    username,
-    password,
-  };
-}
+export const registerUser = ({ email, username, password }) => ({
+  type: REGISTER,
+  email,
+  username,
+  password,
+});
 
-export function logoutUser() {
-  return {
-    type: LOGOUT,
-  };
-}
+export const logoutUser = () => ({
+  type: LOGOUT,
+});

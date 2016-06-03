@@ -8,8 +8,8 @@ import logger from '../lib/logger';
 
 import { URL } from '../../universal/consts/apiConsts';
 import { REFRESH_TOKEN } from '../../universal/consts/cookieConsts';
-import { refreshLogin } from '../../universal/modules/user/userApi';
 import { SUCCESS, ERROR } from '../../universal/consts/phaseConsts';
+import { refreshLogin } from '../../universal/modules/user/userApi';
 
 async function maybeLogin(refreshToken) {
   try {
