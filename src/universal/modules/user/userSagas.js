@@ -21,8 +21,8 @@ export function* loginUser(data) {
 
     yield put({ type: LOGIN_SUCCESS, ...res.data, user });
     yield put(push('/todos'));
-  } catch (err) {
-    yield put({ type: LOGIN_ERROR, error: err.data });
+  } catch (error) {
+    yield put({ type: LOGIN_ERROR, error });
   } finally {
     yield put(stopSubmit('signup/login'));
   }
@@ -36,8 +36,8 @@ export function* registerUser(data) {
 
     yield put({ type: REGISTER_SUCCESS, ...res.data, user });
     yield put(push('/todos'));
-  } catch (err) {
-    yield put({ type: REGISTER_ERROR, error: err.data });
+  } catch (error) {
+    yield put({ type: REGISTER_ERROR, error });
   } finally {
     yield put(stopSubmit('signup/register'));
   }

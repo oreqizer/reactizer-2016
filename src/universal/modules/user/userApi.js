@@ -1,17 +1,21 @@
 import axios from 'axios';
 
+import { APP_WEB } from '../../consts/apiConsts';
+
 export function login({ username, password }) {
   return axios
     .post('/users/login', {
       username,
       password,
+      app: APP_WEB,
     });
 }
 
 export function refreshLogin({ refreshToken }) {
   return axios
     .post('/users/refresh', {
-      refreshToken,
+      refresh_token: refreshToken,
+      app: APP_WEB,
     });
 }
 
@@ -21,5 +25,6 @@ export function register({ username, password, email }) {
       username,
       password,
       email,
+      app: APP_WEB,
     });
 }
