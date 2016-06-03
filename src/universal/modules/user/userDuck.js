@@ -57,7 +57,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case REGISTER_ERROR:
       return state
         .set('phase', ERROR)
-        .set('error', action.error);
+        .set('error', String(action.error));
 
     case LOGOUT:
       return new InitialState;

@@ -72,7 +72,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case DELETE_ERROR:
       return state
         .set('phase', ERROR)
-        .set('error', action.error);
+        .set('error', String(action.error));
 
     case RESET:
       return new InitialState();
