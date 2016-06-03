@@ -13,6 +13,7 @@ const messages = defineMessages({
 const TodosForm = props =>
   <form onSubmit={props.handleSubmit}>
     <Field
+      id={messages.prompt.id}
       name="todo"
       component={TextField}
       hintText={<FormattedMessage {...messages.prompt} />}

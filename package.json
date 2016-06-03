@@ -33,6 +33,7 @@
     "fs-extra": "^0.30.0",
     "github-markdown-css": "^2.3.0",
     "immutable": "^3.8.1",
+    "js-cookie": "^2.1.2",
     "material-ui": "^0.15.0",
     "nconf": "^0.8.4",
     "normalize.css": "^4.1.1",

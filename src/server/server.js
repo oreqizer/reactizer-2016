@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import logger from './lib/logger';
 import { port, production, output } from './config';
 
-import reactMiddleware from './middleware/reactMiddleware';
+import reactMiddleware from './express/reactMiddleware';
 
 const app = express();
 

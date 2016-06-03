@@ -2,15 +2,15 @@ import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
 import configureStore from '../../universal/configureStore';
-import logMiddleware from '../redux/logMiddleware';
-import getInitialState from '../redux/getInitialState';
+import logMiddleware from '../middleware/logMiddleware';
+import getInitialState from '../tools/getInitialState';
 import fetchData from '../tools/fetchData';
 import render from '../markup';
 
 import routes from '../../web/Router';
 import logger from '../lib/logger';
 
-export default function (req, res, next) {
+export default async function (req, res, next) {
   const history = createMemoryHistory(req.url);
 
   const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +19,7 @@ export default function (req, res, next) {
     sagaMiddleware,
   ];
 
-  const initialState = getInitialState(req);
+  const initialState = await getInitialState(req);
 
   const store = configureStore({
     initialState,

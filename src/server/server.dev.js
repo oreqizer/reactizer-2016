@@ -9,7 +9,7 @@ import config from './../../etc/webpack/webpack.dev';
 import logger from './lib/logger';
 import { TMP, portDev } from './config';
 
-import reactMiddleware from './middleware/reactMiddleware';
+import reactMiddleware from './express/reactMiddleware';
 
 const app = express();
 

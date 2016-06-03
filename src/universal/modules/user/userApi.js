@@ -15,7 +15,6 @@ export function refreshLogin({ refreshToken }) {
   return axios
     .post('/users/refresh', {
       refresh_token: refreshToken,
-      app: APP_WEB,
     });
 }
 

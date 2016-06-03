@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { OrderedMap } from 'immutable';
 
 import Todo from '../../containers/Todo';
 
