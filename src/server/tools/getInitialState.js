@@ -7,6 +7,7 @@ import { appName, defaultLocale, locales } from '../config';
 import logger from '../lib/logger';
 
 import { URL } from '../../universal/consts/apiConsts';
+import { REFRESH_TOKEN } from '../../universal/consts/cookieConsts';
 import { refreshLogin } from '../../universal/modules/user/userApi';
 import { SUCCESS, ERROR } from '../../universal/consts/phaseConsts';
 
@@ -32,8 +33,8 @@ async function maybeLogin(refreshToken) {
 export default async function getInitialState(req) {
   const locale = matchLocale(req);
 
-  const { refresh_token } = req.cookies;
-  const login = await maybeLogin(refresh_token);
+  const refreshToken = req.cookies[REFRESH_TOKEN];
+  const login = await maybeLogin(refreshToken);
 
   return {
     intl: {
@@ -48,7 +49,7 @@ export default async function getInitialState(req) {
     },
     user: {
       ...login,
-      refreshToken: refresh_token,
+      refreshToken,
     },
   };
 }
