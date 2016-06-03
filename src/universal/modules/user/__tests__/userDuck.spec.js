@@ -148,7 +148,7 @@ describe('user reducer', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: LOGIN_SUCCESS,
       token: mockToken,
-      refreshToken: mockRefreshToken,
+      refresh_token: mockRefreshToken,
       user: mockUser,
     });
 
@@ -163,7 +163,7 @@ describe('user reducer', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REFRESH_SUCCESS,
       token: mockToken,
-      refreshToken: mockRefreshToken,
+      refresh_token: mockRefreshToken,
       user: mockUser,
     });
 
@@ -178,7 +178,7 @@ describe('user reducer', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REGISTER_SUCCESS,
       token: mockToken,
-      refreshToken: mockRefreshToken,
+      refresh_token: mockRefreshToken,
       user: mockUser,
     });
 
