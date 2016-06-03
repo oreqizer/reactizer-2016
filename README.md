@@ -19,7 +19,7 @@ A React boilerplate that's always ahead! To check out the backend of the demo, c
 * [React](https://github.com/facebook/react) and [React Native](https://github.com/facebook/react-native) as the core libs
 * [React Router](https://github.com/reactjs/react-router) for web routing
 * [Redux](https://github.com/reactjs/redux) with [React Redux](https://github.com/reactjs/react-redux) data flow
-* [Reselect](https://github.com/reactjs/reselect) derives data
+* [Reselect](https://github.com/reactjs/reselect) derives the data
 * [Redux Saga](https://github.com/yelouafi/redux-saga) for async flow
 * [Redux Form](https://github.com/erikras/redux-form) makes forms uber-easy
 * [React Intl](https://github.com/yahoo/react-intl) i18n
