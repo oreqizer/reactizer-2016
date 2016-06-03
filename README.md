@@ -1,6 +1,6 @@
 # REACTIZER
 
-A React boilerplate that's always ahead! To check out the backend of the demo, click [here](https://github.com/oreqizer/reactizer-api).
+A React boilerplate that's always ahead! To check out the backend, click [here](https://github.com/oreqizer/reactizer-api).
 
 [![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
 [![Code Climate](https://codeclimate.com/github/oreqizer/reactizer/badges/gpa.svg)](https://codeclimate.com/github/oreqizer/reactizer)
