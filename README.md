@@ -35,6 +35,7 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 * Sprites with `gulp.spritesmith`
 * Translation message collection with `babel-plugin-react-intl`
 * Server compilation with Babel, because that's the way it's [supposed to be](https://medium.com/@Cuadraman/how-to-use-babel-for-production-5b95e7323c2f#.qer1pvtrg)
+* No `react-hot-loader`, `react-transform` nor `webpack-isomorphic-tools` - I keep HMR and Webpack vanilla
 
 ### Known issues:
 
@@ -88,16 +89,6 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
 * `npm run native:clean` - `gulp native:clean`
-
-### Philosophy
-
-Testing out newest trends that I find interesting. I try to keep the project lightweight and safe, though. I will not include packages that are unnecessary or unmaintained.
-
-Compilation is done by **Webpack**, however I tried to keep it as barebones as possible - no special Webpack stuff scattered in the source files. Thus I omitted any importing of any other files other than `.js` and `.jsx` to the main bundle or anything that would make me having to stick to Webpack forever and ever.
-
-The only thing I couldn't pass on was hot-reloading, though. That is way too awesome to miss. Keep in mind that I'm using Webpack's built-in hot module reloading. There is neither `react-hot-loader`, nor `react-transform` taking place. This is because I keep all of my state in **Redux**.
-
-If you'd like to keep your state in your application, feel free to include one of the implementations. However, keeping state in Redux has many benefits, I highly recommend this approach.
 
 ### TODO:
 
