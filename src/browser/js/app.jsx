@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-
 import immutable from 'immutable';
 import immutableDevtools from 'immutable-devtools';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Root from './Root';
