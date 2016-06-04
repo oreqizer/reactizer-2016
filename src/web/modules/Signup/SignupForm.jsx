@@ -6,11 +6,9 @@ import { TextField } from 'redux-form-material-ui'; // eslint-disable-line
 
 import { formMessages, userMessages } from '../../../universal/messages';
 
-const ID_PREFIX = 'register_id_';
-
-const RegisterForm = props =>
+const SignupForm = props =>
   <form
-    className="RegisterForm"
+    className="LoginForm"
     onSubmit={props.handleSubmit}
     onChange={ev => ev.stopPropagation()}
   >
@@ -18,24 +16,26 @@ const RegisterForm = props =>
       <Field
         name="username"
         component={TextField}
-        id={ID_PREFIX + userMessages.username.id}
+        id={userMessages.username.id}
         floatingLabelText={props.intl.formatMessage(userMessages.username)}
       />
     </div>
-    <div className="Form-field">
-      <Field
-        name="email"
-        component={TextField}
-        id={ID_PREFIX + userMessages.email.id}
-        floatingLabelText={props.intl.formatMessage(userMessages.email)}
-        type="email"
-      />
-    </div>
+    {props.register &&
+      <div className="Form-field">
+        <Field
+          name="email"
+          component={TextField}
+          id={userMessages.email.id}
+          floatingLabelText={props.intl.formatMessage(userMessages.email)}
+          type="email"
+        />
+      </div>
+    }
     <div className="Form-field">
       <Field
         name="password"
         component={TextField}
-        id={ID_PREFIX + userMessages.password.id}
+        id={userMessages.password.id}
         floatingLabelText={props.intl.formatMessage(userMessages.password)}
         type="password"
       />
@@ -48,14 +48,15 @@ const RegisterForm = props =>
     />
   </form>;
 
-RegisterForm.propTypes = {
-  submitting: PropTypes.bool.isRequired,
+SignupForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  register: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
 };
 
-const Intled = injectIntl(RegisterForm);
+const Intled = injectIntl(SignupForm);
 
 export default reduxForm({
-  form: 'signup/register',
+  form: 'signup',
 })(Intled);

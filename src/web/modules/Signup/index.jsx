@@ -4,8 +4,7 @@ import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-i
 import { Paper, Tabs, Tab } from 'material-ui';
 import { autobind } from 'core-decorators';
 
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import SignupForm from './SignupForm';
 
 import * as userActions from '../../../universal/modules/user/userDuck';
 import { userMessages } from '../../../universal/messages';
@@ -45,13 +44,15 @@ export default class Signup extends Component {
   }
 
   @autobind
-  handleLogin(data) {
-    this.props.loginUser(data);
-  }
+  handleSignup(data) {
+    const { loginUser, registerUser } = this.props;
+    const { tab } = this.state;
 
-  @autobind
-  handleRegister(data) {
-    this.props.registerUser(data);
+    if (tab === LOGIN) {
+      loginUser(data);
+    } else {
+      registerUser(data);
+    }
   }
 
   @autobind
@@ -83,17 +84,15 @@ export default class Signup extends Component {
         </div>
         <Paper>
           <Tabs value={tab} onChange={this.handleTabSwitch}>
-            <Tab label={login} value={LOGIN}>
-              <div className="Signup-form">
-                <LoginForm onSubmit={this.handleLogin} />
-              </div>
-            </Tab>
-            <Tab label={register} value={REGISTER}>
-              <div className="Signup-form">
-                <RegisterForm onSubmit={this.handleRegister} />
-              </div>
-            </Tab>
+            <Tab label={login} value={LOGIN} />
+            <Tab label={register} value={REGISTER} />
           </Tabs>
+          <div className="Signup-form">
+            <SignupForm
+              onSubmit={this.handleSignup}
+              register={tab === REGISTER}
+            />
+          </div>
         </Paper>
       </div>
     );
