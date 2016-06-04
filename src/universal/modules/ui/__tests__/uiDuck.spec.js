@@ -24,11 +24,23 @@ describe('ui reducer', () => {
     expect(sidebar).toBe(false);
   });
 
-  it('should handle TOGGLE_SIDEBAR', () => {
+  it('should handle TOGGLE_SIDEBAR - clear', () => {
     const { sidebar } = reducer(undefined, {
       type: TOGGLE_SIDEBAR,
     });
 
     expect(sidebar).toBe(true);
+  });
+
+  it('should handle TOGGLE_SIDEBAR - open', () => {
+    const initialState = reducer({
+      sidebar: true,
+    });
+
+    const { sidebar } = reducer(initialState, {
+      type: TOGGLE_SIDEBAR,
+    });
+
+    expect(sidebar).toBe(false);
   });
 });
