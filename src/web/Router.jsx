@@ -7,11 +7,22 @@ import Profile from './modules/Profile';
 import Signup from './modules/Signup';
 import Todos from './modules/Todos';
 
-export default (
-  <Route path="/" component={Index}>
-    <IndexRoute component={Home} />
-    <Route path="profile" component={Profile} />
-    <Route path="signup" component={Signup} />
-    <Route path="todos" component={Todos} />
-  </Route>
-);
+export default function getRoutes(store) {
+  function checkAuth(nextState, replace) {
+    if (!store.getState().user.token) {
+      replace({
+        pathname: '/signup',
+        state: { nextPathname: nextState.location.pathname },
+      });
+    }
+  }
+
+  return (
+    <Route path="/" component={Index}>
+      <IndexRoute component={Home} />
+      <Route path="signup" component={Signup} />
+      <Route path="profile" component={Profile} onEnter={checkAuth} />
+      <Route path="todos" component={Todos} onEnter={checkAuth} />
+    </Route>
+  );
+}

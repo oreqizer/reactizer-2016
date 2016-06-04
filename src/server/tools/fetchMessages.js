@@ -3,11 +3,18 @@ import { readJsonSync } from 'fs-extra';
 
 import logger from '../lib/logger';
 
-export default function (locale) {
+function fetchLocale(locale) {
+  return readJsonSync(join(__dirname, '../../../data/locales', `${locale}.json`))
+    .reduce((acc, { defaultMessage, id }) => ({
+      ...acc, [id]: defaultMessage,
+    }), {});
+}
+
+export default function fetchMessages(locales) {
   try {
-    return readJsonSync(join(__dirname, '../../../data/locales', `${locale}.json`))
-      .reduce((acc, { defaultMessage, id }) => ({
-        ...acc, [id]: defaultMessage,
+    return locales
+      .reduce((acc, locale) => ({
+        ...acc, [locale]: fetchLocale(locale),
       }), {});
   } catch (err) {
     logger.error('Loading locale failed', err);

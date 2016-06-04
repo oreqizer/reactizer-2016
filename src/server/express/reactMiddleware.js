@@ -2,12 +2,12 @@ import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
 import configureStore from '../../universal/configureStore';
+import getRoutes from '../../web/Router';
 import logMiddleware from '../middleware/logMiddleware';
 import getInitialState from '../tools/getInitialState';
 import fetchData from '../tools/fetchData';
 import render from '../markup';
 
-import routes from '../../web/Router';
 import logger from '../lib/logger';
 
 export default async function reactMiddleware(req, res, next) {
@@ -26,6 +26,7 @@ export default async function reactMiddleware(req, res, next) {
     ownMiddleware,
   });
 
+  const routes = getRoutes(store);
   logger.info(`Request URL: ${req.url}`);
 
   match({ history, routes, location: req.url }, async (err, redirect, renderProps) => {

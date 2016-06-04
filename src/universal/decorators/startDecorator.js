@@ -9,7 +9,7 @@ export default function (Wrapped) {
       defaultLocale={props.intl.defaultLocale}
       initialNow={props.intl.initialNow}
       locale={props.intl.locale}
-      messages={props.intl.messages}
+      messages={props.intl.messages[props.intl.locale]}
     >
       <Wrapped {...props} />
     </IntlProvider>;

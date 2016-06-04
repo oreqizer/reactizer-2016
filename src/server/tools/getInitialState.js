@@ -42,7 +42,7 @@ export default async function getInitialState(req) {
       locale,
       locales,
       initialNow: Date.now(),
-      messages: fetchMessages(locale),
+      messages: fetchMessages(locales),
     },
     config: {
       appName,
