@@ -16,10 +16,10 @@ import {
 export function* loginUser(action) {
   try {
     yield put(startSubmit('signup/login'));
-    const res = yield call(login, action);
-    const user = new User(res.data.user);
+    const { data } = yield call(login, action);
+    const user = new User(data.user);
 
-    yield put({ type: LOGIN_SUCCESS, ...res.data, user });
+    yield put({ type: LOGIN_SUCCESS, ...data, user });
     yield put(push('/todos'));
   } catch ({ data }) {
     yield put({ type: LOGIN_ERROR, error: data });
@@ -31,10 +31,10 @@ export function* loginUser(action) {
 export function* registerUser(action) {
   try {
     yield put(startSubmit('signup/register'));
-    const res = yield call(register, action);
-    const user = new User(res.data.user);
+    const { data } = yield call(register, action);
+    const user = new User(data.user);
 
-    yield put({ type: REGISTER_SUCCESS, ...res.data, user });
+    yield put({ type: REGISTER_SUCCESS, ...data, user });
     yield put(push('/todos'));
   } catch ({ data }) {
     yield put({ type: REGISTER_ERROR, error: data });

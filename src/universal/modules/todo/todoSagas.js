@@ -20,8 +20,8 @@ import {
 
 export function* fetchTodos({ token }) {
   try {
-    const res = yield call(fetch, { token });
-    const todos = toMap(res.data.todos);
+    const { data } = yield call(fetch, { token });
+    const todos = toMap(data.todos);
 
     yield put({ type: FETCH_SUCCESS, todos });
   } catch ({ data }) {
@@ -31,9 +31,9 @@ export function* fetchTodos({ token }) {
 
 export function* createTodo({ token, text }) {
   try {
-    const res = yield call(create, { token, text });
+    const { data } = yield call(create, { token, text });
 
-    yield put({ type: CREATE_SUCCESS, todo: new Todo(res.data) });
+    yield put({ type: CREATE_SUCCESS, todo: new Todo(data) });
     yield put(change('todos/create', 'todo', ''));
   } catch ({ data }) {
     yield put({ type: CREATE_ERROR, error: data });
@@ -42,9 +42,9 @@ export function* createTodo({ token, text }) {
 
 export function* editTodo({ token, todo }) {
   try {
-    const res = yield call(edit, { todo, token });
+    const { data } = yield call(edit, { todo, token });
 
-    yield put({ type: EDIT_SUCCESS, todo: new Todo(res.data) });
+    yield put({ type: EDIT_SUCCESS, todo: new Todo(data) });
   } catch ({ data }) {
     yield put({ type: EDIT_ERROR, error: data });
   }
