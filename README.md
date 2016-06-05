@@ -38,26 +38,18 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 * Server compilation with Babel, because that's the way it's [supposed to be](https://medium.com/@Cuadraman/how-to-use-babel-for-production-5b95e7323c2f#.qer1pvtrg)
 * No `react-hot-loader`, `react-transform` nor `webpack-isomorphic-tools` - I keep HMR and Webpack vanilla
 
-### Features:
+# Features:
 
 The features currently present in the demo are as follows:
 
-Server-side rendering, data fetching and *auth*
-
-Truly *universal* architecture - Redux in mobile, browser and server
-
-Auth-protected routes
-
-Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com).
-
-Full-blown demo with as few code and dependencies as possible
-
-Single source of truth - everything stored in a Redux store (from auth, to global UI state)
-
-Immutable data with Ramda functions
-
-Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
-
+* Server-side rendering, data fetching, *i18n* and *JWT authentication*
+* Truly *universal* architecture - Redux in mobile, browser and server
+* Auth-protected routes
+* Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com).
+* Full-blown demo with as few code and dependencies as possible
+* Single source of truth - everything stored in a Redux store (from auth, to global UI state)
+* Immutable data with Ramda functions
+* Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
 
 ### COMING NEXT:
 
