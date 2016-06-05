@@ -74,43 +74,42 @@ Simply `npm i` and `npm i gulp -g`. Then you have these following tasks availabl
 **CORE**
 
 Web:
-* `gulp` - runs `gulp start`
-* `gulp start` - starts HMR and server (default at *:8080*)
-* `gulp server` - builds and runs the server (note: no static asset in production mode)
-* `gulp build` - builds all web assets and sources
-* `gulp test` - runs tests
-* `gulp lint` - runs eslint
+* `gulp` - starts HMR and server (default at *:8080*)
+* `gulp run` - bundles the app and runs the server 
+* `gulp server` - runs the server
+* `gulp bundle` - prepares all assets and builds the client and server code
 
 Native:
 * `gulp ios` - runs react native ios
 * `gulp android` - runs react native android
 * `gulp native` - runs react native server
-* `gulp native:clean` - runs react native server and clears the cache
+* `gulp nativeClean` - runs react native server and clears the cache
+
+Common:
+* `gulp test` - runs tests
+* `gulp lint` - runs eslint
 
 **OTHER**
 
-* `gulp build:client` - builds client-related web stuff
-* `gulp build:server` - builds server-related web stuff
-* `gulp lint:fix` - runs eslint and fixes problems, if it can
-* `gulp test:watch` - runs tests in watch mode
-* `gulp messages` - collects `react-intl`'s default messages
-* `gulp assets` - cleans up, makes sprites and moves files
-* `gulp locales:default` - copies `_default.json` to `en.json` to test real messages
-* `gulp sprites` - makes sprites - keep those in `src/browser/assets/sprites`
-* `gulp clean` - cleans distribution directory based on config
-* `gulp clean:all` - cleans all distribution directories
+* `gulp build` - builds the client and server code
+* `gulp assets` - prepares all assets
+* `gulp lintFix` - runs eslint and fixes problems, if it can
+* `gulp testCoverage` - runs tests and generates coverage info
+* `gulp testWatch` - runs tests in watch mode
+* `gulp clean` - cleans tmp and dist directories
 
 There are also `npm` alternatives of **core** tasks, in case you don't fancy a global `gulp` install:
 
 * `npm start` - `gulp`
 * `npm test` - `gulp test`
-* `npm run lint` - `gulp lint`
+* `npm run run` - `gulp run`
 * `npm run server` - `gulp server`
-* `npm run build` - `gulp build`
+* `npm run bundle` - `gulp bundle`
 * `npm run ios` - `gulp ios`
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
-* `npm run native:clean` - `gulp native:clean`
+* `npm run native:clean` - `gulp nativeClean`
+* `npm run lint` - `gulp lint`
 
 ### TODO:
 
