@@ -39,13 +39,13 @@ export const server = nodeShell(
   `node ${config.output}/server/server.js --color`, { raw: true }
 );
 
-// dev server
-export default nodeShell(
-  'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color'
-);
+// bundles everything and then runs the server
+export const run = gulp.series(bundle, server);
 
 // dev native
 export { ios, android };
 
-// bundles everything and then runs the server
-export const run = gulp.series(bundle, server);
+// dev server
+export default nodeShell(
+  'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color'
+);
