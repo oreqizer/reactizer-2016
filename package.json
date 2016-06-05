@@ -8,14 +8,15 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
-    "lint": "gulp lint",
+    "run": "gulp run",
     "server": "gulp server",
-    "build": "gulp build",
+    "bundle": "gulp bundle",
     "ios": "gulp ios",
     "android": "gulp android",
     "native": "gulp native",
-    "native:clean": "gulp native:clean"
+    "native:clean": "gulp nativeClean",
+    "test": "gulp test",
+    "lint": "gulp lint"
   },
   "author": "oreqizer",
   "license": "MIT",
