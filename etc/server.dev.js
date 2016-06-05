@@ -5,25 +5,25 @@ import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 
-import config from './../../etc/webpack/webpack.dev';
-import logger from './lib/logger';
-import { TMP, portDev } from './config';
+import config from './webpack/webpack.dev';
+import logger from '../src/server/lib/logger';
+import { TMP, portDev } from '../src/server/config';
 
-import reactMiddleware from './express/reactMiddleware';
+import reactMiddleware from '../src/server/express/reactMiddleware';
 
 const app = express();
 
 const compiler = webpack(config);
 
-// Serve assets not processed by Webpack
-app.use(express.static(join(__dirname, '../../', TMP)));
+// serve assets not processed by Webpack
+app.use(express.static(join(__dirname, '../', TMP)));
 
-// Enables recompilation
+// enables recompilation
 app.use(webpackDev(compiler, {
   noInfo: true,
 }));
 
-// Enables hot-reloading
+// enables hot-reloading
 app.use(webpackHot(compiler, {
   noInfo: true,
 }));

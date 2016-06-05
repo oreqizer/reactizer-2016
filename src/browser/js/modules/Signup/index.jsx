@@ -6,8 +6,8 @@ import { autobind } from 'core-decorators';
 
 import SignupForm from './SignupForm';
 
-import * as userActions from '../../../universal/modules/user/userDuck';
-import { userMessages } from '../../../universal/messages';
+import * as userActions from '../../../../universal/modules/user/userDuck';
+import { userMessages } from '../../../../universal/messages';
 
 const messages = defineMessages({
   signup: {

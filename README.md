@@ -19,11 +19,9 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 The features currently present in the demo are as follows:
 
 * Server-side rendering, data fetching, *i18n* and *JWT authentication*
-* Truly *universal* architecture - Redux in mobile, browser and server
+* Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com). Mind: it's just a demo. I recommend making up some arbitary username/email/password. I use `test`, with password `Testtest1`.
+* Truly *universal* architecture - shared Redux code in mobile, browser and server
 * Auth-protected routes
-* Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com). Mind: it's just a demo. I recommend to make up some arbitary username/email/password. I use `test`, with password `Testtest1`.
-* Full-blown demo with as few code and dependencies as possible
-* Single source of truth - everything stored in a Redux store (from auth, to global UI state)
 * Immutable data with Ramda functions
 * Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
 
