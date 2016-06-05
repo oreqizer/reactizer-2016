@@ -5,7 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 
 import logger from './lib/logger';
-import { port, production, output } from './config';
+import { port, output } from './config';
 
 import reactMiddleware from './express/reactMiddleware';
 
