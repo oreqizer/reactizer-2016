@@ -14,7 +14,30 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 >
 > All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
 
-### Tech stack
+# Features:
+
+The features currently present in the demo are as follows:
+
+* Server-side rendering, data fetching, *i18n* and *JWT authentication*
+* Truly *universal* architecture - Redux in mobile, browser and server
+* Auth-protected routes
+* Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com). Mind: it's just a demo. I recommend to make up some arbitary username/email/password. I use `test`, with password `Testtest1`.
+* Full-blown demo with as few code and dependencies as possible
+* Single source of truth - everything stored in a Redux store (from auth, to global UI state)
+* Immutable data with Ramda functions
+* Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
+
+### COMING NEXT:
+
+**Documentation**. I will document all the stuff present in the demo, from server side rendering + auth, different auth options, obstacles I had to overcome and design decisions I made.
+
+**Full mobile app**. I want to supply you guys with a full-blown React Native app as a reference for anyone starting with native mobile development. Everything currently working in the web demo will work in the native app.
+
+**More examples**. Serverless, Firebase, bundle splitting, Mobx (later on). I will move this working demo to `examples` folder, clean the top level app out so you don't have to do it yourself when forking, and finally include the other demos with all current features.
+
+**Full test coverage**. Tests are good for you (and especially for your team). I will include tests to cover everything from reducers, to sagas.
+
+# Tech stack
 
 * [React](https://github.com/facebook/react) and [React Native](https://github.com/facebook/react-native) as the core libs
 * [React Router](https://github.com/reactjs/react-router) for web routing
@@ -37,29 +60,6 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 * Translation message collection with `babel-plugin-react-intl`
 * Server compilation with Babel, because that's the way it's [supposed to be](https://medium.com/@Cuadraman/how-to-use-babel-for-production-5b95e7323c2f#.qer1pvtrg)
 * No `react-hot-loader`, `react-transform` nor `webpack-isomorphic-tools` - I keep HMR and Webpack vanilla
-
-# Features:
-
-The features currently present in the demo are as follows:
-
-* Server-side rendering, data fetching, *i18n* and *JWT authentication*
-* Truly *universal* architecture - Redux in mobile, browser and server
-* Auth-protected routes
-* Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com).
-* Full-blown demo with as few code and dependencies as possible
-* Single source of truth - everything stored in a Redux store (from auth, to global UI state)
-* Immutable data with Ramda functions
-* Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
-
-### COMING NEXT:
-
-**Documentation**. I will document all the stuff present in the demo, from server side rendering + auth, different auth options, obstacles I had to overcome and design decisions I made.
-
-**Full mobile app**. I want to supply you guys with a full-blown React Native app as a reference for anyone starting with native mobile development. Everything currently working in the web demo will work in the native app.
-
-**More examples**. Serverless, Firebase, bundle splitting, Mobx (later on). I will move this working demo to `examples` folder, clean the top level app out so you don't have to do it yourself when forking, and finally include the other demos with all current features.
-
-**Full test coverage**. Tests are good for you (and especially for your team). I will include tests to cover everything from reducers, to sagas.
 
 ### Known issues:
 
