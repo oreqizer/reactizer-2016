@@ -7,10 +7,10 @@ import { autobind } from 'core-decorators';
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
 
-import * as todoActions from '../../../universal/modules/todo/todoDuck';
-import * as todoSagas from '../../../universal/modules/todo/todoSagas';
+import * as todoActions from '../../../../universal/modules/todo/todoDuck';
+import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
 
-import { SUCCESS } from '../../../universal/consts/phaseConsts';
+import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 
 const messages = defineMessages({
   title: {

@@ -11,11 +11,9 @@ import reactMiddleware from './express/reactMiddleware';
 
 const app = express();
 
-if (!production) {
-  // served by Nginx in production
-  app.use(express.static(join(__dirname, '../../', output)));
-  logger.info(`Static files served from directory: ${output}`);
-}
+// serves static files
+app.use(express.static(join(__dirname, '../../', output)));
+logger.info(`Static files served from directory: ${output}`);
 
 // allows getting cookies on server
 app.use(cookieParser());

@@ -4,7 +4,7 @@ import { injectIntl, intlShape } from 'react-intl';
 import { RaisedButton } from 'material-ui';
 import { TextField } from 'redux-form-material-ui'; // eslint-disable-line
 
-import { formMessages, userMessages } from '../../../universal/messages';
+import { formMessages, userMessages } from '../../../../universal/messages';
 
 const SignupForm = props =>
   <form

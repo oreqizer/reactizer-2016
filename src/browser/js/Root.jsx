@@ -5,7 +5,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 
 import store from './clientStore';
-import getRoutes from './../../web/Router';
+import getRoutes from './Router';
 
 const routes = getRoutes(store);
 const history = syncHistoryWithStore(browserHistory, store);

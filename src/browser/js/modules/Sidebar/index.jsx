@@ -5,9 +5,9 @@ import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem, Divider } from 'material-ui';
 import { autobind } from 'core-decorators';
 
-import { SUCCESS } from '../../../universal/consts/phaseConsts';
-import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
-import { logoutUser } from '../../../universal/modules/user/userDuck';
+import { SUCCESS } from '../../../../universal/consts/phaseConsts';
+import { toggleSidebar } from '../../../../universal/modules/ui/uiDuck';
+import { logoutUser } from '../../../../universal/modules/user/userDuck';
 
 const messages = defineMessages({
   profile: {

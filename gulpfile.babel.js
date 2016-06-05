@@ -13,11 +13,11 @@ import mergestream from 'merge-stream';
 import buildConfig from './etc/webpack/webpack.build';
 import config from './etc/config';
 
-import nodeShell from './etc/utils/nodeShell';
+import nodeShell from 'etc/tools/nodeShell';
 
 gulp.task('default', ['start']);
 
-const start = 'nodemon --exec ./node_modules/.bin/babel-node ./src/server/server.dev.js --color';
+const start = 'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color';
 gulp.task('start', ['assets'], nodeShell(start));
 
 const server = `node ${config.output}/server/server.js --color`;
@@ -30,7 +30,6 @@ gulp.task('build:node', () =>
     './src/**/*.{js,jsx}',
     '!./src/native/**',
     '!./**/__tests__/**',
-    '!./**/*.dev.*',
   ])
     .pipe(plumber())
     .pipe(babel())

@@ -6,10 +6,10 @@ import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
-import start from '../universal/decorators/startDecorator';
-import { toggleSidebar } from '../universal/modules/ui/uiDuck';
+import start from '../../../universal/decorators/startDecorator';
+import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
 
-import Sidebar from './modules/Sidebar';
+import Sidebar from './Sidebar';
 
 const messages = defineMessages({
   title: {
