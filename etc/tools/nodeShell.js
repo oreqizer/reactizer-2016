@@ -8,12 +8,12 @@ import chalk from 'chalk';
  * @prop options.raw {boolean} don't prefix with node's path
  * @returns {function(cb: function): void}
  */
-export default function (fullCommand, options = {}) {
+export default function nodeShell(fullCommand, options = {}) {
   return cb => {
     const [command, ...args] = fullCommand.split(' ');
     const prefix = options.raw ? '' : join(__dirname, '../../node_modules/.bin/');
 
-    gutil.log(`Executing ${chalk.yellow([command, ...args].join(' '))}`);
+    gutil.log(`Executing ${chalk.yellow(fullCommand)}`);
 
     const child = spawn(prefix + command, args, {
       stdio: 'inherit',
