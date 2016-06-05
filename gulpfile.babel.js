@@ -13,7 +13,7 @@ import mergestream from 'merge-stream';
 import buildConfig from './etc/webpack/webpack.build';
 import config from './etc/config';
 
-import nodeShell from 'etc/tools/nodeShell';
+import nodeShell from './etc/tools/nodeShell';
 
 gulp.task('default', ['start']);
 
