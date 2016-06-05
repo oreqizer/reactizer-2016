@@ -40,6 +40,7 @@ android/app/libs
 android/keystores/debug.keystore
 
 # custom
-.tmp
-dist
-data
+.tmp/
+dist/
+data/
+coverage/

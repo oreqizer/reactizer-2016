@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
-import { production } from './../config';
+import { production } from '../config';
 
 const jsLoader = {
   test: /\.jsx?$/,

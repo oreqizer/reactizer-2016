@@ -1,7 +1,13 @@
 language: node_js
+
 node_js:
-#  - "4.2"
+#  - "4.2" react native has an issue with C++ on node 4
 #  - "4.3"
-#  - "4.4" react native has an issue with C++ on node 4
+#  - "4.4"
   - "5.10"
   - "6"
+  - "stable"
+
+script:
+  - npm test
+  - npm run lint
