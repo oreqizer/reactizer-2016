@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "gulp",
+    "test": "gulp test",
     "run": "gulp run",
     "server": "gulp server",
     "bundle": "gulp bundle",
@@ -15,7 +16,6 @@
     "android": "gulp android",
     "native": "gulp native",
     "native:clean": "gulp nativeClean",
-    "test": "gulp test",
     "lint": "gulp lint"
   },
   "author": "oreqizer",
