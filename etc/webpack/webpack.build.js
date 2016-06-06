@@ -1,6 +1,5 @@
 import { join } from 'path';
 import webpack from 'webpack';
-// import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
@@ -32,7 +31,6 @@ export default {
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    // new Visualizer(),
   ],
   devtool: 'source-map',
 };
