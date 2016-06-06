@@ -102,6 +102,7 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 
 * `npm start` - `gulp`
 * `npm test` - `gulp test`
+* `npm run lint` - `gulp lint`
 * `npm run run` - `gulp run`
 * `npm run server` - `gulp server`
 * `npm run bundle` - `gulp bundle`
@@ -109,7 +110,6 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
 * `npm run native:clean` - `gulp nativeClean`
-* `npm run lint` - `gulp lint`
 
 ### TODO:
 
