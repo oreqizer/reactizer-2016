@@ -26,7 +26,7 @@ const imgLoader = {
 
 export default {
   context: __dirname,
-  entry: ['./../../src/browser/index.js'],
+  entry: ['../../src/browser/index.js'],
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
