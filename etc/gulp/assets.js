@@ -55,4 +55,4 @@ const messages = () => {
     });
 };
 
-export default gulp.sequence(sprites, gulp.parallel(statics, messages));
+export default gulp.series(sprites, gulp.parallel(statics, messages));
