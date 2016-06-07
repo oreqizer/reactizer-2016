@@ -9,6 +9,7 @@ import TodosForm from './TodosForm';
 
 import * as todoActions from '../../../../universal/modules/todo/todoDuck';
 import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
+import { todosSelector } from '../../../../universal/modules/todo/todoSelector';
 
 import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 
@@ -24,15 +25,18 @@ const messages = defineMessages({
 });
 
 @injectIntl
-@connect(state => ({
+@connect((state, props) => ({
   token: state.user.token,
-  todo: state.todo,
+  todos: todosSelector({ state, props }),
+  phase: state.todo.phase,
 }), todoActions)
 export default class Todos extends Component {
   static propTypes = {
     token: PropTypes.string,
     intl: intlShape.isRequired,
-    todo: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
+    todos: PropTypes.object.isRequired,
+    phase: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,
     createTodo: PropTypes.func.isRequired,
     editTodo: PropTypes.func.isRequired,
@@ -44,9 +48,9 @@ export default class Todos extends Component {
   ];
 
   componentDidMount() {
-    const { token, todo, fetchTodos } = this.props;
+    const { token, phase, fetchTodos } = this.props;
 
-    if (todo.phase !== SUCCESS) {
+    if (phase !== SUCCESS) {
       fetchTodos({ token });
     }
   }
@@ -60,7 +64,7 @@ export default class Todos extends Component {
 
   render() {
     const {
-      todo: { todos },
+      todos,
       intl,
       token,
       editTodo,
@@ -78,7 +82,7 @@ export default class Todos extends Component {
         <div className="Todos-list">
           <TodosList
             token={token}
-            todos={todos.valueSeq()}
+            todos={todos}
             onEdit={editTodo}
             onDelete={deleteTodo}
           />

@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
-import { production } from '../config';
+import { output, production } from '../config';
 
 const jsLoader = {
   test: /\.jsx?$/,
@@ -27,6 +27,11 @@ const imgLoader = {
 export default {
   context: __dirname,
   entry: ['../../src/browser/index.js'],
+  output: {
+    path: join(__dirname, '../../', output),
+    publicPath: '/',
+    filename: 'bundle.[hash].js',
+  },
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
   },

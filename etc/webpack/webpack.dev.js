@@ -1,8 +1,6 @@
-import { join } from 'path';
 import webpack from 'webpack';
 
 import base from './webpack.base';
-import { TMP } from './../config';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -17,10 +15,6 @@ export default {
   ],
   module: {
     loaders: [...base.module.loaders, styleLoader],
-  },
-  output: {
-    path: join(__dirname, '../../', TMP),
-    filename: 'bundle.[hash].js',
   },
   plugins: [
     ...base.plugins,

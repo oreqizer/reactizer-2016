@@ -22,7 +22,7 @@ export default function getRoutes(store) {
       <IndexRoute component={Home} />
       <Route path="signup" component={Signup} />
       <Route path="profile" component={Profile} onEnter={checkAuth} />
-      <Route path="todos" component={Todos} onEnter={checkAuth} />
+      <Route path="todos(/:filter)" component={Todos} onEnter={checkAuth} />
     </Route>
   );
 }
