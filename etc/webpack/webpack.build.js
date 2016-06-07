@@ -23,6 +23,7 @@ export default {
     ...base.plugins,
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       mangle: {
         screw_ie8: true,
       },
@@ -32,6 +33,6 @@ export default {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ],
-  devtool: 'source-map',
+  devtool: 'cheap-source-map',
 };
 
