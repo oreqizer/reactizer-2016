@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { defineMessages, injectIntl, FormattedMessage, intlShape } from 'react-intl';
 import { push } from 'react-router-redux';
-import { AppBar, Drawer, MenuItem, Divider } from 'material-ui';
+import { AppBar, Drawer, MenuItem, Divider, DropDownMenu } from 'material-ui';
 import { autobind } from 'core-decorators';
+import { partial } from 'ramda';
 
 import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 import { toggleSidebar } from '../../../../universal/modules/ui/uiDuck';
 import { logoutUser } from '../../../../universal/modules/user/userDuck';
+import { setLocale } from '../../../../universal/modules/intl/intlDuck';
 
 const messages = defineMessages({
   profile: {
@@ -28,62 +31,77 @@ const messages = defineMessages({
   },
 });
 
+const actionCreators = {
+  toggleSidebar,
+  logoutUser,
+  setLocale,
+  push,
+};
+
+const styles = {
+  localeMenu: {
+    width: '100%',
+    marginBottom: 50,
+  },
+};
+
 @injectIntl
 @connect(state => ({
   sidebar: state.ui.sidebar,
   appName: state.config.appName,
+  locales: state.intl.locales,
+  locale: state.intl.locale,
   user: state.user,
-}), {
-  push,
-  toggleSidebar,
-  logoutUser,
-})
+}), dispatch => ({
+  actions: bindActionCreators(actionCreators, dispatch),
+}))
 export default class Sidebar extends Component {
   static propTypes = {
-    intl: PropTypes.object,
-    appName: PropTypes.string,
-    user: PropTypes.object,
-    sidebar: PropTypes.bool,
-    children: PropTypes.node,
-    push: PropTypes.func,
-    toggleSidebar: PropTypes.func,
-    logoutUser: PropTypes.func,
+    intl: intlShape.isRequired,
+    appName: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
+    sidebar: PropTypes.bool.isRequired,
+    locales: PropTypes.array.isRequired,
+    locale: PropTypes.string.isRequired,
+    actions: PropTypes.object.isRequired,
   };
 
   @autobind
   handleToggleDrawer() {
-    this.props.toggleSidebar();
+    this.props.actions.toggleSidebar();
   }
 
   @autobind
   handleMenuClick(path) {
-    this.props.toggleSidebar();
-    this.props.push(path);
+    const { actions } = this.props;
+
+    actions.toggleSidebar();
+    actions.push(path);
   }
 
   @autobind
   handleLogout() {
-    this.props.toggleSidebar();
-    this.props.logoutUser();
-    this.props.push('/');
+    const { actions } = this.props;
+
+    actions.toggleSidebar();
+    actions.logoutUser();
+    actions.push('/');
   }
 
   @autobind
-  renderMenuItems() {
-    const { user } = this.props;
-
-    switch (user.phase) {
+  renderMenuItems(phase) {
+    switch (phase) {
       case SUCCESS:
         return [
           <MenuItem
             key="profile"
-            onTouchTap={() => this.handleMenuClick('/profile')}
+            onTouchTap={partial(this.handleMenuClick, ['/profile'])}
           >
             <FormattedMessage {...messages.profile} />
           </MenuItem>,
           <MenuItem
             key="todos"
-            onTouchTap={() => this.handleMenuClick('/todos')}
+            onTouchTap={partial(this.handleMenuClick, ['/todos'])}
           >
             <FormattedMessage {...messages.todos} />
           </MenuItem>,
@@ -100,7 +118,7 @@ export default class Sidebar extends Component {
         return [
           <MenuItem
             key="signup"
-            onTouchTap={() => this.handleMenuClick('/signup')}
+            onTouchTap={partial(this.handleMenuClick, ['/signup'])}
           >
             <FormattedMessage {...messages.signup} />
           </MenuItem>,
@@ -109,7 +127,7 @@ export default class Sidebar extends Component {
   }
 
   render() {
-    const { sidebar } = this.props;
+    const { user, sidebar, locale, locales, actions } = this.props;
 
     return (
       <Drawer
@@ -119,9 +137,23 @@ export default class Sidebar extends Component {
       >
         <AppBar showMenuIconButton={false} />
 
-        {this.renderMenuItems()}
+        <DropDownMenu
+          value={locale}
+          onChange={(ev, target, value) => actions.setLocale(value)}
+          autoWidth={false}
+          style={styles.localeMenu}
+        >
+          {locales.map(loc =>
+            <MenuItem
+              key={loc}
+              value={loc}
+              primaryText={loc.toUpperCase()}
+            />
+          )}
+        </DropDownMenu>
+
+        {this.renderMenuItems(user.phase)}
       </Drawer>
     );
   }
 }
-

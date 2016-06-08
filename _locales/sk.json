@@ -1,0 +1,128 @@
+[
+  {
+    "id": "form.submit",
+    "defaultMessage": "Odoslať"
+  },
+  {
+    "id": "home.list_intro",
+    "defaultMessage": "Demo obsahuje:"
+  },
+  {
+    "id": "home.login_registration",
+    "defaultMessage": "Prihlásenie a registrácia"
+  },
+  {
+    "id": "home.p1",
+    "defaultMessage": "Toto je demo {appName}, so všetkým, čo má React ponúknuť, v jednom balíku!"
+  },
+  {
+    "id": "home.p2",
+    "defaultMessage": "Pozri sa do bočného menu, a pokochaj sa touto mini demo aplikáciou na úlohy."
+  },
+  {
+    "id": "home.p3",
+    "defaultMessage": "Registrácia aj úlohy sú trvalé, kľudne používajte v práci."
+  },
+  {
+    "id": "home.todos",
+    "defaultMessage": "Pretrvávajúce úlohy"
+  },
+  {
+    "id": "home.welcome",
+    "defaultMessage": "Vitaj"
+  },
+  {
+    "id": "profile.email",
+    "defaultMessage": "Email: {email}"
+  },
+  {
+    "id": "profile.heading",
+    "defaultMessage": "Profil"
+  },
+  {
+    "id": "profile.username",
+    "defaultMessage": "Užívateľské meno: {username}"
+  },
+  {
+    "id": "seo.description.index",
+    "description": "In EN, the \"Teh\" is intentional",
+    "defaultMessage": "Najlepší pekáč"
+  },
+  {
+    "id": "seo.title.index",
+    "defaultMessage": "Domov"
+  },
+  {
+    "id": "seo.title.todos",
+    "defaultMessage": "Úlohy"
+  },
+  {
+    "id": "sidebar.logout",
+    "defaultMessage": "Odhlásiť"
+  },
+  {
+    "id": "sidebar.profile",
+    "defaultMessage": "Profil"
+  },
+  {
+    "id": "sidebar.signup",
+    "defaultMessage": "Prihlásiť"
+  },
+  {
+    "id": "sidebar.todos",
+    "defaultMessage": "Úlohy"
+  },
+  {
+    "id": "signup.header",
+    "defaultMessage": "Prihlásenie"
+  },
+  {
+    "id": "signup.logged_in_as",
+    "defaultMessage": "Vitaj {name}, už si prihlásený."
+  },
+  {
+    "id": "todos.filters.active",
+    "defaultMessage": "Aktívne"
+  },
+  {
+    "id": "todos.filters.all",
+    "defaultMessage": "Všetky"
+  },
+  {
+    "id": "todos.filters.done",
+    "defaultMessage": "Hotové"
+  },
+  {
+    "id": "todos.form_prompt",
+    "defaultMessage": "Zadaj úlohu"
+  },
+  {
+    "id": "todos.header",
+    "defaultMessage": "Úlohy"
+  },
+  {
+    "id": "todos.show",
+    "description": "Followed by filter options",
+    "defaultMessage": "Zobraziť:"
+  },
+  {
+    "id": "user.email",
+    "defaultMessage": "E-mail"
+  },
+  {
+    "id": "user.login",
+    "defaultMessage": "Prihlásiť"
+  },
+  {
+    "id": "user.password",
+    "defaultMessage": "Heslo"
+  },
+  {
+    "id": "user.register",
+    "defaultMessage": "Registrovať"
+  },
+  {
+    "id": "user.username",
+    "defaultMessage": "Užívateľské meno"
+  }
+]
