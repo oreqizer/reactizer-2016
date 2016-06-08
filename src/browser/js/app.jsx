@@ -5,6 +5,8 @@ import immutableDevtools from 'immutable-devtools';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Root from './Root';
+import configureGlobals from '../../universal/configureGlobals';
+import { BROWSER } from '../../universal/consts/envConsts';
 
 // immutable: logging to the console and debugging
 immutableDevtools(immutable);
@@ -13,6 +15,8 @@ immutableDevtools(immutable);
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
+
+configureGlobals(BROWSER);
 
 const view = document.getElementById('react-view');
 
