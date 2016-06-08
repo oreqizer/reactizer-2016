@@ -17,19 +17,19 @@
   },
   {
     "id": "home.p2",
-    "defaultMessage": "Be sure to check out the sidebar and explore this mini 'todo' demo."
+    "defaultMessage": "Pozri sa do bočného menu, a pokochaj sa touto mini demo aplikáciou na úlohy."
   },
   {
     "id": "home.p3",
-    "defaultMessage": "The registration and your todos are persistent, feel free to use at work."
+    "defaultMessage": "Registrácia aj úlohy sú trvalé, kľudne používajte v práci."
   },
   {
     "id": "home.todos",
-    "defaultMessage": "Persistent todos"
+    "defaultMessage": "Pretrvávajúce úlohy"
   },
   {
     "id": "home.welcome",
-    "defaultMessage": "Welcome"
+    "defaultMessage": "Vitaj"
   },
   {
     "id": "profile.email",
@@ -37,73 +37,73 @@
   },
   {
     "id": "profile.heading",
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profil"
   },
   {
     "id": "profile.username",
-    "defaultMessage": "Username: {username}"
+    "defaultMessage": "Užívateľské meno: {username}"
   },
   {
     "id": "seo.description.index",
     "description": "In EN, the \"Teh\" is intentional",
-    "defaultMessage": "Teh best boilerplate"
+    "defaultMessage": "Najlepší pekáč"
   },
   {
     "id": "seo.title.index",
-    "defaultMessage": "Index"
+    "defaultMessage": "Domov"
   },
   {
     "id": "seo.title.todos",
-    "defaultMessage": "Todos"
+    "defaultMessage": "Úlohy"
   },
   {
     "id": "sidebar.logout",
-    "defaultMessage": "Log out"
+    "defaultMessage": "Odhlásiť"
   },
   {
     "id": "sidebar.profile",
-    "defaultMessage": "Profile"
+    "defaultMessage": "Profil"
   },
   {
     "id": "sidebar.signup",
-    "defaultMessage": "Sign up"
+    "defaultMessage": "Prihlásiť"
   },
   {
     "id": "sidebar.todos",
-    "defaultMessage": "Todos"
+    "defaultMessage": "Úlohy"
   },
   {
     "id": "signup.header",
-    "defaultMessage": "Sign up"
+    "defaultMessage": "Prihlásenie"
   },
   {
     "id": "signup.logged_in_as",
-    "defaultMessage": "Hi {name}, you are already logged in."
+    "defaultMessage": "Vitaj {name}, už si prihlásený."
   },
   {
     "id": "todos.filters.active",
-    "defaultMessage": "Active"
+    "defaultMessage": "Aktívne"
   },
   {
     "id": "todos.filters.all",
-    "defaultMessage": "All"
+    "defaultMessage": "Všetky"
   },
   {
     "id": "todos.filters.done",
-    "defaultMessage": "Done"
+    "defaultMessage": "Hotové"
   },
   {
     "id": "todos.form_prompt",
-    "defaultMessage": "Enter a TODO"
+    "defaultMessage": "Zadaj úlohu"
   },
   {
     "id": "todos.header",
-    "defaultMessage": "Todos"
+    "defaultMessage": "Úlohy"
   },
   {
     "id": "todos.show",
     "description": "Followed by filter options",
-    "defaultMessage": "Show:"
+    "defaultMessage": "Zobraziť:"
   },
   {
     "id": "user.email",
@@ -111,18 +111,18 @@
   },
   {
     "id": "user.login",
-    "defaultMessage": "Log in"
+    "defaultMessage": "Prihlásiť"
   },
   {
     "id": "user.password",
-    "defaultMessage": "Password"
+    "defaultMessage": "Heslo"
   },
   {
     "id": "user.register",
-    "defaultMessage": "Register"
+    "defaultMessage": "Registrovať"
   },
   {
     "id": "user.username",
-    "defaultMessage": "Username"
+    "defaultMessage": "Užívateľské meno"
   }
 ]
