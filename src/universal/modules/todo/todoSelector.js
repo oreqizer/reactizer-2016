@@ -19,7 +19,7 @@ export const todosSelector = createSelector(
         return todos.filter(todo => todo.done);
 
       default:
-        throw new Error(`Invalid URL filter: ${filter}`); // TODO something more reasonable
+        return todos;
     }
   }
 );

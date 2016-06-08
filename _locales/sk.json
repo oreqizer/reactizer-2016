@@ -1,0 +1,128 @@
+[
+  {
+    "id": "form.submit",
+    "defaultMessage": "Odoslať"
+  },
+  {
+    "id": "home.list_intro",
+    "defaultMessage": "Demo obsahuje:"
+  },
+  {
+    "id": "home.login_registration",
+    "defaultMessage": "Prihlásenie a registrácia"
+  },
+  {
+    "id": "home.p1",
+    "defaultMessage": "Toto je demo {appName}, so všetkým, čo má React ponúknuť, v jednom balíku!"
+  },
+  {
+    "id": "home.p2",
+    "defaultMessage": "Be sure to check out the sidebar and explore this mini 'todo' demo."
+  },
+  {
+    "id": "home.p3",
+    "defaultMessage": "The registration and your todos are persistent, feel free to use at work."
+  },
+  {
+    "id": "home.todos",
+    "defaultMessage": "Persistent todos"
+  },
+  {
+    "id": "home.welcome",
+    "defaultMessage": "Welcome"
+  },
+  {
+    "id": "profile.email",
+    "defaultMessage": "Email: {email}"
+  },
+  {
+    "id": "profile.heading",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "profile.username",
+    "defaultMessage": "Username: {username}"
+  },
+  {
+    "id": "seo.description.index",
+    "description": "In EN, the \"Teh\" is intentional",
+    "defaultMessage": "Teh best boilerplate"
+  },
+  {
+    "id": "seo.title.index",
+    "defaultMessage": "Index"
+  },
+  {
+    "id": "seo.title.todos",
+    "defaultMessage": "Todos"
+  },
+  {
+    "id": "sidebar.logout",
+    "defaultMessage": "Log out"
+  },
+  {
+    "id": "sidebar.profile",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "sidebar.signup",
+    "defaultMessage": "Sign up"
+  },
+  {
+    "id": "sidebar.todos",
+    "defaultMessage": "Todos"
+  },
+  {
+    "id": "signup.header",
+    "defaultMessage": "Sign up"
+  },
+  {
+    "id": "signup.logged_in_as",
+    "defaultMessage": "Hi {name}, you are already logged in."
+  },
+  {
+    "id": "todos.filters.active",
+    "defaultMessage": "Active"
+  },
+  {
+    "id": "todos.filters.all",
+    "defaultMessage": "All"
+  },
+  {
+    "id": "todos.filters.done",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "todos.form_prompt",
+    "defaultMessage": "Enter a TODO"
+  },
+  {
+    "id": "todos.header",
+    "defaultMessage": "Todos"
+  },
+  {
+    "id": "todos.show",
+    "description": "Followed by filter options",
+    "defaultMessage": "Show:"
+  },
+  {
+    "id": "user.email",
+    "defaultMessage": "E-mail"
+  },
+  {
+    "id": "user.login",
+    "defaultMessage": "Log in"
+  },
+  {
+    "id": "user.password",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "user.register",
+    "defaultMessage": "Register"
+  },
+  {
+    "id": "user.username",
+    "defaultMessage": "Username"
+  }
+]
