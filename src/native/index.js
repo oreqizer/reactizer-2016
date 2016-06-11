@@ -5,9 +5,8 @@ import App from './app/App';
 
 import configureStore from '../universal/configureStore';
 import configureGlobals from '../universal/configureGlobals';
-import { NATIVE } from '../universal/consts/envConsts';
 
-configureGlobals(NATIVE);
+configureGlobals();
 
 const store = configureStore();
 

@@ -9,10 +9,9 @@ import { port, output } from './config';
 
 import reactMiddleware from './express/reactMiddleware';
 import configureGlobals from '../universal/configureGlobals';
-import { NODE } from '../universal/consts/envConsts';
 
-// configure globals and polyfills
-configureGlobals(NODE);
+// configure globals 
+configureGlobals();
 
 const app = express();
 

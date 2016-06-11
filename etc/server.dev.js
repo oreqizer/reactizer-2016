@@ -11,14 +11,13 @@ import { TMP, portDev } from '../src/server/config';
 
 import reactMiddleware from '../src/server/express/reactMiddleware';
 import configureGlobals from '../src/universal/configureGlobals';
-import { NODE } from '../src/universal/consts/envConsts';
 
 const app = express();
 
 const compiler = webpack(config);
 
-// configure globals and polyfills
-configureGlobals(NODE);
+// configure globals
+configureGlobals();
 
 // serve assets not processed by Webpack
 app.use(express.static(join(__dirname, '../', TMP)));
