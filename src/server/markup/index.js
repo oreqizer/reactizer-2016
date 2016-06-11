@@ -26,7 +26,7 @@ const muiTheme = req =>
 export default function markup({ store, renderProps, req }) {
   const assets = fetchAssetInfo();
 
-  const reduxState = JSON.stringify(store.getState());
+  const reduxState = encodeURI(JSON.stringify(store.getState()));
   const app = renderApp(store, renderProps, muiTheme(req));
   const head = Helmet.rewind();
 

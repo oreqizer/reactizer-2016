@@ -15,7 +15,7 @@ const loggerMiddleware = createLogger({
   collapsed: true,
 });
 
-const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
+const initialState = JSON.parse(decodeURI(document.body.getAttribute('data-redux-state')));
 
 const ownMiddleware = [
   sagaMiddleware,
