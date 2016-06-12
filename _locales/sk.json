@@ -23,7 +23,7 @@
   },
   {
     "id": "home.welcome",
-    "defaultMessage": "Vitaj"
+    "defaultMessage": "Vitajte"
   },
   {
     "id": "profile.email",
@@ -72,7 +72,7 @@
   },
   {
     "id": "signup.logged_in_as",
-    "defaultMessage": "Vitaj {name}, už si prihlásený."
+    "defaultMessage": "Ahoj {name}, už si prihlásený."
   },
   {
     "id": "todos.filters.active",
