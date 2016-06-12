@@ -95,6 +95,10 @@
     "defaultMessage": "Úlohy"
   },
   {
+    "id": "todos.overview",
+    "defaultMessage": "{todos, plural, =0 {Žiadne úlohy niesu zobrazené.} one {Zobrazená jedna úloha.} few {Zobrazené # úlohy.} many {Zobrazených # úloh.}}."
+  },
+  {
     "id": "todos.show",
     "description": "Followed by filter options",
     "defaultMessage": "Zobraziť:"

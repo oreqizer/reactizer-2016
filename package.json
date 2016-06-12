@@ -10,14 +10,14 @@
     "start": "gulp",
     "test": "gulp test",
     "lint": "gulp lint",
+    "messages": "gulp messages",
     "run": "gulp run",
     "server": "gulp server",
     "bundle": "gulp bundle",
     "ios": "gulp ios",
     "android": "gulp android",
     "native": "gulp native",
-    "native:clean": "gulp nativeClean",
-    "messages": "gulp messages"
+    "native:clean": "gulp nativeClean"
   },
   "author": "oreqizer",
   "license": "MIT",

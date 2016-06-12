@@ -19,13 +19,13 @@ async function maybeLogin(refreshToken) {
 
       const { data } = await refreshLogin({ refreshToken });
 
-      logger.info(`[getInitialState] Logged in as: ${data.user.username}`);
+      logger.info(`[getInitialState] logged in as: ${data.user.username}`);
       return { token: data.token, user: data.user, phase: SUCCESS };
     }
 
     return {};
   } catch (err) {
-    logger.error('[getInitialState] Login failed', err);
+    logger.error('[getInitialState] login failed', err);
     return { phase: ERROR, error: err.data };
   }
 }

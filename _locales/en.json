@@ -95,6 +95,10 @@
     "defaultMessage": "Todos"
   },
   {
+    "id": "todos.overview",
+    "defaultMessage": "Displaying {todos, plural, =0 {no todos} one {one todo} other {# todos}}."
+  },
+  {
     "id": "todos.show",
     "description": "Followed by filter options",
     "defaultMessage": "Show:"

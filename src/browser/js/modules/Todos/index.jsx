@@ -24,6 +24,14 @@ const messages = defineMessages({
     id: 'todos.header',
     defaultMessage: 'Todos',
   },
+  overview: {
+    id: 'todos.overview',
+    defaultMessage: 'Displaying {todos, plural,' +
+      '=0 {no todos}' +
+      'one {one todo}' +
+      'other {# todos}' +
+    '}.',
+  },
   show: {
     id: 'todos.show',
     defaultMessage: 'Show:',
@@ -97,6 +105,9 @@ export default class Todos extends Component {
           <h2>
             <FormattedMessage {...messages.header} />
           </h2>
+          <p style={{ paddingBottom: 20 }}>
+            <FormattedMessage {...messages.overview} values={{ todos: todos.count() }} />
+          </p>
         </div>
         <div className="Todos-list">
           <TodosList
