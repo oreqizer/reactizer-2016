@@ -36,8 +36,6 @@ const Home = props =>
     </h1>
     <p>
       <FormattedMessage {...messages.description} values={{ appName: props.appName }} />
-      <FormattedMessage {...messages.p2} />
-      <FormattedMessage {...messages.p3} />
     </p>
     <h4>
       <FormattedMessage {...messages.listIntro} />
