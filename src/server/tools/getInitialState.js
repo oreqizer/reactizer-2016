@@ -1,10 +1,10 @@
 import axios from 'axios';
-import fetchMessages from './fetchMessages';
-import matchLocale from './matchLocale';
 
 import { appName, defaultLocale, locales } from '../config';
-
 import logger from '../lib/logger';
+
+import fetchMessages from './fetchMessages';
+import matchLocale from './matchLocale';
 
 import { URL } from '../../universal/consts/apiConsts';
 import { REFRESH_TOKEN } from '../../universal/consts/cookieConsts';
