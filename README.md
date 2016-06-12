@@ -110,6 +110,7 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
 * `npm run native:clean` - `gulp nativeClean`
+* `npm run messages` - `gulp messages`
 
 ### TODO:
 

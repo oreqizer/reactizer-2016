@@ -4,27 +4,21 @@
     "defaultMessage": "Odoslať"
   },
   {
+    "id": "home.description",
+    "defaultMessage": "Toto je demo {appName}, so všetkým čo má React ponúknuť v jednom balíku! Pozrite sa do bočného menu, a pokochajte sa touto mini demo aplikáciou na úlohy. Registrácia aj úlohy sú trvalé, kľudne používajte v práci."
+  },
+  {
     "id": "home.list_intro",
     "defaultMessage": "Demo obsahuje:"
   },
   {
     "id": "home.login_registration",
-    "defaultMessage": "Prihlásenie a registrácia"
-  },
-  {
-    "id": "home.p1",
-    "defaultMessage": "Toto je demo {appName}, so všetkým, čo má React ponúknuť, v jednom balíku!"
-  },
-  {
-    "id": "home.p2",
-    "defaultMessage": "Pozri sa do bočného menu, a pokochaj sa touto mini demo aplikáciou na úlohy."
-  },
-  {
-    "id": "home.p3",
-    "defaultMessage": "Registrácia aj úlohy sú trvalé, kľudne používajte v práci."
+    "description": "List item with the title \"The demo contains:\"",
+    "defaultMessage": "Prihlásenie a registráciu"
   },
   {
     "id": "home.todos",
+    "description": "List item with the title \"The demo contains:\"",
     "defaultMessage": "Pretrvávajúce úlohy"
   },
   {

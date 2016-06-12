@@ -4,27 +4,21 @@
     "defaultMessage": "Submit"
   },
   {
+    "id": "home.description",
+    "defaultMessage": "This is a demo of {appName}, with all the React has to offer in one package! Be sure to check out the sidebar and explore this mini 'todo' demo. The registration and your todos are persistent, feel free to use at work."
+  },
+  {
     "id": "home.list_intro",
     "defaultMessage": "The demo contains:"
   },
   {
     "id": "home.login_registration",
+    "description": "List item with the title \"The demo contains:\"",
     "defaultMessage": "Login and registration"
   },
   {
-    "id": "home.p1",
-    "defaultMessage": "This is a demo of {appName}, with all the React has to offer in one package!"
-  },
-  {
-    "id": "home.p2",
-    "defaultMessage": "Be sure to check out the sidebar and explore this mini 'todo' demo."
-  },
-  {
-    "id": "home.p3",
-    "defaultMessage": "The registration and your todos are persistent, feel free to use at work."
-  },
-  {
     "id": "home.todos",
+    "description": "List item with the title \"The demo contains:\"",
     "defaultMessage": "Persistent todos"
   },
   {

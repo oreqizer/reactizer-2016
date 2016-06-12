@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 
 import Html from './Html';
 
-import fetchAssetInfo from './../tools/fetchAssetInfo';
+import fetchAssetInfo from '../tools/fetchAssetInfo';
 
 const renderApp = (store, props, muiTheme) =>
   renderToString(

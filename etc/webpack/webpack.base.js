@@ -41,9 +41,7 @@ export default {
   plugins: [
     new Assets({ path: join(__dirname, '../../data') }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(production ? 'production' : 'dev'),
-      },
+      'process.env': { NODE_ENV: JSON.stringify(production ? 'production' : 'dev') },
     }),
   ],
   postcss: () => [autoprefixer],
