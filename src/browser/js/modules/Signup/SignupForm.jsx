@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { compose } from 'redux';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import { RaisedButton } from 'material-ui';
@@ -55,8 +56,9 @@ SignupForm.propTypes = {
   intl: intlShape.isRequired,
 };
 
-const Intled = injectIntl(SignupForm);
-
-export default reduxForm({
-  form: 'signup',
-})(Intled);
+export default compose(
+  injectIntl,
+  reduxForm({
+    form: 'signup',
+  })
+)(SignupForm);

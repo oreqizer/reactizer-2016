@@ -6,7 +6,7 @@ import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
-import start from '../../../universal/decorators/startDecorator';
+import intl from '../../../universal/decorators/intlDecorator';
 import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
 
 import Sidebar from './Sidebar';
@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
 });
 
-@start
+@intl
 @injectIntl
 @connect(state => ({
   appName: state.config.appName,

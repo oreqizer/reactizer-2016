@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
 export default function (Wrapped) {
-  const Start = props =>
+  const Intl = props =>
     <IntlProvider
       key={props.intl.locale} // makes changing locale in Redux work
       defaultLocale={props.intl.defaultLocale}
@@ -14,11 +14,11 @@ export default function (Wrapped) {
       <Wrapped {...props} />
     </IntlProvider>;
 
-  Start.propTypes = {
+  Intl.propTypes = {
     intl: PropTypes.object.isRequired,
   };
 
   return connect(state => ({
     intl: state.intl,
-  }))(Start);
+  }))(Intl);
 }
