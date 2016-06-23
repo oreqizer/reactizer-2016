@@ -5,17 +5,11 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import intlProvider from '../../../universal/decorators/intlProvider';
 import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
 
 import Sidebar from './Sidebar';
-
-// Needed for onTouchTap
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
 
 const messages = defineMessages({
   title: {

@@ -3,7 +3,7 @@ import { List, ListItem, IconButton, FontIcon } from 'material-ui';
 
 const TodosList = ({ todos, token, onEdit, onDelete }) =>
   <List>
-    {todos.map(todo => (
+    {todos.map(todo =>
       <ListItem
         key={todo.id}
         primaryText={todo.text}
@@ -18,7 +18,7 @@ const TodosList = ({ todos, token, onEdit, onDelete }) =>
         }
         style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
       />
-    ))}
+    )}
   </List>;
 
 TodosList.propTypes = {
