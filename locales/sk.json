@@ -96,7 +96,7 @@
   },
   {
     "id": "todos.overview",
-    "defaultMessage": "{todos, plural, =0 {Žiadne úlohy niesu zobrazené.} one {Zobrazená jedna úloha.} few {Zobrazené # úlohy.} other {Zobrazených # úloh.}}."
+    "defaultMessage": "{todos, plural, =0 {Žiadne úlohy niesu zobrazené} one {Zobrazená jedna úloha} few {Zobrazené # úlohy} other {Zobrazených # úloh}}."
   },
   {
     "id": "todos.show",
