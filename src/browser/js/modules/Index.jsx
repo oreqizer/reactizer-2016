@@ -68,6 +68,7 @@ export default class Index extends Component {
           titleTemplate={`%s | ${appName}`}
           meta={[
             { charset: 'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'description', content: intl.formatMessage(messages.description) },
             { property: 'og:type', content: 'boilerplate' },
           ]}
