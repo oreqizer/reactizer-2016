@@ -6,6 +6,8 @@ import { login, register } from './userApi';
 
 import User from '../../containers/User';
 
+import { LOGIN, REGISTER } from '../../consts/formConsts';
+
 import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
@@ -15,7 +17,7 @@ import {
 
 export function* loginUser(action) {
   try {
-    yield put(startSubmit('signup'));
+    yield put(startSubmit(LOGIN));
     const { data } = yield call(login, action);
     const user = new User(data.user);
 
@@ -24,13 +26,13 @@ export function* loginUser(action) {
   } catch ({ data }) {
     yield put({ type: LOGIN_ERROR, error: data });
   } finally {
-    yield put(stopSubmit('signup'));
+    yield put(stopSubmit(LOGIN));
   }
 }
 
 export function* registerUser(action) {
   try {
-    yield put(startSubmit('signup'));
+    yield put(startSubmit(REGISTER));
     const { data } = yield call(register, action);
     const user = new User(data.user);
 
@@ -39,6 +41,6 @@ export function* registerUser(action) {
   } catch ({ data }) {
     yield put({ type: REGISTER_ERROR, error: data });
   } finally {
-    yield put(stopSubmit('signup'));
+    yield put(stopSubmit(REGISTER));
   }
 }

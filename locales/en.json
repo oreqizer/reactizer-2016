@@ -1,5 +1,17 @@
 [
   {
+    "id": "form.error.invalid",
+    "defaultMessage": "Invalid value"
+  },
+  {
+    "id": "form.error.required",
+    "defaultMessage": "This field is required"
+  },
+  {
+    "id": "form.error.weak_password",
+    "defaultMessage": "Password too weak"
+  },
+  {
     "id": "form.submit",
     "defaultMessage": "Submit"
   },

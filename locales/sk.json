@@ -1,5 +1,17 @@
 [
   {
+    "id": "form.error.invalid",
+    "defaultMessage": "Zlá hodnota"
+  },
+  {
+    "id": "form.error.required",
+    "defaultMessage": "Povinné políčko"
+  },
+  {
+    "id": "form.error.weak_password",
+    "defaultMessage": "Slabé heslo"
+  },
+  {
     "id": "form.submit",
     "defaultMessage": "Odoslať"
   },
