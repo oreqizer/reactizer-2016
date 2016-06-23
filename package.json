@@ -98,7 +98,7 @@
     "stylus-loader": "^2.1.1",
     "through2": "^2.0.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.12",
+    "webpack": "^2.1.0-beta.13",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   }
