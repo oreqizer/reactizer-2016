@@ -1,6 +1,6 @@
 # REACTIZER
 
-A React boilerplate that's always ahead! Click [here](http://reactizer.herokuapp.com/) to check out the live demo!
+A React boilerplate that's always ahead! Click [here](http://reactizer.herokuapp.com/) to check out the live demo.
 
 [![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
 [![Code Climate](https://codeclimate.com/github/oreqizer/reactizer/badges/gpa.svg)](https://codeclimate.com/github/oreqizer/reactizer)
@@ -14,7 +14,7 @@ A React boilerplate that's always ahead! Click [here](http://reactizer.herokuapp
 >
 > All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
 
-To check out the backend, click [here](https://github.com/oreqizer/reactizer-api).
+To check out the backend, click [here](https://github.com/oreqizer/reactizer-api)!
 
 # Features:
 
