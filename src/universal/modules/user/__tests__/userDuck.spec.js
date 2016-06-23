@@ -1,4 +1,4 @@
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
+import { INIT, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../userDuck';
 
@@ -13,6 +13,7 @@ const {
   REGISTER,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
+  CLEAR_ERROR,
 } = duck;
 
 jest.unmock('immutable');
@@ -54,6 +55,14 @@ describe('user action creators', () => {
     expect(duck.registerUser({ email, username, password })).toEqual(expected);
   });
 
+  it('should make a clear error action', () => {
+    const expected = {
+      type: CLEAR_ERROR,
+    };
+
+    expect(duck.clearError()).toEqual(expected);
+  });
+
   it('should make a logout action', () => {
     const expected = {
       type: LOGOUT,
@@ -78,7 +87,7 @@ describe('user reducer', () => {
     expect(token).toBe(null);
     expect(refreshToken).toBe(null);
     expect(user).toEqual(null);
-    expect(phase).toBe(CLEAN);
+    expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });
 
@@ -140,7 +149,7 @@ describe('user reducer', () => {
     expect(token).toBe(null);
     expect(refreshToken).toBe(null);
     expect(user).toEqual(null);
-    expect(phase).toBe(CLEAN);
+    expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });
 
@@ -226,5 +235,22 @@ describe('user reducer', () => {
     expect(user).toEqual(null);
     expect(phase).toBe(ERROR);
     expect(error).toBe(mockError);
+  });
+
+  it('should handle CLEAR_ERROR', () => {
+    const initialState = reducer({
+      phase: ERROR,
+      error: mockError,
+    });
+
+    const { token, refreshToken, user, phase, error } = reducer(initialState, {
+      type: CLEAR_ERROR,
+    });
+
+    expect(token).toBe(null);
+    expect(refreshToken).toBe(null);
+    expect(user).toEqual(null);
+    expect(phase).toBe(INIT);
+    expect(error).toBe(null);
   });
 });

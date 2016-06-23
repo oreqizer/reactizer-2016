@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-intl';
-import { Paper, Tabs, Tab } from 'material-ui';
+import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
 import { autobind } from 'core-decorators';
 
 import RegisterForm from './RegisterForm';
@@ -31,6 +31,7 @@ export default class Signup extends Component {
     user: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired,
     registerUser: PropTypes.func.isRequired,
+    clearError: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -62,7 +63,7 @@ export default class Signup extends Component {
   }
 
   render() {
-    const { intl, user } = this.props;
+    const { intl, user, clearError } = this.props;
     const { tab } = this.state;
 
     const login = intl.formatMessage(userMessages.login);
@@ -90,6 +91,11 @@ export default class Signup extends Component {
               <RegisterForm onSubmit={this.handleSignup} />
             </Tab>
           </Tabs>
+          <Snackbar
+            message={user.error}
+            open={Boolean(user.error)}
+            onRequestClose={clearError}
+          />
         </Paper>
       </div>
     );
