@@ -20,7 +20,7 @@ const messages = () => {
     }))
     .on('end', () => {
       msgs.sort((a, b) => a.id.localeCompare(b.id));
-      outputJsonSync('./data/locales/_default.json', msgs, { spaces: 2 });
+      outputJsonSync('./locales/_default.json', msgs, { spaces: 2 });
     });
 };
 

@@ -24,11 +24,13 @@ const imgLoader = {
   ],
 };
 
+const outputPath = join(__dirname, '../../', output);
+
 export default {
   context: __dirname,
   entry: ['../../src/browser/index.js'],
   output: {
-    path: join(__dirname, '../../', output),
+    path: outputPath,
     publicPath: '/',
     filename: 'bundle.[hash].js',
   },
@@ -39,7 +41,7 @@ export default {
     loaders: [jsLoader, imgLoader],
   },
   plugins: [
-    new Assets({ path: join(__dirname, '../../data') }),
+    new Assets({ path: outputPath }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(production ? 'production' : 'dev') },
     }),

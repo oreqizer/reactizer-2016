@@ -4,7 +4,7 @@ import { readJsonSync } from 'fs-extra';
 import logger from '../lib/logger';
 
 function fetchLocale(locale) {
-  return readJsonSync(join(__dirname, '../../../data/locales', `${locale}.json`))
+  return readJsonSync(join(__dirname, '../../../locales', `${locale}.json`))
     .reduce((acc, { defaultMessage, id }) => ({
       ...acc, [id]: defaultMessage,
     }), {});
