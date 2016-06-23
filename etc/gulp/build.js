@@ -35,4 +35,4 @@ const buildBrowser = cb =>
     cb();
   });
 
-export default gulp.series(buildServer, buildBrowser);
+export default gulp.parallel(buildServer, buildBrowser);
