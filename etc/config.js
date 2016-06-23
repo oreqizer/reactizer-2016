@@ -11,7 +11,8 @@ nconf.overrides(OUTPUTS);
 // allow command-line args
 nconf.argv();
 
-const production = nconf.get('production');
+// allow 'production' from NODE_ENV or an arg
+const production = process.env.NODE_ENV === 'production' || nconf.get('production');
 
 // set ENV for Node here - webpack sets it for itself
 if (!process.env.NODE_ENV) {
