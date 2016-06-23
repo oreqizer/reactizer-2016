@@ -71,8 +71,6 @@ Having problems? Try running `watchman watch-del-all`
 
 ### Tasks
 
-Before you start, copy the contents of `_locales` to `data/locales` for the **i18n** to work correctly! In a real app, you want to keep translations somewhere like a *PhraseApp* or such, fetching them before deploying.
-
 Simply `npm i` and `npm i gulp -g`. Then you have these following tasks available:
 
 **CORE**
