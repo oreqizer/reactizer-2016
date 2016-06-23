@@ -1,4 +1,4 @@
-export const URL = 'https://reactizer.herokuapp.com/api';
+export const URL = 'https://reactizer-api.herokuapp.com/api';
 
 export const APP_WEB = 'web';
 export const APP_IOS = 'ios';

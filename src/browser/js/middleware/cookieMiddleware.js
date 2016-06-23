@@ -6,7 +6,14 @@ import {
   LOGOUT,
 } from '../../../universal/modules/user/userDuck';
 
-import { REFRESH_TOKEN } from '../../../universal/consts/cookieConsts';
+import {
+  SET_LOCALE,
+} from '../../../../src/universal/modules/intl/intlDuck';
+
+import {
+  REFRESH_TOKEN,
+  LOCALE,
+} from '../../../universal/consts/cookieConsts';
 
 export default () => next => action => {
   switch (action.type) {
@@ -17,6 +24,10 @@ export default () => next => action => {
 
     case LOGOUT:
       cookie.remove(REFRESH_TOKEN);
+      break;
+
+    case SET_LOCALE:
+      cookie.set(LOCALE, action.locale);
       break;
 
     default:

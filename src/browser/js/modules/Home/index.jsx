@@ -9,17 +9,9 @@ const messages = defineMessages({
     id: 'home.welcome',
     defaultMessage: 'Welcome',
   },
-  p1: {
-    id: 'home.p1',
-    defaultMessage: 'This is a demo of {appName}, with all the React has to offer in one package! ',
-  },
-  p2: {
-    id: 'home.p2',
-    defaultMessage: 'Be sure to check out the sidebar and explore this mini \'todo\' demo. ',
-  },
-  p3: {
-    id: 'home.p3',
-    defaultMessage: 'The registration and your todos are persistent, feel free to use at work.',
+  description: {
+    id: 'home.description',
+    defaultMessage: 'This is a demo of {appName}, ...',
   },
   listIntro: {
     id: 'home.list_intro',
@@ -28,10 +20,12 @@ const messages = defineMessages({
   loginRegistration: {
     id: 'home.login_registration',
     defaultMessage: 'Login and registration',
+    description: 'List item with the title "The demo contains:"',
   },
   todos: {
     id: 'home.todos',
     defaultMessage: 'Persistent todos',
+    description: 'List item with the title "The demo contains:"',
   },
 });
 
@@ -41,9 +35,7 @@ const Home = props =>
       <FormattedMessage {...messages.welcome} />
     </h1>
     <p>
-      <FormattedMessage {...messages.p1} values={{ appName: props.appName }} />
-      <FormattedMessage {...messages.p2} />
-      <FormattedMessage {...messages.p3} />
+      <FormattedMessage {...messages.description} values={{ appName: props.appName }} />
     </p>
     <h4>
       <FormattedMessage {...messages.listIntro} />

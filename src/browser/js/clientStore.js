@@ -20,12 +20,15 @@ const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 const ownMiddleware = [
   sagaMiddleware,
   historyMiddleware,
-  loggerMiddleware,
   cookieMiddleware,
 ];
 
 const enhancers = [];
+
 if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
+  // console logging for debugging
+  ownMiddleware.push(loggerMiddleware);
+
   // chrome Redux extension: https://github.com/zalmoxisus/redux-devtools-extension
   enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
 }

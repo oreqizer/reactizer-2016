@@ -14,6 +14,8 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 >
 > All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
 
+Click [here](http://reactizer.herokuapp.com/) to check out the live demo!
+
 # Features:
 
 The features currently present in the demo are as follows:
@@ -102,6 +104,8 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 
 * `npm start` - `gulp`
 * `npm test` - `gulp test`
+* `npm run lint` - `gulp lint`
+* `npm run messages` - `gulp messages`
 * `npm run run` - `gulp run`
 * `npm run server` - `gulp server`
 * `npm run bundle` - `gulp bundle`
@@ -109,7 +113,6 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
 * `npm run native:clean` - `gulp nativeClean`
-* `npm run lint` - `gulp lint`
 
 ### TODO:
 

@@ -1,10 +1,7 @@
-import { join } from 'path';
 import webpack from 'webpack';
-// import Visualizer from 'webpack-visualizer-plugin';
 import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
-import { output } from './../config';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -13,10 +10,6 @@ const styleLoader = {
 
 export default {
   ...base,
-  output: {
-    path: join(__dirname, '../../', output),
-    filename: 'bundle.[hash].js',
-  },
   module: {
     loaders: [...base.module.loaders, styleLoader],
   },
@@ -24,6 +17,7 @@ export default {
     ...base.plugins,
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       mangle: {
         screw_ie8: true,
       },
@@ -32,8 +26,7 @@ export default {
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    // new Visualizer(),
   ],
-  devtool: 'source-map',
+  devtool: 'cheap-source-map',
 };
 

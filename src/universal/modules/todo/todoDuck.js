@@ -2,7 +2,7 @@ import { Record, Map } from 'immutable';
 import { values } from 'ramda';
 
 import { toMap } from './todoMapper';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
+import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 export const FETCH = 'todo/FETCH';
 export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
@@ -24,7 +24,7 @@ export const RESET = 'todo/RESET';
 
 const InitialState = new Record({
   todos: new Map(),
-  phase: CLEAN,
+  phase: INIT,
   error: null,
 });
 

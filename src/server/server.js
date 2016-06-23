@@ -8,6 +8,10 @@ import logger from './lib/logger';
 import { port, output } from './config';
 
 import reactMiddleware from './express/reactMiddleware';
+import configureGlobals from '../universal/configureGlobals';
+
+// configure globals
+configureGlobals();
 
 const app = express();
 

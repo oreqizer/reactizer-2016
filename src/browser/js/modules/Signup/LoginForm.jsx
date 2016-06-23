@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
+import { compose } from 'redux';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { injectIntl, intlShape } from 'react-intl';
 import { RaisedButton } from 'material-ui';
-import { TextField } from 'redux-form-material-ui'; // eslint-disable-line
+
+import TextField from '../../components/TextField';
 
 import { formMessages, userMessages } from '../../../../universal/messages';
+import { LOGIN } from '../../../../universal/consts/formConsts';
 
-const SignupForm = props =>
+const LoginForm = props =>
   <form
-    className="LoginForm"
+    className="Signup-form"
     onSubmit={props.handleSubmit}
     onChange={ev => ev.stopPropagation()}
   >
@@ -20,17 +23,6 @@ const SignupForm = props =>
         floatingLabelText={props.intl.formatMessage(userMessages.username)}
       />
     </div>
-    {props.register &&
-      <div className="Form-field">
-        <Field
-          name="email"
-          component={TextField}
-          id={userMessages.email.id}
-          floatingLabelText={props.intl.formatMessage(userMessages.email)}
-          type="email"
-        />
-      </div>
-    }
     <div className="Form-field">
       <Field
         name="password"
@@ -48,15 +40,15 @@ const SignupForm = props =>
     />
   </form>;
 
-SignupForm.propTypes = {
+LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  register: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
 };
 
-const Intled = injectIntl(SignupForm);
-
-export default reduxForm({
-  form: 'signup',
-})(Intled);
+export default compose(
+  injectIntl,
+  reduxForm({
+    form: LOGIN,
+  })
+)(LoginForm);

@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-intl';
-import { Paper, Tabs, Tab } from 'material-ui';
+import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
 import { autobind } from 'core-decorators';
 
-import SignupForm from './SignupForm';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
 import * as userActions from '../../../../universal/modules/user/userDuck';
 import { userMessages } from '../../../../universal/messages';
+import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
 
 const messages = defineMessages({
   signup: {
@@ -20,9 +22,6 @@ const messages = defineMessages({
   },
 });
 
-const LOGIN = 'login';
-const REGISTER = 'register';
-
 @injectIntl
 @connect(state => ({
   user: state.user,
@@ -32,6 +31,7 @@ export default class Signup extends Component {
     user: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired,
     registerUser: PropTypes.func.isRequired,
+    clearError: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -63,7 +63,7 @@ export default class Signup extends Component {
   }
 
   render() {
-    const { intl, user } = this.props;
+    const { intl, user, clearError } = this.props;
     const { tab } = this.state;
 
     const login = intl.formatMessage(userMessages.login);
@@ -84,15 +84,18 @@ export default class Signup extends Component {
         </div>
         <Paper>
           <Tabs value={tab} onChange={this.handleTabSwitch}>
-            <Tab label={login} value={LOGIN} />
-            <Tab label={register} value={REGISTER} />
+            <Tab label={login} value={LOGIN}>
+              <LoginForm onSubmit={this.handleSignup} />
+            </Tab>
+            <Tab label={register} value={REGISTER}>
+              <RegisterForm onSubmit={this.handleSignup} />
+            </Tab>
           </Tabs>
-          <div className="Signup-form">
-            <SignupForm
-              onSubmit={this.handleSignup}
-              register={tab === REGISTER}
-            />
-          </div>
+          <Snackbar
+            message={user.error}
+            open={Boolean(user.error)}
+            onRequestClose={clearError}
+          />
         </Paper>
       </div>
     );

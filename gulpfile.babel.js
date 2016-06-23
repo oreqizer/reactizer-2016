@@ -6,6 +6,7 @@ import nodeShell from './etc/tools/nodeShell';
 import assets from './etc/gulp/assets';
 import build from './etc/gulp/build';
 import clean from './etc/gulp/clean';
+import messages from './etc/gulp/messages';
 import { ios, android, native, nativeClean } from './etc/gulp/native';
 import { lint, lintFix } from './etc/gulp/lint';
 import { test, testCoverage, testWatch } from './etc/gulp/tests';
@@ -18,6 +19,7 @@ export {
   assets,
   build,
   clean,
+  messages,
   native,
   nativeClean,
   test,
@@ -32,7 +34,11 @@ export {
 // ----------
 
 // prepares and builds the web app
-export const bundle = gulp.series(clean, assets, build);
+export const bundle = gulp.series(
+  clean,
+  gulp.parallel(assets, messages),
+  build
+);
 
 // starts the beta/production server
 export const server = nodeShell(
