@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import immutable from 'immutable';
 import immutableDevtools from 'immutable-devtools';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import sk from 'react-intl/locale-data/sk';
@@ -15,11 +14,6 @@ addLocaleData([...en, ...sk]);
 
 // immutable: logging to the console and debugging
 immutableDevtools(immutable);
-
-// Needed for onTouchTap
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
 
 configureGlobals();
 
