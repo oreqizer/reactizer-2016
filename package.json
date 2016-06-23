@@ -17,7 +17,8 @@
     "ios": "gulp ios",
     "android": "gulp android",
     "native": "gulp native",
-    "native:clean": "gulp nativeClean"
+    "native:clean": "gulp nativeClean",
+    "postinstall": "gulp bundle"
   },
   "author": "oreqizer",
   "license": "MIT",
