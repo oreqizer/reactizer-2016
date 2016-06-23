@@ -133,26 +133,6 @@ describe('user reducer', () => {
     expect(error).toBe(null);
   });
 
-  it('should handle LOGOUT', () => {
-    const initialState = reducer({
-      roken: mockToken,
-      refreshToken: mockRefreshToken,
-      user: mockUser,
-      phase: SUCCESS,
-      error: null,
-    });
-
-    const { token, refreshToken, user, phase, error } = reducer(initialState, {
-      type: LOGOUT,
-    });
-
-    expect(token).toBe(null);
-    expect(refreshToken).toBe(null);
-    expect(user).toEqual(null);
-    expect(phase).toBe(INIT);
-    expect(error).toBe(null);
-  });
-
   it('should handle LOGIN_SUCCESS', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: LOGIN_SUCCESS,
@@ -245,6 +225,26 @@ describe('user reducer', () => {
 
     const { token, refreshToken, user, phase, error } = reducer(initialState, {
       type: CLEAR_ERROR,
+    });
+
+    expect(token).toBe(null);
+    expect(refreshToken).toBe(null);
+    expect(user).toEqual(null);
+    expect(phase).toBe(INIT);
+    expect(error).toBe(null);
+  });
+
+  it('should handle LOGOUT', () => {
+    const initialState = reducer({
+      roken: mockToken,
+      refreshToken: mockRefreshToken,
+      user: mockUser,
+      phase: SUCCESS,
+      error: null,
+    });
+
+    const { token, refreshToken, user, phase, error } = reducer(initialState, {
+      type: LOGOUT,
     });
 
     expect(token).toBe(null);

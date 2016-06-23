@@ -92,11 +92,10 @@ export const registerUser = ({ email, username, password }) => ({
   password,
 });
 
-export const logoutUser = () => ({
-  type: LOGOUT,
-});
-
-
 export const clearError = () => ({
   type: CLEAR_ERROR,
+});
+
+export const logoutUser = () => ({
+  type: LOGOUT,
 });
