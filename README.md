@@ -14,6 +14,8 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 >
 > All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
 
+Click [here](http://reactizer.herokuapp.com/) to check out the live demo!
+
 # Features:
 
 The features currently present in the demo are as follows:
