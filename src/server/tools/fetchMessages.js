@@ -17,7 +17,7 @@ export default function fetchMessages(locales) {
         ...acc, [locale]: fetchLocale(locale),
       }), {});
   } catch (err) {
-    logger.error('Loading locale failed', err);
+    logger.error('[fetchMessages] Loading locales failed', err);
     return null;
   }
 }

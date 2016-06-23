@@ -3,8 +3,8 @@ import axios from 'axios';
 import { appName, defaultLocale, locales } from '../config';
 import logger from '../lib/logger';
 
-import fetchMessages from './fetchMessages';
 import matchLocale from './matchLocale';
+import messages from '../messages';
 
 import { URL } from '../../universal/consts/apiConsts';
 import { REFRESH_TOKEN } from '../../universal/consts/cookieConsts';
@@ -42,7 +42,7 @@ export default async function getInitialState(req) {
       locale,
       locales,
       initialNow: Date.now(),
-      messages: fetchMessages(locales),
+      messages,
     },
     config: {
       appName,
