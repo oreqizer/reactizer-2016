@@ -6,6 +6,8 @@ import { toMap } from './todoMapper';
 
 import Todo from '../../containers/Todo';
 
+import { TODO } from '../../consts/formConsts';
+
 import {
   FETCH_SUCCESS,
   FETCH_ERROR,
@@ -34,7 +36,7 @@ export function* createTodo({ token, text }) {
     const { data } = yield call(create, { token, text });
 
     yield put({ type: CREATE_SUCCESS, todo: new Todo(data) });
-    yield put(change('todos/create', 'todo', ''));
+    yield put(change(TODO, 'todo', ''));
   } catch ({ data }) {
     yield put({ type: CREATE_ERROR, error: data });
   }

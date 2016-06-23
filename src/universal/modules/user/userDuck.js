@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
 
 import User from '../../containers/User';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
+import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 export const LOGIN = 'user/LOGIN';
 export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
@@ -17,11 +17,13 @@ export const REGISTER = 'user/REGISTER';
 export const REGISTER_SUCCESS = 'user/REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'user/REGISTER_ERROR';
 
+export const CLEAR_ERROR = 'user/CLEAR_ERROR';
+
 const InitialState = new Record({
   token: null,
   refreshToken: null,
   user: null,
-  phase: CLEAN,
+  phase: INIT,
   error: null,
 });
 
@@ -59,6 +61,11 @@ export default function todoReducer(state = new InitialState(), action) {
         .set('phase', ERROR)
         .set('error', String(action.error));
 
+    case CLEAR_ERROR:
+      return state
+        .set('error', null)
+        .set('phase', INIT);
+
     case LOGOUT:
       return new InitialState;
 
@@ -83,6 +90,10 @@ export const registerUser = ({ email, username, password }) => ({
   email,
   username,
   password,
+});
+
+export const clearError = () => ({
+  type: CLEAR_ERROR,
 });
 
 export const logoutUser = () => ({

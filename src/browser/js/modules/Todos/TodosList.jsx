@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { List, ListItem, Checkbox, IconButton, FontIcon } from 'material-ui';
+import { List, ListItem, IconButton, FontIcon } from 'material-ui';
 
 const TodosList = ({ todos, token, onEdit, onDelete }) =>
   <List>
@@ -7,20 +7,16 @@ const TodosList = ({ todos, token, onEdit, onDelete }) =>
       <ListItem
         key={todo.id}
         primaryText={todo.text}
-        leftCheckbox={
-          <Checkbox
-            checked={todo.done}
-            onCheck={(ev, checked) => onEdit({
-              token,
-              todo: todo.set('done', checked),
-            })}
-          />
-        }
+        onTouchTap={() => onEdit({
+          token,
+          todo: todo.set('done', !todo.done),
+        })}
         rightIconButton={
           <IconButton onTouchTap={() => onDelete({ token, id: todo.id })}>
             <FontIcon className="material-icons">delete</FontIcon>
           </IconButton>
         }
+        style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
       />
     ))}
   </List>;

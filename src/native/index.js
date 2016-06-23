@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import App from './app/App';
 
 import configureStore from '../universal/configureStore';
+import configureGlobals from '../universal/configureGlobals';
+
+configureGlobals();
 
 const store = configureStore();
 

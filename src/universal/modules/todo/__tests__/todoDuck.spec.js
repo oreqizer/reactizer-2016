@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 
 import Todo from '../../../containers/Todo';
-import { CLEAN, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
+import { INIT, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../todoDuck';
 import { toMap } from '../todoMapper';
@@ -111,7 +111,7 @@ describe('todo reducer', () => {
     const { todos, phase, error } = reducer(undefined, {});
 
     expect(todos.equals(new Map())).toBe(true);
-    expect(phase).toBe(CLEAN);
+    expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });
 
@@ -270,7 +270,7 @@ describe('todo reducer', () => {
     });
 
     expect(todos.equals(new Map())).toBe(true);
-    expect(phase).toBe(CLEAN);
+    expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });
 });

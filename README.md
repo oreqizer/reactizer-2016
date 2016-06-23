@@ -1,6 +1,6 @@
 # REACTIZER
 
-A React boilerplate that's always ahead! To check out the backend, click [here](https://github.com/oreqizer/reactizer-api).
+A React boilerplate that's always ahead! Click [here](http://reactizer.herokuapp.com/) to check out the live demo.
 
 [![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
 [![Code Climate](https://codeclimate.com/github/oreqizer/reactizer/badges/gpa.svg)](https://codeclimate.com/github/oreqizer/reactizer)
@@ -13,6 +13,8 @@ A React boilerplate that's always ahead! To check out the backend, click [here](
 > **Reactizer**'s goal is mainly to provide you with the best practices of building a modern **React** application. Feel free to open an issue or a pull request!
 >
 > All the tech I chose is super new, sometimes even in an *alpha* version - thus if you'd like to use it for production, I recommend scaling those unstable versions down.
+
+To check out the backend, click [here](https://github.com/oreqizer/reactizer-api)!
 
 # Features:
 
@@ -102,6 +104,8 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 
 * `npm start` - `gulp`
 * `npm test` - `gulp test`
+* `npm run lint` - `gulp lint`
+* `npm run messages` - `gulp messages`
 * `npm run run` - `gulp run`
 * `npm run server` - `gulp server`
 * `npm run bundle` - `gulp bundle`
@@ -109,7 +113,6 @@ There are also `npm` alternatives of **core** tasks, in case you don't fancy a g
 * `npm run android` - `gulp android`
 * `npm run native` - `gulp native`
 * `npm run native:clean` - `gulp nativeClean`
-* `npm run lint` - `gulp lint`
 
 ### TODO:
 

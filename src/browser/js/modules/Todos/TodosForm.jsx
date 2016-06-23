@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import { reduxForm, Field } from 'redux-form/immutable';
-import { TextField } from 'redux-form-material-ui'; // eslint-disable-line
+
+import TextField from '../../components/TextField';
+
+import { TODO } from '../../../../universal/consts/formConsts';
 
 const messages = defineMessages({
   prompt: {
@@ -25,5 +28,5 @@ TodosForm.propTypes = {
 };
 
 export default reduxForm({
-  form: 'todos/create',
+  form: TODO,
 })(TodosForm);

@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
-import { production } from '../config';
+import { output, production } from '../config';
 
 const jsLoader = {
   test: /\.jsx?$/,
@@ -24,9 +24,16 @@ const imgLoader = {
   ],
 };
 
+const outputPath = join(__dirname, '../../', output);
+
 export default {
   context: __dirname,
-  entry: ['./../../src/browser/index.js'],
+  entry: ['../../src/browser/index.js'],
+  output: {
+    path: outputPath,
+    publicPath: '/',
+    filename: 'bundle.[hash].js',
+  },
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
@@ -34,11 +41,9 @@ export default {
     loaders: [jsLoader, imgLoader],
   },
   plugins: [
-    new Assets({ path: join(__dirname, '../../data') }),
+    new Assets({ path: outputPath }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(production ? 'production' : 'dev'),
-      },
+      'process.env': { NODE_ENV: JSON.stringify(production ? 'production' : 'dev') },
     }),
   ],
   postcss: () => [autoprefixer],

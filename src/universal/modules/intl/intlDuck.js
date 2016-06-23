@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-import { SET_LOCALE } from './intlActions';
+export const SET_LOCALE = 'intl/SET_LOCALE';
 
 const InitialState = new Record({
   defaultLocale: null,

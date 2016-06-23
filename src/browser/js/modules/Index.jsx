@@ -6,7 +6,7 @@ import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
-import start from '../../../universal/decorators/startDecorator';
+import intlProvider from '../../../universal/decorators/intlProvider';
 import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
 
 import Sidebar from './Sidebar';
@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
 });
 
-@start
+@intlProvider
 @injectIntl
 @connect(state => ({
   appName: state.config.appName,
@@ -67,6 +67,7 @@ export default class Index extends Component {
           title={intl.formatMessage(messages.title)}
           titleTemplate={`%s | ${appName}`}
           meta={[
+            { charset: 'utf-8' },
             { name: 'description', content: intl.formatMessage(messages.description) },
             { property: 'og:type', content: 'boilerplate' },
           ]}
