@@ -27,7 +27,7 @@ export default async function reactMiddleware(req, res, next) {
   });
 
   const routes = getRoutes(store);
-  logger.info(`Request URL: ${req.url}`);
+  logger.info(`[reactMiddleware] Request URL: ${req.url}`);
 
   match({ history, routes, location: req.url }, async (err, redirect, renderProps) => {
     try {
@@ -43,22 +43,22 @@ export default async function reactMiddleware(req, res, next) {
       }
 
       if (!renderProps) {
-        logger.warn('No matching route');
+        logger.warn('[reactMiddleware] No matching route');
         res.status(404);
         return;
       }
 
-      logger.info('Route matched, fetching data...');
+      logger.info('[reactMiddleware] Route matched, fetching data...');
       await fetchData(store, sagaMiddleware, renderProps);
 
-      logger.info('Rendering HTML...');
+      logger.info('[reactMiddleware] Rendering HTML...');
       const doctype = '<!DOCTYPE html>';
       const html = render(store, renderProps, req);
 
       res.end(doctype + html);
-      logger.success('Response ended successfully');
+      logger.success('[reactMiddleware] Response ended successfully');
     } catch (err2) {
-      logger.error('Response error', err2);
+      logger.error('[reactMiddleware] Response error', err2);
       next(err2);
     }
   });
