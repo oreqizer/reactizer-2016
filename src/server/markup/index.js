@@ -30,7 +30,7 @@ export default function markup({ store, renderProps, req }) {
   const app = renderApp(store, renderProps, muiTheme(req));
   const head = Helmet.rewind();
 
-  const html = renderToStaticMarkup(
+  return renderToStaticMarkup(
     <Html
       head={head}
       assets={assets}
@@ -38,6 +38,4 @@ export default function markup({ store, renderProps, req }) {
       app={app}
     />
   );
-
-  return `<!DOCTYPE html>${html}`;
 }

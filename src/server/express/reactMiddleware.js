@@ -52,9 +52,10 @@ export default async function reactMiddleware(req, res, next) {
       await fetchData(store, sagaMiddleware, renderProps);
 
       logger.info('Rendering HTML...');
+      const doctype = '<!DOCTYPE html>';
       const html = render({ store, renderProps, req });
 
-      res.end(html);
+      res.end(doctype + html);
       logger.success('Response ended successfully');
     } catch (err2) {
       logger.error('Response error', err2);
