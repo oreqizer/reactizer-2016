@@ -1,4 +1,4 @@
-export default function (store, sagaMiddleware, params) {
+export default function fetchData(store, sagaMiddleware, params) {
   // check also for wrapped components
   const wrapped = params.components
     .filter(component => component.WrappedComponent)

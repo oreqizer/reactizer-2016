@@ -53,7 +53,7 @@ export default async function reactMiddleware(req, res, next) {
 
       logger.info('Rendering HTML...');
       const doctype = '<!DOCTYPE html>';
-      const html = render({ store, renderProps, req });
+      const html = render(store, renderProps, req);
 
       res.end(doctype + html);
       logger.success('Response ended successfully');
