@@ -1,16 +1,16 @@
 import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import configureStore from '../../universal/configureStore';
-import getRoutes from '../../browser/js/Router';
-import logMiddleware from '../middleware/logMiddleware';
-import getInitialState from '../tools/getInitialState';
-import fetchData from '../tools/fetchData';
-import render from '../markup';
+import getRoutes from '../browser/js/getRoutes';
+import configureStore from '../universal/configureStore';
+import logMiddleware from './middleware/logMiddleware';
+import getInitialState from './tools/getInitialState';
+import fetchData from './tools/fetchData';
+import markup from './markup';
 
-import logger from '../lib/logger';
+import logger from './lib/logger';
 
-export default async function reactMiddleware(req, res, next) {
+export default async function reactApp(req, res, next) {
   const history = createMemoryHistory(req.url);
 
   const sagaMiddleware = createSagaMiddleware();
@@ -27,7 +27,7 @@ export default async function reactMiddleware(req, res, next) {
   });
 
   const routes = getRoutes(store);
-  logger.info(`[reactMiddleware] Request URL: ${req.url}`);
+  logger.info(`[reactApp] Request URL: ${req.url}`);
 
   match({ history, routes, location: req.url }, async (err, redirect, renderProps) => {
     try {
@@ -43,22 +43,22 @@ export default async function reactMiddleware(req, res, next) {
       }
 
       if (!renderProps) {
-        logger.warn('[reactMiddleware] No matching route');
+        logger.warn('[reactApp] No matching route');
         res.status(404);
         return;
       }
 
-      logger.info('[reactMiddleware] Route matched, fetching data...');
+      logger.info('[reactApp] Route matched, fetching data...');
       await fetchData(store, sagaMiddleware, renderProps);
 
-      logger.info('[reactMiddleware] Rendering HTML...');
+      logger.info('[reactApp] Rendering HTML...');
       const doctype = '<!DOCTYPE html>';
-      const html = render(store, renderProps, req);
+      const html = markup(store, renderProps, req);
 
       res.end(doctype + html);
-      logger.success('[reactMiddleware] Response ended successfully');
+      logger.success('[reactApp] Response ended successfully');
     } catch (err2) {
-      logger.error('[reactMiddleware] Response error', err2);
+      logger.error('[reactApp] Response error', err2);
       next(err2);
     }
   });

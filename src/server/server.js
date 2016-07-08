@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import logger from './lib/logger';
 import { port, output } from './config';
 
-import reactMiddleware from './express/reactMiddleware';
+import reactMiddleware from './reactApp';
 import configureGlobals from '../universal/configureGlobals';
 
 // configure globals
@@ -17,7 +17,7 @@ const app = express();
 
 // serves static files
 app.use(express.static(join(__dirname, '../../', output, 'static')));
-logger.info(`Static files served from directory: ${output}`);
+logger.info(`[server] static files served from directory: ${output}`);
 
 // allows getting cookies on server
 app.use(cookieParser());
@@ -25,4 +25,4 @@ app.use(cookieParser());
 app.use(reactMiddleware);
 
 app.listen(port, () =>
-    logger.info(`Express listening at port: ${port}`));
+    logger.info(`[server] express listening at port: ${port}`));
