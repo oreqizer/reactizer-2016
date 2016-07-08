@@ -7,10 +7,10 @@ import { autobind } from 'core-decorators';
 
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
+import { todosSelector } from './todoSelector';
 
 import * as todoActions from '../../../../universal/modules/todo/todoDuck';
 import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
-import { todosSelector } from '../../../../universal/modules/todo/todoSelector';
 
 import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 import { FILTERS } from '../../../../universal/consts/todoConsts';

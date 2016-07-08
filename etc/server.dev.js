@@ -20,7 +20,7 @@ const compiler = webpack(config);
 configureGlobals();
 
 // serve assets not processed by Webpack
-app.use(express.static(join(__dirname, '../', TMP)));
+app.use(express.static(join(__dirname, '../', TMP, 'static')));
 
 // enables recompilation
 app.use(webpackDev(compiler, {

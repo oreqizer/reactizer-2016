@@ -30,7 +30,7 @@ export default {
   context: __dirname,
   entry: ['../../src/browser/index.js'],
   output: {
-    path: outputPath,
+    path: `${outputPath}/static`,
     publicPath: '/',
     filename: 'bundle.[hash].js',
   },

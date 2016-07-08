@@ -16,7 +16,7 @@ configureGlobals();
 const app = express();
 
 // serves static files
-app.use(express.static(join(__dirname, '../../', output)));
+app.use(express.static(join(__dirname, '../../', output, 'static')));
 logger.info(`Static files served from directory: ${output}`);
 
 // allows getting cookies on server

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { FILTERS } from '../../consts/todoConsts';
+import { FILTERS } from '../../../../universal/consts/todoConsts';
 
 const todoSelector = ({ state }) => state.todo.todos.valueSeq();
 const filterSelector = ({ props }) => props.params.filter;

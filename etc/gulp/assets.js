@@ -12,7 +12,7 @@ const statics = () =>
     '!./**/sprites', // fixes copying empty 'sprites' folder
   ], { base: './src/browser/assets' })
     .pipe(plumber())
-    .pipe(gulp.dest(config.output));
+    .pipe(gulp.dest(`${config.output}/static`));
 
 const sprites = () => {
   const spriteData = gulp.src('./src/browser/assets/sprites/*')
