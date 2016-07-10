@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { injectIntl, defineMessages, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
 import { autobind } from 'core-decorators';
 
@@ -8,19 +8,8 @@ import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 
 import * as userActions from '../../../../universal/modules/user/userDuck';
-import { userMessages } from '../../../../universal/messages';
+import { userMessages, signupMessages } from '../../../../universal/messages';
 import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
-
-const messages = defineMessages({
-  signup: {
-    id: 'signup.header',
-    defaultMessage: 'Sign up',
-  },
-  loggedInAs: {
-    id: 'signup.logged_in_as',
-    defaultMessage: 'Hi {name}, you are already logged in.',
-  },
-});
 
 @injectIntl
 @connect(state => ({
@@ -73,11 +62,11 @@ export default class Signup extends Component {
       <div className="Signup">
         <div className="Signup-header markdown-body">
           <h2>
-            <FormattedMessage {...messages.signup} />
+            <FormattedMessage {...signupMessages.signup} />
           </h2>
           {user.user &&
             <FormattedMessage
-              {...messages.loggedInAs}
+              {...signupMessages.loggedInAs}
               values={{ name: user.user.username }}
             />
           }

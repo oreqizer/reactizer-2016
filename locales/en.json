@@ -38,6 +38,15 @@
     "defaultMessage": "Welcome"
   },
   {
+    "id": "index.seo.description",
+    "description": "In EN, the \"Teh\" is intentional",
+    "defaultMessage": "Teh best boilerplate"
+  },
+  {
+    "id": "index.seo.title",
+    "defaultMessage": "Index"
+  },
+  {
     "id": "profile.email",
     "defaultMessage": "Email: {email}"
   },
@@ -48,19 +57,6 @@
   {
     "id": "profile.username",
     "defaultMessage": "Username: {username}"
-  },
-  {
-    "id": "seo.description.index",
-    "description": "In EN, the \"Teh\" is intentional",
-    "defaultMessage": "Teh best boilerplate"
-  },
-  {
-    "id": "seo.title.index",
-    "defaultMessage": "Index"
-  },
-  {
-    "id": "seo.title.todos",
-    "defaultMessage": "Todos"
   },
   {
     "id": "sidebar.logout",
@@ -109,6 +105,10 @@
   {
     "id": "todos.overview",
     "defaultMessage": "Displaying {todos, plural, =0 {no todos} one {one todo} other {# todos}}."
+  },
+  {
+    "id": "todos.seo.title",
+    "defaultMessage": "Todos"
   },
   {
     "id": "todos.show",

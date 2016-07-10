@@ -1,32 +1,19 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
-const messages = defineMessages({
-  heading: {
-    id: 'profile.heading',
-    defaultMessage: 'Profile',
-  },
-  username: {
-    id: 'profile.username',
-    defaultMessage: 'Username: {username}',
-  },
-  email: {
-    id: 'profile.email',
-    defaultMessage: 'Email: {email}',
-  },
-});
+import { profileMessages } from '../../../../universal/messages';
 
 const Profile = ({ username, email }) =>
   <div className="Profile markdown-body">
     <h2>
-      <FormattedMessage {...messages.heading} />
+      <FormattedMessage {...profileMessages.heading} />
     </h2>
     <p>
-      <FormattedMessage {...messages.username} values={{ username }} />
+      <FormattedMessage {...profileMessages.username} values={{ username }} />
     </p>
     <p>
-      <FormattedMessage {...messages.email} values={{ email }} />
+      <FormattedMessage {...profileMessages.email} values={{ email }} />
     </p>
   </div>;
 

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { defineMessages, injectIntl, FormattedMessage, intlShape } from 'react-intl';
+import { injectIntl, FormattedMessage, intlShape } from 'react-intl';
 import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem, Divider, DropDownMenu } from 'material-ui';
 import { autobind } from 'core-decorators';
@@ -12,24 +12,7 @@ import { toggleSidebar } from '../../../../universal/modules/ui/uiDuck';
 import { logoutUser } from '../../../../universal/modules/user/userDuck';
 import { setLocale } from '../../../../universal/modules/intl/intlDuck';
 
-const messages = defineMessages({
-  profile: {
-    id: 'sidebar.profile',
-    defaultMessage: 'Profile',
-  },
-  signup: {
-    id: 'sidebar.signup',
-    defaultMessage: 'Sign up',
-  },
-  todos: {
-    id: 'sidebar.todos',
-    defaultMessage: 'Todos',
-  },
-  logout: {
-    id: 'sidebar.logout',
-    defaultMessage: 'Log out',
-  },
-});
+import { sidebarMessages } from '../../../../universal/messages';
 
 const actionCreators = {
   toggleSidebar,
@@ -97,20 +80,20 @@ export default class Sidebar extends Component {
             key="profile"
             onTouchTap={partial(this.handleMenuClick, ['/profile'])}
           >
-            <FormattedMessage {...messages.profile} />
+            <FormattedMessage {...sidebarMessages.profile} />
           </MenuItem>,
           <MenuItem
             key="todos"
             onTouchTap={partial(this.handleMenuClick, ['/todos'])}
           >
-            <FormattedMessage {...messages.todos} />
+            <FormattedMessage {...sidebarMessages.todos} />
           </MenuItem>,
           <Divider key="divider" />,
           <MenuItem
             key="logout"
             onTouchTap={this.handleLogout}
           >
-            <FormattedMessage {...messages.logout} />
+            <FormattedMessage {...sidebarMessages.logout} />
           </MenuItem>,
         ];
 
@@ -120,7 +103,7 @@ export default class Sidebar extends Component {
             key="signup"
             onTouchTap={partial(this.handleMenuClick, ['/signup'])}
           >
-            <FormattedMessage {...messages.signup} />
+            <FormattedMessage {...sidebarMessages.signup} />
           </MenuItem>,
         ];
     }

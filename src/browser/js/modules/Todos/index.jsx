@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
 import { autobind } from 'core-decorators';
 
@@ -11,45 +11,9 @@ import { todosSelector } from './todoSelector';
 
 import * as todoActions from '../../../../universal/modules/todo/todoDuck';
 import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
-
 import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 import { FILTERS } from '../../../../universal/consts/todoConsts';
-
-const messages = defineMessages({
-  title: {
-    id: 'seo.title.todos',
-    defaultMessage: 'Todos',
-  },
-  header: {
-    id: 'todos.header',
-    defaultMessage: 'Todos',
-  },
-  overview: {
-    id: 'todos.overview',
-    defaultMessage: 'Displaying {todos, plural,' +
-      '=0 {no todos}' +
-      'one {one todo}' +
-      'other {# todos}' +
-    '}.',
-  },
-  show: {
-    id: 'todos.show',
-    defaultMessage: 'Show:',
-    description: 'Followed by filter options',
-  },
-  all: {
-    id: 'todos.filters.all',
-    defaultMessage: 'All',
-  },
-  active: {
-    id: 'todos.filters.active',
-    defaultMessage: 'Active',
-  },
-  done: {
-    id: 'todos.filters.done',
-    defaultMessage: 'Done',
-  },
-});
+import { todoMessages } from '../../../../universal/messages';
 
 @injectIntl
 @connect((state, props) => ({
@@ -100,13 +64,13 @@ export default class Todos extends Component {
 
     return (
       <div className="Todos">
-        <Helmet title={intl.formatMessage(messages.title)} />
+        <Helmet title={intl.formatMessage(todoMessages.title)} />
         <div className="Todos-header markdown-body">
           <h2>
-            <FormattedMessage {...messages.header} />
+            <FormattedMessage {...todoMessages.header} />
           </h2>
           <p style={{ paddingBottom: 20 }}>
-            <FormattedMessage {...messages.overview} values={{ todos: todos.count() }} />
+            <FormattedMessage {...todoMessages.overview} values={{ todos: todos.count() }} />
           </p>
         </div>
         <div className="Todos-list">
@@ -124,16 +88,16 @@ export default class Todos extends Component {
           />
           <div className="Todos-filters markdown-body">
             <h4>
-              <FormattedMessage {...messages.show} />
+              <FormattedMessage {...todoMessages.show} />
             </h4>
             <Link to="/todos" activeStyle={{ textDecoration: 'underline' }}>
-              <FormattedMessage {...messages.all} />
+              <FormattedMessage {...todoMessages.all} />
             </Link>
             <Link to={`/todos/${FILTERS.ACTIVE}`} activeStyle={{ textDecoration: 'underline' }}>
-              <FormattedMessage {...messages.active} />
+              <FormattedMessage {...todoMessages.active} />
             </Link>
             <Link to={`/todos/${FILTERS.DONE}`} activeStyle={{ textDecoration: 'underline' }}>
-              <FormattedMessage {...messages.done} />
+              <FormattedMessage {...todoMessages.done} />
             </Link>
           </div>
         </div>

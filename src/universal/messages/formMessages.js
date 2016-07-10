@@ -5,10 +5,7 @@ export default defineMessages({
     id: 'form.submit',
     defaultMessage: 'Submit',
   },
-
   // errors
-  // ---
-
   required: {
     id: 'form.error.required',
     defaultMessage: 'This field is required',

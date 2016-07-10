@@ -1,25 +1,19 @@
 import React, { PropTypes } from 'react';
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { reduxForm, Field } from 'redux-form/immutable';
 
 import TextField from '../../components/TextField';
 
 import { TODO } from '../../../../universal/consts/formConsts';
-
-const messages = defineMessages({
-  prompt: {
-    id: 'todos.form_prompt',
-    defaultMessage: 'Enter a TODO',
-  },
-});
+import { todoMessages } from '../../../../universal/messages';
 
 const TodosForm = props =>
   <form onSubmit={props.handleSubmit}>
     <Field
-      id={messages.prompt.id}
+      id={todoMessages.prompt.id}
       name="todo"
       component={TextField}
-      hintText={<FormattedMessage {...messages.prompt} />}
+      hintText={<FormattedMessage {...todoMessages.prompt} />}
     />
   </form>;
 
