@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import App from 'modules/App';
+import App from './modules/App';
 
 import configureStore from '../universal/configureStore';
 import configureGlobals from '../universal/configureGlobals';

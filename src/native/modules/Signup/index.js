@@ -1,11 +1,12 @@
 import React from 'react';
 import {
+  Text,
   View,
 } from 'react-native';
 
 const Signup = () =>
   <View>
-    signup
+    <Text>signup</Text>
   </View>;
 
 export default Signup;
