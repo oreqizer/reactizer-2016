@@ -4,7 +4,6 @@ import Todo from '../../../containers/Todo';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../todoDuck';
-import { toMap } from '../todoMapper';
 
 const {
   FETCH,
@@ -25,7 +24,6 @@ const {
 jest.unmock('ramda');
 jest.unmock('immutable');
 jest.unmock('../todoDuck');
-jest.unmock('../todoMapper');
 jest.unmock('../../../containers/Todo');
 
 const id = 1337;
@@ -35,27 +33,29 @@ const text2 = 'testing123';
 const done = false;
 const errorMsg = 'todos.error';
 
-const todo = new Todo({
+const todo = {
   id,
   text,
   done,
-});
+};
 
-const todoEdit = new Todo({
+const todoEdit = {
   id,
   text: text2,
   done: true,
-});
+};
 
-const todo2 = new Todo({
+const todo2 = {
   id: id2,
   text: text2,
   done,
-});
+};
 
 const token = '123sampleToken';
 
-const todosMock = toMap([todo, todo2]);
+const todosMock = new Map()
+  .set(todo.id, new Todo(todo))
+  .set(todo2.id, new Todo(todo2));
 
 describe('todo action creators', () => {
   it('should make a fetch action', () => {
@@ -190,9 +190,7 @@ describe('todo reducer', () => {
   });
 
   it('should handle EDIT_SUCCESS', () => {
-    const initialState = reducer({
-      todos: todosMock.toJS(),
-    });
+    const initialState = reducer({}).set('todos', todosMock);
 
     const { todos, phase, error } = reducer(initialState, {
       type: EDIT_SUCCESS,
@@ -201,7 +199,7 @@ describe('todo reducer', () => {
       },
     });
 
-    const expectedTodos = todosMock.set(todo.id, todoEdit);
+    const expectedTodos = todosMock.set(todo.id, new Todo(todoEdit));
 
     expect(todos.equals(expectedTodos)).toBe(true);
     expect(phase).toBe(SUCCESS);
@@ -209,10 +207,7 @@ describe('todo reducer', () => {
   });
 
   it('should handle DELETE_SUCCESS', () => {
-    const expectedTodos = todosMock.delete(todo.id);
-    const initialState = reducer({
-      todos: todosMock.toJS(),
-    });
+    const initialState = reducer({}).set('todos', todosMock);
 
     const { todos, phase, error } = reducer(initialState, {
       type: DELETE_SUCCESS,
@@ -220,6 +215,8 @@ describe('todo reducer', () => {
         id: todo.id,
       },
     });
+
+    const expectedTodos = todosMock.delete(todo.id);
 
     expect(todos.equals(expectedTodos)).toBe(true);
     expect(phase).toBe(SUCCESS);

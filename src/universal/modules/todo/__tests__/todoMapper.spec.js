@@ -16,6 +16,13 @@ const todoArray = [
 ];
 
 describe('todo mappers', () => {
+  it('should return an empty Map', () => {
+    const mappedTodos = mappers.toMap();
+    const expectedTodos = new Map();
+
+    expect(expectedTodos.equals(mappedTodos)).toBe(true);
+  });
+
   it('should map todo array to Map', () => {
     const mappedTodos = mappers.toMap(todoArray);
     const expectedTodos = new Map()
