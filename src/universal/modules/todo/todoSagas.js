@@ -20,9 +20,9 @@ import {
   RESET,
 } from './todoDuck';
 
-export function* fetchTodos({ token }) {
+export function* fetchTodos({ payload }) {
   try {
-    const { data } = yield call(fetch, { token });
+    const { data } = yield call(fetch, payload);
     const todos = toMap(data.todos);
 
     yield put({ type: FETCH_SUCCESS, payload: { todos } });
@@ -31,20 +31,20 @@ export function* fetchTodos({ token }) {
   }
 }
 
-export function* createTodo({ token, text }) {
+export function* createTodo({ payload }) {
   try {
-    const { data } = yield call(create, { token, text });
+    const { data } = yield call(create, payload);
 
     yield put({ type: CREATE_SUCCESS, payload: { todo: new Todo(data) } });
-    yield put(change(TODO, 'todo', ''));
+    yield put(change(TODO, 'todo', '')); // resets input field
   } catch ({ data }) {
     yield put({ type: CREATE_ERROR, payload: { error: data } });
   }
 }
 
-export function* editTodo({ token, todo }) {
+export function* editTodo({ payload }) {
   try {
-    const { data } = yield call(edit, { todo, token });
+    const { data } = yield call(edit, payload);
 
     yield put({ type: EDIT_SUCCESS, payload: { todo: new Todo(data) } });
   } catch ({ data }) {
@@ -52,10 +52,10 @@ export function* editTodo({ token, todo }) {
   }
 }
 
-export function* deleteTodo({ token, id }) {
+export function* deleteTodo({ payload }) {
   try {
-    yield call(remove, { id, token });
-    yield put({ type: DELETE_SUCCESS, id });
+    yield call(remove, payload);
+    yield put({ type: DELETE_SUCCESS, payload: { id: payload.id } });
   } catch ({ data }) {
     yield put({ type: DELETE_ERROR, payload: { error: data } });
   }

@@ -30,7 +30,7 @@ describe('user action creators', () => {
       payload: { username, password },
     };
 
-    expect(duck.loginUser(username, password)).toEqual(expected);
+    expect(duck.loginUser({ username, password })).toEqual(expected);
   });
 
   it('should make a refresh action', () => {
@@ -49,7 +49,7 @@ describe('user action creators', () => {
       payload: { email, username, password },
     };
 
-    expect(duck.registerUser(email, username, password)).toEqual(expected);
+    expect(duck.registerUser({ email, username, password })).toEqual(expected);
   });
 
   it('should make a clear error action', () => {

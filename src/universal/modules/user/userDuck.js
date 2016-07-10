@@ -74,7 +74,7 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export const loginUser = (username, password) => ({
+export const loginUser = ({ username, password }) => ({
   type: LOGIN,
   payload: { username, password },
 });
@@ -84,7 +84,7 @@ export const refreshUser = refreshToken => ({
   payload: { refreshToken },
 });
 
-export const registerUser = (email, username, password) => ({
+export const registerUser = ({ email, username, password }) => ({
   type: REGISTER,
   payload: { email, username, password },
 });

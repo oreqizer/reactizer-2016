@@ -15,10 +15,10 @@ import {
   REGISTER_ERROR,
 } from './userDuck';
 
-export function* loginUser(action) {
+export function* loginUser({ payload }) {
   try {
     yield put(startSubmit(LOGIN));
-    const { data } = yield call(login, action);
+    const { data } = yield call(login, payload);
     const user = new User(data.user);
 
     yield put({
@@ -38,10 +38,10 @@ export function* loginUser(action) {
   }
 }
 
-export function* registerUser(action) {
+export function* registerUser({ payload }) {
   try {
     yield put(startSubmit(REGISTER));
-    const { data } = yield call(register, action);
+    const { data } = yield call(register, payload);
     const user = new User(data.user);
 
     yield put({

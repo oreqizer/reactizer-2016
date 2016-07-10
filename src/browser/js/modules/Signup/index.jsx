@@ -24,23 +24,19 @@ export default class Signup extends Component {
     intl: intlShape.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      tab: LOGIN,
-    };
-  }
+  state = {
+    tab: LOGIN,
+  };
 
   @autobind
-  handleSignup(data) {
+  handleSignup({ email, username, password }) {
     const { loginUser, registerUser } = this.props;
     const { tab } = this.state;
 
     if (tab === LOGIN) {
-      loginUser(data);
+      loginUser({ username, password });
     } else {
-      registerUser(data);
+      registerUser({ email, username, password });
     }
   }
 
