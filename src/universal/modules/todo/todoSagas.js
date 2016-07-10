@@ -4,8 +4,6 @@ import { change } from 'redux-form';
 import { fetch, create, edit, remove } from './todoApi';
 import { toMap } from './todoMapper';
 
-import Todo from '../../containers/Todo';
-
 import { TODO } from '../../consts/formConsts';
 
 import {
@@ -33,9 +31,9 @@ export function* fetchTodos({ payload }) {
 
 export function* createTodo({ payload }) {
   try {
-    const { data } = yield call(create, payload);
+    const { todo } = yield call(create, payload);
 
-    yield put({ type: CREATE_SUCCESS, payload: { todo: new Todo(data) } });
+    yield put({ type: CREATE_SUCCESS, payload: { todo } });
     yield put(change(TODO, 'todo', '')); // resets input field
   } catch ({ data }) {
     yield put({ type: CREATE_ERROR, payload: { error: data } });
@@ -44,9 +42,9 @@ export function* createTodo({ payload }) {
 
 export function* editTodo({ payload }) {
   try {
-    const { data } = yield call(edit, payload);
+    const { todo } = yield call(edit, payload);
 
-    yield put({ type: EDIT_SUCCESS, payload: { todo: new Todo(data) } });
+    yield put({ type: EDIT_SUCCESS, payload: { todo } });
   } catch ({ data }) {
     yield put({ type: EDIT_ERROR, payload: { error: data } });
   }

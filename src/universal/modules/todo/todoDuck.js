@@ -2,6 +2,7 @@ import { Record, Map } from 'immutable';
 import { values } from 'ramda';
 
 import { toMap } from './todoMapper';
+import Todo from '../../containers/Todo';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 export const FETCH = 'todo/FETCH';
@@ -53,12 +54,12 @@ export default function todoReducer(state = new InitialState(), action) {
 
     case CREATE_SUCCESS:
       return state
-        .setIn(['todos', action.payload.todo.id], action.payload.todo)
+        .setIn(['todos', action.payload.todo.id], new Todo(action.payload.todo))
         .set('phase', SUCCESS);
 
     case EDIT_SUCCESS:
       return state
-        .setIn(['todos', action.payload.todo.id], action.payload.todo)
+        .setIn(['todos', action.payload.todo.id], new Todo(action.payload.todo))
         .set('phase', SUCCESS);
 
     case DELETE_SUCCESS:

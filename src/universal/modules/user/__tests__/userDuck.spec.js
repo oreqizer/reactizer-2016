@@ -1,6 +1,7 @@
 import { INIT, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../userDuck';
+import User from '../../../containers/User';
 
 const {
   LOGIN,
@@ -18,6 +19,7 @@ const {
 
 jest.unmock('immutable');
 jest.unmock('../userDuck');
+jest.unmock('../../../containers/User');
 
 const username = 'test';
 const password = 'Testtest1';
@@ -141,7 +143,7 @@ describe('user reducer', () => {
 
     expect(token).toBe(mockToken);
     expect(refreshToken).toBe(mockRefreshToken);
-    expect(user).toEqual(mockUser);
+    expect(user).toEqual(new User(mockUser));
     expect(phase).toBe(SUCCESS);
     expect(error).toBe(null);
   });
@@ -158,7 +160,7 @@ describe('user reducer', () => {
 
     expect(token).toBe(mockToken);
     expect(refreshToken).toBe(mockRefreshToken);
-    expect(user).toEqual(mockUser);
+    expect(user).toEqual(new User(mockUser));
     expect(phase).toBe(SUCCESS);
     expect(error).toBe(null);
   });
@@ -175,7 +177,7 @@ describe('user reducer', () => {
 
     expect(token).toBe(mockToken);
     expect(refreshToken).toBe(mockRefreshToken);
-    expect(user).toEqual(mockUser);
+    expect(user).toEqual(new User(mockUser));
     expect(phase).toBe(SUCCESS);
     expect(error).toBe(null);
   });

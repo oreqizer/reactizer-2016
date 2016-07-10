@@ -49,7 +49,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case REFRESH_SUCCESS:
     case REGISTER_SUCCESS:
       return state
-        .set('user', action.payload.user)
+        .set('user', new User(action.payload.user))
         .set('token', action.payload.token)
         .set('refreshToken', action.payload.refreshToken)
         .set('phase', SUCCESS);
