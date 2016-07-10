@@ -27,32 +27,29 @@ describe('user action creators', () => {
   it('should make a login action', () => {
     const expected = {
       type: LOGIN,
-      username,
-      password,
+      payload: { username, password },
     };
 
-    expect(duck.loginUser({ username, password })).toEqual(expected);
+    expect(duck.loginUser(username, password)).toEqual(expected);
   });
 
   it('should make a refresh action', () => {
     const refreshToken = '1243asdf';
     const expected = {
       type: REFRESH,
-      refreshToken,
+      payload: { refreshToken },
     };
 
-    expect(duck.refreshUser({ refreshToken })).toEqual(expected);
+    expect(duck.refreshUser(refreshToken)).toEqual(expected);
   });
 
   it('should make a register action', () => {
     const expected = {
       type: REGISTER,
-      email,
-      username,
-      password,
+      payload: { email, username, password },
     };
 
-    expect(duck.registerUser({ email, username, password })).toEqual(expected);
+    expect(duck.registerUser(email, username, password)).toEqual(expected);
   });
 
   it('should make a clear error action', () => {
@@ -94,8 +91,7 @@ describe('user reducer', () => {
   it('should handle LOGIN request', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: LOGIN,
-      username,
-      password,
+      payload: { username, password },
     });
 
     expect(token).toBe(null);
@@ -108,7 +104,9 @@ describe('user reducer', () => {
   it('should handle REFRESH request', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REFRESH,
-      refreshToken: mockRefreshToken,
+      payload: {
+        refreshToken: mockRefreshToken,
+      },
     });
 
     expect(token).toBe(null);
@@ -121,9 +119,7 @@ describe('user reducer', () => {
   it('should handle REGISTER request', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REGISTER,
-      username,
-      password,
-      email,
+      payload: { username, password, email },
     });
 
     expect(token).toBe(null);
@@ -136,9 +132,11 @@ describe('user reducer', () => {
   it('should handle LOGIN_SUCCESS', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: LOGIN_SUCCESS,
-      token: mockToken,
-      refresh_token: mockRefreshToken,
-      user: mockUser,
+      payload: {
+        token: mockToken,
+        refreshToken: mockRefreshToken,
+        user: mockUser,
+      },
     });
 
     expect(token).toBe(mockToken);
@@ -151,9 +149,11 @@ describe('user reducer', () => {
   it('should handle REFRESH_SUCCESS', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REFRESH_SUCCESS,
-      token: mockToken,
-      refresh_token: mockRefreshToken,
-      user: mockUser,
+      payload: {
+        token: mockToken,
+        refreshToken: mockRefreshToken,
+        user: mockUser,
+      },
     });
 
     expect(token).toBe(mockToken);
@@ -166,9 +166,11 @@ describe('user reducer', () => {
   it('should handle REGISTER_SUCCESS', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REGISTER_SUCCESS,
-      token: mockToken,
-      refresh_token: mockRefreshToken,
-      user: mockUser,
+      payload: {
+        token: mockToken,
+        refreshToken: mockRefreshToken,
+        user: mockUser,
+      },
     });
 
     expect(token).toBe(mockToken);
@@ -181,7 +183,9 @@ describe('user reducer', () => {
   it('should handle LOGIN_ERROR', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: LOGIN_ERROR,
-      error: mockError,
+      payload: {
+        error: mockError,
+      },
     });
 
     expect(token).toBe(null);
@@ -194,7 +198,9 @@ describe('user reducer', () => {
   it('should handle REFRESH_ERROR', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REFRESH_ERROR,
-      error: mockError,
+      payload: {
+        error: mockError,
+      },
     });
 
     expect(token).toBe(null);
@@ -207,7 +213,9 @@ describe('user reducer', () => {
   it('should handle REGISTER_ERROR', () => {
     const { token, refreshToken, user, phase, error } = reducer(undefined, {
       type: REGISTER_ERROR,
-      error: mockError,
+      payload: {
+        error: mockError,
+      },
     });
 
     expect(token).toBe(null);
@@ -220,7 +228,9 @@ describe('user reducer', () => {
   it('should handle CLEAR_ERROR', () => {
     const initialState = reducer({
       phase: ERROR,
-      error: mockError,
+      payload: {
+        error: mockError,
+      },
     });
 
     const { token, refreshToken, user, phase, error } = reducer(initialState, {
@@ -237,10 +247,12 @@ describe('user reducer', () => {
   it('should handle LOGOUT', () => {
     const initialState = reducer({
       roken: mockToken,
-      refreshToken: mockRefreshToken,
-      user: mockUser,
-      phase: SUCCESS,
-      error: null,
+      payload: {
+        refreshToken: mockRefreshToken,
+        user: mockUser,
+        phase: SUCCESS,
+        error: null,
+      },
     });
 
     const { token, refreshToken, user, phase, error } = reducer(initialState, {

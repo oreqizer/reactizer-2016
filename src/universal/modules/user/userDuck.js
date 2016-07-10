@@ -49,9 +49,9 @@ export default function todoReducer(state = new InitialState(), action) {
     case REFRESH_SUCCESS:
     case REGISTER_SUCCESS:
       return state
-        .set('user', action.user)
-        .set('token', action.token)
-        .set('refreshToken', action.refresh_token)
+        .set('user', action.payload.user)
+        .set('token', action.payload.token)
+        .set('refreshToken', action.payload.refreshToken)
         .set('phase', SUCCESS);
 
     case LOGIN_ERROR:
@@ -59,7 +59,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case REGISTER_ERROR:
       return state
         .set('phase', ERROR)
-        .set('error', String(action.error));
+        .set('error', String(action.payload.error));
 
     case CLEAR_ERROR:
       return state
@@ -74,22 +74,19 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export const loginUser = ({ username, password }) => ({
+export const loginUser = (username, password) => ({
   type: LOGIN,
-  username,
-  password,
+  payload: { username, password },
 });
 
-export const refreshUser = ({ refreshToken }) => ({
+export const refreshUser = refreshToken => ({
   type: REFRESH,
-  refreshToken,
+  payload: { refreshToken },
 });
 
-export const registerUser = ({ email, username, password }) => ({
+export const registerUser = (email, username, password) => ({
   type: REGISTER,
-  email,
-  username,
-  password,
+  payload: { email, username, password },
 });
 
 export const clearError = () => ({

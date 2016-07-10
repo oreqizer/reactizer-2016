@@ -21,10 +21,18 @@ export function* loginUser(action) {
     const { data } = yield call(login, action);
     const user = new User(data.user);
 
-    yield put({ type: LOGIN_SUCCESS, ...data, user });
+    yield put({
+      type: LOGIN_SUCCESS,
+      payload: {
+        ...data,
+        refreshToken: data.refresh_token,
+        user,
+      },
+    });
+
     yield put(push('/todos'));
   } catch ({ data }) {
-    yield put({ type: LOGIN_ERROR, error: data });
+    yield put({ type: LOGIN_ERROR, payload: { error: data } });
   } finally {
     yield put(stopSubmit(LOGIN));
   }
@@ -36,10 +44,18 @@ export function* registerUser(action) {
     const { data } = yield call(register, action);
     const user = new User(data.user);
 
-    yield put({ type: REGISTER_SUCCESS, ...data, user });
+    yield put({
+      type: REGISTER_SUCCESS,
+      payload: {
+        ...data,
+        refreshToken: data.refresh_token,
+        user,
+      },
+    });
+
     yield put(push('/todos'));
   } catch ({ data }) {
-    yield put({ type: REGISTER_ERROR, error: data });
+    yield put({ type: REGISTER_ERROR, payload: { error: data } });
   } finally {
     yield put(stopSubmit(REGISTER));
   }
