@@ -292,4 +292,3 @@ describe('todo reducer', () => {
     expect(error).toBe(null);
   });
 });
-
