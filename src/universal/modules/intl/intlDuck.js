@@ -14,19 +14,15 @@ export default function intlReducer(state = new InitialState(), action) {
   if (!(state instanceof InitialState)) return new InitialState(state);
 
   switch (action.type) {
-
     case SET_LOCALE:
-      return state.set('locale', action.locale);
+      return state.set('locale', action.payload.locale);
 
     default:
       return state;
-
   }
 }
 
-export function setLocale(locale) {
-  return {
-    type: SET_LOCALE,
-    locale,
-  };
-}
+export const setLocale = locale => ({
+  type: SET_LOCALE,
+  payload: { locale },
+});

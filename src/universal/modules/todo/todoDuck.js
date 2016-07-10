@@ -48,22 +48,22 @@ export default function todoReducer(state = new InitialState(), action) {
 
     case FETCH_SUCCESS:
       return state
-        .set('todos', action.todos)
+        .set('todos', action.payload.todos)
         .set('phase', SUCCESS);
 
     case CREATE_SUCCESS:
       return state
-        .setIn(['todos', action.todo.id], action.todo)
+        .setIn(['todos', action.payload.todo.id], action.payload.todo)
         .set('phase', SUCCESS);
 
     case EDIT_SUCCESS:
       return state
-        .setIn(['todos', action.todo.id], action.todo)
+        .setIn(['todos', action.payload.todo.id], action.payload.todo)
         .set('phase', SUCCESS);
 
     case DELETE_SUCCESS:
       return state
-        .deleteIn(['todos', action.id])
+        .deleteIn(['todos', action.payload.id])
         .set('phase', SUCCESS);
 
     case FETCH_ERROR:
@@ -72,7 +72,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case DELETE_ERROR:
       return state
         .set('phase', ERROR)
-        .set('error', String(action.error));
+        .set('error', String(action.payload.error));
 
     case RESET:
       return new InitialState();
@@ -84,25 +84,22 @@ export default function todoReducer(state = new InitialState(), action) {
 
 export const fetchTodos = ({ token }) => ({
   type: FETCH,
-  token,
+  payload: { token },
 });
 
 export const createTodo = ({ token, text }) => ({
   type: CREATE,
-  token,
-  text,
+  payload: { token, text },
 });
 
 export const editTodo = ({ token, todo }) => ({
   type: EDIT,
-  token,
-  todo,
+  payload: { token, todo },
 });
 
 export const deleteTodo = ({ token, id }) => ({
   type: DELETE,
-  token,
-  id,
+  payload: { token, id },
 });
 
 export const resetTodos = () => ({
