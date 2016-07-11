@@ -85,7 +85,7 @@
     "gulp-rimraf": "^0.2.0",
     "gulp-util": "^3.0.7",
     "gulp.spritesmith": "^6.2.1",
-    "image-webpack-loader": "^1.8.0",
+    "image-webpack-loader": "^2.0.0",
     "immutable-devtools": "0.0.7",
     "jest-cli": "^13.2.3",
     "json-loader": "^0.5.4",
