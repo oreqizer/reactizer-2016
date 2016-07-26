@@ -3,8 +3,6 @@ import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 import babel from 'gulp-babel';
 import webpack from 'webpack';
-import { join } from 'path';
-import { outputJson } from 'fs-extra';
 
 import config from '../config';
 import buildConfig from '../webpack/webpack.build';
@@ -37,8 +35,4 @@ const buildBrowser = cb =>
     cb();
   });
 
-const buildOutput = cb => {
-  outputJson(join(__dirname, `../../${config.output}/build-config.json`), config, cb);
-};
-
-export default gulp.parallel(buildServer, buildBrowser, buildOutput);
+export default gulp.parallel(buildServer, buildBrowser);

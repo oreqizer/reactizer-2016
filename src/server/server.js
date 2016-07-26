@@ -5,7 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 
 import logger from './lib/logger';
-import { port, output } from './config';
+import { port } from './config';
 
 import reactMiddleware from './reactApp';
 import configureGlobals from '../universal/configureGlobals';
@@ -16,7 +16,9 @@ configureGlobals();
 const app = express();
 
 // serves static files
-app.use(express.static(join(__dirname, '../../', output, 'static')));
+const output = join(__dirname, '../static');
+
+app.use(express.static(output));
 logger.info(`[server] static files served from directory: ${output}`);
 
 // allows getting cookies on server

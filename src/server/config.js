@@ -1,8 +1,3 @@
-import { join } from 'path';
-import { readJsonSync } from 'fs-extra';
-
-const buildConfig = readJsonSync(join(__dirname, '../build-config.json'));
-
 const production = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
 
@@ -11,7 +6,6 @@ const port = process.env.PORT || 3000;
 // see: https://github.com/este/este/blob/master/src/server/config.js
 
 export default {
-  ...buildConfig,
   production,
   defaultLocale: 'en',
   locales: ['en', 'sk'],

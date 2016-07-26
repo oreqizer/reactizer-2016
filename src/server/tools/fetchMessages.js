@@ -5,6 +5,7 @@ import logger from '../lib/logger';
 
 function fetchLocale(locale) {
   return readJsonSync(join(__dirname, '../../../locales', `${locale}.json`))
+    // TODO move file path somewhere reasonable
     .reduce((acc, { defaultMessage, id }) => ({
       ...acc, [id]: defaultMessage,
     }), {});

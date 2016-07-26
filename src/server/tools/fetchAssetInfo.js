@@ -1,11 +1,6 @@
-import fs from 'fs';
+import { readJsonSync } from 'fs-extra';
 import { join } from 'path';
 
-import { output } from '../config';
-
 export default function fetchAssetInfo() {
-  const assets = JSON.parse(fs
-    .readFileSync(join(__dirname, '../../../', output, 'webpack-assets.json')));
-
-  return assets;
+  return readJsonSync(join(__dirname, '../../webpack-assets.json'));
 }
