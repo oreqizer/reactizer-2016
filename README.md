@@ -65,8 +65,6 @@ The features currently present in the demo are as follows:
 
 Please note that this project is **very** young. There are still incomplete things, and this README is just a quickfix. I have a lot of work + school, but I will try to improve everything on the go!
 
-`es6-error` has badly configured *babel* in `redux-form`'s version, so I have the fixed one in deps.
-
 React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
 
 Having problems? Try running `watchman watch-del-all`
