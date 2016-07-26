@@ -1,10 +1,9 @@
 import { join } from 'path';
 import { readJsonSync } from 'fs-extra';
 
-const appName = readJsonSync(join(__dirname, '../../package.json')).name;
+const buildConfig = readJsonSync(join(__dirname, '../build-config.json'));
 
 const production = process.env.NODE_ENV === 'production';
-const output = process.env.OUTPUT_DIR;
 const port = process.env.PORT || 3000;
 
 // DEV: secrets in some JSON file, TODO: add one
@@ -12,9 +11,8 @@ const port = process.env.PORT || 3000;
 // see: https://github.com/este/este/blob/master/src/server/config.js
 
 export default {
+  ...buildConfig,
   production,
-  output,
-  appName,
   defaultLocale: 'en',
   locales: ['en', 'sk'],
   port,

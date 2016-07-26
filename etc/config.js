@@ -1,3 +1,5 @@
+import { join } from 'path';
+
 const OUTPUTS = {
   TMP: '.tmp',
   DIST: 'dist',
@@ -5,7 +7,7 @@ const OUTPUTS = {
 
 const production = process.env.NODE_ENV === 'production';
 
-const output = production ? OUTPUTS.DIST : OUTPUTS.TMP;
+const output = join(__dirname, '../', production ? OUTPUTS.DIST : OUTPUTS.TMP);
 
 export default {
   production,

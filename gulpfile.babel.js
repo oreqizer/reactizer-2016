@@ -42,7 +42,7 @@ export const bundle = gulp.series(
 
 // starts the beta/production server
 export const server = nodeShell(
-  `node ${config.output}/server/server.js --color`, { raw: true }
+  `OUTPUT_DIR=${config.output} node ${config.output}/server/server.js --color`, { raw: true }
 );
 
 // bundles everything and then runs the server
