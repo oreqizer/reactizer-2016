@@ -1,11 +1,10 @@
 import webpack from 'webpack';
-import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
 
 const styleLoader = {
   test: /\.styl$/,
-  loader: ExtractText.extract(['css', 'postcss', 'stylus']),
+  loader: 'style!css!postcss!stylus',
 };
 
 export default {
@@ -15,7 +14,6 @@ export default {
   },
   plugins: [
     ...base.plugins,
-    new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       mangle: {
