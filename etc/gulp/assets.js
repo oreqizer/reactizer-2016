@@ -32,4 +32,9 @@ const sprites = () => {
   return mergestream(imgStream, cssStream);
 };
 
-export default gulp.series(sprites, statics);
+const locales = () =>
+  gulp.src('./locales/**', { base: '.' })
+    .pipe(plumber())
+    .pipe(gulp.dest(config.output));
+
+export default gulp.series(sprites, statics, locales);

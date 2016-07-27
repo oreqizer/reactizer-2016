@@ -4,7 +4,8 @@ import { TextField as NativeTextField } from 'material-ui';
 
 import fieldProps from './tools/fieldProps';
 
-const TextField = props => <NativeTextField {...fieldProps(props)} />;
+const TextField = props =>
+  <NativeTextField {...fieldProps(props)} />;
 
 TextField.propTypes = {
   id: PropTypes.string.isRequired,
