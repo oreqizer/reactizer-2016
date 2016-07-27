@@ -5,10 +5,13 @@ const port = process.env.PORT || 3000;
 // PRODUCTION: secrets from environment variables
 // see: https://github.com/este/este/blob/master/src/server/config.js
 
+const locales = ['en', 'sk'];
+
 export default {
+  appName: 'reactizer',
   production,
   defaultLocale: 'en',
-  locales: ['en', 'sk'],
+  locales,
   port,
   portDev: 8080,
 };

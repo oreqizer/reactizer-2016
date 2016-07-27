@@ -5,19 +5,21 @@ import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 
-import config from './webpack/webpack.dev';
-import logger from '../src/server/lib/logger';
-import { portDev } from '../src/server/config';
+import webpackConfig from './webpack/webpack.dev';
 
-import reactMiddleware from '../src/server/reactApp';
+import setupApp from '../src/server/setupApp';
+import fetchData from '../src/server/tools/fetchData';
+import logger from '../src/server/lib/logger';
+import { portDev, locales } from '../src/server/config';
+
 import configureGlobals from '../src/universal/configureGlobals';
 
 const app = express();
 
-const compiler = webpack(config);
+const compiler = webpack(webpackConfig);
 
 // configure globals
-configureGlobals();
+configureGlobals(); // TODO get rid of this
 
 // serve assets not processed by Webpack
 app.use(express.static(join(__dirname, '../.tmp/static')));
@@ -35,7 +37,15 @@ app.use(webpackHot(compiler, {
 // allows getting cookies on server
 app.use(cookieParser());
 
-app.use(reactMiddleware);
+// fetch required data
+const data = fetchData({
+  locales,
+  localesFolder: join(__dirname, '../locales'),
+  assetsFile: join(__dirname, '../.tmp/webpack-assets.json'),
+});
+
+// setup react middleware
+app.use(setupApp(data));
 
 app.listen(portDev, () =>
     logger.info(`Express listening at port: ${portDev}`));

@@ -38,6 +38,7 @@
     "immutable": "^3.8.1",
     "js-cookie": "^2.1.2",
     "material-ui": "^0.15.2",
+    "nconf": "^0.8.4",
     "normalize.css": "^4.2.0",
     "ramda": "^0.21.0",
     "react": "^15.2.1",

@@ -3,9 +3,6 @@ import axios from 'axios';
 import { appName, defaultLocale, locales } from '../config';
 import logger from '../lib/logger';
 
-import matchLocale from './matchLocale';
-import messages from '../messages';
-
 import { URL } from '../../universal/consts/apiConsts';
 import { REFRESH_TOKEN } from '../../universal/consts/cookieConsts';
 import { SUCCESS, ERROR } from '../../universal/consts/phaseConsts';
@@ -30,16 +27,14 @@ async function maybeLogin(refreshToken) {
   }
 }
 
-export default async function getInitialState(req) {
-  const locale = matchLocale(req);
-
+export default async function getInitialState(req, messages) {
   const refreshToken = req.cookies[REFRESH_TOKEN];
   const login = await maybeLogin(refreshToken);
 
   return {
     intl: {
       defaultLocale,
-      locale,
+      locale: req.acceptsLanguages(locales) || defaultLocale,
       locales,
       initialNow: Date.now(),
       messages,

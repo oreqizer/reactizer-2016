@@ -7,8 +7,6 @@ import Helmet from 'react-helmet';
 
 import Html from './Html';
 
-import fetchAssetInfo from '../tools/fetchAssetInfo';
-
 const renderApp = (store, props, muiTheme) =>
   renderToString(
     <Provider store={store}>
@@ -23,9 +21,7 @@ const muiTheme = req =>
     userAgent: req.headers['user-agent'],
   });
 
-export default function markup(store, renderProps, req) {
-  const assets = fetchAssetInfo();
-
+export default function markup({ store, assets, renderProps, req }) {
   const reduxState = JSON.stringify(store.getState());
   const app = renderApp(store, renderProps, muiTheme(req));
   const head = Helmet.rewind();

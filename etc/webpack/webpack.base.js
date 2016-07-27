@@ -1,4 +1,3 @@
-import { join } from 'path';
 import webpack from 'webpack';
 import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
@@ -14,6 +13,11 @@ const jsLoader = {
     presets: ['react', 'es2015-native-modules', 'stage-1'],
     plugins: ['transform-decorators-legacy'],
   },
+};
+
+const styleLoader = {
+  test: /\.styl$/,
+  loader: 'style!css!postcss!stylus',
 };
 
 const imgLoader = {
@@ -36,7 +40,7 @@ export default {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
   module: {
-    loaders: [jsLoader, imgLoader],
+    loaders: [jsLoader, styleLoader, imgLoader],
   },
   plugins: [
     new Assets({ path: output }),
