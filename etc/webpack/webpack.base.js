@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 import { output, production } from '../config';
@@ -34,7 +33,6 @@ export default {
   output: {
     path: `${output}/static`,
     publicPath: '/',
-    filename: 'bundle.[hash].js',
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
@@ -43,7 +41,6 @@ export default {
     loaders: [jsLoader, styleLoader, imgLoader],
   },
   plugins: [
-    new Assets({ path: output }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(production ? 'production' : 'dev') },
     }),

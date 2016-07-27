@@ -31,9 +31,9 @@ export function* fetchTodos({ payload }) {
 
 export function* createTodo({ payload }) {
   try {
-    const { todo } = yield call(create, payload);
+    const { data } = yield call(create, payload);
 
-    yield put({ type: CREATE_SUCCESS, payload: { todo } });
+    yield put({ type: CREATE_SUCCESS, payload: { todo: data } });
     yield put(change(TODO, 'todo', '')); // resets input field
   } catch ({ data }) {
     yield put({ type: CREATE_ERROR, payload: { error: data } });
@@ -42,9 +42,9 @@ export function* createTodo({ payload }) {
 
 export function* editTodo({ payload }) {
   try {
-    const { todo } = yield call(edit, payload);
+    const { data } = yield call(edit, payload);
 
-    yield put({ type: EDIT_SUCCESS, payload: { todo } });
+    yield put({ type: EDIT_SUCCESS, payload: { todo: data } });
   } catch ({ data }) {
     yield put({ type: EDIT_ERROR, payload: { error: data } });
   }

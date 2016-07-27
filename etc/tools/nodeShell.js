@@ -5,13 +5,13 @@ import chalk from 'chalk';
 
 /**
  * @param fullCommand {string} command + args to run
- * @prop options.raw {boolean} don't prefix with node's path
+ * @param raw {boolean} don't prefix with node's path
  * @returns {function(cb: function): void}
  */
-export default function nodeShell(fullCommand, options = {}) {
+export default function nodeShell(fullCommand, raw) {
   return cb => {
     const [command, ...args] = fullCommand.split(' ');
-    const prefix = options.raw ? '' : join(__dirname, '../../node_modules/.bin/');
+    const prefix = raw ? '' : join(__dirname, '../../node_modules/.bin/');
 
     gutil.log(`Executing ${chalk.yellow(fullCommand)}`);
 

@@ -41,7 +41,7 @@ app.use(cookieParser());
 const data = fetchData({
   locales,
   localesFolder: join(__dirname, '../locales'),
-  assetsFile: join(__dirname, '../.tmp/webpack-assets.json'),
+  assetsFile: join(__dirname, 'dev-assets.json'),
 });
 
 // setup react middleware

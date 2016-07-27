@@ -8,6 +8,10 @@ export default {
     'webpack-hot-middleware/client',
     ...base.entry,
   ],
+  output: {
+    ...base.output,
+    filename: 'bundle.js',
+  },
   plugins: [
     ...base.plugins,
     new webpack.optimize.OccurrenceOrderPlugin(),
