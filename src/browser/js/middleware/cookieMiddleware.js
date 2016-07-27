@@ -19,7 +19,7 @@ export default () => next => action => {
   switch (action.type) {
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      cookie.set(REFRESH_TOKEN, action.refresh_token);
+      cookie.set(REFRESH_TOKEN, action.payload.refreshToken);
       break;
 
     case LOGOUT:
@@ -27,7 +27,7 @@ export default () => next => action => {
       break;
 
     case SET_LOCALE:
-      cookie.set(LOCALE, action.locale);
+      cookie.set(LOCALE, action.payload.locale);
       break;
 
     default:
