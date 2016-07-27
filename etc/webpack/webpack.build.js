@@ -1,21 +1,19 @@
 import webpack from 'webpack';
-import ExtractText from 'extract-text-webpack-plugin';
+import Assets from 'assets-webpack-plugin';
 
 import base from './webpack.base';
 
-const styleLoader = {
-  test: /\.styl$/,
-  loader: ExtractText.extract(['css', 'postcss', 'stylus']),
-};
+import { output } from '../config';
 
 export default {
   ...base,
-  module: {
-    loaders: [...base.module.loaders, styleLoader],
+  output: {
+    ...base.output,
+    filename: 'bundle.[hash].js',
   },
   plugins: [
     ...base.plugins,
-    new ExtractText('styles.[hash].css'),
+    new Assets({ path: output }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       mangle: {
@@ -29,4 +27,3 @@ export default {
   ],
   devtool: 'cheap-source-map',
 };
-

@@ -33,17 +33,13 @@ export {
 // core tasks
 // ----------
 
-// prepares and builds the web app
-export const bundle = gulp.series(
-  clean,
-  gulp.parallel(assets, messages),
-  build
-);
+const prepare = gulp.series(clean, gulp.parallel(assets, messages));
 
-// starts the beta/production server
-export const server = nodeShell(
-  `node ${config.output}/server/server.js --color`, { raw: true }
-);
+// prepares and builds the web app
+export const bundle = gulp.series(prepare, build);
+
+// starts the production server
+export const server = nodeShell(`node ${config.output}/server/server.js --color`, true);
 
 // bundles everything and then runs the server
 export const run = gulp.series(bundle, server);
@@ -52,6 +48,5 @@ export const run = gulp.series(bundle, server);
 export { ios, android };
 
 // dev server
-export default nodeShell(
-  'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color'
-);
+const startScript = 'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color';
+export default gulp.series(prepare, nodeShell(startScript));

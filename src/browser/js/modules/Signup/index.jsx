@@ -77,7 +77,7 @@ export default class Signup extends Component {
             </Tab>
           </Tabs>
           <Snackbar
-            message={user.error}
+            message={user.error || ''}
             open={Boolean(user.error)}
             onRequestClose={clearError}
           />

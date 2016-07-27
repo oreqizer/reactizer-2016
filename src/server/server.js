@@ -1,28 +1,44 @@
 import 'babel-polyfill';
 // babel's regenerator-runtime ready
 import { join } from 'path';
+import nconf from 'nconf';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
+import setupApp from './setupApp';
+import fetchData from './tools/fetchData';
 import logger from './lib/logger';
-import { port, output } from './config';
+import { port, locales } from './config';
 
-import reactMiddleware from './reactApp';
 import configureGlobals from '../universal/configureGlobals';
 
 // configure globals
-configureGlobals();
+configureGlobals(); // TODO get rid of this
 
 const app = express();
 
 // serves static files
-app.use(express.static(join(__dirname, '../../', output, 'static')));
+const output = join(__dirname, '../static');
+
+app.use(express.static(output));
 logger.info(`[server] static files served from directory: ${output}`);
+
+// fetch crucial data
+nconf.set('file:assets', join(__dirname, '../webpack-assets.json'));
+nconf.set('folder:locales', join(__dirname, '../locales'));
 
 // allows getting cookies on server
 app.use(cookieParser());
 
-app.use(reactMiddleware);
+// fetch required data
+const data = fetchData({
+  locales,
+  localesFolder: join(__dirname, '../locales'),
+  assetsFile: join(__dirname, '../webpack-assets.json'),
+});
+
+// setup react middleware
+app.use(setupApp(data));
 
 app.listen(port, () =>
     logger.info(`[server] express listening at port: ${port}`));

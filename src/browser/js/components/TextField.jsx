@@ -4,12 +4,13 @@ import { TextField as NativeTextField } from 'material-ui';
 
 import fieldProps from './tools/fieldProps';
 
-const TextField = props => <NativeTextField {...fieldProps(props)} />;
+const TextField = props =>
+  <NativeTextField {...fieldProps(props)} />;
 
 TextField.propTypes = {
-  error: PropTypes.object,
-  touched: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
+  touched: PropTypes.bool.isRequired,
+  error: PropTypes.object,
 };
 
 export default injectIntl(TextField);

@@ -7,8 +7,6 @@ import { values } from 'ramda';
 import configureStore from '../../universal/configureStore';
 import * as watchers from '../../universal/watchers';
 
-import cookieMiddleware from './middleware/cookieMiddleware';
-
 const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);
 const loggerMiddleware = createLogger({
@@ -20,7 +18,6 @@ const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 const ownMiddleware = [
   sagaMiddleware,
   historyMiddleware,
-  cookieMiddleware,
 ];
 
 const enhancers = [];

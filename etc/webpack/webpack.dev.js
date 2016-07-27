@@ -2,19 +2,15 @@ import webpack from 'webpack';
 
 import base from './webpack.base';
 
-const styleLoader = {
-  test: /\.styl$/,
-  loader: 'style!css!postcss!stylus',
-};
-
 export default {
   ...base,
   entry: [
     'webpack-hot-middleware/client',
     ...base.entry,
   ],
-  module: {
-    loaders: [...base.module.loaders, styleLoader],
+  output: {
+    ...base.output,
+    filename: 'bundle.js',
   },
   plugins: [
     ...base.plugins,

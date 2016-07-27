@@ -1,6 +1,4 @@
-import { join } from 'path';
 import webpack from 'webpack';
-import Assets from 'assets-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 import { output, production } from '../config';
@@ -16,6 +14,11 @@ const jsLoader = {
   },
 };
 
+const styleLoader = {
+  test: /\.styl$/,
+  loader: 'style!css!postcss!stylus',
+};
+
 const imgLoader = {
   test: /\.(jpe?g|png|gif|svg)$/i,
   loaders: [
@@ -24,24 +27,20 @@ const imgLoader = {
   ],
 };
 
-const outputPath = join(__dirname, '../../', output);
-
 export default {
   context: __dirname,
   entry: ['../../src/browser/index.js'],
   output: {
-    path: `${outputPath}/static`,
+    path: `${output}/static`,
     publicPath: '/',
-    filename: 'bundle.[hash].js',
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.styl'],
   },
   module: {
-    loaders: [jsLoader, imgLoader],
+    loaders: [jsLoader, styleLoader, imgLoader],
   },
   plugins: [
-    new Assets({ path: outputPath }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(production ? 'production' : 'dev') },
     }),
