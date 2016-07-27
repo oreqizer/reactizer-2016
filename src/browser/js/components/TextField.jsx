@@ -8,7 +8,6 @@ const TextField = props =>
   <NativeTextField {...fieldProps(props)} />;
 
 TextField.propTypes = {
-  id: PropTypes.string.isRequired,
   intl: intlShape.isRequired,
   touched: PropTypes.bool.isRequired,
   error: PropTypes.object,
