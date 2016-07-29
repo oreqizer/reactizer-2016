@@ -12,14 +12,9 @@ import fetchData from '../src/server/tools/fetchData';
 import logger from '../src/server/lib/logger';
 import { portDev, locales } from '../src/server/config';
 
-import configureGlobals from '../src/universal/configureGlobals';
-
 const app = express();
 
 const compiler = webpack(webpackConfig);
-
-// configure globals
-configureGlobals(); // TODO get rid of this
 
 // serve assets not processed by Webpack
 app.use(express.static(join(__dirname, '../.tmp/static')));

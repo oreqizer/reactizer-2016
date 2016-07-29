@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { APP_WEB } from '../../consts/apiConsts';
+import { URL, APP_WEB } from '../../consts/apiConsts';
 
 export function login({ username, password }) {
   return axios
-    .post('/users/login', {
+    .post(`${URL}/users/login`, {
       username,
       password,
       app: APP_WEB,
@@ -13,14 +13,14 @@ export function login({ username, password }) {
 
 export function refreshLogin({ refreshToken }) {
   return axios
-    .post('/users/refresh', {
+    .post(`${URL}/users/refresh`, {
       refresh_token: refreshToken,
     });
 }
 
 export function register({ username, password, email }) {
   return axios
-    .post('/users/register', {
+    .post(`${URL}/users/register`, {
       username,
       password,
       email,

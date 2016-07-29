@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+import { URL } from '../../consts/apiConsts';
+
 export function fetch({ token }) {
-  return axios.get('/todos', {
+  return axios.get(`${URL}/todos`, {
     headers: {
       Authorization: token,
     },
@@ -9,7 +11,7 @@ export function fetch({ token }) {
 }
 
 export function create({ token, text }) {
-  return axios.post('/todos', { text }, {
+  return axios.post(`${URL}/todos`, { text }, {
     headers: {
       Authorization: token,
     },
@@ -19,7 +21,7 @@ export function create({ token, text }) {
 export function edit({ token, todo }) {
   const { id, text, done } = todo;
 
-  return axios.put(`/todos/${id}`, { text, done }, {
+  return axios.put(`${URL}/todos/${id}`, { text, done }, {
     headers: {
       Authorization: token,
     },
@@ -27,7 +29,7 @@ export function edit({ token, todo }) {
 }
 
 export function remove({ token, id }) {
-  return axios.delete(`/todos/${id}`, {
+  return axios.delete(`${URL}/todos/${id}`, {
     headers: {
       Authorization: token,
     },

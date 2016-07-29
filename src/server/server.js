@@ -10,11 +10,6 @@ import fetchData from './tools/fetchData';
 import logger from './lib/logger';
 import { port, locales } from './config';
 
-import configureGlobals from '../universal/configureGlobals';
-
-// configure globals
-configureGlobals(); // TODO get rid of this
-
 const app = express();
 
 // serves static files

@@ -8,7 +8,6 @@ import en from 'react-intl/locale-data/en';
 import sk from 'react-intl/locale-data/sk';
 
 import Root from './Root';
-import configureGlobals from '../../universal/configureGlobals';
 
 // Needed for onTouchTap
 // Check this repo:
@@ -20,8 +19,6 @@ addLocaleData([...en, ...sk]);
 
 // immutable: logging to the console and debugging
 immutableDevtools(immutable);
-
-configureGlobals();
 
 const view = document.getElementById('react-view');
 
