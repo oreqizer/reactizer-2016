@@ -20,10 +20,10 @@ To check out the backend, click [here](https://github.com/oreqizer/reactizer-api
 
 The features currently present in the demo are as follows:
 
-* Server-side rendering, data fetching, *i18n* and *JWT authentication*
+* Server-side rendering, data fetching and *i18n* 
 * Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com). Mind: it's just a demo. I recommend making up some arbitary username/email/password. I use `test`, with password `Testtest1`.
 * Truly *universal* architecture - shared Redux code in mobile, browser and server
-* Auth-protected routes
+* Protected routes with *JWT authentication*
 * Immutable data with Ramda functions
 * Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
 
