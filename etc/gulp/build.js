@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 import babel from 'gulp-babel';
+import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
 
 import config from '../config';
@@ -14,7 +15,9 @@ const buildServer = () =>
     '!./**/__tests__/**',
   ])
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.output));
 
 const buildBrowser = cb =>

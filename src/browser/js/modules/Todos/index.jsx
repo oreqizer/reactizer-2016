@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
@@ -21,11 +21,11 @@ import { todoMessages } from '../../../../universal/messages';
   todos: todosSelector({ state, props }),
   phase: state.todo.phase,
 }), todoActions)
-export default class Todos extends Component {
+export default class Todos extends PureComponent {
   static propTypes = {
-    token: PropTypes.string,
-    intl: intlShape.isRequired,
     params: PropTypes.object.isRequired,
+    intl: intlShape.isRequired,
+    token: PropTypes.string,
     todos: PropTypes.object.isRequired,
     phase: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
@@ -15,13 +15,13 @@ import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
 @connect(state => ({
   user: state.user,
 }), userActions)
-export default class Signup extends Component {
+export default class Signup extends PureComponent {
   static propTypes = {
+    intl: intlShape.isRequired,
     user: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired,
     registerUser: PropTypes.func.isRequired,
     clearError: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   state = {

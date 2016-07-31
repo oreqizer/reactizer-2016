@@ -41,11 +41,11 @@ const styles = {
 export default class Sidebar extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    appName: PropTypes.string.isRequired,
-    user: PropTypes.object.isRequired,
     sidebar: PropTypes.bool.isRequired,
+    appName: PropTypes.string.isRequired,
     locales: PropTypes.array.isRequired,
     locale: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
   };
 
