@@ -17,7 +17,7 @@ const buildServer = () =>
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.output));
 
 const buildBrowser = cb =>
