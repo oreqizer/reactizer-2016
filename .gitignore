@@ -43,5 +43,4 @@ android/keystores/debug.keystore
 # custom
 .tmp/
 dist/
-data/
 coverage/

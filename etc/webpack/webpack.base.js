@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import ExtractText from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 import { output, production } from '../config';
@@ -16,7 +17,7 @@ const jsLoader = {
 
 const styleLoader = {
   test: /\.styl$/,
-  loader: 'style!css!postcss!stylus',
+  loader: ExtractText.extract('style!css!postcss!stylus'),
 };
 
 const imgLoader = {

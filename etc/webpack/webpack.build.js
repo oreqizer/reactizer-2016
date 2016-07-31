@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import ExtractText from 'extract-text-webpack-plugin';
 import Assets from 'assets-webpack-plugin';
 
 import base from './webpack.base';
@@ -14,6 +15,7 @@ export default {
   plugins: [
     ...base.plugins,
     new Assets({ path: output }),
+    new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       mangle: {

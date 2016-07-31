@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import ExtractText from 'extract-text-webpack-plugin';
 
 import base from './webpack.base';
 
@@ -14,6 +15,7 @@ export default {
   },
   plugins: [
     ...base.plugins,
+    new ExtractText('styles.css'),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
