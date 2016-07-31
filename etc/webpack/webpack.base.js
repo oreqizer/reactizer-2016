@@ -17,7 +17,7 @@ const jsLoader = {
 
 const styleLoader = {
   test: /\.styl$/,
-  loader: ExtractText.extract('style!css!postcss!stylus'),
+  loader: ExtractText.extract('css!postcss!stylus'),
 };
 
 const imgLoader = {
