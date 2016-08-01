@@ -2,19 +2,27 @@ import webpack from 'webpack';
 import ExtractText from 'extract-text-webpack-plugin';
 import Assets from 'assets-webpack-plugin';
 
-import base from './webpack.base';
+import base, { output, loaders, plugins } from './webpack.base';
 
-import { output } from '../config';
+import config from '../config';
+
+const styleLoader = {
+  test: /\.styl$/,
+  loader: ExtractText.extract('css!postcss!stylus'),
+};
 
 export default {
   ...base,
   output: {
-    ...base.output,
+    ...output,
     filename: 'bundle.[hash].js',
   },
+  modules: {
+    loaders: [loaders, styleLoader],
+  },
   plugins: [
-    ...base.plugins,
-    new Assets({ path: output }),
+    ...plugins,
+    new Assets({ path: config.output }),
     new ExtractText('styles.[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,

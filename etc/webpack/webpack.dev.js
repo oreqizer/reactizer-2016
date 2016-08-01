@@ -1,7 +1,11 @@
 import webpack from 'webpack';
-import ExtractText from 'extract-text-webpack-plugin';
 
-import base from './webpack.base';
+import base, { output, loaders, plugins } from './webpack.base';
+
+const styleLoader = {
+  test: /\.styl$/,
+  loader: 'style!css!postcss!stylus',
+};
 
 export default {
   ...base,
@@ -10,12 +14,14 @@ export default {
     ...base.entry,
   ],
   output: {
-    ...base.output,
+    ...output,
     filename: 'bundle.js',
   },
+  module: {
+    loaders: [...loaders, styleLoader],
+  },
   plugins: [
-    ...base.plugins,
-    new ExtractText('styles.css'),
+    ...plugins,
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

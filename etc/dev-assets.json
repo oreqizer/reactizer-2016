@@ -1,6 +1,5 @@
 {
   "main": {
-    "js": "/bundle.js",
-    "css": "/styles.css"
+    "js": "/bundle.js"
   }
 }
