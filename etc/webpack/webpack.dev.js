@@ -3,8 +3,6 @@ import webpack from 'webpack';
 
 import base, { loaders, plugins } from './webpack.base';
 
-import config from '../config';
-
 const styleLoader = {
   test: /\.styl$/,
   loader: 'style!css!postcss!stylus',
