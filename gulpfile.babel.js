@@ -1,15 +1,10 @@
 import gulp from 'gulp';
 
-import config from './etc/config';
-import nodeShell from './etc/tools/nodeShell';
-
 import assets from './etc/gulp/assets';
 import build from './etc/gulp/build';
 import clean from './etc/gulp/clean';
 import messages from './etc/gulp/messages';
-import { ios, android, native, nativeClean } from './etc/gulp/native';
-import { lint, lintFix } from './etc/gulp/lint';
-import { test, testCoverage, testWatch } from './etc/gulp/tests';
+import sprites from './etc/gulp/sprites';
 
 // --------
 // subtasks
@@ -20,33 +15,22 @@ export {
   build,
   clean,
   messages,
-  native,
-  nativeClean,
-  test,
-  testCoverage,
-  testWatch,
-  lint,
-  lintFix,
+  sprites,
 };
 
 // ----------
 // core tasks
 // ----------
 
-const prepare = gulp.series(clean, gulp.parallel(assets, messages));
+// prepares all data for the web app
+export const prepare = gulp.series(clean, sprites, assets);
 
 // prepares and builds the web app
 export const bundle = gulp.series(prepare, build);
 
-// starts the production server
-export const server = nodeShell(`node ${config.output}/server/server.js --color`, true);
-
-// bundles everything and then runs the server
-export const run = gulp.series(bundle, server);
-
-// dev native
-export { ios, android };
-
-// dev server
-const startScript = 'nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js --color';
-export default gulp.series(prepare, nodeShell(startScript));
+// watch browser asset changes
+export default gulp.series(prepare, () =>
+  gulp.watch([
+    './src/browser/assets/**',
+    '!./src/browser/assets/sprites/**',
+  ], assets));

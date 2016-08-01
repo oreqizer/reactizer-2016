@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import ExtractText from 'extract-text-webpack-plugin';
 import Assets from 'assets-webpack-plugin';
 
-import base, { output, loaders, plugins } from './webpack.base';
+import base, { loaders, plugins } from './webpack.base';
 
 import config from '../config';
 
@@ -14,11 +14,12 @@ const styleLoader = {
 export default {
   ...base,
   output: {
-    ...output,
+    path: `${config.output}/static`,
+    publicPath: '/',
     filename: 'bundle.[hash].js',
   },
-  modules: {
-    loaders: [loaders, styleLoader],
+  module: {
+    loaders: [...loaders, styleLoader],
   },
   plugins: [
     ...plugins,

@@ -1,6 +1,9 @@
+import { join } from 'path';
 import webpack from 'webpack';
 
-import base, { output, loaders, plugins } from './webpack.base';
+import base, { loaders, plugins } from './webpack.base';
+
+import config from '../config';
 
 const styleLoader = {
   test: /\.styl$/,
@@ -14,7 +17,8 @@ export default {
     ...base.entry,
   ],
   output: {
-    ...output,
+    path: join(__dirname, '.tmp/static'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   module: {

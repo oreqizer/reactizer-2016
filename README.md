@@ -76,43 +76,26 @@ Simply `npm i` and `npm i gulp -g`. Then you have these following tasks availabl
 **CORE**
 
 Web:
-* `gulp` - starts HMR and server (default at *:8080*)
-* `gulp run` - bundles the app and runs the server 
-* `gulp server` - runs the server
-* `gulp bundle` - prepares all assets and builds the client and server code
+* `npm start` - starts HMR and server (default at *:8080*)
+* `npm run server` - runs the server
+* `npm run bundle` - prepares all assets and builds the client and server code
 
 Native:
-* `gulp ios` - runs react native ios
-* `gulp android` - runs react native android
-* `gulp native` - runs react native server
-* `gulp nativeClean` - runs react native server and clears the cache
+* `npm run ios` - runs react native ios
+* `npm run android` - runs react native android
+* `npm run native` - runs react native server
+* `npm run native:clean` - runs react native server and clears the cache
 
 Common:
-* `gulp test` - runs tests
-* `gulp lint` - runs eslint
+* `npm test` - runs tests
+* `npm lint` - runs eslint
 
 **OTHER**
 
-* `gulp build` - builds the client and server code
-* `gulp assets` - prepares all assets
-* `gulp lintFix` - runs eslint and fixes problems, if it can
-* `gulp testCoverage` - runs tests and generates coverage info
-* `gulp testWatch` - runs tests in watch mode
-* `gulp clean` - cleans tmp and dist directories
-
-There are also `npm` alternatives of **core** tasks, in case you don't fancy a global `gulp` install:
-
-* `npm start` - `gulp`
-* `npm test` - `gulp test`
-* `npm run lint` - `gulp lint`
-* `npm run messages` - `gulp messages`
-* `npm run run` - `gulp run`
-* `npm run server` - `gulp server`
-* `npm run bundle` - `gulp bundle`
-* `npm run ios` - `gulp ios`
-* `npm run android` - `gulp android`
-* `npm run native` - `gulp native`
-* `npm run native:clean` - `gulp nativeClean`
+* `npm run assets` - prepares all assets
+* `npm run lint:fix` - runs eslint and fixes problems, if it can
+* `npm run test:coverage` - runs tests and generates coverage info
+* `npm run test:watch` - runs tests in watch mode
 
 ### TODO:
 

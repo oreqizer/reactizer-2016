@@ -1,1 +1,1 @@
-web: npm run server
+web: npm run bundle && npm run server

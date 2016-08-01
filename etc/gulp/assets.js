@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import spritesmith from 'gulp.spritesmith';
-import mergestream from 'merge-stream';
 
 import config from '../config';
 
@@ -14,27 +12,9 @@ const statics = () =>
     .pipe(plumber())
     .pipe(gulp.dest(`${config.output}/static`));
 
-const sprites = () => {
-  const spriteData = gulp.src('./src/browser/assets/sprites/*')
-    .pipe(plumber())
-    .pipe(spritesmith({
-      imgPath: '../assets/images/sprite.png',
-      imgName: 'sprite.png',
-      cssName: 'sprite.styl',
-    }));
-
-  const imgStream = spriteData.img
-    .pipe(gulp.dest('./src/browser/assets/images'));
-
-  const cssStream = spriteData.css
-    .pipe(gulp.dest('./src/browser/css/core'));
-
-  return mergestream(imgStream, cssStream);
-};
-
 const locales = () =>
   gulp.src('./locales/**', { base: '.' })
     .pipe(plumber())
     .pipe(gulp.dest(config.output));
 
-export default gulp.series(sprites, statics, locales);
+export default gulp.series(statics, locales);

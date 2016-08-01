@@ -20,11 +20,6 @@ export const loaders = [{
   ],
 }];
 
-export const output = {
-  path: `${config.output}/static`,
-  publicPath: '/',
-};
-
 export const plugins = [
   new webpack.DefinePlugin({
     'process.env': { NODE_ENV: JSON.stringify(config.production ? 'production' : 'dev') },
