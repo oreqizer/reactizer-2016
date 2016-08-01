@@ -88,7 +88,7 @@ Native:
 
 Common:
 * `npm test` - runs tests
-* `npm lint` - runs eslint
+* `npm run lint` - runs eslint
 
 **OTHER**
 
