@@ -1,5 +1,6 @@
 import 'babel-polyfill';
-// babel's regenerator-runtime ready
+import 'source-map-support/register';
+// sourcemaps and babel's regenerator-runtime ready
 import { join } from 'path';
 import nconf from 'nconf';
 import express from 'express';

@@ -7,7 +7,7 @@
     "url": "https://github.com/oreqizer/reactizer.git"
   },
   "scripts": {
-    "start": "gulp & nodemon --exec ./node_modules/.bin/babel-node ./etc/server.dev.js",
+    "start": "gulp & nodemon ./etc/devserver",
     "server": "node ./dist/server/server.js",
     "server:tmp": "node ./.tmp/server/server.js",
     "bundle": "gulp bundle",
@@ -59,6 +59,7 @@
     "redux-logger": "^2.6.1",
     "redux-saga": "^0.11.0",
     "reselect": "^2.5.3",
+    "source-map-support": "^0.4.2",
     "validator": "^5.5.0"
   },
   "devDependencies": {
@@ -74,6 +75,7 @@
     "babel-preset-es2015-native-modules": "^6.9.2",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.5.0",
+    "babel-register": "^6.11.6",
     "css-loader": "^0.23.1",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",

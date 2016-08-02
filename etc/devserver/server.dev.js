@@ -5,19 +5,19 @@ import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 
-import webpackConfig from './webpack/webpack.dev';
+import webpackConfig from '../webpack/webpack.dev';
 
-import setupApp from '../src/server/setupApp';
-import fetchData from '../src/server/tools/fetchData';
-import logger from '../src/server/lib/logger';
-import { portDev, locales } from '../src/server/config';
+import setupApp from '../../src/server/setupApp';
+import fetchData from '../../src/server/tools/fetchData';
+import logger from '../../src/server/lib/logger';
+import { portDev, locales } from '../../src/server/config';
 
 const app = express();
 
 const compiler = webpack(webpackConfig);
 
 // serve assets not processed by Webpack
-app.use(express.static(join(__dirname, '../.tmp/static')));
+app.use(express.static(join(__dirname, '../../.tmp/static')));
 
 // enables recompilation
 app.use(webpackDev(compiler, {
@@ -35,7 +35,7 @@ app.use(cookieParser());
 // fetch required data
 const data = fetchData({
   locales,
-  localesFolder: join(__dirname, '../locales'),
+  localesFolder: join(__dirname, '../../locales'),
   assetsFile: join(__dirname, 'dev-assets.json'),
 });
 
@@ -43,4 +43,4 @@ const data = fetchData({
 app.use(setupApp(data));
 
 app.listen(portDev, () =>
-    logger.info(`Express listening at port: ${portDev}`));
+    logger.info(`Dev server listening at port: ${portDev}`));

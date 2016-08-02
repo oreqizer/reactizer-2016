@@ -58,7 +58,7 @@ export default function setupApp({ assets, locales }) {
         const html = markup({ store, assets, renderProps, req });
 
         res.end(doctype + html);
-        logger.info('[reactApp] Response ended successfully');
+        logger.success('[reactApp] Response ended successfully');
       } catch (err) {
         logger.error('[reactApp] Response error', err);
         next(err);
