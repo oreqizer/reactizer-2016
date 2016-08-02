@@ -29,7 +29,7 @@ export default function setupApp({ assets, locales }) {
     });
 
     const routes = getRoutes(store);
-    logger.info(`[reactApp] Request URL: ${req.url}`);
+    logger.info(`[reactApp] Request recieved: ${req}`);
 
     match({ history, routes, location: req.url }, async (matchErr, redirect, renderProps) => {
       try {
@@ -50,15 +50,12 @@ export default function setupApp({ assets, locales }) {
           return;
         }
 
-        logger.info('[reactApp] Route matched, fetching data...');
         await fetchNeeds(store, sagaMiddleware, renderProps);
 
-        logger.info('[reactApp] Rendering HTML...');
         const doctype = '<!DOCTYPE html>';
         const html = markup({ store, assets, renderProps, req });
 
         res.end(doctype + html);
-        logger.success('[reactApp] Response ended successfully');
       } catch (err) {
         logger.error('[reactApp] Response error', err);
         next(err);
