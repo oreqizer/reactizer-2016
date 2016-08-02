@@ -15,7 +15,7 @@
     "test:watch": "jest --watch=all",
     "test:covergage": "jest --coverage",
     "lint": "eslint \"./**/*.{js,jsx}\"",
-    "lint:fix": "eslint --fix \"./**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
     "messages": "gulp messages",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
