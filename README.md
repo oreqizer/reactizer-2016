@@ -71,7 +71,7 @@ Having problems? Try running `watchman watch-del-all`
 
 ### Tasks
 
-Simply `npm i` and `npm i gulp -g`. Then you have these following tasks available:
+Simply `npm i`. Then you have these following tasks available:
 
 **CORE**
 
@@ -92,7 +92,7 @@ Common:
 
 **OTHER**
 
-* `npm run assets` - prepares all assets
+* `npm run messages` - fetch all messages
 * `npm run lint:fix` - runs eslint and fixes problems, if it can
 * `npm run test:coverage` - runs tests and generates coverage info
 * `npm run test:watch` - runs tests in watch mode

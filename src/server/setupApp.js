@@ -29,7 +29,7 @@ export default function setupApp({ assets, locales }) {
     });
 
     const routes = getRoutes(store);
-    logger.info(`[reactApp] Request recieved: ${req}`);
+    logger.info('[reactApp] Request recieved', req.url);
 
     match({ history, routes, location: req.url }, async (matchErr, redirect, renderProps) => {
       try {

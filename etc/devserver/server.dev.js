@@ -36,11 +36,11 @@ app.use(cookieParser());
 const data = fetchData({
   locales,
   localesFolder: join(__dirname, '../../locales'),
-  assetsFile: join(__dirname, 'dev-assets.json'),
+  assetsFile: join(__dirname, 'assets.json'),
 });
 
 // setup react middleware
 app.use(setupApp(data));
 
 app.listen(portDev, () =>
-    logger.info(`Dev server listening at port: ${portDev}`));
+    logger.info(`[devserver] listening at port: ${portDev}`));

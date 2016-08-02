@@ -1,19 +1,19 @@
 {
   "name": "reactizer",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "The most hipster React boilerplate",
   "repository": {
     "type": "git",
     "url": "https://github.com/oreqizer/reactizer.git"
   },
   "scripts": {
-    "start": "gulp & nodemon ./etc/devserver",
+    "start": "gulp & nodemon ./etc/devserver --verbose",
     "server": "node ./dist/server/server.js",
     "server:tmp": "node ./.tmp/server/server.js",
     "bundle": "gulp bundle",
     "test": "jest --verbose",
     "test:watch": "jest --watch=all",
-    "test:covergage": "jest --coverage",
+    "test:coverage": "jest --coverage",
     "lint": "eslint \"./**/*.{js,jsx}\"",
     "lint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
     "messages": "gulp messages",

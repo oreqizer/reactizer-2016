@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import spritesmith from 'gulp.spritesmith';
 import mergestream from 'merge-stream';
 
-export default () => {
+function sprites() {
   const spriteData = gulp.src('./src/browser/assets/sprites/*')
     .pipe(plumber())
     .pipe(spritesmith({
@@ -19,4 +19,6 @@ export default () => {
     .pipe(gulp.dest('./src/browser/css/core'));
 
   return mergestream(imgStream, cssStream);
-};
+}
+
+export default sprites;

@@ -37,4 +37,4 @@ const data = fetchData({
 app.use(setupApp(data));
 
 app.listen(port, () =>
-    logger.info(`[server] express listening at port: ${port}`));
+    logger.info(`[server] listening at port: ${port}`));

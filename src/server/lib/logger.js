@@ -1,19 +1,20 @@
 /* eslint-disable no-console */
+import util from 'util';
 import chalk from 'chalk';
 import moment from 'moment';
 
 const time = () => chalk.gray(moment().format('DD-MM-YYYY HH:mm:ss'));
 
-function info(...messages) {
-  console.log(`[${time()}] ${chalk.cyan('[INFO] ')}`, ...messages);
+function info(...args) {
+  process.stdout.write(`[${time()}] ${chalk.cyan('[INFO] ')} ${util.format(...args)}\n`);
 }
 
-function warn(...messages) {
-  console.log(`[${time()}] ${chalk.yellow('[WARN] ')}`, ...messages);
+function warn(...args) {
+  process.stdout.write(`[${time()}] ${chalk.yellow('[WARN] ')} ${util.format(...args)}\n`);
 }
 
-function error(...messages) {
-  console.log(`[${time()}] ${chalk.red('[ERROR]')}`, ...messages);
+function error(...args) {
+  process.stderr.write(`[${time()}] ${chalk.red('[ERROR]')} ${util.format(...args)}\n`);
 }
 
 export default {
