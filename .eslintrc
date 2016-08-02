@@ -9,6 +9,6 @@
     "jest": true
   },
   "rules": {
-    "generator-star-spacing": ["off"]
+    "generator-star-spacing": ["off"] // see https://github.com/babel/babel-eslint/issues/357
   }
 }
