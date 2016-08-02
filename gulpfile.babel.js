@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import gulp from 'gulp';
 
 import assets from './etc/gulp/assets';

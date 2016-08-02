@@ -9,7 +9,6 @@
     "jest": true
   },
   "rules": {
-    "generator-star-spacing": ["off"],
-    "import/no-extraneous-dependencies": ["off"]
+    "generator-star-spacing": ["off"]
   }
 }

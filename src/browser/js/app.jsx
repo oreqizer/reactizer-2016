@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import immutable from 'immutable';
-import immutableDevtools from 'immutable-devtools';
+import immutableDevtools from 'immutable-devtools'; // eslint-disable-line
 import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import sk from 'react-intl/locale-data/sk';
@@ -17,8 +17,10 @@ injectTapEventPlugin();
 // react-intl locale data
 addLocaleData([...en, ...sk]);
 
-// immutable: logging to the console and debugging
-immutableDevtools(immutable);
+if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
+  // immutable: logging to the console and debugging
+  immutableDevtools(immutable);
+}
 
 const view = document.getElementById('react-view');
 
