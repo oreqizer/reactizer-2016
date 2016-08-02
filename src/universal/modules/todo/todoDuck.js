@@ -1,7 +1,7 @@
 import { Record, Map } from 'immutable';
 import { values } from 'ramda';
 
-import { toMap } from './todoMapper';
+import toMap from './todoMapper';
 import Todo from '../../containers/Todo';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 

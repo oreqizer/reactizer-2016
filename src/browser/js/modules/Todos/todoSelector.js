@@ -1,21 +1,21 @@
 import { createSelector } from 'reselect';
 
-import { FILTERS } from '../../../../universal/consts/todoConsts';
+import { ALL, ACTIVE, DONE } from '../../../../universal/consts/todoConsts';
 
 const todoSelector = ({ state }) => state.todo.todos.valueSeq();
 const filterSelector = ({ props }) => props.params.filter;
 
-export const todosSelector = createSelector(
+export default createSelector(
   [todoSelector, filterSelector],
-  (todos, filter = FILTERS.ALL) => {
+  (todos, filter = ALL) => {
     switch (filter) {
-      case FILTERS.ALL:
+      case ALL:
         return todos;
 
-      case FILTERS.ACTIVE:
+      case ACTIVE:
         return todos.filter(todo => !todo.done);
 
-      case FILTERS.DONE:
+      case DONE:
         return todos.filter(todo => todo.done);
 
       default:
@@ -23,4 +23,3 @@ export const todosSelector = createSelector(
     }
   }
 );
-

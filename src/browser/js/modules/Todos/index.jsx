@@ -7,12 +7,12 @@ import { autobind } from 'core-decorators';
 
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
-import { todosSelector } from './todoSelector';
+import todosSelector from './todoSelector';
 
 import * as todoActions from '../../../../universal/modules/todo/todoDuck';
 import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
 import { SUCCESS } from '../../../../universal/consts/phaseConsts';
-import { FILTERS } from '../../../../universal/consts/todoConsts';
+import { ACTIVE, DONE } from '../../../../universal/consts/todoConsts';
 import { todoMessages } from '../../../../universal/messages';
 
 @injectIntl
@@ -93,10 +93,10 @@ export default class Todos extends PureComponent {
             <Link to="/todos" activeStyle={{ textDecoration: 'underline' }}>
               <FormattedMessage {...todoMessages.all} />
             </Link>
-            <Link to={`/todos/${FILTERS.ACTIVE}`} activeStyle={{ textDecoration: 'underline' }}>
+            <Link to={`/todos/${ACTIVE}`} activeStyle={{ textDecoration: 'underline' }}>
               <FormattedMessage {...todoMessages.active} />
             </Link>
-            <Link to={`/todos/${FILTERS.DONE}`} activeStyle={{ textDecoration: 'underline' }}>
+            <Link to={`/todos/${DONE}`} activeStyle={{ textDecoration: 'underline' }}>
               <FormattedMessage {...todoMessages.done} />
             </Link>
           </div>

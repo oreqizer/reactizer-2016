@@ -22,7 +22,9 @@ const muiTheme = req =>
   });
 
 export default function markup({ store, assets, renderProps, req }) {
-  const reduxState = JSON.stringify(store.getState());
+  const state = store.getState();
+
+  const reduxState = JSON.stringify(state);
   const app = renderApp(store, renderProps, muiTheme(req));
   const head = Helmet.rewind();
 
@@ -30,6 +32,7 @@ export default function markup({ store, assets, renderProps, req }) {
     <Html
       head={head}
       assets={assets}
+      locale={state.intl.locale}
       state={reduxState}
       app={app}
     />

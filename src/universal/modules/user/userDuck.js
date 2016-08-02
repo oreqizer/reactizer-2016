@@ -67,7 +67,7 @@ export default function todoReducer(state = new InitialState(), action) {
         .set('phase', INIT);
 
     case LOGOUT:
-      return new InitialState;
+      return new InitialState();
 
     default:
       return state;

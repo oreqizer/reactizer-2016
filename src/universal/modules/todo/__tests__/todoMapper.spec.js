@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 
 import Todo from '../../../containers/Todo';
-import * as mappers from '../todoMapper';
+import toMap from '../todoMapper';
 
 jest.unmock('ramda');
 jest.unmock('immutable');
@@ -15,16 +15,16 @@ const todoArray = [
   { id: 3, text: 'todo3' },
 ];
 
-describe('todo mappers', () => {
+describe('todo mapper', () => {
   it('should return an empty Map', () => {
-    const mappedTodos = mappers.toMap([]);
+    const mappedTodos = toMap([]);
     const expectedTodos = new Map();
 
     expect(expectedTodos.equals(mappedTodos)).toBe(true);
   });
 
   it('should map todo array to Map', () => {
-    const mappedTodos = mappers.toMap(todoArray);
+    const mappedTodos = toMap(todoArray);
     const expectedTodos = new Map()
       .set(1, new Todo(todoArray[1]))
       .set(2, new Todo(todoArray[0]))

@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import { change } from 'redux-form';
 
 import { fetch, create, edit, remove } from './todoApi';
-import { toMap } from './todoMapper';
+import toMap from './todoMapper';
 
 import { TODO } from '../../consts/formConsts';
 

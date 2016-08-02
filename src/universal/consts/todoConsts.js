@@ -1,5 +1,3 @@
-export const FILTERS = {
-  ALL: 'all',
-  ACTIVE: 'active',
-  DONE: 'done',
-};
+export const ALL = 'all';
+export const ACTIVE = 'active';
+export const DONE = 'done';

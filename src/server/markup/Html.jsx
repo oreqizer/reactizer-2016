@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const Html = props =>
-  <html {...props.head.htmlAttributes.toComponent()}>
+  <html lang={props.locale} {...props.head.htmlAttributes.toComponent()}>
     <head>
       {props.head.title.toComponent()}
       {props.head.base.toComponent()}
@@ -24,6 +24,7 @@ const Html = props =>
 Html.propTypes = {
   head: PropTypes.object.isRequired,
   assets: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
   app: PropTypes.string.isRequired,
 };

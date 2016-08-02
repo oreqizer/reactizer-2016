@@ -7,5 +7,9 @@
   },
   "globals": {
     "jest": true
+  },
+  "rules": {
+    "generator-star-spacing": ["off"],
+    "import/no-extraneous-dependencies": ["off"]
   }
 }
