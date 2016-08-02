@@ -1,24 +1,20 @@
 import util from 'util';
-
 import chalk from 'chalk';
-// TODO consider winston in a real app
+import moment from 'moment';
 
 const report = (prefix, messages) => {
+  const time = chalk.gray(moment().format('DD-MM-YYYY HH:mm:ss'));
   messages.forEach(msg => {
-    process.stdout.write(`${prefix}: ${util.format(msg)}\n`);
+    process.stdout.write(`[${time}] ${prefix} ${util.format(msg)}\n`);
   });
 };
 
 function info(...messages) {
-  report(chalk.cyan('[INFO]'), messages);
-}
-
-function success(...messages) {
-  report(chalk.green('[SUCCESS]'), messages);
+  report(chalk.cyan('[INFO] '), messages);
 }
 
 function warn(...messages) {
-  report(chalk.yellow('[WARNING]'), messages);
+  report(chalk.yellow('[WARN] '), messages);
 }
 
 function error(...messages) {
@@ -27,7 +23,6 @@ function error(...messages) {
 
 export default {
   info,
-  success,
   warn,
   error,
 };
