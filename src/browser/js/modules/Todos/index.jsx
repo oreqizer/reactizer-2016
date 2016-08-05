@@ -1,9 +1,9 @@
 import React, { PureComponent, PropTypes } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
-import { autobind } from 'core-decorators';
 
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
@@ -15,13 +15,7 @@ import { SUCCESS } from '../../../../universal/consts/phaseConsts';
 import { ACTIVE, DONE } from '../../../../universal/consts/todoConsts';
 import { todoMessages } from '../../../../universal/messages';
 
-@injectIntl
-@connect((state, props) => ({
-  token: state.user.token,
-  todos: todosSelector({ state, props }),
-  phase: state.todo.phase,
-}), todoActions)
-export default class Todos extends PureComponent {
+class Todos extends PureComponent {
   static propTypes = {
     params: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
@@ -38,6 +32,12 @@ export default class Todos extends PureComponent {
     todoSagas.fetchTodos,
   ];
 
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     const { token, phase, fetchTodos } = this.props;
 
@@ -46,7 +46,6 @@ export default class Todos extends PureComponent {
     }
   }
 
-  @autobind
   handleSubmit({ todo }) {
     const { token, createTodo } = this.props;
 
@@ -106,3 +105,11 @@ export default class Todos extends PureComponent {
   }
 }
 
+export default compose(
+  injectIntl,
+  connect((state, props) => ({
+    token: state.user.token,
+    todos: todosSelector({ state, props }),
+    phase: state.todo.phase,
+  }), todoActions)
+)(Todos);

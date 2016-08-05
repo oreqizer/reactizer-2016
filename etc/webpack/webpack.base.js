@@ -10,7 +10,6 @@ export const loaders = [{
   query: {
     babelrc: false,
     presets: ['react', 'es2015-native-modules', 'stage-1'],
-    plugins: ['transform-decorators-legacy'],
   },
 }, {
   test: /\.(jpe?g|png|gif|svg)$/i,

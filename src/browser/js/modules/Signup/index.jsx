@@ -1,8 +1,8 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
-import { autobind } from 'core-decorators';
 
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
@@ -11,11 +11,7 @@ import * as userActions from '../../../../universal/modules/user/userDuck';
 import { userMessages, signupMessages } from '../../../../universal/messages';
 import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
 
-@injectIntl
-@connect(state => ({
-  user: state.user,
-}), userActions)
-export default class Signup extends PureComponent {
+class Signup extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     user: PropTypes.object.isRequired,
@@ -24,11 +20,17 @@ export default class Signup extends PureComponent {
     clearError: PropTypes.func.isRequired,
   };
 
-  state = {
-    tab: LOGIN,
-  };
+  constructor(props) {
+    super(props);
 
-  @autobind
+    this.state = {
+      tab: LOGIN,
+    };
+
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleTabSwitch = this.handleTabSwitch.bind(this);
+  }
+
   handleSignup({ email, username, password }) {
     const { loginUser, registerUser } = this.props;
     const { tab } = this.state;
@@ -40,7 +42,6 @@ export default class Signup extends PureComponent {
     }
   }
 
-  @autobind
   handleTabSwitch(tab) {
     this.setState({
       tab,
@@ -86,3 +87,10 @@ export default class Signup extends PureComponent {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(state => ({
+    user: state.user,
+  }), userActions)
+)(Signup);
