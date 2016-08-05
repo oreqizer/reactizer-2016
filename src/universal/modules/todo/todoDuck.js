@@ -53,10 +53,6 @@ export default function todoReducer(state = new InitialState(), action) {
         .set('phase', SUCCESS);
 
     case CREATE_SUCCESS:
-      return state
-        .setIn(['todos', action.payload.todo.id], new Todo(action.payload.todo))
-        .set('phase', SUCCESS);
-
     case EDIT_SUCCESS:
       return state
         .setIn(['todos', action.payload.todo.id], new Todo(action.payload.todo))
