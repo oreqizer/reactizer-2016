@@ -34,7 +34,7 @@ export default class Todos extends PureComponent {
     deleteTodo: PropTypes.func.isRequired,
   };
 
-  static needs = [
+  static needs = [ // not actually used - I kept it for demonstration
     todoSagas.fetchTodos,
   ];
 
