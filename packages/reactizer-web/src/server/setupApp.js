@@ -1,8 +1,8 @@
 import { createMemoryHistory, match } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import getRoutes from '../browser/js/getRoutes';
-import configureStore from '../universal/configureStore';
+import getRoutes from '../client/js/getRoutes';
+import configureStore from '../../packages/reactizer-core/src/configureStore';
 
 import logMiddleware from './middleware/logMiddleware';
 import getInitialState from './tools/getInitialState';

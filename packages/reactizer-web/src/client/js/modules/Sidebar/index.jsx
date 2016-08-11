@@ -6,10 +6,10 @@ import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem, Divider, DropDownMenu } from 'material-ui';
 import { partial } from 'ramda';
 
-import { SUCCESS } from '../../../../universal/consts/phaseConsts';
-import { toggleSidebar } from '../../../../universal/modules/ui/uiDuck';
-import { logoutUser } from '../../../../universal/modules/user/userDuck';
-import { setLocale } from '../../../../universal/modules/intl/intlDuck';
+import { SUCCESS } from '../../../../../packages/reactizer-core/src/consts/phaseConsts';
+import { toggleSidebar } from '../../../../../packages/reactizer-core/src/modules/ui/uiDuck';
+import { logoutUser } from '../../../../../packages/reactizer-core/src/modules/user/userDuck';
+import { setLocale } from '../../../../../packages/reactizer-core/src/modules/intl/intlDuck';
 
 import { sidebarMessages } from '../../../../universal/messages';
 

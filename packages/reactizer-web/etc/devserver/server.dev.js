@@ -7,10 +7,10 @@ import webpackHot from 'webpack-hot-middleware';
 
 import webpackConfig from '../webpack/webpack.dev';
 
-import setupApp from '../../src/server/setupApp';
-import fetchData from '../../src/server/tools/fetchData';
-import logger from '../../src/server/lib/logger';
-import { portDev, locales } from '../../src/server/config';
+import setupApp from '../../packages/reactizer-web/src/server/setupApp';
+import fetchData from '../../packages/reactizer-web/src/server/tools/fetchData';
+import logger from '../../packages/reactizer-web/src/server/lib/logger';
+import { portDev, locales } from '../../packages/reactizer-web/src/server/config';
 
 const app = express();
 

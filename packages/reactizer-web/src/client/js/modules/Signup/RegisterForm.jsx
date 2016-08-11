@@ -7,9 +7,10 @@ import { RaisedButton } from 'material-ui';
 import TextField from '../../components/TextField';
 
 import { formMessages, userMessages } from '../../../../universal/messages';
-import { LOGIN } from '../../../../universal/consts/formConsts';
+import { REGISTER } from '../../../../../packages/reactizer-core/src/consts/formConsts';
+import validate, * as check from '../../../../../packages/reactizer-core/src/tools/validator';
 
-const LoginForm = props =>
+const RegisterForm = props =>
   <form
     className="Signup-form"
     onSubmit={props.handleSubmit}
@@ -21,6 +22,15 @@ const LoginForm = props =>
         component={TextField}
         id={userMessages.username.id}
         floatingLabelText={props.intl.formatMessage(userMessages.username)}
+      />
+    </div>
+    <div className="Form-field">
+      <Field
+        name="email"
+        component={TextField}
+        id={userMessages.email.id}
+        floatingLabelText={props.intl.formatMessage(userMessages.email)}
+        type="email"
       />
     </div>
     <div className="Form-field">
@@ -40,7 +50,7 @@ const LoginForm = props =>
     />
   </form>;
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
@@ -49,6 +59,11 @@ LoginForm.propTypes = {
 export default compose(
   injectIntl,
   reduxForm({
-    form: LOGIN,
+    form: REGISTER,
+    validate: values => ({
+      username: validate(values.username, check.isRequired),
+      email: validate(values.email, check.isRequired, check.isEmail),
+      password: validate(values.password, check.isRequired, check.isPassword),
+    }),
   })
-)(LoginForm);
+)(RegisterForm);

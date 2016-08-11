@@ -4,8 +4,8 @@ import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import { values } from 'ramda';
 
-import configureStore from '../../universal/configureStore';
-import * as watchers from '../../universal/watchers';
+import configureStore from '../../../packages/reactizer-core/src/configureStore';
+import * as watchers from '../../../packages/reactizer-core/src/watchers';
 
 const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);

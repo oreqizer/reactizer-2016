@@ -7,9 +7,9 @@ import { Paper, Tabs, Tab, Snackbar } from 'material-ui';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 
-import * as userActions from '../../../../universal/modules/user/userDuck';
+import * as userActions from '../../../../../packages/reactizer-core/src/modules/user/userDuck';
 import { userMessages, signupMessages } from '../../../../universal/messages';
-import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
+import { LOGIN, REGISTER } from '../../../../../packages/reactizer-core/src/consts/formConsts';
 
 class Signup extends Component {
   static propTypes = {

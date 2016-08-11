@@ -4,4 +4,4 @@ require('babel-register')({
   sourceMaps: true,
 });
 
-require('./server.dev');
+require('./server.dev.js');

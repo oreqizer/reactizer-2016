@@ -6,8 +6,8 @@ import { injectIntl, intlShape } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 
-import intlProvider from '../../../universal/decorators/intlProvider';
-import { toggleSidebar } from '../../../universal/modules/ui/uiDuck';
+import intlProvider from '../../../../packages/reactizer-core/src/decorators/intlProvider';
+import { toggleSidebar } from '../../../../packages/reactizer-core/src/modules/ui/uiDuck';
 import { indexMessages } from '../../../universal/messages';
 
 import Sidebar from './Sidebar';

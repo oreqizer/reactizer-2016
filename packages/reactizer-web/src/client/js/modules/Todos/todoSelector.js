@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { ALL, ACTIVE, DONE } from '../../../../universal/consts/todoConsts';
+import { ALL, ACTIVE, DONE } from '../../../../../packages/reactizer-core/src/consts/todoConsts';
 
 const todoSelector = ({ state }) => state.todo.todos.valueSeq();
 const filterSelector = ({ props }) => props.params.filter;

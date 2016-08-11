@@ -5,8 +5,8 @@ import babel from 'gulp-babel';
 import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
 
-import config from '../config';
-import buildConfig from '../webpack/webpack.build';
+import config from '../../packages/reactizer-web/etc/config';
+import buildConfig from '../../packages/reactizer-web/etc/webpack/webpack.build';
 
 const buildServer = () =>
   gulp.src([

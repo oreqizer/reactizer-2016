@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 
-import config from '../config';
+import config from '../../packages/reactizer-web/etc/config';
 
 const statics = () =>
   gulp.src([

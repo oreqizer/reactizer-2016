@@ -9,10 +9,10 @@ import TodosList from './TodosList';
 import TodosForm from './TodosForm';
 import todosSelector from './todoSelector';
 
-import * as todoActions from '../../../../universal/modules/todo/todoDuck';
-import * as todoSagas from '../../../../universal/modules/todo/todoSagas';
-import { SUCCESS } from '../../../../universal/consts/phaseConsts';
-import { ACTIVE, DONE } from '../../../../universal/consts/todoConsts';
+import * as todoActions from '../../../../../packages/reactizer-core/src/modules/todo/todoDuck';
+import * as todoSagas from '../../../../../packages/reactizer-core/src/modules/todo/todoSagas';
+import { SUCCESS } from '../../../../../packages/reactizer-core/src/consts/phaseConsts';
+import { ACTIVE, DONE } from '../../../../../packages/reactizer-core/src/consts/todoConsts';
 import { todoMessages } from '../../../../universal/messages';
 
 class Todos extends PureComponent {

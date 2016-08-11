@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form/immutable';
 
 import TextField from '../../components/TextField';
 
-import { TODO } from '../../../../universal/consts/formConsts';
+import { TODO } from '../../../../../packages/reactizer-core/src/consts/formConsts';
 import { todoMessages } from '../../../../universal/messages';
 
 const TodosForm = props =>
