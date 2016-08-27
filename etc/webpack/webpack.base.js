@@ -9,7 +9,7 @@ export const loaders = [{
   loader: 'babel',
   query: {
     babelrc: false,
-    presets: ['react', 'es2015-native-modules', 'stage-1'],
+    presets: ['react', ['es2015', { modules: false }], 'stage-1'],
   },
 }, {
   test: /\.(jpe?g|png|gif|svg)$/i,
