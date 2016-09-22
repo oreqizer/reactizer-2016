@@ -17,10 +17,6 @@ const {
   CLEAR_ERROR,
 } = duck;
 
-jest.unmock('immutable');
-jest.unmock('../userDuck');
-jest.unmock('../../../containers/User');
-
 const username = 'test';
 const password = 'Testtest1';
 const email = 'test@test.com';

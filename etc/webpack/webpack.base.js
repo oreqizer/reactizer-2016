@@ -23,13 +23,18 @@ export const plugins = [
   new webpack.DefinePlugin({
     'process.env': { NODE_ENV: JSON.stringify(config.production ? 'production' : 'dev') },
   }),
+  new webpack.LoaderOptionsPlugin({
+    test: /\.styl$/,
+    options: {
+      postcss: () => [autoprefixer],
+    },
+  }),
 ];
 
 export default {
   context: __dirname,
   entry: ['../../src/browser/index.js'],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.styl'],
+    extensions: ['.js', '.jsx', '.styl'],
   },
-  postcss: () => [autoprefixer],
 };

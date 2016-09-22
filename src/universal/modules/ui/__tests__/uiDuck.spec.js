@@ -4,9 +4,6 @@ const {
   TOGGLE_SIDEBAR,
 } = duck;
 
-jest.unmock('immutable');
-jest.unmock('../uiDuck');
-
 describe('ui action creators', () => {
   it('should make a toggle sidebar action', () => {
     const expected = {

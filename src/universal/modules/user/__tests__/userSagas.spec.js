@@ -13,13 +13,6 @@ import {
   REGISTER_ERROR,
 } from '../userDuck';
 
-jest.unmock('redux-saga/effects');
-jest.unmock('react-router-redux');
-jest.unmock('redux-form');
-jest.unmock('axios'); // not used
-jest.unmock('../userSagas');
-jest.unmock('../userDuck');
-
 const email = 'test@test.com';
 const username = 'test';
 const password = 'Testtest1';

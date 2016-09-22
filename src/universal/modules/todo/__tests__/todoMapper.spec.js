@@ -3,11 +3,6 @@ import { Map } from 'immutable';
 import Todo from '../../../containers/Todo';
 import toMap from '../todoMapper';
 
-jest.unmock('ramda');
-jest.unmock('immutable');
-jest.unmock('../todoMapper');
-jest.unmock('../../../containers/Todo');
-
 // sorted: 1, 0, 2
 const todoArray = [
   { id: 2, text: 'todo2' },

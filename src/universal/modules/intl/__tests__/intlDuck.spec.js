@@ -4,9 +4,6 @@ const {
   SET_LOCALE,
 } = duck;
 
-jest.unmock('immutable');
-jest.unmock('../intlDuck');
-
 const sk = 'sk';
 
 describe('intl action creators', () => {

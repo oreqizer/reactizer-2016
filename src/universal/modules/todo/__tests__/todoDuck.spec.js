@@ -21,11 +21,6 @@ const {
   RESET,
 } = duck;
 
-jest.unmock('ramda');
-jest.unmock('immutable');
-jest.unmock('../todoDuck');
-jest.unmock('../../../containers/Todo');
-
 const id = 1337;
 const id2 = 420;
 const text = 'testing456';
