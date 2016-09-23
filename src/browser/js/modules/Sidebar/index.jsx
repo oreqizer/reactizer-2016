@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { injectIntl, FormattedMessage, intlShape } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { push } from 'react-router-redux';
 import { AppBar, Drawer, MenuItem, Divider, DropDownMenu } from 'material-ui';
 import { partial } from 'ramda';
@@ -93,13 +93,10 @@ const Sidebar = props =>
   </Drawer>;
 
 Sidebar.propTypes = {
-  intl: intlShape.isRequired,
   sidebar: PropTypes.bool.isRequired,
-  appName: PropTypes.string.isRequired,
-  locales: PropTypes.array.isRequired,
+  locales: PropTypes.arrayOf(PropTypes.string).isRequired,
   locale: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const actionCreators = {

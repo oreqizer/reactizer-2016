@@ -11,10 +11,12 @@ import * as userActions from '../../../../universal/modules/user/userDuck';
 import { userMessages, signupMessages } from '../../../../universal/messages';
 import { LOGIN, REGISTER } from '../../../../universal/consts/formConsts';
 
+import User from '../../../../universal/containers/User';
+
 class Signup extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.instanceOf(User).isRequired,
     loginUser: PropTypes.func.isRequired,
     registerUser: PropTypes.func.isRequired,
     clearError: PropTypes.func.isRequired,

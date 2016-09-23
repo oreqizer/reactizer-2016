@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { List, ListItem, IconButton, FontIcon } from 'material-ui';
+import { Map } from 'immutable';
 
 const TodosList = ({ todos, token, onEdit, onDelete }) =>
   <List>
@@ -23,7 +24,7 @@ const TodosList = ({ todos, token, onEdit, onDelete }) =>
 
 TodosList.propTypes = {
   token: PropTypes.string.isRequired,
-  todos: PropTypes.object.isRequired,
+  todos: PropTypes.instanceOf(Map).isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };

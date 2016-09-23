@@ -18,7 +18,7 @@ const Root = () =>
 // Hot-reloading: Index needs to be a class
 // ----------------------------------------
 
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prefer-stateless-function, class-methods-use-this */
 export default class Index extends Component {
   render() {
     return (

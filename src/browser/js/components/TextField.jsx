@@ -9,8 +9,8 @@ const TextField = props =>
 
 TextField.propTypes = {
   intl: intlShape.isRequired,
-  input: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
+  input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  meta: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default injectIntl(TextField);

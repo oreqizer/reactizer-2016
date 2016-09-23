@@ -15,7 +15,7 @@ export default function (Wrapped) {
     </IntlProvider>;
 
   Intl.propTypes = {
-    intl: PropTypes.object.isRequired,
+    intl: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   };
 
   return connect(state => ({

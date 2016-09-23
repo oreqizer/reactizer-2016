@@ -1,6 +1,6 @@
 import { appName, defaultLocale, locales } from '../config';
 
-export default async (req, messages) => ({
+export default (async) (req, messages) => ({
   intl: {
     defaultLocale,
     locale: req.acceptsLanguages(locales) || defaultLocale,

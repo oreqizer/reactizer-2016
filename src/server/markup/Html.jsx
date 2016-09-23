@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { PropTypes } from 'react';
 
 const Html = props =>
@@ -22,8 +23,8 @@ const Html = props =>
   </html>;
 
 Html.propTypes = {
-  head: PropTypes.object.isRequired,
-  assets: PropTypes.object.isRequired,
+  head: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  assets: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   locale: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
   app: PropTypes.string.isRequired,
