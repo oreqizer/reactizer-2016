@@ -25,7 +25,7 @@
   "author": "oreqizer",
   "license": "MIT",
   "engines": {
-    "node": ">=5"
+    "node": ">=6"
   },
   "dependencies": {
     "axios": "^0.14.0",
