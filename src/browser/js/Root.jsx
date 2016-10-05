@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';

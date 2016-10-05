@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 const App = () =>
   <View style={styles.container}>
     <Text style={styles.welcome}>
-      Welcome to Reactizer's React Native!
+      Welcome to Reactizer Native!
     </Text>
     <Text style={styles.instructions}>
       To get started, edit ./src/native/index.js
