@@ -46,8 +46,6 @@ const todo2 = {
   done,
 };
 
-const token = '123sampleToken';
-
 const todosMock = new Map()
   .set(todo.id, new Todo(todo))
   .set(todo2.id, new Todo(todo2));
@@ -56,37 +54,36 @@ describe('todo action creators', () => {
   it('should make a fetch action', () => {
     const expected = {
       type: FETCH,
-      payload: { token },
     };
 
-    expect(duck.fetchTodos({ token })).toEqual(expected);
+    expect(duck.fetchTodos()).toEqual(expected);
   });
 
   it('should make a create action', () => {
     const expected = {
       type: CREATE,
-      payload: { token, text },
+      payload: { text },
     };
 
-    expect(duck.createTodo({ token, text })).toEqual(expected);
+    expect(duck.createTodo({ text })).toEqual(expected);
   });
 
   it('should make an edit action', () => {
     const expected = {
       type: EDIT,
-      payload: { token, todo },
+      payload: { todo },
     };
 
-    expect(duck.editTodo({ token, todo })).toEqual(expected);
+    expect(duck.editTodo({ todo })).toEqual(expected);
   });
 
   it('should make a delete action', () => {
     const expected = {
       type: DELETE,
-      payload: { token, id: todo.id },
+      payload: { id: todo.id },
     };
 
-    expect(duck.deleteTodo({ token, id: todo.id })).toEqual(expected);
+    expect(duck.deleteTodo({ id: todo.id })).toEqual(expected);
   });
 
   it('should make a reset action', () => {
