@@ -4,8 +4,8 @@ import webpack from 'webpack';
 import base, { loaders, plugins } from './webpack.base';
 
 const styleLoader = {
-  test: /\.styl$/,
-  loader: 'style!css!postcss!stylus',
+  test: /\.scss$/,
+  loader: 'style!css!postcss!sass',
 };
 
 export default {

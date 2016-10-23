@@ -7,7 +7,7 @@ import reducers from './reducers';
  * @prop ownMiddleware {Array}
  * @prop enhancers {Array}
  */
-export default function (options = {}) {
+export default function configureStore(options = {}) {
   const {
     initialState = {},
     ownMiddleware = [],

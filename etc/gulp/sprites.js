@@ -9,7 +9,7 @@ function sprites() {
     .pipe(spritesmith({
       imgPath: '../assets/images/sprite.png',
       imgName: 'sprite.png',
-      cssName: 'sprite.styl',
+      cssName: '_sprite.scss',
     }));
 
   const imgStream = spriteData.img

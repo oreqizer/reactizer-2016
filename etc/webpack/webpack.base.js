@@ -24,7 +24,7 @@ export const plugins = [
     'process.env': { NODE_ENV: JSON.stringify(config.production ? 'production' : 'dev') },
   }),
   new webpack.LoaderOptionsPlugin({
-    test: /\.styl$/,
+    test: /\.scss$/,
     options: {
       postcss: () => [autoprefixer],
     },

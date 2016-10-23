@@ -79,24 +79,24 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-export const fetchTodos = ({ token }) => ({
+// TODO: change action creators to take parameters normally
+export const fetchTodos = () => ({
   type: FETCH,
-  payload: { token },
 });
 
-export const createTodo = ({ token, text }) => ({
+export const createTodo = ({ text }) => ({
   type: CREATE,
-  payload: { token, text },
+  payload: { text },
 });
 
-export const editTodo = ({ token, todo }) => ({
+export const editTodo = ({ todo }) => ({
   type: EDIT,
-  payload: { token, todo },
+  payload: { todo },
 });
 
-export const deleteTodo = ({ token, id }) => ({
+export const deleteTodo = ({ id }) => ({
   type: DELETE,
-  payload: { token, id },
+  payload: { id },
 });
 
 export const resetTodos = () => ({

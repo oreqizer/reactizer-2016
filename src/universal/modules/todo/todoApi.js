@@ -2,36 +2,20 @@ import axios from 'axios';
 
 import { URL } from '../../consts/apiConsts';
 
-export function fetch({ token }) {
-  return axios.get(`${URL}/todos`, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export function fetch() {
+  return axios.get(`${URL}/todos`);
 }
 
-export function create({ token, text }) {
-  return axios.post(`${URL}/todos`, { text }, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export function create({ text }) {
+  return axios.post(`${URL}/todos`, { text });
 }
 
-export function edit({ token, todo }) {
+export function edit({ todo }) {
   const { id, text, done } = todo;
 
-  return axios.put(`${URL}/todos/${id}`, { text, done }, {
-    headers: {
-      Authorization: token,
-    },
-  });
+  return axios.put(`${URL}/todos/${id}`, { text, done });
 }
 
-export function remove({ token, id }) {
-  return axios.delete(`${URL}/todos/${id}`, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export function remove({ id }) {
+  return axios.delete(`${URL}/todos/${id}`);
 }

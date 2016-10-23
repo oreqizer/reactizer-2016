@@ -1,0 +1,15 @@
+$bp-s: 480px;
+$bp-lt-s: 'max-width: #{$bp-s}';
+$bp-gt-s: 'min-width: #{$bp-s}';
+
+$bp-m: 768px;
+$bp-lt-m: 'max-width: #{$bp-m}';
+$bp-gt-m: 'min-width: #{$bp-m}';
+
+$bp-l: 1024px;
+$bp-lt-l: 'max-width: #{$bp-l}';
+$bp-gt-l: 'min-width: #{$bp-l}';
+
+$bp-xl: 1440px;
+$bp-lt-xl: 'max-width: #{$bp-xl}';
+$bp-gt-xl: 'min-width: #{$bp-xl}';

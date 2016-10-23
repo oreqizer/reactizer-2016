@@ -7,8 +7,8 @@ import base, { loaders, plugins } from './webpack.base';
 import config from '../config';
 
 const styleLoader = {
-  test: /\.styl$/,
-  loader: ExtractText.extract('css!postcss!stylus'),
+  test: /\.scss$/,
+  loader: ExtractText.extract('css!postcss!sass'),
 };
 
 export default {

@@ -1,0 +1,17 @@
+@import '../variables/breakpoints';
+@import '../variables/layout';
+
+#container {
+  position: relative;
+  max-width: $layout-container;
+  padding: $layout-padding-xs $layout-padding-xs;
+  margin: 0 auto;
+
+  @media screen and ($bp-gt-s) {
+    padding: $layout-padding-s $layout-padding-s;
+  }
+
+  @media screen and ($bp-gt-m) {
+    padding: $layout-padding-s $layout-padding-m;
+  }
+}

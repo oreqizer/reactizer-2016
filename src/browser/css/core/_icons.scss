@@ -1,0 +1,11 @@
+@mixin iconSize($side) {
+  width: $side;
+  height: $side;
+  background-size: $side $side;
+}
+
+// TODO resolve icon as relative path to this file
+.octocat {
+  @include iconSize(24px);
+  background: url('../assets/images/icons/github-mark.svg') no-repeat;
+}
