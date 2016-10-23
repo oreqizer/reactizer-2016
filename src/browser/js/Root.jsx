@@ -12,11 +12,12 @@ const routes = getRoutes(store);
 const history = syncHistoryWithStore(browserHistory, store);
 const muiTheme = getMuiTheme();
 
-const Root = () =>
+const Root = () => (
   <Provider store={store}>
     <MuiThemeProvider muiTheme={muiTheme}>
       <Router children={routes} history={history} />
     </MuiThemeProvider>
-  </Provider>;
+  </Provider>
+);
 
 export default Root;

@@ -1,6 +1,6 @@
 import { appName, defaultLocale, locales } from '../config';
 
-export default (async) (req, messages) => ({
+const getInitialState = (req, messages) => ({
   intl: {
     defaultLocale,
     locale: req.acceptsLanguages(locales) || defaultLocale,
@@ -12,3 +12,5 @@ export default (async) (req, messages) => ({
     appName,
   },
 });
+
+export default getInitialState;

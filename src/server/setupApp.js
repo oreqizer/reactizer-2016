@@ -11,8 +11,9 @@ import markup from './markup';
 
 import logger from './lib/logger';
 
+
 export default function setupApp({ assets, locales }) {
-  return async function reactApp(req, res, next) {
+  return (req, res, next) => {
     const history = createMemoryHistory(req.url);
 
     const sagaMiddleware = createSagaMiddleware();
@@ -21,7 +22,7 @@ export default function setupApp({ assets, locales }) {
       sagaMiddleware,
     ];
 
-    const initialState = await getInitialState(req, locales);
+    const initialState = getInitialState(req, locales);
 
     const store = configureStore({
       initialState,
