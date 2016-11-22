@@ -16,7 +16,7 @@ export default function configureStore(state, middleware) {
 
   /* eslint-disable no-undef */
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
+    module.hot.accept('./root', () => {
       store.replaceReducer(reducers);
     });
   }
