@@ -1,9 +1,10 @@
 import { createMemoryHistory, match } from 'react-router';
+import { createEpicMiddleware } from 'redux-observable';
 import { applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
 
 import getRoutes from '../browser/getRoutes';
 import configureStore from '../universal/configureStore';
+import { epic } from '../universal/root';
 
 import logMiddleware from './middleware/logMiddleware';
 import getInitialState from './tools/getInitialState';
@@ -17,10 +18,9 @@ export default function setupApp({ assets, locales }) {
   return (req, res, next) => {
     const history = createMemoryHistory(req.url);
 
-    const sagaMiddleware = createSagaMiddleware();
     const middleware = applyMiddleware(
+      createEpicMiddleware(epic),
       logMiddleware,
-      sagaMiddleware,
     );
 
     const initialState = getInitialState(req, locales);
@@ -49,7 +49,7 @@ export default function setupApp({ assets, locales }) {
           return;
         }
 
-        await fetchNeeds(store, sagaMiddleware, renderProps);
+        await fetchNeeds(store, renderProps);
 
         const doctype = '<!DOCTYPE html>';
         const html = markup({ store, assets, renderProps, req });

@@ -1,19 +1,17 @@
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { createEpicMiddleware } from 'redux-observable';
 import createLogger from 'redux-logger';
-import { values } from 'ramda';
 
 import configureStore from '../universal/configureStore';
-import * as watchers from '../universal/watchers';
+import { epic } from '../universal/root';
 
 import globalsMiddleware from './middleware/globalsMiddleware';
 
 
 const __DEV__ = process.env.NODE_ENV !== 'production'; // eslint-disable-line no-undef, no-underscore-dangle
 
-const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);
 const loggerMiddleware = createLogger({
   collapsed: true,
@@ -22,7 +20,7 @@ const loggerMiddleware = createLogger({
 const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 
 const middlewares = [
-  sagaMiddleware,
+  createEpicMiddleware(epic),
   historyMiddleware,
   globalsMiddleware,
 ];
@@ -38,8 +36,5 @@ if (__DEV__) {
 const middleware = compose(applyMiddleware(...middlewares), chromeDevtool);
 
 const store = configureStore(initialState, middleware);
-
-// run saga watchers
-values(watchers).forEach(sagaMiddleware.run);
 
 export default store;
