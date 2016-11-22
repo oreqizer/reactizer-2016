@@ -1,4 +1,5 @@
 import { createMemoryHistory, match } from 'react-router';
+import { applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import getRoutes from '../browser/getRoutes';
@@ -17,17 +18,14 @@ export default function setupApp({ assets, locales }) {
     const history = createMemoryHistory(req.url);
 
     const sagaMiddleware = createSagaMiddleware();
-    const ownMiddleware = [
+    const middleware = applyMiddleware(
       logMiddleware,
       sagaMiddleware,
-    ];
+    );
 
     const initialState = getInitialState(req, locales);
 
-    const store = configureStore({
-      initialState,
-      ownMiddleware,
-    });
+    const store = configureStore(initialState, middleware);
 
     const routes = getRoutes(store);
     logger.info('[reactApp] Request recieved', req.url);

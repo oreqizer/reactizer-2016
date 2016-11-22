@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore } from 'redux';
 
 import reducers from './reducers';
 
@@ -7,24 +7,11 @@ import reducers from './reducers';
  * @prop ownMiddleware {Array}
  * @prop enhancers {Array}
  */
-export default function configureStore(options = {}) {
-  const {
-    initialState = {},
-    ownMiddleware = [],
-    enhancers = [],
-  } = options;
-
-  const appliedMiddleware = applyMiddleware(
-    ...ownMiddleware,
-  );
-
+export default function configureStore(state, middleware) {
   const store = createStore(
     reducers,
-    initialState,
-    compose(
-      appliedMiddleware,
-      ...enhancers,
-    ),
+    state,
+    middleware,
   );
 
   // -------------------

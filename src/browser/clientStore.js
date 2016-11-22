@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
+import { applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import { values } from 'ramda';
@@ -10,6 +11,8 @@ import * as watchers from '../universal/watchers';
 import globalsMiddleware from './middleware/globalsMiddleware';
 
 
+const __DEV__ = process.env.NODE_ENV !== 'production'; // eslint-disable-line no-undef, no-underscore-dangle
+
 const sagaMiddleware = createSagaMiddleware();
 const historyMiddleware = routerMiddleware(browserHistory);
 const loggerMiddleware = createLogger({
@@ -18,27 +21,23 @@ const loggerMiddleware = createLogger({
 
 const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 
-const ownMiddleware = [
+const middlewares = [
   sagaMiddleware,
   historyMiddleware,
   globalsMiddleware,
 ];
 
-const enhancers = [];
+// chrome Redux extension: https://github.com/zalmoxisus/redux-devtools-extension
+const chromeDevtool = __DEV__ && window.devToolsExtension ? window.devToolsExtension() : f => f;
 
-if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
+if (__DEV__) {
   // console logging for debugging
-  ownMiddleware.push(loggerMiddleware);
-
-  // chrome Redux extension: https://github.com/zalmoxisus/redux-devtools-extension
-  enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
+  middlewares.push(loggerMiddleware);
 }
 
-const store = configureStore({
-  initialState,
-  ownMiddleware,
-  enhancers,
-});
+const middleware = compose(applyMiddleware(...middlewares), chromeDevtool);
+
+const store = configureStore(initialState, middleware);
 
 // run saga watchers
 values(watchers).forEach(sagaMiddleware.run);
