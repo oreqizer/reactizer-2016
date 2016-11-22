@@ -1,9 +1,12 @@
+import { combineEpics } from 'redux-observable';
 import { Record, Map } from 'immutable';
 import { values } from 'ramda';
 
+import * as api from './todoApi';
 import toMap from './todoMapper';
-import Todo from '../../containers/Todo';
+
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
+
 
 export const FETCH = 'todo/FETCH';
 export const FETCH_SUCCESS = 'todo/FETCH_SUCCESS';
@@ -55,7 +58,7 @@ export default function todoReducer(state = new InitialState(), action) {
     case CREATE_SUCCESS:
     case EDIT_SUCCESS:
       return state
-        .setIn(['todos', action.payload.todo.id], new Todo(action.payload.todo))
+        .setIn(['todos', action.payload.todo.id], action.payload.todo)
         .set('phase', SUCCESS);
 
     case DELETE_SUCCESS:
@@ -102,3 +105,42 @@ export const deleteTodo = ({ id }) => ({
 export const resetTodos = () => ({
   type: RESET,
 });
+
+const fetchTodosEpic = action$ =>
+  action$.ofType(FETCH)
+    .mergeMap(api.fetchTodos)
+    .map(todos => ({
+      type: FETCH_SUCCESS,
+      payload: { todos },
+    }));
+
+const createTodoEpic = action$ =>
+  action$.ofType(CREATE)
+    .mergeMap(action => api.createTodo(action.payload))
+    .map(todo => ({
+      type: CREATE_SUCCESS,
+      payload: { todo },
+    }));
+
+const editTodoEpic = action$ =>
+  action$.ofType(EDIT)
+    .mergeMap(action => api.editTodo(action.payload))
+    .map(todo => ({
+      type: EDIT_SUCCESS,
+      payload: { todo },
+    }));
+
+const deleteTodoEpic = action$ =>
+  action$.ofType(DELETE)
+    .mergeMap(action => api.deleteTodo(action.payload))
+    .map(id => ({
+      type: DELETE_SUCCESS,
+      payload: { id },
+    }));
+
+export const todoEpic = combineEpics(
+  fetchTodosEpic,
+  createTodoEpic,
+  editTodoEpic,
+  deleteTodoEpic,
+);

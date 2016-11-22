@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import config from './modules/config/configDuck';
 import intl from './modules/intl/intlDuck';
-import todo from './modules/todo/todoDuck';
+import todo, { todoEpic } from './modules/todo/todoDuck';
 import ui from './modules/ui/uiDuck';
 import user, { userEpic } from './modules/user/userDuck';
 
@@ -20,5 +20,6 @@ export const reducer = combineReducers({
 });
 
 export const epic = combineEpics(
+  todoEpic,
   userEpic,
 );

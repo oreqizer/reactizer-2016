@@ -1,21 +1,38 @@
+import Rx from 'rxjs/Rx';
 import axios from 'axios';
 
+import todoMapper from './todoMapper';
+
+import Todo from '../../containers/Todo';
 import { URL } from '../../consts/apiConsts';
 
-export function fetch() {
-  return axios.get(`${URL}/todos`);
+
+export function fetchTodos() {
+  const call = axios.get(`${URL}/todos`);
+
+  return Rx.Observable.from(call)
+    .map(res => todoMapper(res.data.todos));
 }
 
-export function create({ text }) {
-  return axios.post(`${URL}/todos`, { text });
+export function createTodo({ text }) {
+  const call = axios.post(`${URL}/todos`, { text });
+
+  return Rx.Observable.from(call)
+    .map(res => new Todo(res.data));
 }
 
-export function edit({ todo }) {
+export function editTodo({ todo }) {
   const { id, text, done } = todo;
 
-  return axios.put(`${URL}/todos/${id}`, { text, done });
+  const call = axios.put(`${URL}/todos/${id}`, { text, done });
+
+  return Rx.Observable.from(call)
+    .map(res => new Todo(res.data));
 }
 
-export function remove({ id }) {
-  return axios.delete(`${URL}/todos/${id}`);
+export function deleteTodo({ id }) {
+  const call = axios.delete(`${URL}/todos/${id}`);
+
+  return Rx.Observable.from(call)
+    .mapTo(id);
 }
