@@ -83,7 +83,6 @@ export default function todoReducer(state = new InitialState(), action) {
   }
 }
 
-// TODO: change action creators to take parameters normally
 export const fetchTodos = () => ({
   type: FETCH,
 });

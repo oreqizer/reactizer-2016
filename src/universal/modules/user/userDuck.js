@@ -103,9 +103,11 @@ export const logoutUser = () => ({
   type: LOGOUT,
 });
 
-const loginUserEpic = action$ =>
+const loginUserEpic = (action$, store) =>
   action$.ofType(LOGIN)
+    .do(() => store.dispatch(startSubmit('login')))
     .mergeMap(action => loginApi(action.payload))
+    .do(() => store.dispatch(stopSubmit('login')))
     .map(data => ({
       type: LOGIN_SUCCESS,
       payload: data,
@@ -115,20 +117,11 @@ const loginUserEpic = action$ =>
       payload: { error },
     }));
 
-const loginStartEpic = action$ =>
-  action$.ofType(LOGIN)
-    .mapTo(startSubmit('login'));
-
-const loginFinishEpic = action$ =>
-  Rx.Observable.merge(
-    action$.ofType(LOGIN_SUCCESS),
-    action$.ofType(LOGIN_ERROR),
-  )
-    .mapTo(stopSubmit('login'));
-
-const registerUserEpic = action$ =>
+const registerUserEpic = (action$, store) =>
   action$.ofType(REGISTER)
+    .do(() => store.dispatch(startSubmit('register')))
     .mergeMap(action => registerApi(action.payload))
+    .do(() => store.dispatch(stopSubmit('register')))
     .map(data => ({
       type: REGISTER_SUCCESS,
       payload: data,
@@ -137,17 +130,6 @@ const registerUserEpic = action$ =>
       type: REGISTER_ERROR,
       payload: { error },
     }));
-
-const registerStartEpic = action$ =>
-  action$.ofType(REGISTER)
-    .mapTo(startSubmit('register'));
-
-const registerFinishEpic = action$ =>
-  Rx.Observable.merge(
-    action$.ofType(REGISTER_SUCCESS),
-    action$.ofType(REGISTER_ERROR),
-  )
-    .mapTo(stopSubmit('register'));
 
 const redirectEpic = action$ =>
   Rx.Observable.merge(
@@ -159,10 +141,6 @@ const redirectEpic = action$ =>
 
 export const userEpic = combineEpics(
   loginUserEpic,
-  loginStartEpic,
-  loginFinishEpic,
   registerUserEpic,
-  registerStartEpic,
-  registerFinishEpic,
   redirectEpic,
 );
