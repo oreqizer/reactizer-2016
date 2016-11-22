@@ -2,11 +2,7 @@ import { createStore } from 'redux';
 
 import reducers from './reducers';
 
-/**
- * @prop initialState {Object}
- * @prop ownMiddleware {Array}
- * @prop enhancers {Array}
- */
+
 export default function configureStore(state, middleware) {
   const store = createStore(
     reducers,
