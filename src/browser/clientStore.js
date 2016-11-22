@@ -20,7 +20,6 @@ const loggerMiddleware = createLogger({
 
 const initialState = JSON.parse(document.body.getAttribute('data-redux-state'));
 
-
 const middlewares = [
   epicMiddleware,
   historyMiddleware,
