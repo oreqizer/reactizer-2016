@@ -44,7 +44,7 @@ class Todos extends PureComponent {
   handleSubmit({ todo }) {
     const { createTodo } = this.props;
 
-    createTodo({ text: todo });
+    createTodo(todo);
   }
 
   render() {

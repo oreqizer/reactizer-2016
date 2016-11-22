@@ -1,4 +1,5 @@
 import { combineEpics } from 'redux-observable';
+import { change } from 'redux-form';
 import { Record, Map } from 'immutable';
 import { values } from 'ramda';
 
@@ -87,17 +88,17 @@ export const fetchTodos = () => ({
   type: FETCH,
 });
 
-export const createTodo = ({ text }) => ({
+export const createTodo = text => ({
   type: CREATE,
   payload: { text },
 });
 
-export const editTodo = ({ todo }) => ({
+export const editTodo = todo => ({
   type: EDIT,
   payload: { todo },
 });
 
-export const deleteTodo = ({ id }) => ({
+export const deleteTodo = id => ({
   type: DELETE,
   payload: { id },
 });
@@ -114,9 +115,10 @@ const fetchTodosEpic = action$ =>
       payload: { todos },
     }));
 
-const createTodoEpic = action$ =>
+const createTodoEpic = (action$, store) =>
   action$.ofType(CREATE)
     .mergeMap(action => api.createTodo(action.payload))
+    .do(() => store.dispatch(change('todo', 'todo', '')))
     .map(todo => ({
       type: CREATE_SUCCESS,
       payload: { todo },

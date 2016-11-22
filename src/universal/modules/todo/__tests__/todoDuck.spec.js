@@ -65,7 +65,7 @@ describe('todo action creators', () => {
       payload: { text },
     };
 
-    expect(duck.createTodo({ text })).toEqual(expected);
+    expect(duck.createTodo(text)).toEqual(expected);
   });
 
   it('should make an edit action', () => {
@@ -74,7 +74,7 @@ describe('todo action creators', () => {
       payload: { todo },
     };
 
-    expect(duck.editTodo({ todo })).toEqual(expected);
+    expect(duck.editTodo(todo)).toEqual(expected);
   });
 
   it('should make a delete action', () => {
@@ -83,7 +83,7 @@ describe('todo action creators', () => {
       payload: { id: todo.id },
     };
 
-    expect(duck.deleteTodo({ id: todo.id })).toEqual(expected);
+    expect(duck.deleteTodo(todo.id)).toEqual(expected);
   });
 
   it('should make a reset action', () => {
