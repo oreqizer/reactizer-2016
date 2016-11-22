@@ -67,5 +67,5 @@ export default compose(
       email: validate(values.email, check.isRequired, check.isEmail),
       password: validate(values.password, check.isRequired, check.isPassword),
     }),
-  })
+  }),
 )(RegisterForm);

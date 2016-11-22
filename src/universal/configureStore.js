@@ -23,8 +23,8 @@ export default function configureStore(options = {}) {
     initialState,
     compose(
       appliedMiddleware,
-      ...enhancers
-    )
+      ...enhancers,
+    ),
   );
 
   // -------------------

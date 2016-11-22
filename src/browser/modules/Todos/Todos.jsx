@@ -105,5 +105,5 @@ export default compose(
   connect((state, props) => ({
     todos: todosSelector({ state, props }),
     phase: state.todo.phase,
-  }), todoActions)
+  }), todoActions),
 )(Todos);

@@ -95,5 +95,5 @@ export default compose(
   injectIntl,
   connect(state => ({
     user: state.user,
-  }), userActions)
+  }), userActions),
 )(Signup);

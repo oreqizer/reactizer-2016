@@ -17,7 +17,7 @@ const TodosList = ({ todos, onEdit, onDelete }) =>
           </IconButton>
         }
         style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
-      />
+      />,
     )}
   </List>;
 

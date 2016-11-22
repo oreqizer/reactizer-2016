@@ -54,5 +54,5 @@ export default compose(
   injectIntl,
   connect(state => ({
     appName: state.config.appName,
-  }), { push, toggleSidebar })
+  }), { push, toggleSidebar }),
 )(Index);

@@ -21,5 +21,5 @@ export default createSelector(
       default:
         return todos;
     }
-  }
+  },
 );

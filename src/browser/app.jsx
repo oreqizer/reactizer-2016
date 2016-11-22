@@ -26,7 +26,7 @@ const view = document.getElementById('react-view');
 
 render(
   <Root />,
-  view
+  view,
 );
 
 // -------------------
@@ -38,7 +38,7 @@ if (module.hot) {
   module.hot.accept('./Root', () => {
     render(
       <Root />,
-      view
+      view,
     );
   });
 }

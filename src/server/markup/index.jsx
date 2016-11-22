@@ -13,7 +13,7 @@ const renderApp = (store, props, muiTheme) =>
       <MuiThemeProvider muiTheme={muiTheme}>
         <RouterContext {...props} />
       </MuiThemeProvider>
-    </Provider>
+    </Provider>,
   );
 
 const muiTheme = req =>
@@ -35,6 +35,6 @@ export default function markup({ store, assets, renderProps, req }) {
       locale={state.intl.locale}
       state={reduxState}
       app={app}
-    />
+    />,
   );
 }

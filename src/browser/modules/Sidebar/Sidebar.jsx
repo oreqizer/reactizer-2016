@@ -85,7 +85,7 @@ const Sidebar = props =>
           key={loc}
           value={loc}
           primaryText={loc.toUpperCase()}
-        />
+        />,
       )}
     </DropDownMenu>
 
@@ -116,5 +116,5 @@ export default compose(
     user: state.user,
   }), dispatch => ({
     actions: bindActionCreators(actionCreators, dispatch),
-  }))
+  })),
 )(Sidebar);

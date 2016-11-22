@@ -52,5 +52,5 @@ export default compose(
   injectIntl,
   reduxForm({
     form: LOGIN,
-  })
+  }),
 )(LoginForm);
