@@ -24,9 +24,9 @@ export default {
   },
   plugins: [
     ...plugins,
+    new webpack.SourceMapDevToolPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
-  devtool: 'cheap-module-eval-source-map',
 };

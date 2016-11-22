@@ -7,7 +7,7 @@ import { RaisedButton } from 'material-ui';
 import TextField from '../../components/TextField';
 
 import { formMessages, userMessages } from '../../../universal/messages';
-import { REGISTER } from '../../../universal/consts/formConsts';
+import { REGISTER_FORM } from '../../../universal/consts/formConsts';
 import validate, * as check from '../../../universal/tools/validator';
 
 
@@ -61,7 +61,7 @@ RegisterForm.propTypes = {
 export default compose(
   injectIntl,
   reduxForm({
-    form: REGISTER,
+    form: REGISTER_FORM,
     validate: values => ({
       username: validate(values.username, check.isRequired),
       email: validate(values.email, check.isRequired, check.isEmail),

@@ -1,6 +1,7 @@
+import 'rxjs';  // all operators
 import { createStore } from 'redux';
 
-import { reducer } from './root';
+import { reducer } from './reduxRoot';
 
 
 export default function configureStore(state, middleware) {
@@ -9,18 +10,6 @@ export default function configureStore(state, middleware) {
     state,
     middleware,
   );
-
-  // -------------------
-  // Hot-reloading Redux
-  // -------------------
-
-  /* eslint-disable no-undef */
-  if (module.hot) {
-    module.hot.accept('./root', () => {
-      store.replaceReducer(reducers);
-    });
-  }
-  /* eslint-enable no-undef */
 
   return store;
 }

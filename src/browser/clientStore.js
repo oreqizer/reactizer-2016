@@ -5,7 +5,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import createLogger from 'redux-logger';
 
 import configureStore from '../universal/configureStore';
-import { epic } from '../universal/root';
+import { reducer, epic } from '../universal/reduxRoot';
 
 import globalsMiddleware from './middleware/globalsMiddleware';
 
@@ -41,12 +41,13 @@ const store = configureStore(initialState, middleware);
 export default store;
 
 // -------------------
-// Hot-reloading Epics
+// Hot-reloading Redux
 // -------------------
 
 /* eslint-disable no-undef */
 if (module.hot) {
-  module.hot.accept('../universal/root', () => {
+  module.hot.accept('../universal/reduxRoot', () => {
+    store.replaceReducer(reducer);
     epicMiddleware.replaceEpic(epic);
   });
 }

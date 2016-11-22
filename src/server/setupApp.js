@@ -4,7 +4,7 @@ import { applyMiddleware } from 'redux';
 
 import getRoutes from '../browser/getRoutes';
 import configureStore from '../universal/configureStore';
-import { epic } from '../universal/root';
+import { epic } from '../universal/reduxRoot';
 
 import logMiddleware from './middleware/logMiddleware';
 import getInitialState from './tools/getInitialState';

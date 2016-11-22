@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form/immutable';
 
 import TextField from '../../components/TextField';
 
-import { TODO } from '../../../universal/consts/formConsts';
+import { TODO_FORM } from '../../../universal/consts/formConsts';
 import { todoMessages } from '../../../universal/messages';
 
 
@@ -23,5 +23,5 @@ TodosForm.propTypes = {
 };
 
 export default reduxForm({
-  form: TODO,
+  form: TODO_FORM,
 })(TodosForm);

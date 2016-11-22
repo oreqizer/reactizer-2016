@@ -11,7 +11,6 @@ import TodosForm from './TodosForm';
 import todosSelector from './todoSelector';
 
 import * as todoActions from '../../../universal/modules/todo/todoDuck';
-import * as todoSagas from '../../../universal/modules/todo/todoSagas';
 import { SUCCESS } from '../../../universal/consts/phaseConsts';
 import { ACTIVE, DONE } from '../../../universal/consts/todoConsts';
 import { todoMessages } from '../../../universal/messages';
@@ -27,10 +26,6 @@ class Todos extends PureComponent {
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
   };
-
-  static needs = [ // not actually used - I kept it for demonstration
-    todoSagas.fetchTodos,
-  ];
 
   constructor(props) {
     super(props);

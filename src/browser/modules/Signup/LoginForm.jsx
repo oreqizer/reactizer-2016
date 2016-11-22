@@ -7,7 +7,7 @@ import { RaisedButton } from 'material-ui';
 import TextField from '../../components/TextField';
 
 import { formMessages, userMessages } from '../../../universal/messages';
-import { LOGIN } from '../../../universal/consts/formConsts';
+import { LOGIN_FORM } from '../../../universal/consts/formConsts';
 
 
 const LoginForm = props => (
@@ -51,6 +51,6 @@ LoginForm.propTypes = {
 export default compose(
   injectIntl,
   reduxForm({
-    form: LOGIN,
+    form: LOGIN_FORM,
   }),
 )(LoginForm);

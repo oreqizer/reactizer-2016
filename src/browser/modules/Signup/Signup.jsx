@@ -9,7 +9,7 @@ import LoginForm from './LoginForm';
 
 import * as userActions from '../../../universal/modules/user/userDuck';
 import { userMessages, signupMessages } from '../../../universal/messages';
-import { LOGIN, REGISTER } from '../../../universal/consts/formConsts';
+import { LOGIN_FORM, REGISTER_FORM } from '../../../universal/consts/formConsts';
 
 import User from '../../../universal/containers/User';
 
@@ -27,7 +27,7 @@ class Signup extends Component {
     super(props);
 
     this.state = {
-      tab: LOGIN,
+      tab: LOGIN_FORM,
     };
 
     this.handleSignup = this.handleSignup.bind(this);
@@ -38,7 +38,7 @@ class Signup extends Component {
     const { loginUser, registerUser } = this.props;
     const { tab } = this.state;
 
-    if (tab === LOGIN) {
+    if (tab === LOGIN_FORM) {
       loginUser({ username, password });
     } else {
       registerUser({ email, username, password });
@@ -73,10 +73,10 @@ class Signup extends Component {
         </div>
         <Paper>
           <Tabs value={tab} onChange={this.handleTabSwitch}>
-            <Tab label={login} value={LOGIN}>
+            <Tab label={login} value={LOGIN_FORM}>
               <LoginForm onSubmit={this.handleSignup} />
             </Tab>
-            <Tab label={register} value={REGISTER}>
+            <Tab label={register} value={REGISTER_FORM}>
               <RegisterForm onSubmit={this.handleSignup} />
             </Tab>
           </Tabs>

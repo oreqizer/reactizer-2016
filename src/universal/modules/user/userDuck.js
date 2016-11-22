@@ -1,4 +1,10 @@
+import Rx from 'rxjs/Rx';
+import { combineEpics } from 'redux-observable';
+import { startSubmit, stopSubmit } from 'redux-form';
+import { push } from 'react-router-redux';
 import { Record } from 'immutable';
+
+import { loginApi, registerApi } from './userApi';
 
 import User from '../../containers/User';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
@@ -96,3 +102,19 @@ export const clearError = () => ({
 export const logoutUser = () => ({
   type: LOGOUT,
 });
+
+const loginUserEpic = (action$, store) =>
+  action$.ofType(LOGIN)
+    .mergeMap(action => loginApi(action.payload))
+    .map(data => store.dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data,
+    }))
+    .catch(error => Rx.Observable.of({
+      type: LOGIN_ERROR,
+      payload: { error },
+    }));
+
+export const userEpic = combineEpics(
+  loginUserEpic,
+);

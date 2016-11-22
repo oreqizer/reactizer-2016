@@ -7,7 +7,7 @@ import config from './modules/config/configDuck';
 import intl from './modules/intl/intlDuck';
 import todo from './modules/todo/todoDuck';
 import ui from './modules/ui/uiDuck';
-import user from './modules/user/userDuck';
+import user, { userEpic } from './modules/user/userDuck';
 
 export const reducer = combineReducers({
   config,
@@ -19,4 +19,6 @@ export const reducer = combineReducers({
   routing: routerReducer,
 });
 
-export const epic = combineEpics({});
+export const epic = combineEpics(
+  userEpic,
+);
