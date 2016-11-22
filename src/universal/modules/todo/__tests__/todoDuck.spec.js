@@ -170,7 +170,7 @@ describe('todo reducer', () => {
     const { todos, phase, error } = reducer(undefined, {
       type: CREATE_SUCCESS,
       payload: {
-        todo,
+        todo: new Todo(todo),
       },
     });
 
@@ -187,7 +187,7 @@ describe('todo reducer', () => {
     const { todos, phase, error } = reducer(initialState, {
       type: EDIT_SUCCESS,
       payload: {
-        todo: todoEdit,
+        todo: new Todo(todoEdit),
       },
     });
 
