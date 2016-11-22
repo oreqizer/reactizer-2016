@@ -9,6 +9,7 @@ import { loginApi, registerApi } from './userApi';
 import User from '../../containers/User';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
+
 export const LOGIN = 'user/LOGIN';
 export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'user/LOGIN_ERROR';
