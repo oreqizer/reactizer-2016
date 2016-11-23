@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 
