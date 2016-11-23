@@ -1,10 +1,9 @@
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
-import { applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import createLogger from 'redux-logger';
 
-import configureStore from '../universal/configureStore';
 import { reducer, epic } from '../universal/reduxRoot';
 
 import globalsMiddleware from './middleware/globalsMiddleware';
@@ -36,7 +35,7 @@ if (__DEV__) {
 
 const middleware = compose(applyMiddleware(...middlewares), chromeDevtool);
 
-const store = configureStore(initialState, middleware);
+const store = createStore(reducer, initialState, middleware);
 
 export default store;
 

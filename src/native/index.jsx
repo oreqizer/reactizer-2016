@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+
+import { reducer } from '../universal/reduxRoot';
 
 import App from './app/App';
 
-import configureStore from '../universal/configureStore';
-
-const store = configureStore();
+const store = createStore(reducer);
 
 // Provider needs to be wrapped in a Root component
 // otherwise, this happens: https://github.com/oreqizer/reactizer/issues/5

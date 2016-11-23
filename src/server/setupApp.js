@@ -1,10 +1,9 @@
 import { createMemoryHistory, match } from 'react-router';
 import { createEpicMiddleware } from 'redux-observable';
-import { applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import getRoutes from '../browser/getRoutes';
-import configureStore from '../universal/configureStore';
-import { epic } from '../universal/reduxRoot';
+import { epic, reducer } from '../universal/reduxRoot';
 
 import logMiddleware from './middleware/logMiddleware';
 import getInitialState from './tools/getInitialState';
@@ -25,7 +24,7 @@ export default function setupApp({ assets, locales }) {
 
     const initialState = getInitialState(req, locales);
 
-    const store = configureStore(initialState, middleware);
+    const store = createStore(reducer, initialState, middleware);
 
     const routes = getRoutes(store);
     logger.info('[reactApp] Request recieved', req.url);
