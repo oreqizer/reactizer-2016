@@ -1,4 +1,3 @@
-import 'rxjs';  // all operators
 import { createStore } from 'redux';
 
 import { reducer } from './reduxRoot';
