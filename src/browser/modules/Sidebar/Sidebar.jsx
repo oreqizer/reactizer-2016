@@ -12,6 +12,8 @@ import { setLocale } from '../../../universal/modules/intl/intlDuck';
 
 import { sidebarMessages } from '../../../universal/messages';
 
+
+// TODO to stylus
 const styles = {
   localeMenu: {
     width: '100%',
@@ -32,7 +34,6 @@ class Sidebar extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.renderMenuItems = this.renderMenuItems.bind(this);
     this.handleClickProfile = this.handleClickProfile.bind(this);
     this.handleClickTodos = this.handleClickTodos.bind(this);
     this.handleClickSignup = this.handleClickSignup.bind(this);
@@ -78,39 +79,10 @@ class Sidebar extends PureComponent {
     this.props.actions.toggleSidebar();
   }
 
-  renderMenuItems() {
-    return this.props.user.phase === SUCCESS ? [
-      <MenuItem
-        key="profile"
-        onTouchTap={this.handleClickProfile}
-      >
-        <FormattedMessage {...sidebarMessages.profile} />
-      </MenuItem>,
-      <MenuItem
-        key="todos"
-        onTouchTap={this.handleClickTodos}
-      >
-        <FormattedMessage {...sidebarMessages.todos} />
-      </MenuItem>,
-      <Divider key="divider" />,
-      <MenuItem
-        key="logout"
-        onTouchTap={this.handleLogout}
-      >
-        <FormattedMessage {...sidebarMessages.logout} />
-      </MenuItem>,
-    ] : [
-      <MenuItem
-        key="signup"
-        onTouchTap={this.handleClickSignup}
-      >
-        <FormattedMessage {...sidebarMessages.signup} />
-      </MenuItem>,
-    ];
-  }
-
   render() {
-    const { sidebar, locale, locales } = this.props;
+    const { sidebar, locale, locales, user } = this.props;
+
+    const success = user.phase === SUCCESS;
 
     return (
       <Drawer
@@ -135,7 +107,25 @@ class Sidebar extends PureComponent {
           )}
         </DropDownMenu>
 
-        {this.renderMenuItems()}
+        {success &&
+          <MenuItem onTouchTap={this.handleClickProfile}>
+            <FormattedMessage {...sidebarMessages.profile} />
+          </MenuItem>
+        }
+        {success &&
+          <MenuItem onTouchTap={this.handleClickTodos}>
+            <FormattedMessage {...sidebarMessages.todos} />
+          </MenuItem>
+        }
+        {success && <Divider />}
+        {success ?
+          <MenuItem onTouchTap={this.handleLogout}>
+            <FormattedMessage {...sidebarMessages.logout} />
+          </MenuItem> :
+          <MenuItem onTouchTap={this.handleClickSignup}>
+            <FormattedMessage {...sidebarMessages.signup} />
+          </MenuItem>
+        }
       </Drawer>
     );
   }
