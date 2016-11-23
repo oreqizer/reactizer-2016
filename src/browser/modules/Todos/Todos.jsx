@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
+import MaterialList from 'material-ui/List';
 import { List } from 'immutable';
 
-import TodosList from './TodosList';
+import TodoItem from './TodoItem';
 import TodosForm from './TodosForm';
 import todosSelector from './todoSelector';
 
@@ -15,6 +16,8 @@ import { SUCCESS } from '../../../universal/consts/phaseConsts';
 import { ACTIVE, DONE } from '../../../universal/consts/todoConsts';
 import { todoMessages } from '../../../universal/messages';
 
+
+const underline = { textDecoration: 'underline' };
 
 class Todos extends PureComponent {
   static propTypes = {
@@ -63,29 +66,37 @@ class Todos extends PureComponent {
             <FormattedMessage {...todoMessages.header} />
           </h2>
           <p style={{ paddingBottom: 20 }}>
-            <FormattedMessage {...todoMessages.overview} values={{ todos: todos.count() }} />
+            <FormattedMessage {...todoMessages.overview} values={{ todos: todos.size }} />
           </p>
         </div>
         <div className="Todos-list">
-          <TodosList
-            todos={todos}
-            onEdit={editTodo}
-            onDelete={deleteTodo}
-          />
+          <MaterialList>
+            {todos.map((todo, index) => (
+              <TodoItem
+                todo={todo}
+                index={index}
+                onEdit={editTodo}
+                onDelete={deleteTodo}
+              />
+            ))}
+          </MaterialList>
         </div>
         <div className="Todos-form">
-          <TodosForm onSubmit={this.handleSubmit} />
+          <TodosForm
+            formatMessage={intl.formatMessage}
+            onSubmit={this.handleSubmit}
+          />
           <div className="Todos-filters markdown-body">
             <h4>
               <FormattedMessage {...todoMessages.show} />
             </h4>
-            <Link to="/todos" activeStyle={{ textDecoration: 'underline' }}>
+            <Link to="/todos" activeStyle={underline}>
               <FormattedMessage {...todoMessages.all} />
             </Link>
-            <Link to={`/todos/${ACTIVE}`} activeStyle={{ textDecoration: 'underline' }}>
+            <Link to={`/todos/${ACTIVE}`} activeStyle={underline}>
               <FormattedMessage {...todoMessages.active} />
             </Link>
-            <Link to={`/todos/${DONE}`} activeStyle={{ textDecoration: 'underline' }}>
+            <Link to={`/todos/${DONE}`} activeStyle={underline}>
               <FormattedMessage {...todoMessages.done} />
             </Link>
           </div>
@@ -98,7 +109,7 @@ class Todos extends PureComponent {
 export default compose(
   injectIntl,
   connect((state, props) => ({
-    todos: todosSelector({ state, props }),
+    todos: todosSelector(state, props),
     phase: state.todo.phase,
   }), todoActions),
 )(Todos);
