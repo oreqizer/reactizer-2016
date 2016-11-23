@@ -23,14 +23,14 @@ export default class TodoItem extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+
     this.deleteIcon = (
       <IconButton onTouchTap={this.handleDelete}>
         <FontIcon className="material-icons">delete</FontIcon>
       </IconButton>
     );
-
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleToggle() {

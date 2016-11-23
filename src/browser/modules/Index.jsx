@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { AppBar, FontIcon } from 'material-ui';
 import Helmet from 'react-helmet';
 
@@ -29,6 +29,8 @@ class Index extends Component {
   constructor(props) {
     super(props);
 
+    this.linkHome = this.linkHome.bind(this);
+
     this.meta = [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -45,8 +47,6 @@ class Index extends Component {
     this.title = (
       <span style={pointerStyle}>{props.appName}</span>
     );
-
-    this.linkHome = this.linkHome.bind(this);
   }
 
   linkHome() {
