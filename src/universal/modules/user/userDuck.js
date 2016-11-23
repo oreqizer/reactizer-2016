@@ -1,7 +1,15 @@
+import Rx from 'rxjs/Rx';
+import { combineEpics } from 'redux-observable';
+import { startSubmit, stopSubmit } from 'redux-form';
+import { push } from 'react-router-redux';
 import { Record } from 'immutable';
 
+import { loginApi, registerApi } from './userApi';
+
 import User from '../../containers/User';
+import * as form from '../../consts/formConsts';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
+
 
 export const LOGIN = 'user/LOGIN';
 export const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
@@ -96,3 +104,45 @@ export const clearError = () => ({
 export const logoutUser = () => ({
   type: LOGOUT,
 });
+
+const loginUserEpic = (action$, store) =>
+  action$.ofType(LOGIN)
+    .do(() => store.dispatch(startSubmit(form.LOGIN)))
+    .mergeMap(action => loginApi(action.payload))
+    .do(() => store.dispatch(stopSubmit(form.LOGIN)))
+    .map(data => ({
+      type: LOGIN_SUCCESS,
+      payload: data,
+    }))
+    .catch(error => Rx.Observable.of({
+      type: LOGIN_ERROR,
+      payload: { error },
+    }));
+
+const registerUserEpic = (action$, store) =>
+  action$.ofType(REGISTER)
+    .do(() => store.dispatch(startSubmit(form.REGISTER)))
+    .mergeMap(action => registerApi(action.payload))
+    .do(() => store.dispatch(stopSubmit(form.REGISTER)))
+    .map(data => ({
+      type: REGISTER_SUCCESS,
+      payload: data,
+    }))
+    .catch(error => Rx.Observable.of({
+      type: REGISTER_ERROR,
+      payload: { error },
+    }));
+
+const redirectEpic = action$ =>
+  Rx.Observable.merge(
+    action$.ofType(LOGIN_SUCCESS),
+    action$.ofType(REGISTER_SUCCESS),
+    action$.ofType(REFRESH_SUCCESS),
+  )
+    .mapTo(push('/todos'));
+
+export const userEpic = combineEpics(
+  loginUserEpic,
+  registerUserEpic,
+  redirectEpic,
+);

@@ -1,9 +1,10 @@
-import { Map } from 'immutable';
+import { List } from 'immutable';
 
 import Todo from '../../../containers/Todo';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../../consts/phaseConsts';
 
 import reducer, * as duck from '../todoDuck';
+
 
 const {
   FETCH,
@@ -46,7 +47,7 @@ const todo2 = {
   done,
 };
 
-const todosMock = new Map()
+const todosMock = List()
   .set(todo.id, new Todo(todo))
   .set(todo2.id, new Todo(todo2));
 
@@ -65,25 +66,25 @@ describe('todo action creators', () => {
       payload: { text },
     };
 
-    expect(duck.createTodo({ text })).toEqual(expected);
+    expect(duck.createTodo(text)).toEqual(expected);
   });
 
   it('should make an edit action', () => {
     const expected = {
       type: EDIT,
-      payload: { todo },
+      payload: { todo, index: 5 },
     };
 
-    expect(duck.editTodo({ todo })).toEqual(expected);
+    expect(duck.editTodo(todo, 5)).toEqual(expected);
   });
 
   it('should make a delete action', () => {
     const expected = {
       type: DELETE,
-      payload: { id: todo.id },
+      payload: { id: todo.id, index: 5 },
     };
 
-    expect(duck.deleteTodo({ id: todo.id })).toEqual(expected);
+    expect(duck.deleteTodo(todo.id, 5)).toEqual(expected);
   });
 
   it('should make a reset action', () => {
@@ -99,7 +100,7 @@ describe('todo reducer', () => {
   it('should return initial state', () => {
     const { todos, phase, error } = reducer(undefined, {});
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });
@@ -109,7 +110,7 @@ describe('todo reducer', () => {
       type: FETCH,
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(LOADING);
     expect(error).toBe(null);
   });
@@ -122,7 +123,7 @@ describe('todo reducer', () => {
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(LOADING);
     expect(error).toBe(null);
   });
@@ -132,10 +133,11 @@ describe('todo reducer', () => {
       type: EDIT,
       payload: {
         todo,
+        index: 5,
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(LOADING);
     expect(error).toBe(null);
   });
@@ -145,10 +147,11 @@ describe('todo reducer', () => {
       type: DELETE,
       payload: {
         todo,
+        index: 5,
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(LOADING);
     expect(error).toBe(null);
   });
@@ -170,11 +173,11 @@ describe('todo reducer', () => {
     const { todos, phase, error } = reducer(undefined, {
       type: CREATE_SUCCESS,
       payload: {
-        todo,
+        todo: new Todo(todo),
       },
     });
 
-    const expectedTodos = new Map().set(todo.id, new Todo(todo));
+    const expectedTodos = List().push(new Todo(todo));
 
     expect(todos.equals(expectedTodos)).toBe(true);
     expect(phase).toBe(SUCCESS);
@@ -184,14 +187,16 @@ describe('todo reducer', () => {
   it('should handle EDIT_SUCCESS', () => {
     const initialState = reducer({}).set('todos', todosMock);
 
+    const index = 1;
     const { todos, phase, error } = reducer(initialState, {
       type: EDIT_SUCCESS,
       payload: {
-        todo: todoEdit,
+        todo: new Todo(todoEdit),
+        index,
       },
     });
 
-    const expectedTodos = todosMock.set(todo.id, new Todo(todoEdit));
+    const expectedTodos = todosMock.set(index, new Todo(todoEdit));
 
     expect(todos.equals(expectedTodos)).toBe(true);
     expect(phase).toBe(SUCCESS);
@@ -201,14 +206,16 @@ describe('todo reducer', () => {
   it('should handle DELETE_SUCCESS', () => {
     const initialState = reducer({}).set('todos', todosMock);
 
+    const index = 1;
     const { todos, phase, error } = reducer(initialState, {
       type: DELETE_SUCCESS,
       payload: {
         id: todo.id,
+        index,
       },
     });
 
-    const expectedTodos = todosMock.delete(todo.id);
+    const expectedTodos = todosMock.delete(index);
 
     expect(todos.equals(expectedTodos)).toBe(true);
     expect(phase).toBe(SUCCESS);
@@ -223,7 +230,7 @@ describe('todo reducer', () => {
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(ERROR);
     expect(error).toBe(errorMsg);
   });
@@ -236,7 +243,7 @@ describe('todo reducer', () => {
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(ERROR);
     expect(error).toBe(errorMsg);
   });
@@ -249,7 +256,7 @@ describe('todo reducer', () => {
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(ERROR);
     expect(error).toBe(errorMsg);
   });
@@ -262,7 +269,7 @@ describe('todo reducer', () => {
       },
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(ERROR);
     expect(error).toBe(errorMsg);
   });
@@ -279,7 +286,7 @@ describe('todo reducer', () => {
       type: RESET,
     });
 
-    expect(todos.equals(new Map())).toBe(true);
+    expect(todos.equals(List())).toBe(true);
     expect(phase).toBe(INIT);
     expect(error).toBe(null);
   });

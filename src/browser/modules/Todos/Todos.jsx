@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
-import { Map } from 'immutable';
+import { List } from 'immutable';
 
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
 import todosSelector from './todoSelector';
 
 import * as todoActions from '../../../universal/modules/todo/todoDuck';
-import * as todoSagas from '../../../universal/modules/todo/todoSagas';
 import { SUCCESS } from '../../../universal/consts/phaseConsts';
 import { ACTIVE, DONE } from '../../../universal/consts/todoConsts';
 import { todoMessages } from '../../../universal/messages';
@@ -20,17 +19,13 @@ import { todoMessages } from '../../../universal/messages';
 class Todos extends PureComponent {
   static propTypes = {
     intl: intlShape.isRequired,
-    todos: PropTypes.instanceOf(Map).isRequired,
+    todos: PropTypes.instanceOf(List).isRequired,
     phase: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,
     createTodo: PropTypes.func.isRequired,
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
   };
-
-  static needs = [ // not actually used - I kept it for demonstration
-    todoSagas.fetchTodos,
-  ];
 
   constructor(props) {
     super(props);
@@ -49,7 +44,7 @@ class Todos extends PureComponent {
   handleSubmit({ todo }) {
     const { createTodo } = this.props;
 
-    createTodo({ text: todo });
+    createTodo(todo);
   }
 
   render() {

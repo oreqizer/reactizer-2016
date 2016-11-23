@@ -1,6 +1,6 @@
 {
   "name": "reactizer",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "The most hipster React boilerplate",
   "repository": {
     "type": "git",
@@ -44,7 +44,6 @@
     "nconf": "^0.8.4",
     "node-sass": "^3.13.0",
     "normalize.css": "^5.0.0",
-    "ramda": "^0.22.1",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-helmet": "^3.2.2",
@@ -57,8 +56,9 @@
     "redux": "^3.6.0",
     "redux-form": "^6.2.0",
     "redux-logger": "^2.7.4",
-    "redux-saga": "^0.13.0",
+    "redux-observable": "^0.12.2",
     "reselect": "^2.5.4",
+    "rxjs": "5.0.0-rc.4",
     "sass-loader": "^4.0.2",
     "source-map-support": "^0.4.6",
     "validator": "^6.1.0"
