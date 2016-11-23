@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
-import { Map } from 'immutable';
+import { List } from 'immutable';
 
 import TodosList from './TodosList';
 import TodosForm from './TodosForm';
@@ -19,7 +19,7 @@ import { todoMessages } from '../../../universal/messages';
 class Todos extends PureComponent {
   static propTypes = {
     intl: intlShape.isRequired,
-    todos: PropTypes.instanceOf(Map).isRequired,
+    todos: PropTypes.instanceOf(List).isRequired,
     phase: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,
     createTodo: PropTypes.func.isRequired,

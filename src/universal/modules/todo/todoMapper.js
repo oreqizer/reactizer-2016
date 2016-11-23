@@ -1,7 +1,5 @@
-import { Map } from 'immutable';
-import { sortBy, prop } from 'ramda';
+import { List } from 'immutable';
 
 import Todo from '../../containers/Todo';
 
-export default todos => sortBy(prop('id'), todos)
-  .reduce((map, todo) => map.set(todo.id, new Todo(todo)), new Map());
+export default todos => List(todos).map(todo => new Todo(todo));

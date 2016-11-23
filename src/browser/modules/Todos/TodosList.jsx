@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react';
 import { List, ListItem, IconButton, FontIcon } from 'material-ui';
-import { IndexedSeq } from 'immutable';
+import * as I from 'immutable';
 
 
 const TodosList = ({ todos, onEdit, onDelete }) => (
   <List>
-    {todos.map(todo =>
+    {todos.map((todo, index) =>
       <ListItem
-        key={todo.id}
+        key={index}
         primaryText={todo.text}
-        onTouchTap={() => onEdit(todo.set('done', !todo.done))}
+        onTouchTap={() => onEdit(todo.set('done', !todo.done), index)}
         rightIconButton={
-          <IconButton onTouchTap={() => onDelete(todo.id)}>
+          <IconButton onTouchTap={() => onDelete(todo.id, index)}>
             <FontIcon className="material-icons">delete</FontIcon>
           </IconButton>
         }
@@ -22,7 +22,7 @@ const TodosList = ({ todos, onEdit, onDelete }) => (
 );
 
 TodosList.propTypes = {
-  todos: PropTypes.instanceOf(IndexedSeq).isRequired,
+  todos: PropTypes.instanceOf(I.List).isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
