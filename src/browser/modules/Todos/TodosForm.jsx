@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 
-import TextField from '../../components/TextField';
+import TextInput from '../../components/TextInput';
 
 import { TODO } from '../../../universal/consts/formConsts';
 import { todoMessages } from '../../../universal/messages';
@@ -12,7 +12,7 @@ const TodosForm = props => (
     <Field
       id={todoMessages.prompt.id}
       name="todo"
-      component={TextField}
+      component={TextInput}
       hintText={props.formatMessage(todoMessages.prompt)}
     />
   </form>

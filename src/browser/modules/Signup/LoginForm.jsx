@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { RaisedButton } from 'material-ui';
 
-import TextField from '../../components/TextField';
+import TextInput from '../../components/TextInput';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 import { LOGIN } from '../../../universal/consts/formConsts';
@@ -19,7 +19,7 @@ const LoginForm = props => (
     <div className="Form-field">
       <Field
         name="username"
-        component={TextField}
+        component={TextInput}
         id={userMessages.username.id}
         floatingLabelText={props.formatMessage(userMessages.username)}
       />
@@ -27,7 +27,7 @@ const LoginForm = props => (
     <div className="Form-field">
       <Field
         name="password"
-        component={TextField}
+        component={TextInput}
         id={userMessages.password.id}
         floatingLabelText={props.formatMessage(userMessages.password)}
         type="password"
