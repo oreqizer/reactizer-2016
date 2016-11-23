@@ -6,6 +6,7 @@ import { values } from 'ramda';
 import * as api from './todoApi';
 import toMap from './todoMapper';
 
+import { TODO } from '../../consts/formConsts';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 
@@ -116,8 +117,8 @@ const fetchTodosEpic = action$ =>
 
 const createTodoEpic = (action$, store) =>
   action$.ofType(CREATE)
-    .mergeMap(action => api.createTodo(action.payload))
-    .do(() => store.dispatch(change('todo', 'todo', '')))
+    .mergeMap(action => api.createTodo(action.payload.text))
+    .do(() => store.dispatch(change(TODO, 'todo', '')))
     .map(todo => ({
       type: CREATE_SUCCESS,
       payload: { todo },
@@ -125,7 +126,7 @@ const createTodoEpic = (action$, store) =>
 
 const editTodoEpic = action$ =>
   action$.ofType(EDIT)
-    .mergeMap(action => api.editTodo(action.payload))
+    .mergeMap(action => api.editTodo(action.payload.todo))
     .map(todo => ({
       type: EDIT_SUCCESS,
       payload: { todo },
@@ -133,7 +134,7 @@ const editTodoEpic = action$ =>
 
 const deleteTodoEpic = action$ =>
   action$.ofType(DELETE)
-    .mergeMap(action => api.deleteTodo(action.payload))
+    .mergeMap(action => api.deleteTodo(action.payload.id))
     .map(id => ({
       type: DELETE_SUCCESS,
       payload: { id },

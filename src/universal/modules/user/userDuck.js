@@ -7,6 +7,7 @@ import { Record } from 'immutable';
 import { loginApi, registerApi } from './userApi';
 
 import User from '../../containers/User';
+import * as form from '../../consts/formConsts';
 import { INIT, SUCCESS, LOADING, ERROR } from '../../consts/phaseConsts';
 
 
@@ -106,9 +107,9 @@ export const logoutUser = () => ({
 
 const loginUserEpic = (action$, store) =>
   action$.ofType(LOGIN)
-    .do(() => store.dispatch(startSubmit('login')))
+    .do(() => store.dispatch(startSubmit(form.LOGIN)))
     .mergeMap(action => loginApi(action.payload))
-    .do(() => store.dispatch(stopSubmit('login')))
+    .do(() => store.dispatch(stopSubmit(form.LOGIN)))
     .map(data => ({
       type: LOGIN_SUCCESS,
       payload: data,
@@ -120,9 +121,9 @@ const loginUserEpic = (action$, store) =>
 
 const registerUserEpic = (action$, store) =>
   action$.ofType(REGISTER)
-    .do(() => store.dispatch(startSubmit('register')))
+    .do(() => store.dispatch(startSubmit(form.REGISTER)))
     .mergeMap(action => registerApi(action.payload))
-    .do(() => store.dispatch(stopSubmit('register')))
+    .do(() => store.dispatch(stopSubmit(form.REGISTER)))
     .map(data => ({
       type: REGISTER_SUCCESS,
       payload: data,

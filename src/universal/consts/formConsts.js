@@ -1,3 +1,3 @@
-export const LOGIN_FORM = 'login';
-export const REGISTER_FORM = 'register';
-export const TODO_FORM = 'todo';
+export const LOGIN = 'login';
+export const REGISTER = 'register';
+export const TODO = 'todo';
