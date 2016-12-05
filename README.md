@@ -27,23 +27,13 @@ The features currently present in the demo are as follows:
 * Immutable data with Ramda functions
 * Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
 
-### COMING NEXT:
-
-**Documentation**. I will document all the stuff present in the demo, from server side rendering + auth, different auth options, obstacles I had to overcome and design decisions I made.
-
-**Full mobile app**. I want to supply you guys with a full-blown React Native app as a reference for anyone starting with native mobile development. Everything currently working in the web demo will work in the native app.
-
-**More examples**. Serverless, Firebase, bundle splitting, Mobx (later on). I will move this working demo to `examples` folder, clean the top level app out so you don't have to do it yourself when forking, and finally include the other demos with all current features.
-
-**Full test coverage**. Tests are good for you (and especially for your team). I will include tests to cover everything from reducers, to sagas.
-
 # Tech stack
 
 * [React](https://github.com/facebook/react) and [React Native](https://github.com/facebook/react-native) as the core libs
 * [React Router](https://github.com/reactjs/react-router) for web routing
 * [Redux](https://github.com/reactjs/redux) with [React Redux](https://github.com/reactjs/react-redux) data flow
 * [Reselect](https://github.com/reactjs/reselect) derives the data
-* [Redux Saga](https://github.com/yelouafi/redux-saga) for async flow
+* [Redux Observable](https://github.com/redux-observable/redux-observable) for async flow
 * [Redux Form](https://github.com/erikras/redux-form) makes forms uber-easy
 * [React Intl](https://github.com/yahoo/react-intl) i18n
 * [Immutable](https://github.com/facebook/immutable-js) data
