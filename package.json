@@ -1,13 +1,15 @@
 {
   "name": "reactizer",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "The most hipster React boilerplate",
   "repository": {
     "type": "git",
     "url": "https://github.com/oreqizer/reactizer.git"
   },
   "scripts": {
-    "start": "gulp & nodemon ./etc/devserver --verbose",
+    "start": "run-p start:gulp start:nodemon",
+    "start:gulp": "gulp",
+    "start:nodemon": "nodemon ./etc/devserver --verbose",
     "server": "node ./dist/server/server.js",
     "server:tmp": "node ./.tmp/server/server.js",
     "bundle": "gulp bundle",
@@ -96,6 +98,7 @@
     "json-loader": "^0.5.4",
     "merge-stream": "^1.0.1",
     "nodemon": "^1.11.0",
+    "npm-run-all": "^3.1.2",
     "postcss-loader": "^1.1.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
