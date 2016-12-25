@@ -25,12 +25,6 @@ export default class TodoItem extends PureComponent {
 
     this.handleToggle = this.handleToggle.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-
-    this.deleteIcon = (
-      <IconButton onTouchTap={this.handleDelete}>
-        <FontIcon className="material-icons">delete</FontIcon>
-      </IconButton>
-    );
   }
 
   handleToggle() {
@@ -53,7 +47,11 @@ export default class TodoItem extends PureComponent {
         key={index}
         primaryText={todo.text}
         onTouchTap={this.handleToggle}
-        rightIconButton={this.deleteIcon}
+        rightIconButton={
+          <IconButton onTouchTap={this.handleDelete}>
+            <FontIcon className="material-icons">delete</FontIcon>
+          </IconButton>
+        }
         style={todo.done ? doneStyle : notDoneStyle}
       />
     );
