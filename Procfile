@@ -1,1 +1,1 @@
-web: npm run bundle && npm run server
+web: NODE_ENV=production npm run bundle && npm run server
