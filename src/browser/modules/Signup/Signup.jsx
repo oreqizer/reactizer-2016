@@ -46,9 +46,7 @@ class Signup extends Component {
   }
 
   handleTabSwitch(tab) {
-    this.setState({
-      tab,
-    });
+    this.setState({ tab });
   }
 
   render() {
@@ -74,10 +72,16 @@ class Signup extends Component {
         <Paper>
           <Tabs value={tab} onChange={this.handleTabSwitch}>
             <Tab label={login} value={LOGIN}>
-              <LoginForm onSubmit={this.handleSignup} />
+              <LoginForm
+                formatMessage={intl.formatMessage}
+                onSubmit={this.handleSignup}
+              />
             </Tab>
             <Tab label={register} value={REGISTER}>
-              <RegisterForm onSubmit={this.handleSignup} />
+              <RegisterForm
+                formatMessage={intl.formatMessage}
+                onSubmit={this.handleSignup}
+              />
             </Tab>
           </Tabs>
           <Snackbar

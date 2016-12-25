@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { profileMessages } from '../../../universal/messages';
 
-const Profile = ({ username, email }) =>
+const Profile = ({ username, email }) => (
   <div className="Profile markdown-body">
     <h2>
       <FormattedMessage {...profileMessages.heading} />
@@ -15,7 +15,8 @@ const Profile = ({ username, email }) =>
     <p>
       <FormattedMessage {...profileMessages.email} values={{ email }} />
     </p>
-  </div>;
+  </div>
+);
 
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
