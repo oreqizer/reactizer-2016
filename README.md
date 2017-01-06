@@ -24,8 +24,8 @@ The features currently present in the demo are as follows:
 * Persistent, real-world example - your registration and TODOs are saved on my [heroku app](https://reactizer.herokuapp.com). Mind: it's just a demo. I recommend making up some arbitary username/email/password. I use `test`, with password `Testtest1`.
 * Truly *universal* architecture - shared Redux code in mobile, browser and server
 * Protected routes with *JWT authentication*
-* Immutable data with Ramda functions
-* Full-out Webpack: hot-reloading, tree-shaking (bundle splitting example coming in the future)
+* Immutable data
+* Full-out Webpack: hot-reloading, tree-shaking
 
 # Tech stack
 
@@ -34,7 +34,7 @@ The features currently present in the demo are as follows:
 * [Redux](https://github.com/reactjs/redux) with [React Redux](https://github.com/reactjs/react-redux) data flow
 * [Reselect](https://github.com/reactjs/reselect) derives the data
 * [Redux Observable](https://github.com/redux-observable/redux-observable) for async flow
-* [Redux Form](https://github.com/erikras/redux-form) makes forms uber-easy
+* [Redux Form Lite](https://github.com/oreqizer/redux-form-lite) makes forms uber-easy
 * [React Intl](https://github.com/yahoo/react-intl) i18n
 * [Immutable](https://github.com/facebook/immutable-js) data
 * [Jest](https://github.com/facebook/jest) testing
@@ -52,8 +52,6 @@ The features currently present in the demo are as follows:
 * No `react-hot-loader`, `react-transform` nor `webpack-isomorphic-tools` - I keep HMR and Webpack vanilla
 
 ### Known issues:
-
-Please note that this project is **very** young. There are still incomplete things, and this README is just a quickfix. I have a lot of work + school, but I will try to improve everything on the go!
 
 React Native requires (due to it's Babel 5 dependency) `babel-core` and `babel-cli` to be placed in dependencies, instead of dev dependencies.
 
