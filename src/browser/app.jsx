@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
   // immutable: logging to the console and debugging
   immutableDevtools(immutable);
   // puts the console on fire when unnecessary updates are done
-  whyDidYouUpdate(React, { exclude: /^Connect|^IntlProvider|^InjectIntl/ });
+  // whyDidYouUpdate(React, { exclude: /^Connect|^IntlProvider|^InjectIntl/ });
 }
 
 const view = document.getElementById('react-view');

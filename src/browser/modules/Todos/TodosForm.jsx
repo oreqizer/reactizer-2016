@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { Form, Field } from 'redux-form-lite';
 
 import TextInput from '../../components/TextInput';
 
@@ -8,21 +8,19 @@ import { todoMessages } from '../../../universal/messages';
 
 
 const TodosForm = props => (
-  <form onSubmit={props.handleSubmit}>
+  <Form name={TODO} onSubmit={props.onSubmit}>
     <Field
-      id={todoMessages.prompt.id}
       name="todo"
       component={TextInput}
+      id={todoMessages.prompt.id}
       hintText={props.formatMessage(todoMessages.prompt)}
     />
-  </form>
+  </Form>
 );
 
 TodosForm.propTypes = {
   formatMessage: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
-export default reduxForm({
-  form: TODO,
-})(TodosForm);
+export default TodosForm;

@@ -12,7 +12,7 @@ function maybeError(props) {
 const TextInput = props => (
   <TextField
     id={props.id}
-    name={props.name}
+    name={props.input.name}
     type={props.type}
     floatingLabelText={props.floatingLabelText}
     errorText={maybeError(props)}
@@ -24,7 +24,6 @@ const TextInput = props => (
 );
 
 TextInput.propTypes = {
-  name: PropTypes.string.isRequired,
   input: PropTypes.object.isRequired,  // eslint-disable-line
   meta: PropTypes.object.isRequired,  // eslint-disable-line
   id: PropTypes.string,

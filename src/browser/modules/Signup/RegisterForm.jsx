@@ -1,26 +1,27 @@
 import React, { PropTypes } from 'react';
-import { reduxForm, Field } from 'redux-form/immutable';
+import { connect } from 'react-redux';
+import { Form, Field } from 'redux-form-lite';
+import { isSubmitting } from 'redux-form-lite/selectors';
 import { RaisedButton } from 'material-ui';
 
 import TextInput from '../../components/TextInput';
 
 import { formMessages, userMessages } from '../../../universal/messages';
 import { REGISTER } from '../../../universal/consts/formConsts';
-import validate, * as check from '../../../universal/tools/validator';
+import { isRequired, isEmail, isPassword } from '../../../universal/tools/validator';
 
-
-const stopPropagation = ev => ev.stopPropagation(ev);
 
 const RegisterForm = props => (
-  <form
+  <Form
+    name={REGISTER}
+    onSubmit={props.onSubmit}
     className="Signup-form"
-    onSubmit={props.handleSubmit}
-    onChange={stopPropagation}
   >
     <div className="Form-field">
       <Field
         name="username"
         component={TextInput}
+        validate={isRequired}
         id={userMessages.username.id}
         floatingLabelText={props.formatMessage(userMessages.username)}
       />
@@ -29,6 +30,7 @@ const RegisterForm = props => (
       <Field
         name="email"
         component={TextInput}
+        validate={isEmail}
         id={userMessages.email.id}
         floatingLabelText={props.formatMessage(userMessages.email)}
         type="email"
@@ -38,6 +40,7 @@ const RegisterForm = props => (
       <Field
         name="password"
         component={TextInput}
+        validate={isPassword}
         id={userMessages.password.id}
         floatingLabelText={props.formatMessage(userMessages.password)}
         type="password"
@@ -49,20 +52,15 @@ const RegisterForm = props => (
       type="submit"
       label={props.formatMessage(formMessages.submit)}
     />
-  </form>
+  </Form>
 );
 
 RegisterForm.propTypes = {
   formatMessage: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };
 
-export default reduxForm({
-  form: REGISTER,
-  validate: values => ({
-    username: validate(values.username, check.isRequired),
-    email: validate(values.email, check.isRequired, check.isEmail),
-    password: validate(values.password, check.isRequired, check.isPassword),
-  }),
-})(RegisterForm);
+export default connect(state => ({
+  submitting: isSubmitting(REGISTER, state),
+}))(RegisterForm);

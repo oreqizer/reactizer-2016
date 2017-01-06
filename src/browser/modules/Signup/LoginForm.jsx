@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
-import { reduxForm, Field } from 'redux-form/immutable';
+import { connect } from 'react-redux';
+import { Form, Field } from 'redux-form-lite';
+import { isSubmitting } from 'redux-form-lite/selectors';
 import { RaisedButton } from 'material-ui';
 
 import TextInput from '../../components/TextInput';
@@ -8,13 +10,11 @@ import { formMessages, userMessages } from '../../../universal/messages';
 import { LOGIN } from '../../../universal/consts/formConsts';
 
 
-const stopPropagation = ev => ev.stopPropagation(ev);
-
 const LoginForm = props => (
-  <form
+  <Form
+    name={LOGIN}
+    onSubmit={props.onSubmit}
     className="Signup-form"
-    onSubmit={props.handleSubmit}
-    onChange={stopPropagation}
   >
     <div className="Form-field">
       <Field
@@ -39,15 +39,15 @@ const LoginForm = props => (
       type="submit"
       label={props.formatMessage(formMessages.submit)}
     />
-  </form>
+  </Form>
 );
 
 LoginForm.propTypes = {
   formatMessage: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };
 
-export default reduxForm({
-  form: LOGIN,
-})(LoginForm);
+export default connect(state => ({
+  submitting: isSubmitting(LOGIN, state),
+}))(LoginForm);

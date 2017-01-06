@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
-import { change } from 'redux-form';
+import { fieldChange } from 'redux-form-lite/actions';
 import { Record, List } from 'immutable';
 
 import * as api from './todoApi';
@@ -120,7 +120,7 @@ const fetchTodosEpic = action$ =>
 const createTodoEpic = (action$, store) =>
   action$.ofType(CREATE)
     .mergeMap(action => api.createTodo(action.payload.text))
-    .do(() => store.dispatch(change(TODO, 'todo', '')))
+    .do(() => store.dispatch(fieldChange(TODO, 'todo', '', null, false)))
     .map(todo => ({
       type: CREATE_SUCCESS,
       payload: { todo },

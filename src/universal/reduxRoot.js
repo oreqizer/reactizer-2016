@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
 import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form-lite';
 
 import config from './modules/config/configDuck';
 import intl from './modules/intl/intlDuck';
@@ -15,7 +15,7 @@ export const reducer = combineReducers({
   todo,
   ui,
   user,
-  form: formReducer,
+  reduxFormLite: formReducer,
   routing: routerReducer,
 });
 

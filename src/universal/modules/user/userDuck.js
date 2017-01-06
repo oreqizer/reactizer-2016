@@ -1,6 +1,6 @@
 import Rx from 'rxjs/Rx';
 import { combineEpics } from 'redux-observable';
-import { startSubmit, stopSubmit } from 'redux-form';
+import { submitStart, submitStop } from 'redux-form-lite/actions';
 import { push } from 'react-router-redux';
 import { Record } from 'immutable';
 
@@ -107,9 +107,9 @@ export const logoutUser = () => ({
 
 const loginUserEpic = (action$, store) =>
   action$.ofType(LOGIN)
-    .do(() => store.dispatch(startSubmit(form.LOGIN)))
+    .do(() => store.dispatch(submitStart(form.LOGIN)))
     .mergeMap(action => loginApi(action.payload))
-    .do(() => store.dispatch(stopSubmit(form.LOGIN)))
+    .do(() => store.dispatch(submitStop(form.LOGIN)))
     .map(data => ({
       type: LOGIN_SUCCESS,
       payload: data,
@@ -121,9 +121,9 @@ const loginUserEpic = (action$, store) =>
 
 const registerUserEpic = (action$, store) =>
   action$.ofType(REGISTER)
-    .do(() => store.dispatch(startSubmit(form.REGISTER)))
+    .do(() => store.dispatch(submitStart(form.REGISTER)))
     .mergeMap(action => registerApi(action.payload))
-    .do(() => store.dispatch(stopSubmit(form.REGISTER)))
+    .do(() => store.dispatch(submitStop(form.REGISTER)))
     .map(data => ({
       type: REGISTER_SUCCESS,
       payload: data,

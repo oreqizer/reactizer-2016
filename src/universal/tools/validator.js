@@ -11,7 +11,8 @@ export function isRequired(input = '') {
 }
 
 export function isEmail(input) {
-  return check(validator.isEmail(input), formMessages.invalid);
+  return isRequired(input) ||
+    check(validator.isEmail(input), formMessages.invalid);
 }
 
 export function isPassword(input = '') {
@@ -19,9 +20,6 @@ export function isPassword(input = '') {
   const upper = /[A-Z]/.test(input);
   const num = /[0-9]/.test(input);
 
-  return check(input.length >= 8 && lower && upper && num, formMessages.weakPassword);
-}
-
-export default function validate(input, ...validators) {
-  return validators.reduce((err, func) => err || func(input), null);
+  return isRequired(input) ||
+    check(input.length >= 8 && lower && upper && num, formMessages.weakPassword);
 }
