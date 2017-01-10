@@ -73,6 +73,7 @@ class Todos extends PureComponent {
           <MaterialList>
             {todos.map((todo, index) => (
               <TodoItem
+                key={todo.id}
                 todo={todo}
                 index={index}
                 onEdit={editTodo}
