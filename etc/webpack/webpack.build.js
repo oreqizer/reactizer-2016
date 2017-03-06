@@ -8,7 +8,7 @@ import config from '../config';
 
 const styleLoader = {
   test: /\.scss$/,
-  loader: ExtractText.extract('css!postcss!sass'),
+  loader: ExtractText.extract('css-loader!postcss-loader!sass-loader'),
 };
 
 export default {

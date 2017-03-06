@@ -5,7 +5,7 @@ import base, { loaders, plugins } from './webpack.base';
 
 const styleLoader = {
   test: /\.scss$/,
-  loader: 'style!css!postcss!sass',
+  loader: 'style-loader!css-loader!postcss-loader!sass-loader',
 };
 
 export default {

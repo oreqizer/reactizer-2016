@@ -6,7 +6,7 @@ import config from '../config';
 export const loaders = [{
   test: /\.jsx?$/,
   exclude: /node_modules/,
-  loader: 'babel',
+  loader: 'babel-loader',
   query: {
     babelrc: false,
     presets: ['react', ['es2015', { modules: false }], 'stage-1'],
@@ -14,8 +14,8 @@ export const loaders = [{
 }, {
   test: /\.(jpe?g|png|gif|svg)$/i,
   loaders: [
-    'url?limit=10000&name=[name].[hash].[ext]',
-    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+    'url-loader?limit=10000&name=[name].[hash].[ext]',
+    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
   ],
 }];
 
