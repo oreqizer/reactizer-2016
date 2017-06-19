@@ -1,5 +1,9 @@
 # REACTIZER
 
+https://img.shields.io/badge/status-not%20maintained-red.svg
+Please note that this project, while it served its purpose well, is no longer maintained - too many changes would need to be made for it to be effective, for which I currently don't have time. :( Thank you for understanding.
+___
+
 A React boilerplate that's always ahead! Click [here](http://reactizer.herokuapp.com/) to check out the live demo.
 
 [![Build Status](https://travis-ci.org/oreqizer/reactizer.svg?branch=develop)](https://travis-ci.org/oreqizer/reactizer)
